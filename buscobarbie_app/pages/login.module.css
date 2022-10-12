@@ -1,0 +1,118 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.form, .forgottenForm {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.emailContainer, .forgottenEmailContainer,
+.passwordContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.emailLabel, .forgottenEmailLabel,
+.passwordLabel {
+    margin-bottom: 10px;
+    font-weight: 400;
+    color:rgb(233, 96, 155);
+}
+
+.loginEmail, .forgottenLoginEmail,
+.loginPassword {
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 22px;
+    border-color: navy;
+    border-width: 2px;
+    height: 40px;
+    text-align: center;
+}
+
+.loginButton, .forgottenSendButton, .forgottenCancelButton, .thankyouButton {
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px navy;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    text-decoration: none;
+    height: 60px;
+    width: 110px;
+    border-radius: 20px;
+    border: 2px ridge rgb(233, 96, 155);
+}
+
+.loginButton:hover, .forgottenSendButton:hover, .forgottenCancelButton:hover {
+    background-color: lightgray;
+}
+
+.forgottenCancelButton {
+    border-color: red;
+    color: red;
+}
+
+.forgottenButton {
+    cursor: pointer;
+    border-style: none;
+    text-decoration: underline;
+    
+    font-size: 22px;
+    background-color: transparent;
+    color: rgb(233, 96, 155)
+}
+
+.buttonsContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.formText {
+    margin: 0;
+    font-size: 14px;
+    color: grey;
+    text-align: center;
+}
+
+.error {
+    text-align: center;
+    margin: 0;
+    color: red;
+    font-size: 16px;
+}
+
+.h3 {
+    text-align: center;
+}
+
+.h3span {
+    color: rgb(233, 96, 155)
+}
+
+.thankyouContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media all and (min-width: 760px) {
+    .container {
+        align-self: center;
+        max-width: 500px;
+    }
+}

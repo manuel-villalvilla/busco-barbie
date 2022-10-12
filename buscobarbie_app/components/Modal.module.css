@@ -1,0 +1,165 @@
+.modal {
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.modalContent {
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: lightgray;
+    gap: 10px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title > h4 {
+    padding: 5px;
+    width: fit-content;
+    text-align: center;
+    color: rgb(233, 96, 155);
+    margin: 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.title > h4 > span {
+    text-transform: capitalize;
+}
+
+.phoneP {
+    margin: 0;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.phoneP > span {
+    color:rgb(233, 96, 155);
+    text-transform: capitalize;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.closeButton {
+    cursor: pointer;
+    border-style: none;
+    font-weight: 400;
+    font-size: 30px;
+    color: rgb(233, 96, 155);
+    background-color: transparent;
+    align-self: flex-end;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nameContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.nameLabel, .emailLabel, .bodyLabel {
+    color:rgb(233, 96, 155);
+}
+
+.emailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.nameInput, .emailInput {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid navy;
+    height: 40px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.bodyInput {
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 5px;
+    width: 100%;
+    border: 2px solid navy;
+    border-radius: 10px;
+}
+
+.bodyContainer > p {
+    margin: 0;
+    font-size: 14px;
+    color: gray;
+}
+
+.recaptcha {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.modalSendButton, .goBackButton {
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px navy;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    text-decoration: none;
+    height: 60px;
+    width: 110px;
+    border-radius: 20px;
+    border: 2px ridge rgb(233, 96, 155);
+}
+
+.thankyou {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(211,211,211,.5);
+    border-radius: 20px;
+}
+
+.thankyou > h3 {
+    margin: 20px 0 0 0;
+    color: rgb(233, 96, 155);
+}
+
+.thankyou > button {
+    margin-bottom: 10px;
+}

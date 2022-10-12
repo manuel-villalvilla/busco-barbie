@@ -1,0 +1,261 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.firstQuestionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.container > h3 {
+    text-align: center;
+    margin:0;
+}
+
+.firstQuestion {
+    margin-bottom: 0;
+    text-align: center;
+    width: fit-content;
+}
+
+.firstQuestion > span {
+    color: rgb(233, 96, 155);
+}
+
+.container > h3 > span {
+    color: rgb(233, 96, 155);
+}
+
+.container > p {
+    margin: 0;
+    text-align: center;
+}
+
+.container > p > span {
+    color:rgb(233, 96, 155)
+}
+
+.link {
+    color: rgb(233, 96, 155);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    gap: 10px;
+}
+
+.form > p {
+    margin: 0;
+}
+
+.form > h4 {
+    margin: 0;
+    text-align: center;
+}
+
+.form > h4 > span {
+    color: rgb(233, 96, 155);
+}
+
+.formText {
+    margin: 0 0 0 5px;
+    font-size: 14px;
+    color: grey;
+    width: 100%;
+}
+
+.nameContainer,
+.emailContainer,
+.passwordContainer,
+.titleContainer,
+.bodyContainer,
+.provinceContainer,
+.areaContainer,
+.phoneContainer,
+.priceContainer,
+.categoriesContainer,
+.checkboxContainer,
+.yearsContainer,
+.imagesContainer,
+.tagsContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.passwordContainer, .imagesContainer {
+    justify-content: space-between;
+}
+
+.nameLabel,
+.emailLabel,
+.passwordLabel,
+.titleLabel,
+.bodyLabel,
+.provinceLabel,
+.areaLabel,
+.phoneLabel,
+.priceLabel,
+.categoriesLabel,
+.imagesLabel,
+.label {
+    color:rgb(233, 96, 155);
+    margin-bottom: 2px;
+}
+
+.imagesButton {
+    padding: 10px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    background-color: navy;
+    color: white;
+    border-radius: 10px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.bodyInput {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid navy;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.nameInput,
+.emailInput,
+.passwordInput,
+.titleInput,
+.provinceSelect,
+.areaInput,
+.phoneInput,
+.priceInput,
+.categoriesSelect,
+.yearSelect {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid navy;
+    height: 40px;
+    
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.provinceSelect,
+.categoriesSelect {
+    background-color: lightgrey;
+}
+
+.imagesInput {
+    display: none;
+}
+
+.imagePreview {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.thumbsContainer {
+    display: flex;
+    margin: 10px 0 0 0;
+    width: 75px;
+}
+
+.deleteImageButton {
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    border-style: none;
+    background-color: transparent;
+    color: red;
+    font-size: 30px;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    top: -10px;
+    right: 15px;
+}
+
+.randomPasswordButton {
+    height: 25px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    background-color: navy;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.checkboxContainer {
+    gap: 10px;
+}
+
+.checkboxLabel {
+    font-size: 20px;
+}
+
+.checkboxInput {
+    width: 20px;
+    height: 20px;
+}
+
+.termsLink {
+    color: rgb(233, 96, 155);
+}
+
+.submitButton {
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px navy;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    text-decoration: none;
+    height: 60px;
+    width: 110px;
+    border-radius: 20px;
+    border: 2px ridge rgb(233, 96, 155);
+}
+
+.error {
+    margin: 0;
+    color: red;
+    font-size: 18px;
+}
+
+@media all and (min-width: 760px) {
+    .form {
+        max-width: 760px;
+    }
+}

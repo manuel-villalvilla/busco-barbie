@@ -1,0 +1,241 @@
+.titleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.titleContainer > h3 {
+    margin: 0 0 20px 0;
+    background-color: #fff;
+    color:rgb(233, 96, 155);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.titleContainer > h3 {
+    text-transform: capitalize;
+}
+
+.noads {
+    margin: 0;
+    font-size: 16px;;
+}
+
+.adsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.adsLabel, .userLabel {
+    display: flex;
+    justify-content: flex-start;
+    color: rgb(233, 96, 155);
+}
+
+.adDiv {
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    font-size: 16px;
+    justify-content: space-between;
+    height: 40px;
+    border: 2px solid rgb(211,211,211);
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.adTitle {
+    width: 30%;
+}
+
+.adTitle > p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.adLink {
+    width: fit-content;
+}
+
+.adLinkA {
+    color: rgb(233, 96, 155)
+}
+
+.adButtons {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    height: fit-content;
+}
+
+.newAdButtonDiv {
+    text-align: center;
+}
+
+.editButton, .deleteButton, .newAdButton, .formButton {
+    color: #000;
+    border-radius: 10px;
+    border: 1px solid rgb(233, 96, 155);
+    cursor: pointer;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.deleteButton {
+    color: red;
+}
+
+.newAdButtonDiv {
+    margin: 0 0 20px 0;
+}
+
+.newAdButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px;
+    background-color: lightgray;
+}
+
+.newAdButton:hover {
+    background-color: lightgrey;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.userDiv, .emailDiv, .passwordDiv, .password2Div {
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    border: 2px solid rgb(211,211,211);
+    border-radius: 10px;
+}
+
+.userDiv > p, .emailDiv > p, .passwordDiv > p, .password2Div > p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.labels {
+    font-size: 16px;
+}
+
+.nameInput, .emailInput, .passwordInput, .password2Input {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid navy;
+    height: 40px;
+    
+    font-size: 16px;
+    background-color: rgba(211,211,211,.3);
+}
+
+.emailNote, .passwordNote {
+    margin: 0;
+    font-size: 14px;
+    color: grey;
+    text-align: end;
+}
+
+.formButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    background-color: lightgray;
+}
+
+.unverified {
+    margin: 0;
+    font-size: 14px;
+    color: grey;
+}
+
+.modal {
+    padding: 3%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.modalContent {
+    padding: 3%;
+    border: 4px solid navy;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    background-color: lightgray;
+}
+
+.modalContent > h4 {
+    font-weight: 100;
+    text-align: center;
+}
+
+.modalContent > h4 > span {
+    color: rgb(233, 96, 155);
+}
+
+.modalButtonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cancelButton, .saveButton {
+    border-radius: 10px;
+    border: 1px solid rgb(233, 96, 155);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.saveButton {
+    color: green;
+}
+
+.cancelButton {
+    color: red;
+}
+
+.error {
+    margin: 5px 0 0 0;
+    color: red;
+    font-size: 18px;
+    text-align: center;
+}
+
+.success {
+    margin: 5px 0 0 0;
+    color: green;
+    font-size: 18px;
+    text-align: center;
+}

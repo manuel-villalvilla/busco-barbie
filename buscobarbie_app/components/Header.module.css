@@ -1,0 +1,91 @@
+.headerFilters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    padding: 3%;
+    height: auto;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 0 20px 0;
+}
+
+.logo {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    position: relative;
+}
+
+.sessionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.noSession {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.loginLink {
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size: 18px;
+    
+    border-style: none;
+    background-color: transparent;
+    text-shadow: 1px 1px 8px rgb(233, 96, 155);
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.buscarButton,
+.publicarLink,
+.mipanelLink {
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px navy;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    text-decoration: none;
+    height: 60px;
+    width: 110px;
+    border-radius: 20px;
+    border: 2px ridge rgb(233, 96, 155);
+}
+
+.buscarButton:hover,
+.publicarLink:hover,
+.mipanelLink:hover {
+    background-color: rgba(211,211,211,.2);
+}
+
+.buscarButton:active,
+.publicarLink:active,
+.mipanelLink:active {
+    background-color: rgba(211,211,211,.2);
+}
+
+@media all and (min-width: 760px) {
+    .logo {
+        flex-grow: 0;
+        width: 30%;
+    }
+}

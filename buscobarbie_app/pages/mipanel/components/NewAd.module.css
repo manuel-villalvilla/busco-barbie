@@ -1,0 +1,218 @@
+.backButtonContainer {
+    text-align: center;
+}
+
+.topBackButton {
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-style: none;
+    color:rgb(233, 96, 155);
+    font-weight: 400;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px navy;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    gap: 10px;
+}
+
+.form > p {
+    margin: 0;
+}
+
+.form > h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.form > h3 > span {
+    color: rgb(233, 96, 155);
+}
+
+.formText {
+    margin-left: 5px;
+    font-size: 14px;
+    color: grey;
+    width: 100%;
+}
+
+.titleContainer,
+.bodyContainer,
+.provinceContainer,
+.areaContainer,
+.phoneContainer,
+.priceContainer,
+.categoriesContainer,
+.imagesContainer,
+.checkboxContainer,
+.yearsContainer,
+.tagsContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.imagesContainer {
+    justify-content: space-between;
+}
+
+.titleLabel,
+.bodyLabel,
+.provinceLabel,
+.areaLabel,
+.phoneLabel,
+.priceLabel,
+.categoriesLabel,
+.imagesLabel,
+.label {
+    color:rgb(233, 96, 155);
+    margin-bottom: 2px;
+}
+
+.bodyInput {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid navy;
+    
+    font-size: 16px;
+    background-color: rgba(211,211,211,.3);
+}
+
+.titleInput,
+.provinceSelect,
+.areaInput,
+.phoneInput,
+.priceInput,
+.categoriesSelect,
+.yearSelect {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid navy;
+    height: 40px;
+    
+    font-size: 16px;
+    background-color: rgba(211,211,211,.3);
+}
+
+.provinceSelect,
+.categoriesSelect {
+    background-color: lightgrey;
+}
+
+.imagesInput {
+    display: none;
+}
+
+.imagesButton {
+    padding: 10px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    background-color: navy;
+    color: white;
+    border-radius: 10px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.imagePreview {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.thumbsContainer {
+    display: flex;
+    margin: 10px 0 0 0;
+    width: 75px;
+}
+
+.deleteImageButton {
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    border-style: none;
+    background-color: transparent;
+    color: red;
+    font-size: 30px;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    top: -12px;
+    right: 15px;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.checkboxLabel {
+    font-size: 16px;
+    width: fit-content;
+}
+
+.checkboxInput {
+    width: 20px;
+    height: 20px;
+}
+
+.termsLink {
+    color: rgb(233, 96, 155);
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.cancelButton, .submitButton {
+    border-radius: 10px;
+    border: 1px solid rgb(233, 96, 155);
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.submitButton {
+    color: green;
+}
+
+.cancelButton {
+    color: red;
+}
+
+.error {
+    margin: 5px 0 0 0;
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
+.success {
+    margin: 5px 0 0 0;
+    color: green;
+    font-size: 14px;
+    text-align: center;
+}

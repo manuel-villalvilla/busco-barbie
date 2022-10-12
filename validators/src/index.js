@@ -1,0 +1,22 @@
+module.exports = {
+    validateEmail: require('./validateEmail'),
+    validatePassword: require('./validatePassword'),
+    validateText: require('./validateText'),
+    validateCallback: require('./validateCallback'),
+    validateNoteText: require('./validateNoteText'),
+    validateFilters: require('./validateFilters'),
+    validateCountry: require('./validateCountry'),
+    validateMongoId: require('./validateMongoId'),
+    validateName: require('./validateName'),
+    validateTitle: require('./validateTitle'),
+    validateBody: require('./validateBody'),
+    validateProvince: require('./validateProvince'),
+    validatePrice: require('./validatePrice'),
+    validateCategories: require('./validateCategories'),
+    validateFiles: require('./validateFiles'),
+    validateArea: require('./validateArea'),
+    validatePhoneNumber: require('./validatePhoneNumber'),
+    validateVisibility: require('./validateVisibility'),
+    validateYear: require('./validateYear'),
+    validateTags: require('./validateTags')
+}

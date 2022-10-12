@@ -1,0 +1,8 @@
+# Secret file
+.env
+
+# Dependencies
+/node_modules
+/files
+/logs
+**/@eaDir
