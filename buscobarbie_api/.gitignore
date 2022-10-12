@@ -6,3 +6,8 @@
 /files
 /logs
 **/@eaDir
+
+# Misc
+*.jpg
+*.png
+*.db
