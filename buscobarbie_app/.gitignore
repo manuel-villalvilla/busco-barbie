@@ -21,6 +21,7 @@ next.config.js
 # misc
 .DS_Store
 *.pem
+*.db
 
 # debug
 npm-debug.log*
