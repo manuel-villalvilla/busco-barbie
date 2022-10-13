@@ -41,6 +41,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
         else if (res.error === 'email is not valid') setError('Email no válido')
         else if (res.error === 'password length is less than 8 characters') setError('La contraseña debe tener al menos 8 caracteres')
         else if (res.error === 'password is empty or blank') setError('Introduce tu contraseña')
+        else if (res.error === 'password chars not valid') setError('Contraseña con caracteres inválidos')
         else if (res.error === 'unauthorized google account sign in') setError('Debes iniciar sesión a través de Google')
         else setError('Email o contraseña incorrectos')
       }
@@ -94,7 +95,8 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
             id='loginPassword'
             className={styles.loginPassword}
             name='loginPassword'
-            maxLength={12}
+            minLength={8}
+            maxLength={20}
             size={30}
             required={true}
           />

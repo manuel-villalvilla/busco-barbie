@@ -7,7 +7,7 @@ const fs = require('fs/promises')
 const { join } = require('path')
 // const FormData = require('form-data')
 const bcrypt = require('bcryptjs')
-const { env: { MONGO_URL, NAS_IMAGES_URL } } = process
+const { env: { MONGO_URL, NAS_IMAGES_URL, ADMIN_EMAIL, ADMIN_PASSWORD } } = process
 // const axios = require('axios')
 const { User, Ad } = require('../models')
 const { connect, disconnect } = require('mongoose');
@@ -71,6 +71,12 @@ const { connect, disconnect } = require('mongoose');
     const visibilities = ['private', 'public']
 
     const populateFolder = join(__dirname, '/')
+
+    /* Create admin user */
+
+    const adminPassword = await bcrypt.hash(ADMIN_PASSWORD, 10)
+
+    await User.create({ name: 'admin', email: ADMIN_EMAIL, password: adminPassword, role: 'admin', verified: true })
 
     for (let i = 0; i < 99; i++) {
         console.log(`Creating user ${i + 1} with ads:`)

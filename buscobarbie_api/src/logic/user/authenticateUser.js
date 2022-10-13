@@ -32,7 +32,7 @@ module.exports = function (email, password) {
             return bcrypt.compare(password, user.password)
                 .then(status => {
                     if (!status) throw new CredentialsError('email or password incorrect')
-                    return user._id.toString() // como lo he traido como un pojo con lean, tengo q extraer
+                    return { id: user._id.toString(), role: user.role } // como lo he traido como un pojo con lean, tengo q extraer
                     // el id con _id y como es un objeto, convertirlo a string
                 })
         })

@@ -8,9 +8,9 @@ module.exports = (req, res) => {
         const { body: { email, password } } = req
 
         authenticateUser(email, password)
-            .then(userId => {
-                const token = jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: '30 days' })
-                res.json({ token })
+            .then(data => {
+                const token = jwt.sign({ sub: data.id }, JWT_SECRET, { expiresIn: '30 days' })
+                res.json({ token, role: data.role })
                 logger.info(`user ${email} authenticated`)
             })
             .catch(error => {

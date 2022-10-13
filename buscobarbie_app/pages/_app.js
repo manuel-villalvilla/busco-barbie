@@ -1,6 +1,6 @@
 import '../styles.css'
 import { SessionProvider } from 'next-auth/react'
-import { useSession, getSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import Layout from '../components/Layout'
 import Loader from '../components/Loader'
 import Head from 'next/head'
@@ -15,30 +15,11 @@ function myApp({ Component, pageProps: { ...pageProps }, country_code, session }
         </Head>
 
         <SessionProvider session={session}>
-            {Component.auth ? (
-                <Auth>
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
-                </Auth>
-            ) : (
-                <Layout country_code={country_code} >
-                    <Component {...pageProps} />
-                </Layout>
-            )}
+            <Layout country_code={country_code} >
+                <Component {...pageProps} />
+            </Layout>
         </SessionProvider>
     </>
-}
-
-function Auth({ children }) {
-    // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
-    const { status } = useSession({ required: true })
-
-    if (status === "loading") {
-        return <Loader />
-    }
-
-    return children
 }
 
 myApp.getInitialProps = async (context) => {

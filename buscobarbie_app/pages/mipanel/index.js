@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import withContext from "../../utils/withContext"
 import { getToken } from 'next-auth/jwt'
 import retrieveUserWithAds from "../../logic/retrieveUserWithAds"
+import retrieveAdminData from "../../logic/retrieveAdminData"
 import styles from './index.module.css'
 import MainPanel from './components/MainPanel'
 
@@ -13,8 +14,13 @@ function mipanel({ context: { setSearchHeight }, pack, token }) {
     useEffect(() => setSearchHeight(0), [])
 
     return <div className={styles.mainPanel}>
-            <MainPanel user={user} ads={ads} setUser={setUser} setAds={setAds} token={token} count={count} setCount={setCount} />
-        </div>
+        {
+            token.role !== 'admin' ?
+                <MainPanel user={user} ads={ads} setUser={setUser} setAds={setAds} token={token} count={count} setCount={setCount} />
+                :
+                "hola admin"
+        }
+    </div>
 }
 
 export async function getServerSideProps({ req, res }) {
@@ -26,8 +32,12 @@ export async function getServerSideProps({ req, res }) {
         res.writeHead(307, { Location: '/login' })
         res.end()
         return { props: {} }
-    } else {
+    } else if (token.role !== 'admin') {
         const pack = await retrieveUserWithAds(token.tokenFromApi)
+
+        return { props: { pack, token } }
+    } else {
+        const pack = await retrieveAdminData(token.tokenFromApi)
 
         return { props: { pack, token } }
     }

@@ -24,9 +24,9 @@ export default NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                const tokenFromAPI = await authenticateUser(credentials, req)
+                const data = await authenticateUser(credentials, req)
             
-                if (tokenFromAPI) return tokenFromAPI
+                if (data) return data
             }
         }),
         GoogleProvider({
@@ -46,19 +46,22 @@ export default NextAuth({
                     try {
                         const res = await authenticateGoogleUser(user)
                         token.tokenFromApi = res.data.token
+                        token.role = 'google'
                     } catch (error) {
-                        // console.log(error)
+                        console.log(error)
                     }
-                } else
-                    token.tokenFromApi = user
+                } else {
+                    token.tokenFromApi = user.token
+                    token.role = user.role
+                }
+
             }
             return token;
         },
 
         async session({ session, token }) {
             session.tokenFromApi = token.tokenFromApi
-            // console.log(session)
-            // session.tokenFromApi = token.tokenFromApi.token
+            session.role = token.role
             return session;
         },
 

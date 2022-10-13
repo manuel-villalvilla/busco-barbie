@@ -13,7 +13,7 @@ export default async function (credentials, req) {
     
     try {
         const res = await axios.post(`${API_URL}/users/auth`, payload)
-        return res.data.token
+        return res.data
     } catch (error) {
         throw new Error(error.response.data.error)
     }
