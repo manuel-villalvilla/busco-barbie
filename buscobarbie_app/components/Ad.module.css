@@ -12,7 +12,11 @@
 }
 
 .title > h3 {
+    text-align: center;
     margin: 10px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .header {

@@ -5,6 +5,16 @@
     gap: 20px;
 }
 
+.title {
+    margin: 0;
+    text-align: center;
+    max-width: 270px;
+    background-color: #fff;
+    color:rgb(233, 96, 155);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .form, .forgottenForm {
     padding: 10px;
     display: flex;

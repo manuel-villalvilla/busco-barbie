@@ -195,7 +195,7 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
         }
     }
 
-    return <> <div className={styles.backButtonContainer}><button className={styles.topBackButton} onClick={() => setView('mainpannel')}>Cancelar</button></div>
+    return <> 
         <form className={styles.form} encType="multipart/form-data" onSubmit={async (event) => {
             event.preventDefault()
 

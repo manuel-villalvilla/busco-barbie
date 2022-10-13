@@ -72,7 +72,7 @@ const { connect, disconnect } = require('mongoose');
 
     const populateFolder = join(__dirname, '/')
 
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 99; i++) {
         console.log(`Creating user ${i + 1} with ads:`)
         const email = 'manu' + i + '@manu.com'
 
@@ -90,10 +90,10 @@ const { connect, disconnect } = require('mongoose');
             let province = ''
             let phone = ''
 
-            if (i < 15) {
+            if (i < 33) {
                 country += 'ES'
                 province += ES[Math.floor(Math.random() * ES.length)]
-                if (i >= 0 && i < 8) {
+                if (i >= 0 && i < 17) {
                     phone += '6'
                     for (let g = 0; g < 8; g++) {
                         phone += Math.floor(Math.random() * 10)
@@ -101,19 +101,19 @@ const { connect, disconnect } = require('mongoose');
                 }
             }
 
-            else if (i >= 15 && i < 30) {
+            else if (i >= 33 && i < 66) {
                 country += 'AR'
                 province += AR[Math.floor(Math.random() * AR.length)]
-                if (i >= 15 && i < 23)
+                if (i >= 33 && i < 50)
                     for (let f = 0; f < 8; f++) {
                         phone += Math.floor(Math.random() * 10)
                     }
             }
 
-            else if (i >= 30) {
+            else if (i >= 66) {
                 country += 'MX'
                 province += MX[Math.floor(Math.random() * MX.length)]
-                if (i > 22 && i <= 30)
+                if (i > 66 && i <= 82)
                     for (let d = 0; d < 10; d++) {
                         phone += Math.floor(Math.random() * 10)
                     }
@@ -190,8 +190,6 @@ const { connect, disconnect } = require('mongoose');
 
                     urls.push(`${NAS_IMAGES_URL}/${user.id.toString()}/${ad.id.toString()}/${name}`)
 
-                    
-                    console.log(`uploading image ${name}`)
                     fs.copyFile(`${populateFolder}/${name}`, `${folder}/${user.id.toString()}/${ad.id.toString()}/${name}`)
 
                     // const form = new FormData()

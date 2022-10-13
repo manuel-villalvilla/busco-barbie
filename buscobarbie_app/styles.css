@@ -12,6 +12,19 @@ body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 22px;
+    color: rgb(122, 65, 113);
+}
+
+input {
+    color: rgb(122, 65, 113);
+}
+
+textarea {
+    color: rgb(122, 65, 113);
+}
+
+select {
+    color: rgb(122, 65, 113);
 }
 
 button {
@@ -116,7 +129,7 @@ button {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    padding: 0;
+    padding: 10px;
     margin: 0 0 15px 0;
 }
 
@@ -170,11 +183,16 @@ button {
 }
 
 .results-ad-title {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .results-ad-title>h3 {
     margin: 10px 0 10px 0;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .results-ad-body-article {
@@ -250,7 +268,7 @@ button {
 
 .home-link {
     text-decoration: none;
-    color: black;
+    color: rgb(122, 65, 113);
     font-weight: 900;
 }
 
@@ -286,51 +304,6 @@ button {
 
 .verify-container > h3 {
     text-align: center;
-}
-
-.verify-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.verify-email-label {
-    color:rgb(233, 96, 155);
-    margin-bottom: 2px;
-}
-
-.verify-input {
-    padding: 5px;
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid navy;
-    height: 40px;
-    
-    font-size: 16px;
-    background-color: rgba(211,211,211,.3);
-}
-
-.verify-send-button {
-    cursor: pointer;
-    display: flex;
-    
-    font-weight: 400;
-    font-size: 16px;
-    text-shadow: 1px 1px 8px rgb(233, 96, 155);
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    color: black;
-    text-decoration: none;
-    height: 50px;
-    width: 100px;
-    border-radius: 20px;
-    border-color: rgb(233, 96, 155);
-    border-width: 2px;
-    border-style: solid;
 }
 
 .slider {

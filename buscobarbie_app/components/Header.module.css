@@ -35,13 +35,12 @@
 .loginLink {
     padding: 5px;
     text-decoration: none;
-    color: black;
-    font-weight: 400;
-    font-size: 18px;
-    
     border-style: none;
     background-color: transparent;
-    text-shadow: 1px 1px 8px rgb(233, 96, 155);
+    color: rgb(233, 96, 155);
+    font-weight: 400;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px navy;
     cursor: pointer;
 }
 

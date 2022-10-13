@@ -185,6 +185,12 @@
     background-color: transparent;
     font-size: 14px;
     padding: 5px;
+    background-color: #fff;
+}
+
+.cancelButton:hover,
+.saveButton:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .saveButton {
