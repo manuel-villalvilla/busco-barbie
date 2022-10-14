@@ -3,7 +3,7 @@ const { env: { MONGO_URL, PORT, APP_URL } } = process
 const { connect, disconnect } = require('mongoose')
 const { logger } = require('./utils')
 const cors = require('cors')
-const { adsRouter, usersRouter, utilsRouter } = require('./routes')
+const { adsRouter, usersRouter, utilsRouter, adminRouter } = require('./routes')
 const { name, version } = require('../package.json')
 
 connect(MONGO_URL)
@@ -21,7 +21,7 @@ connect(MONGO_URL)
             res.redirect(308, APP_URL)
         })
 
-        api.use('/api', adsRouter, usersRouter, utilsRouter)
+        api.use('/api', adsRouter, usersRouter, utilsRouter, adminRouter)
 
         api.use('/files', express.static('files'))
         

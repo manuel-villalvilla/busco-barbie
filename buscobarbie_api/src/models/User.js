@@ -14,7 +14,6 @@ module.exports = model('User', new Schema({
     email: {
         type: String,
         required: true,
-        // no se podran repetir los emails. Sirve como filtro
         unique: true,
         validate: {
             validator: function(v) {
@@ -40,24 +39,3 @@ module.exports = model('User', new Schema({
         default: Date.now
     }
 }))
-
-
-
-// const user = new Schema({
-//     name: {
-//         type: String,
-//         required: true
-//     },
-//     email: {
-//         type: String,
-//         required: true
-//     },
-//     password: {
-//         type: String,
-//         required: true
-//     }
-// })
-
-// const User = model('User', user)
-
-// module.exports = User

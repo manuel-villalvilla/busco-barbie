@@ -1,11 +1,13 @@
 import styles from './MainPanel.module.css'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { signOut } from 'next-auth/react'
 import updateUser from "../../../logic/updateUser"
 import deleteAd from '../../../logic/deleteAd'
 import AdEdit from "../components/AdEdit"
 import NewAd from './NewAd'
 import { animateScroll as scroll } from 'react-scroll'
+import deleteUser from '../../../logic/deleteUser'
 const URL = process.env.NEXT_PUBLIC_APP_URL
 
 export default function ({ user, ads, setUser, setAds, token, count, setCount }) {
@@ -70,6 +72,19 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
             setUserError('Algo salió mal guardando tus datos')
         }
     }
+
+    const handleAccountDelete = async () => {
+        try {
+            await deleteUser(user._id, token.tokenFromApi)
+            setView('mainpannel')
+            scroll.scrollToBottom()
+            setUserSuccess('Cuenta borrada correctamente. Desconectando ...')
+            setTimeout(() => signOut({ callbackUrl: `${window.location.origin}` }), 5000)
+        } catch (error) {
+            setUserError('Algo salió mal eliminando tu cuenta')
+        }
+    }
+
     return <>
         {view === 'mainpannel' && <>
             <div className={styles.titleContainer}>
@@ -180,6 +195,7 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
                     {userSuccess && <p className={styles.success}>{userSuccess}</p>}
                     <button type='submit' className={styles.formButton}>GUARDAR</button>
                 </form>
+                <button type='button' className={styles.formDeleteButton} onClick={() => setView('userconfirmmodal')}>BORRAR CUENTA</button>
             </div>
         </>
         }
@@ -193,6 +209,17 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
                             setAdId(null)
                             setView('mainpannel')
                         }}>Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        }
+        {
+            view === 'userconfirmmodal' && <div className={styles.modal}>
+                <div className={styles.modalContent}>
+                    <h4>¿Seguro que deseas <span>borrar</span> esta cuenta?</h4>
+                    <div className={styles.modalButtonsContainer}>
+                        <button className={styles.saveButton} type='button' onClick={handleAccountDelete}>Borrar</button>
+                        <button className={styles.cancelButton} type='button' onClick={() => setView('mainpannel')}>Cancelar</button>
                     </div>
                 </div>
             </div>

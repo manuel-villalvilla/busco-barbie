@@ -76,7 +76,7 @@
     text-align: center;
 }
 
-.editButton, .deleteButton, .newAdButton, .formButton {
+.editButton, .deleteButton, .newAdButton, .formButton, .formDeleteButton {
     color: rgb(122, 65, 113);
     border-radius: 10px;
     border: 1px solid rgb(233, 96, 155);
@@ -93,7 +93,7 @@
     margin: 0 0 20px 0;
 }
 
-.newAdButton, .formButton {
+.newAdButton, .formButton, .formDeleteButton {
     cursor: pointer;
     display: flex;
     font-weight: 400;
@@ -109,8 +109,13 @@
     border: 2px ridge rgb(233, 96, 155);
 }
 
-.newAdButton:hover, .formButton:hover, .editButton:hover, .deleteButton:hover {
+.newAdButton:hover, .formButton:hover, .editButton:hover, .deleteButton:hover, .formDeleteButton:hover {
     background-color: rgba(211,211,211,.2);
+}
+
+.formDeleteButton {
+    color: red;
+    border: 2px ridge red;
 }
 
 .form {

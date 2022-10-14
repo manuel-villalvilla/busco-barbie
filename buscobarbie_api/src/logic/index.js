@@ -14,5 +14,9 @@ module.exports = {
     updateUser: require('./user/updateUser'),
     newUserAd: require('./userAds/newUserAd'),
     updateAdVisibility: require('./userAds/updateAdVisibility'),
-    authenticateGoogleUser: require('./user/authenticateGoogleUser')
+    authenticateGoogleUser: require('./user/authenticateGoogleUser'),
+    retrieveAdminData: require('./admin/retrieveAdminData'),
+    verifyAd: require('./admin/verifyAd'),
+    adminDeleteAd: require('./admin/adminDeleteAd'),
+    deleteUser: require('./user/deleteUser')
 }

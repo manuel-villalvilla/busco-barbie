@@ -31,6 +31,10 @@ button {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+ul {
+    list-style-type: none;
+}
+
 #__next {
     margin: 0;
     display: flex;
@@ -50,9 +54,11 @@ button {
 .main {
     display: flex;
     flex-grow: 1;
+    width: 100%;
     height: auto;
     flex-direction: column;
-    justify-content: center;
+    align-self: center;
+    align-items: center;
     padding: 10px;
 }
 

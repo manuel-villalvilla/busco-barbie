@@ -32,7 +32,7 @@ const { connect, disconnect } = require('mongoose');
 
     // TODO
 
-    const name = 'manu'
+    
     const password = '123123123'
 
     const paths = [
@@ -80,7 +80,10 @@ const { connect, disconnect } = require('mongoose');
 
     for (let i = 0; i < 99; i++) {
         console.log(`Creating user ${i + 1} with ads:`)
-        const email = 'manu' + i + '@manu.com'
+
+        const name = 'manu'+i
+
+        const email = `manu${i}@manu.com`
 
         const hash = await bcrypt.hash(password, 10)
 
@@ -219,7 +222,7 @@ const { connect, disconnect } = require('mongoose');
     /* NAS logout */
     // await axios.get(`${NAS_API}/${path}?api=SYNO.API.Auth&version=${maxVersion}&method=logout&session=FileStation&_sid=${sid}`)
 
-    console.log('45 users created with 5 ads each')
+    console.log('100 users created with 5 ads each')
 
     await disconnect()
 })()

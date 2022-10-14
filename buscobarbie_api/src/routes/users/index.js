@@ -7,5 +7,6 @@ module.exports = {
     retrieveUserWithAdsHandler: require('./retrieveUserWithAdsHandler'),
     recoverPasswordHandler: require('./recoverPasswordHandler'),
     updateUserHandler: require('./updateUserHandler'),
-    authenticateGoogleUserHandler: require('./authenticateGoogleUserHandler')
+    authenticateGoogleUserHandler: require('./authenticateGoogleUserHandler'),
+    deleteUserHandler: require('./deleteUserHandler')
 }

@@ -20,8 +20,14 @@ const {
     recoverPasswordHandler,
     updatePasswordHandler,
     updateUserHandler,
-    authenticateGoogleUserHandler
+    authenticateGoogleUserHandler,
+    deleteUserHandler
 } = require('./users')
+const {
+    retrieveAdminDataHandler,
+    verifyAdHandler,
+    adminDeleteAdHandler
+} = require('./admin')
 const { verifyGoogleCaptchaHandler } = require('./utils')
 
 const adsRouter = Router()
@@ -58,12 +64,23 @@ usersRouter.get('/users', jsonBodyParser, retrieveUserWithAdsHandler)
 
 usersRouter.post('/users/pass', jsonBodyParser, updatePasswordHandler)
 
+usersRouter.delete('/users', jsonBodyParser, deleteUserHandler)
+
 const utilsRouter = Router()
 
 utilsRouter.post('/utils', jsonBodyParser, verifyGoogleCaptchaHandler)
 
+const adminRouter = Router()
+
+adminRouter.get('/admin', retrieveAdminDataHandler)
+
+adminRouter.patch('/admin/ads', jsonBodyParser, verifyAdHandler)
+
+adminRouter.delete('/admin/ads', jsonBodyParser, adminDeleteAdHandler)
+
 module.exports = {
     adsRouter,
     usersRouter,
-    utilsRouter
+    utilsRouter,
+    adminRouter
 }

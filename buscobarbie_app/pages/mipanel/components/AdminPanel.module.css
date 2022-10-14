@@ -1,0 +1,125 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.container > h4 {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.title {
+    text-align: center;
+    margin: 0;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button {
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px navy;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    text-decoration: none;
+    height: 60px;
+    width: fit-content;
+    border-radius: 20px;
+    border: 2px ridge rgb(233, 96, 155);
+}
+
+.button:hover, .backButton:hover {
+    background-color: rgba(211,211,211,.2);
+}
+
+/* AdminAds */
+
+.adsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.backButton {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px navy;
+    border-style: none;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    width: fit-content;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.adsContainer > h4 {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.adList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.listItem {
+    border: 2px solid gray;
+    padding: 5px;
+    width: 175px;
+    overflow: hidden;
+}
+
+.listItem > p {
+    color:rgb(233, 96, 155);
+    text-decoration: underline;
+    margin: 0;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.adsContainer > p {
+    margin: 0;
+}
+
+/* Admin Ad */
+
+.adContainer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    font-size: 20px;
+}
+
+.imgDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.adVerifyButton {
+    font-size: 18px;
+    margin: 10px;
+}

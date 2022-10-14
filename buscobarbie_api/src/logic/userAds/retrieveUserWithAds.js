@@ -1,6 +1,5 @@
 const { NotFoundError } = require("errors")
 const { User, Ad } = require("../../models")
-const axios = require('axios')
 
 module.exports = async function (userId) {
     const user = await User.findById(userId, '_id name email role').lean()

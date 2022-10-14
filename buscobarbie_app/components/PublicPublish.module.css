@@ -36,6 +36,7 @@
     align-items: center;
     flex-grow: 1;
     width: 100%;
+    max-width: 760px;
     gap: 10px;
 }
 
@@ -251,10 +252,4 @@
 
 .container > p > span {
     color:rgb(233, 96, 155)
-}
-
-@media all and (min-width: 760px) {
-    .form {
-        max-width: 760px;
-    }
 }

@@ -21,6 +21,7 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    max-width: 400px;
 }
 
 .emailContainer, .forgottenEmailContainer,

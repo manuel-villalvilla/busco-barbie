@@ -143,10 +143,13 @@ module.exports = async function (country_code, name, email, password, title, bod
     a {
         color: rgb(233, 96, 155);
     }
+    .footer {
+        font-size: 14px;
+    }
 </style>
     </head>
     <body class='body'>
-        <div class="textalign"><a href='https://bb.serranillos.net/${country_code}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
+        <div class="textalign"><a href='${APP_URL}/${country_code}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
         <h3 class='textalign'>¡Hola ${user.name}! Te damos la bienvenida a <span>BuscoBarbie.com</span></h3>
         <p class='cabecera'><b>Aquí tienes una copia de tu anuncio y tu enlace de verificación:</b></p>
         <div class='container'>
@@ -165,6 +168,8 @@ module.exports = async function (country_code, name, email, password, title, bod
         <p class='textalign'><b>Tu anuncio será verificado en las próximas horas si cumple con nuestras <a href='${APP_URL}/terms-and-conditions' rel='noopener noreferrer' class='verlink'>condiciones</a></b></p>
         <p class='textalign'><b><a href='${APP_URL}/verify?id=${user.id.toString()}&token=${token}' rel='noopener noreferrer' class='verlink'>Haz click aquí para verificar tu usuario en BuscoBarbie.com</a></b></p>
         <h3 class='textalign nomargin;'>¡GRACIAS!</h3>
+        <p class='footer'>Según lo dispuesto en el Reglamento Europeo en materia de Protección de Datos, te informamos que los datos de carácter personal que nos has proporcionado son gestionados por el responsable de BuscoBarbie.com tras habernos facilitado/cedido tus datos de manera voluntaria mediante el registro en la aplicación.</p>
+        <p class='footer textalign'>2022 BuscoBarbie.com</p>
     </body>
     </html>`
 
