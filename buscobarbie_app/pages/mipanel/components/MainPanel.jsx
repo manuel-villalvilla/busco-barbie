@@ -193,9 +193,18 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
                     </div>
                     {userError && <p className={styles.error}>{userError}</p>}
                     {userSuccess && <p className={styles.success}>{userSuccess}</p>}
-                    <button type='submit' className={styles.formButton}>GUARDAR</button>
+                    <button
+                        type='submit'
+                        className={styles.formButton}
+                    >GUARDAR
+                    </button>
                 </form>
-                <button type='button' className={styles.formDeleteButton} onClick={() => setView('userconfirmmodal')}>BORRAR CUENTA</button>
+                <button
+                    type='button'
+                    className={styles.formDeleteButton}
+                    onClick={() => setView('userconfirmmodal')}
+                >BORRAR CUENTA
+                </button>
             </div>
         </>
         }
@@ -204,11 +213,22 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
                 <div className={styles.modalContent}>
                     <h4>¿Seguro que deseas <span>borrar</span> este anuncio?</h4>
                     <div className={styles.modalButtonsContainer}>
-                        <button className={styles.saveButton} type='button' onClick={() => handleDeleteClick()}>Borrar</button>
-                        <button className={styles.cancelButton} type='button' onClick={() => {
-                            setAdId(null)
-                            setView('mainpannel')
-                        }}>Cancelar</button>
+                        <button
+                            className={styles.saveButton}
+                            type='button'
+                            onClick={() => handleDeleteClick()}
+                        >Borrar
+                        </button>
+
+                        <button
+                            className={styles.cancelButton}
+                            type='button'
+                            onClick={() => {
+                                setAdId(null)
+                                setView('mainpannel')
+                            }}
+                        >Cancelar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -218,8 +238,19 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
                 <div className={styles.modalContent}>
                     <h4>¿Seguro que deseas <span>borrar</span> esta cuenta?</h4>
                     <div className={styles.modalButtonsContainer}>
-                        <button className={styles.saveButton} type='button' onClick={handleAccountDelete}>Borrar</button>
-                        <button className={styles.cancelButton} type='button' onClick={() => setView('mainpannel')}>Cancelar</button>
+                        <button
+                            className={styles.saveButton}
+                            type='button'
+                            onClick={handleAccountDelete}
+                        >Borrar
+                        </button>
+                        
+                        <button
+                            className={styles.cancelButton}
+                            type='button'
+                            onClick={() => setView('mainpannel')}
+                        >Cancelar
+                        </button>
                     </div>
                 </div>
             </div>

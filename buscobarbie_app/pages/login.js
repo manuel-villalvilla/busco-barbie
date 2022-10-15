@@ -35,14 +35,14 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
         password: event.target.loginPassword.value
       })
       if (res.ok) router.push(`${URL}/mipanel`)
-      else if (res.status === 401) {
-        console.log(res.error)
+      else if (res.status === 401 || res.status === 400 || res.status === 403) {
         if (res.error === 'email is empty or blank') setError('Introduce tu email')
         else if (res.error === 'email is not valid') setError('Email no válido')
         else if (res.error === 'password length is less than 8 characters') setError('La contraseña debe tener al menos 8 caracteres')
         else if (res.error === 'password is empty or blank') setError('Introduce tu contraseña')
         else if (res.error === 'password chars not valid') setError('Contraseña con caracteres inválidos')
         else if (res.error === 'unauthorized google account sign in') setError('Debes iniciar sesión a través de Google')
+        else if (res.error === 'unverified user') setError('Usuario no verificado')
         else setError('Email o contraseña incorrectos')
       }
     } catch (error) {
@@ -102,8 +102,18 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
           />
         </div>
         {error ? <p className={styles.error}>{error}</p> : null}
-        <button type='button' className={styles.forgottenButton} onClick={handleForgottenClick}>¿Has olvidado tu contraseña?</button>
-        <button type="submit" className={styles.loginButton}>Entrar</button>
+        <button
+          type='button'
+          className={styles.forgottenButton}
+          onClick={handleForgottenClick}
+        >¿Has olvidado tu contraseña?
+        </button>
+
+        <button
+          type="submit"
+          className={styles.loginButton}
+        >Entrar
+        </button>
       </form>
       <GoogleButton
         type='light'
@@ -135,8 +145,18 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
         </div>
         {error ? <p className={styles.error}>{error}</p> : null}
         <div className={styles.buttonsContainer}>
-          <button type="button" className={styles.forgottenCancelButton} onClick={() => setView('login')}>Cancelar</button>
-          <button type="submit" className={styles.forgottenSendButton}>Enviar</button>
+          <button
+            type="submit"
+            className={styles.forgottenSendButton}
+          >Enviar
+          </button>
+
+          <button
+            type="button"
+            className={styles.forgottenCancelButton}
+            onClick={() => setView('login')}
+          >Cancelar
+          </button>
         </div>
       </form>
     </div>
@@ -144,7 +164,12 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
     {view === 'thankyou' &&
       <div className={styles.thankyouContainer}>
         <h3 className={styles.h3}>¡Gracias! Se ha enviado un correo a <span className={styles.h3span}>{emailRef.current.value}</span> con las instrucciones para reestablecer tu contraseña</h3>
-        <button type='button' className={styles.thankyouButton} onClick={() => setView('login')}>Volver</button>
+        <button
+          type='button'
+          className={styles.thankyouButton}
+          onClick={() => setView('login')}
+        >Volver
+        </button>
       </div>
 
     }

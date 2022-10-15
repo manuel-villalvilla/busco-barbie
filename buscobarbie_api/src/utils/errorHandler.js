@@ -1,4 +1,14 @@
-const { FormatError, SystemError, CredentialsError, NotFoundError, DuplicityError, TokenError, LimitError, GoogleError } = require('errors')
+const {
+    FormatError,
+    SystemError,
+    CredentialsError,
+    NotFoundError,
+    DuplicityError,
+    TokenError,
+    LimitError,
+    GoogleError,
+    VerificationError
+} = require('errors')
 const logger = require("./logger")
 
 module.exports = function (error, res) {
@@ -25,6 +35,9 @@ module.exports = function (error, res) {
 
     else if (error instanceof LimitError)
         res.status(403).json({ error: error.message })
+
+    else if (error instanceof VerificationError)
+        res.status(401).json({ error: error.message })
 
     else
         res.status(500).json({ error: 'system error' })

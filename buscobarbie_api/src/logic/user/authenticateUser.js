@@ -1,4 +1,4 @@
-const { CredentialsError, NotFoundError, SystemError, GoogleError } = require('errors')
+const { CredentialsError, NotFoundError, SystemError, GoogleError, VerificationError } = require('errors')
 const { validateEmail, validatePassword } = require('validators')
 const { User } = require('../../models')
 const bcrypt = require('bcryptjs')
@@ -21,13 +21,14 @@ module.exports = function (email, password) {
     validateEmail(email)
     validatePassword(password)
 
-    return User.findOne({ email, verified: true }).lean()
+    return User.findOne({ email }).lean()
         .catch(error => {
             throw new SystemError(error.message)
         })
         .then(user => {
             if (!user) throw new NotFoundError(`not found or unverified user`)
             if (user.role === 'google') throw new GoogleError('unauthorized google account sign in')
+            if (user.verified === false) throw new VerificationError('unverified user')
 
             return bcrypt.compare(password, user.password)
                 .then(status => {
