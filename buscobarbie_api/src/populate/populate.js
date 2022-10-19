@@ -78,6 +78,8 @@ const { connect, disconnect } = require('mongoose');
 
     await User.create({ name: 'admin', email: ADMIN_EMAIL, password: adminPassword, role: 'admin', verified: true })
 
+    /* Create rest of users */
+
     for (let i = 0; i < 99; i++) {
         console.log(`Creating user ${i + 1} with ads:`)
 
@@ -90,7 +92,6 @@ const { connect, disconnect } = require('mongoose');
         const user = await User.create({ name, email, password: hash, verified: true })
 
         for (let z = 0; z < 5; z++) {
-            console.log(z + 1)
             const title = titles[Math.floor(Math.random() * 5)]
 
             const body = bodies[Math.floor(Math.random() * 5)]

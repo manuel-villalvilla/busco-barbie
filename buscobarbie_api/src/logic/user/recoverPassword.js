@@ -2,10 +2,11 @@ const { validateEmail } = require('validators')
 const { User } = require('../../models')
 const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
-const HOST = process.env.SMTP_HOST
-const PORT = process.env.SMTP_PORT
-const USER = process.env.SMTP_USER
-const PASSWORD = process.env.SMTP_PASSWORD
+require('dotenv').config()
+const SMTP_HOST = process.env.SMTP_HOST
+const SMTP_PORT = process.env.SMTP_PORT
+const SMTP_USER = process.env.SMTP_USER
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
 const JWT_SECRET = process.env.JWT_SECRET
 
@@ -17,12 +18,12 @@ module.exports = async function (email) {
     if (user) {
         /* Send password recovery email */
         const transporter = nodemailer.createTransport({
-            host: HOST,
-            port: PORT,
+            host: SMTP_HOST,
+            port: SMTP_PORT,
             secure: true,
             auth: {
-                user: USER,
-                pass: PASSWORD
+                user: SMTP_USER,
+                pass: SMTP_PASSWORD
             }
         })
 
@@ -34,5 +35,7 @@ module.exports = async function (email) {
             subject: `Recupera tu contraseña de BuscoBarbie.com`,
             html: `<h1 style='text-align:center'>¡Hola ${user.name}!</h1><a href='${APP_URL}/updatePassword?id=${user._id.toString()}&token=${token}'>Pulsa aquí para cambiar tu contraseña</a>`
         })
-    }
+
+        return info
+    } else return 'no user'
 }

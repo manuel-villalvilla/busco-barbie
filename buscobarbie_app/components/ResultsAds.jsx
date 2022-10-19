@@ -42,9 +42,8 @@ export default function ResultsAds({ search, currentItems, count }) {
     <p>Encontrado{count === 1 ? '' : 's'} {count} resultado{count === 1 ? '' : 's'}</p>
     <ul className="results-list">
       {currentItems.map(ad => {
-        return <li className='results-list-item' key={ad._id}>{
-          <Link href={`${ad.location.country}/ads/${ad._id.toString()}`} >
-            <div>
+        return <Link href={`${ad.location.country}/ads/${ad._id.toString()}`} key={ad._id}>
+          <li className='results-list-item'>
               <div className="results-ad-title">
                 <h3>{textHighlight(ad.title)}</h3>
               </div>
@@ -64,9 +63,8 @@ export default function ResultsAds({ search, currentItems, count }) {
                   <p className='footer-date'>{elapsedTime(ad.createdAt)}</p>
                 </div>
               </div>
-            </div>
-          </Link>
-        }</li>
+          </li>
+        </Link>
       })}
     </ul>
 

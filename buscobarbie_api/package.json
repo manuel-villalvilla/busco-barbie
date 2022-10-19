@@ -10,7 +10,8 @@
     "inspect-cli": "node --inspect ./src",
     "populate": "node ./src/populate/populate.js",
     "deletedb": "node ./src/populate/deleteDb.js",
-    "test": "jest"
+    "test": "jest --runInBand --testTimeout=60000",
+    "test-coverage": "jest --runInBand --testTimeout=60000 --collectCoverage"
   },
   "keywords": [],
   "author": "",
@@ -25,15 +26,12 @@
     "errors": "file:../errors",
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
-    "form-data": "^4.0.0",
-    "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.1",
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.20",
     "validators": "file:../validators",
-    "winston": "^3.8.2",
-    "ws": "^8.9.0"
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "jest": "^29.1.2"

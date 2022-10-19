@@ -18,14 +18,17 @@ const {
 const { User, Ad } = require('../../models')
 const fs = require('fs/promises')
 const nodemailer = require('nodemailer')
+const { join } = require('path')
+const filesFolder = join(__dirname, '../../../files')
+require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const JWT_SECRET = process.env.JWT_SECRET
 const NAS_IMAGES_URL = process.env.NAS_IMAGES_URL
-const HOST = process.env.SMTP_HOST
-const PORT = process.env.SMTP_PORT
-const USER = process.env.SMTP_USER
-const PASSWORD = process.env.SMTP_PASSWORD
+const SMTP_HOST = process.env.SMTP_HOST
+const SMTP_PORT = process.env.SMTP_PORT
+const SMTP_USER = process.env.SMTP_USER
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
 
 module.exports = async function (country_code, name, email, password, title, body, province, area, phone, price, categories, images, year, tags) {
@@ -40,8 +43,8 @@ module.exports = async function (country_code, name, email, password, title, bod
     validatePhoneNumber(phone)
     validatePrice(price)
     validateCategories(categories)
-    if (images) validateFiles(images) // TODO validate file type
-    if (year) validateYear(year)
+    validateFiles(images) // TODO validate file type
+    validateYear(year)
     let arr = []
     if (tags.length) {
         arr = tags.split(',')
@@ -66,27 +69,28 @@ module.exports = async function (country_code, name, email, password, title, bod
     const ad = await Ad.create({ user: user.id, title, body, location, phone, price, categories, year, tags: arr })
 
     /* Create user folder tree */
-    await fs.mkdir(`files/${user.id.toString()}/${ad.id.toString()}`, { recursive: true })
+    await fs.mkdir(`${filesFolder}/${user.id.toString()}/${ad.id.toString()}`, { recursive: true })
 
     if (images.length > 0) {
         /* Upload images */
         const urls = []
         for (let i = 0; i < images.length; i++) {
             urls.push(`${NAS_IMAGES_URL}/${user.id.toString()}/${ad.id.toString()}/${images[i].name}`)
-            await fs.writeFile(`files/${user.id.toString()}/${ad.id.toString()}/${images[i].name}`, images[i].data)
+            await fs.writeFile(`${filesFolder}/${user.id.toString()}/${ad.id.toString()}/${images[i].name}`, images[i].data)
         }
         /* Update Ad with URLs */
         await Ad.updateOne({ _id: ad.id }, { $set: { image: urls } })
     }
 
     /* Send user verification email */
+
     const transporter = nodemailer.createTransport({
-        host: HOST,
-        port: PORT,
+        host: SMTP_HOST,
+        port: SMTP_PORT,
         secure: true,
         auth: {
-            user: USER,
-            pass: PASSWORD
+            user: SMTP_USER,
+            pass: SMTP_PASSWORD
         }
     })
 
@@ -146,7 +150,7 @@ module.exports = async function (country_code, name, email, password, title, bod
     .footer {
         font-size: 14px;
     }
-</style>
+    </style>
     </head>
     <body class='body'>
         <div class="textalign"><a href='${APP_URL}/${country_code}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
@@ -179,6 +183,9 @@ module.exports = async function (country_code, name, email, password, title, bod
         subject: `Enlace de verificación de BuscoBarbie.com`,
         html: emailBody
     })
+
+    return info
+
 }
 
 // const NAS_API = process.env.NAS_API

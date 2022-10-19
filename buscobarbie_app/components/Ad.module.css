@@ -1,5 +1,7 @@
 .adContainer {
-    padding: 3%;
+    padding: 20px;
+    max-width: 760px;
+    width: 100%;
     gap: 10px;
     display: flex;
     flex-grow: 1;

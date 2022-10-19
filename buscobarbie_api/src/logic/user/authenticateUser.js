@@ -26,7 +26,7 @@ module.exports = function (email, password) {
             throw new SystemError(error.message)
         })
         .then(user => {
-            if (!user) throw new NotFoundError(`not found or unverified user`)
+            if (!user) throw new NotFoundError(`user not found`)
             if (user.role === 'google') throw new GoogleError('unauthorized google account sign in')
             if (user.verified === false) throw new VerificationError('unverified user')
 

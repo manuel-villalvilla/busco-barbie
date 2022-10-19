@@ -1,10 +1,11 @@
 const { NotFoundError } = require('errors')
 const { User } = require('../../models')
 const nodemailer = require('nodemailer')
-const HOST = process.env.SMTP_HOST
-const PORT = process.env.SMTP_PORT
-const USER = process.env.SMTP_USER
-const PASSWORD = process.env.SMTP_PASSWORD
+require('dotenv').config()
+const SMTP_HOST = process.env.SMTP_HOST
+const SMTP_PORT = process.env.SMTP_PORT
+const SMTP_USER = process.env.SMTP_USER
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 
 module.exports = async function(name, email, body, adUser) {
     // TODO VALIDATE INPUTS
@@ -12,12 +13,12 @@ module.exports = async function(name, email, body, adUser) {
     if (!user) throw new NotFoundError('user not found')
 
     const transporter = nodemailer.createTransport({
-        host: HOST,
-        port: PORT,
+        host: SMTP_HOST,
+        port: SMTP_PORT,
         secure: true,
         auth: {
-            user: USER,
-            pass: PASSWORD
+            user: SMTP_USER,
+            pass: SMTP_PASSWORD
         }
     })
 

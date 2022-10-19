@@ -12,3 +12,5 @@
 *.png
 *.db
 *.jpeg
+!/coverage/lcov-report/favicon.png
+!/coverage/lcov-report/sort-arrow-sprite.png

@@ -201,6 +201,12 @@ ul {
     border-radius: 10px;
 }
 
+.results-ad-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .results-ad-body-article {
     /* max-width: 80vw; */
     /* Preguntar como solucionar esto */
