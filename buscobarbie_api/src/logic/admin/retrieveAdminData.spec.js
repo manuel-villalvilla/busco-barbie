@@ -1,5 +1,5 @@
-const { NotFoundError } = require('errors')
-const { deleteUser } = require('..')
+const { NotFoundError, CredentialsError } = require('errors')
+const { retrieveAdminData } = require('..')
 const { connect, disconnect } = require('mongoose')
 const { User, Ad } = require('../../models')
 const bcrypt = require('bcryptjs')
@@ -10,7 +10,7 @@ require('dotenv').config()
 const MONGO_URL_TEST = process.env.MONGO_URL_TEST
 const TEST_EMAIL = process.env.TEST_EMAIL
 
-describe('Delete User', () => {
+describe('Retrieve admin data', () => {
     beforeAll(() => connect(MONGO_URL_TEST))
 
     beforeEach(async () => {
@@ -22,30 +22,51 @@ describe('Delete User', () => {
         await Ad.deleteMany()
     })
 
-    it('fails with user not found', async () => {
+    it('fails with admin user not found', async () => {
         const name = 'Manuel Villalvilla'
         const email = TEST_EMAIL
         const password = await bcrypt.hash('123123123', 10)
 
-        const user = await User.create({ name, email, password })
+        const user = await User.create({ name, email, password, role: 'admin' })
         const userId = user.id
 
         await User.findOneAndDelete({ email })
 
         try {
-            await deleteUser(userId)
+            await retrieveAdminData(userId)
         } catch (error) {
             expect(error).toBeInstanceOf(NotFoundError)
             expect(error.message).toBe('user not found')
         }
     })
 
-    it('succeeds deletting user and ads', async () => {
+    it('fails with not authorized user', async () => {
         const name = 'Manuel Villalvilla'
         const email = TEST_EMAIL
         const password = await bcrypt.hash('123123123', 10)
 
         const user = await User.create({ name, email, password })
+
+        try {
+            await retrieveAdminData(user.id)
+        } catch (error) {
+            expect(error).toBeInstanceOf(CredentialsError)
+            expect(error.message).toBe('not authorized')
+        }
+    })
+
+    it('succeeds retrieving admin data', async () => {
+        const name = 'Manuel Villalvilla'
+        const email = TEST_EMAIL
+        const password = await bcrypt.hash('123123123', 10)
+
+        const name2 = 'Pepito Grillo'
+        const email2 = 'pepito@grillo.com'
+        const password2 = await bcrypt.hash('123123123', 10)
+
+        const adminUser = await User.create({ name, email, password, role: 'admin', verified: true })
+
+        const user = await User.create({ name: name2, email: email2, password: password2 })
 
         const location = {
             country: 'ES',
@@ -60,19 +81,14 @@ describe('Delete User', () => {
         const ad = await Ad.create({ user: user.id, location, title, body, price, categories })
 
         try {
-            await deleteUser(user.id)
-            const ad2 = await Ad.findById(ad.id)
-            const user2 = await User.findById(user.id)
-            expect(ad2).toBeNull()
-            expect(user2).toBeNull()
+            const pack = await retrieveAdminData(adminUser.id)
+            expect(pack).toBeInstanceOf(Object)
+            expect(pack.uAdsCount).toBe(1)
+            expect(pack.uAds).toHaveLength(1)
+            expect(pack.uUsersCount).toBe(1)
+            expect(pack.uUsers).toHaveLength(1)
         } catch (error) {
             expect(error).toBe(null)
-        }
-
-        try {
-            await fs.readdir(`${folder}/${user.id.toString()}`)
-        } catch (error) {
-            expect(error.errno).toBe(-2) // folder does not exist
         }
     })
 

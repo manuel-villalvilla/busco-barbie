@@ -17,24 +17,20 @@ const bcrypt = require('bcryptjs')
  * @throws {TypeError} If the email | password are not strings.
  */
 
-module.exports = function (email, password) {
+module.exports = async function (email, password) {
     validateEmail(email)
     validatePassword(password)
 
-    return User.findOne({ email }).lean()
-        .catch(error => {
-            throw new SystemError(error.message)
-        })
-        .then(user => {
-            if (!user) throw new NotFoundError(`user not found`)
-            if (user.role === 'google') throw new GoogleError('unauthorized google account sign in')
-            if (user.verified === false) throw new VerificationError('unverified user')
+    const user = await User.findOne({ email }).lean()
 
-            return bcrypt.compare(password, user.password)
-                .then(status => {
-                    if (!status) throw new CredentialsError('email or password incorrect')
-                    return { id: user._id.toString(), role: user.role } // como lo he traido como un pojo con lean, tengo q extraer
-                    // el id con _id y como es un objeto, convertirlo a string
-                })
-        })
+    if (!user) throw new NotFoundError(`user not found`)
+    if (user.role === 'google') throw new GoogleError('unauthorized google account sign in')
+    if (user.verified === false) throw new VerificationError('unverified user')
+
+    const status = await bcrypt.compare(password, user.password)
+
+    if (!status) throw new CredentialsError('email or password incorrect')
+    return { id: user._id.toString(), role: user.role } // como lo he traido como un pojo con lean, tengo q extraer
+    // el id con _id y como es un objeto, convertirlo a string
+
 }

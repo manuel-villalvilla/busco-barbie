@@ -1,5 +1,5 @@
 const { NotFoundError } = require('errors')
-const { deleteUser } = require('..')
+const { retrieveUserWithAds } = require('..')
 const { connect, disconnect } = require('mongoose')
 const { User, Ad } = require('../../models')
 const bcrypt = require('bcryptjs')
@@ -10,7 +10,7 @@ require('dotenv').config()
 const MONGO_URL_TEST = process.env.MONGO_URL_TEST
 const TEST_EMAIL = process.env.TEST_EMAIL
 
-describe('Delete User', () => {
+describe('Retrieve user with Ads', () => {
     beforeAll(() => connect(MONGO_URL_TEST))
 
     beforeEach(async () => {
@@ -30,49 +30,44 @@ describe('Delete User', () => {
         const user = await User.create({ name, email, password })
         const userId = user.id
 
-        await User.findOneAndDelete({ email })
+        await User.findByIdAndDelete(user.id)
 
         try {
-            await deleteUser(userId)
+            const pack = await retrieveUserWithAds(userId)
         } catch (error) {
             expect(error).toBeInstanceOf(NotFoundError)
             expect(error.message).toBe('user not found')
         }
     })
 
-    it('succeeds deletting user and ads', async () => {
+    it('succeeds retrieving user with ads', async () => {
         const name = 'Manuel Villalvilla'
         const email = TEST_EMAIL
         const password = await bcrypt.hash('123123123', 10)
 
-        const user = await User.create({ name, email, password })
-
+        const title = 'Hola'
+        const body = 'Hola'
         const location = {
             country: 'ES',
             province: 'Madrid',
             area: 'Mi zona'
         }
-        const title = 'Hola'
-        const body = 'Hola'
-        const price = 45
         const categories = 'modelos'
+        const price = '45'
 
-        const ad = await Ad.create({ user: user.id, location, title, body, price, categories })
+        const user = await User.create({ name, email, password })
 
-        try {
-            await deleteUser(user.id)
-            const ad2 = await Ad.findById(ad.id)
-            const user2 = await User.findById(user.id)
-            expect(ad2).toBeNull()
-            expect(user2).toBeNull()
-        } catch (error) {
-            expect(error).toBe(null)
-        }
+        for (let i = 0; i < 5; i++) await Ad.create({ user: user.id, title, body, location, categories, price })
 
         try {
-            await fs.readdir(`${folder}/${user.id.toString()}`)
+            const pack = await retrieveUserWithAds(user.id)
+            expect(pack).toBeInstanceOf(Object)
+            expect(pack.count).toBe(5)
+            expect(pack.user._id.toString()).toBe(user.id.toString())
+            expect(pack.user.email).toBe(TEST_EMAIL)
+            expect(pack.ads).toHaveLength(5)
         } catch (error) {
-            expect(error.errno).toBe(-2) // folder does not exist
+            expect(error).toBeNull()
         }
     })
 

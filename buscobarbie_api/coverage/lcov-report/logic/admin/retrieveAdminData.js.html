@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.76% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/13</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -80,40 +80,43 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { Ad, User } = require("../../models")
-const { CredentialsError } = require('errors')
+const { CredentialsError, NotFoundError } = require('errors')
 const { validateObjectId } = require("../../utils")
 &nbsp;
-module.exports = <span class="fstat-no" title="function not covered" >as</span>ync function (userId) {
-<span class="cstat-no" title="statement not covered" >    validateObjectId(userId)</span>
+module.exports = async function (userId) {
+    validateObjectId(userId)
 &nbsp;
-    const user = <span class="cstat-no" title="statement not covered" >await User.findById(userId).lean()</span>
-<span class="cstat-no" title="statement not covered" >    if (user.role !== 'admin') <span class="cstat-no" title="statement not covered" >throw new CredentialsError('not authorized')</span></span>
+    const user = await User.findById(userId).lean()
+    if (!user) throw new NotFoundError('user not found')
+    if (user.role !== 'admin') throw new CredentialsError('not authorized')
 &nbsp;
-    const uAdsCount = <span class="cstat-no" title="statement not covered" >await Ad.countDocuments({ verified: false })</span>
-    const uAds = <span class="cstat-no" title="statement not covered" >await Ad.find({ verified: false }).sort({ createdAt: -1 }).lean()</span>
+    const uAdsCount = await Ad.countDocuments({ verified: false })
+    const uAds = await Ad.find({ verified: false }).sort({ createdAt: -1 }).lean()
 &nbsp;
-    const uUsersCount = <span class="cstat-no" title="statement not covered" >await User.countDocuments({ verified: false })</span>
-    const uUsers = <span class="cstat-no" title="statement not covered" >await User.find({ verified: false }, '_id name email role').sort({ createdAt: -1 }).lean()</span>
+    const uUsersCount = await User.countDocuments({ verified: false })
+    const uUsers = await User.find({ verified: false }, '_id name email role').sort({ createdAt: -1 }).lean()
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return pack = { uAdsCount, uAds, uUsersCount, uUsers }</span>
+    return pack = { uAdsCount, uAds, uUsersCount, uUsers }
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -121,7 +124,7 @@ module.exports = <span class="fstat-no" title="function not covered" >as</span>y
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-19T00:04:00.911Z
+                at 2022-10-20T00:51:15.960Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

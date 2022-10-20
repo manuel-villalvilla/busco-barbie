@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.77% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -84,48 +84,48 @@
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { validateVisibility } = require('validators')
 const { User, Ad } = require('../../models')
 const { validateObjectId } = require('../../utils')
 const { NotFoundError, CredentialsError } = require('errors')
 &nbsp;
-module.exports = <span class="fstat-no" title="function not covered" >as</span>ync function (visibility, userId, adId) {
-<span class="cstat-no" title="statement not covered" >    validateVisibility(visibility)</span>
-<span class="cstat-no" title="statement not covered" >    validateObjectId(userId)</span>
-<span class="cstat-no" title="statement not covered" >    validateObjectId(adId)</span>
+module.exports = async function (visibility, userId, adId) {
+    validateVisibility(visibility)
+    validateObjectId(userId)
+    validateObjectId(adId)
 &nbsp;
-    const user = <span class="cstat-no" title="statement not covered" >await User.findById(userId).lean()</span>
-<span class="cstat-no" title="statement not covered" >    if (!user) <span class="cstat-no" title="statement not covered" >throw new NotFoundError('user not found')</span></span>
+    const user = await User.findById(userId).lean()
+    if (!user) throw new NotFoundError('user not found')
 &nbsp;
-    const ad = <span class="cstat-no" title="statement not covered" >await Ad.findById(adId).lean()</span>
-<span class="cstat-no" title="statement not covered" >    if (!ad) <span class="cstat-no" title="statement not covered" >throw new NotFoundError('ad not found')</span></span>
+    const ad = await Ad.findById(adId).lean()
+    if (!ad) throw new NotFoundError('ad not found')
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (userId !== ad.user.toString()) <span class="cstat-no" title="statement not covered" >throw new CredentialsError('ad does not belong to user')</span></span>
+    if (userId !== ad.user.toString()) throw new CredentialsError('ad does not belong to user')
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    await Ad.updateOne({ _id: adId }, { $set: { visibility } })</span>
+    await Ad.updateOne({ _id: adId }, { $set: { visibility } })
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return await Ad.find({ user: userId }).lean()</span>
+    return await Ad.find({ user: userId }).lean()
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -133,7 +133,7 @@ module.exports = <span class="fstat-no" title="function not covered" >as</span>y
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-19T00:04:00.911Z
+                at 2022-10-20T00:51:15.960Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

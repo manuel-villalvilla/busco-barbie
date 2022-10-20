@@ -1,11 +1,12 @@
 const { Ad, User } = require("../../models")
-const { CredentialsError } = require('errors')
+const { CredentialsError, NotFoundError } = require('errors')
 const { validateObjectId } = require("../../utils")
 
 module.exports = async function (userId) {
     validateObjectId(userId)
 
     const user = await User.findById(userId).lean()
+    if (!user) throw new NotFoundError('user not found')
     if (user.role !== 'admin') throw new CredentialsError('not authorized')
 
     const uAdsCount = await Ad.countDocuments({ verified: false })

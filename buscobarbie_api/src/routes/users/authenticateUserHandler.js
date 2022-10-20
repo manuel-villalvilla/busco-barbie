@@ -3,20 +3,16 @@ const jwt = require('jsonwebtoken')
 const { logger, errorHandler } = require('../../utils')
 const JWT_SECRET = process.env.JWT_SECRET
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
+    const { body: { email, password } } = req
+    
     try {
-        const { body: { email, password } } = req
+        const data = await authenticateUser(email, password)
 
-        authenticateUser(email, password)
-            .then(data => {
-                const token = jwt.sign({ sub: data.id }, JWT_SECRET, { expiresIn: '30 days' })
-                res.json({ token, role: data.role })
-                logger.info(`user ${email} authenticated`)
-            })
-            .catch(error => {
-                errorHandler(error, res)
-                return
-            })
+        const token = jwt.sign({ sub: data.id }, JWT_SECRET, { expiresIn: '30 days' })
+
+        res.json({ token, role: data.role })
+        logger.info(`user ${email} authenticated`)
     } catch (error) {
         errorHandler(error, res)
     }

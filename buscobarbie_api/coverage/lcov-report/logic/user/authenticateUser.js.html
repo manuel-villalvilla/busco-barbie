@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.73% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/19</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/15</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -98,14 +98,10 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,14 +117,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -138,7 +131,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { CredentialsError, NotFoundError, SystemError, GoogleError, VerificationError } = require('errors')
@@ -160,26 +152,22 @@ const bcrypt = require('bcryptjs')
  * @throws {TypeError} If the email | password are not strings.
  */
 &nbsp;
-module.exports = function (email, password) {
+module.exports = async function (email, password) {
     validateEmail(email)
     validatePassword(password)
 &nbsp;
-    return User.findOne({ email }).lean()
-        .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {
-<span class="cstat-no" title="statement not covered" >            throw new SystemError(error.message)</span>
-        })
-        .then(user =&gt; {
-            if (!user) throw new NotFoundError(`user not found`)
-            if (user.role === 'google') throw new GoogleError('unauthorized google account sign in')
-            if (user.verified === false) throw new VerificationError('unverified user')
+    const user = await User.findOne({ email }).lean()
 &nbsp;
-            return bcrypt.compare(password, user.password)
-                .then(status =&gt; {
-                    if (!status) throw new CredentialsError('email or password incorrect')
-                    return { id: user._id.toString(), role: user.role } // como lo he traido como un pojo con lean, tengo q extraer
-                    // el id con _id y como es un objeto, convertirlo a string
-                })
-        })
+    if (!user) throw new NotFoundError(`user not found`)
+    if (user.role === 'google') throw new GoogleError('unauthorized google account sign in')
+    if (user.verified === false) throw new VerificationError('unverified user')
+&nbsp;
+    const status = await bcrypt.compare(password, user.password)
+&nbsp;
+    if (!status) throw new CredentialsError('email or password incorrect')
+    return { id: user._id.toString(), role: user.role } // como lo he traido como un pojo con lean, tengo q extraer
+    // el id con _id y como es un objeto, convertirlo a string
+&nbsp;
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -187,7 +175,7 @@ module.exports = function (email, password) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-19T00:04:00.911Z
+                at 2022-10-20T00:51:15.960Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

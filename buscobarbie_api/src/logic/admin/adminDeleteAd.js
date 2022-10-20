@@ -1,12 +1,13 @@
 const { Ad, User } = require('../../models')
 const { validateObjectId } = require('../../utils')
 const fs = require('fs/promises')
-const { CredentialsError } = require('errors')
+const { CredentialsError, NotFoundError } = require('errors')
 const nodemailer = require('nodemailer')
-const HOST = process.env.SMTP_HOST
-const PORT = process.env.SMTP_PORT
-const USER = process.env.SMTP_USER
-const PASSWORD = process.env.SMTP_PASSWORD
+require('dotenv').config()
+const SMTP_HOST = process.env.SMTP_HOST
+const SMTP_PORT = process.env.SMTP_PORT
+const SMTP_USER = process.env.SMTP_USER
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
 
 module.exports = async function (userId, adId) {
@@ -14,6 +15,7 @@ module.exports = async function (userId, adId) {
     validateObjectId(userId)
 
     const user = await User.findById(userId).lean()
+    if (!user) throw new NotFoundError('user not found')
     if (user.role !== 'admin') throw new CredentialsError('not authorized')
 
     const ad = await Ad.findById(adId).lean()
@@ -24,14 +26,13 @@ module.exports = async function (userId, adId) {
     await Ad.deleteOne({ _id: adId })
     await fs.rm(`files/${ad.user}/${adId}`, { recursive: true, force: true })
 
-
     const transporter = nodemailer.createTransport({
-        host: HOST,
-        port: PORT,
+        host: SMTP_HOST,
+        port: SMTP_PORT,
         secure: true,
         auth: {
-            user: USER,
-            pass: PASSWORD
+            user: SMTP_USER,
+            pass: SMTP_PASSWORD
         }
     })
 
@@ -91,7 +92,7 @@ module.exports = async function (userId, adId) {
     .footer {
         font-size: 14px;
     }
-</style>
+    </style>
     </head>
     <body class='body'>
         <div class="textalign"><a href='${APP_URL}/${ad.location.country}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
@@ -118,7 +119,7 @@ module.exports = async function (userId, adId) {
     </body>
     </html>`
 
-    const info = await transporter.sendMail({
+    return await transporter.sendMail({
         from: '"BuscoBarbie.com" <noresponder@buscobarbie.com>',
         to: adUser.email,
         subject: `Tu anuncio ha sido rechazado`,

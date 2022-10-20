@@ -66,7 +66,8 @@ module.exports = model('Ad', new Schema({
     },
     categories: {
         type: String,
-        enum: ['modelos', 'complementos']
+        enum: ['modelos', 'complementos'],
+        required: true
     },
     year: {
         type: String,
