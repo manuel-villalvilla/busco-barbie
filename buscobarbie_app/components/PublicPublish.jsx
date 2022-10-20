@@ -227,8 +227,8 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
 
   return <div className={styles.container}> {view === 'form' && <>
     <div className={styles.firstQuestionContainer}>
-      <h3 className={styles.firstQuestion}>¿Ya tienes cuenta en <span>BuscoBarbie.com</span>?</h3>
-      <p>Si es así, <Link href={`${APP_URL}/login`} passHref><a className={styles.link}>pulsa aquí</a></Link></p>
+      <h3 className={styles.firstQuestion}>¿Ya tienes cuenta en <span>BuscoBarbie.com</span> o <span>Google</span>?</h3>
+      <p>Si es así, <Link href={`${APP_URL}/login`} passHref><a className={styles.link}>pulsa aquí</a></Link> para publicar un anuncio desde tu panel de control.</p>
     </div>
 
     <form className={styles.form} encType="multipart/form-data" onSubmit={async (event) => {

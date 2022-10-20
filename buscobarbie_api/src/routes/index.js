@@ -26,7 +26,8 @@ const {
 const {
     retrieveAdminDataHandler,
     verifyAdHandler,
-    adminDeleteAdHandler
+    adminDeleteAdHandler,
+    adminContactHandler
 } = require('./admin')
 const { verifyGoogleCaptchaHandler } = require('./utils')
 
@@ -77,6 +78,8 @@ adminRouter.get('/admin', retrieveAdminDataHandler)
 adminRouter.patch('/admin/ads', jsonBodyParser, verifyAdHandler)
 
 adminRouter.delete('/admin/ads', jsonBodyParser, adminDeleteAdHandler)
+
+adminRouter.post('/admin', jsonBodyParser, adminContactHandler)
 
 module.exports = {
     adsRouter,

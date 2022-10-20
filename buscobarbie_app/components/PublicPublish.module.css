@@ -13,8 +13,12 @@
     justify-content: center;
     background-color: #fff;
     padding: 10px;
-    max-width: 300px;
+    max-width: 760px;
     border-radius: 10px;
+}
+
+.firstQuestionContainer>p {
+    text-align: center;
 }
 
 .firstQuestion {

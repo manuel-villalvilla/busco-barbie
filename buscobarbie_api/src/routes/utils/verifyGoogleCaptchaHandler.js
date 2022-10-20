@@ -17,6 +17,6 @@ module.exports = async (req, res) => {
     if (success) res.send('human')
     else {
         logger.error('recaptcha not passed by google')
-        res.send('robot')
+        res.status(401).send('robot')
     }
 }

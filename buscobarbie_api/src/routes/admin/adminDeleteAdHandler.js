@@ -3,7 +3,7 @@ const { adminDeleteAd } = require('../../logic')
 
 module.exports = async function (req, res) {
     try {
-        const { body: { adId }} = req
+        const { body: { adId } } = req
         
         const token = req.headers.authorization.substring(7)
 

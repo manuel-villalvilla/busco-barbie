@@ -1,10 +1,12 @@
 const jwt = require('jsonwebtoken')
-const { logger, errorHandler } = require('../../utils')
+const { logger, errorHandler, arrangeGoogleName } = require('../../utils')
 const { authenticateGoogleUser } = require('../../logic')
 const JWT_SECRET = process.env.JWT_SECRET
 
 module.exports = async function (req, res) {
-    const { body: { name, email } } = req
+    let { body: { name, email } } = req
+
+    name = arrangeGoogleName(name)
 
     try {
         const userId = await authenticateGoogleUser(name, email)

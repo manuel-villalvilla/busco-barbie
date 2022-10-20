@@ -18,5 +18,6 @@ module.exports = {
     retrieveAdminData: require('./admin/retrieveAdminData'),
     verifyAd: require('./admin/verifyAd'),
     adminDeleteAd: require('./admin/adminDeleteAd'),
-    deleteUser: require('./user/deleteUser')
+    deleteUser: require('./user/deleteUser'),
+    adminContact: require('./admin/adminContact')
 }

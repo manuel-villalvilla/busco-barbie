@@ -7,7 +7,7 @@ const chars = charsString.split('')
 module.exports = async function (name, email) {
     validateEmail(email)
 
-    let user = await User.findOne({ email, role: 'google' }).lean()
+    let user = await User.findOne({ email }).lean()
     if (user) return user._id
 
     let password = ''

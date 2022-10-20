@@ -5,11 +5,11 @@ export default function () {
   return (
     <footer className='footer'>
 
-      <Link href='../terms-and-conditions'><a>Condiciones de uso</a></Link>
+      <Link href={`${URL}/terms-and-conditions`}><a>Condiciones de uso</a></Link>
 
-      <Link href='../contact'><a>Contacto</a></Link>
+      <Link href={`${URL}/contact`}><a>Contacto</a></Link>
 
-      <Link href='../'><a>BuscoBarbie.com</a></Link>
+      <Link href={`${URL}/barbiestories`}><a>Barbiestories</a></Link>
       <div className='links'>
         <Link href={`${URL}/AR`}><a className='home-link'>AR</a></Link>
         <Link href={`${URL}/MX`}><a className='home-link'>MX</a></Link>

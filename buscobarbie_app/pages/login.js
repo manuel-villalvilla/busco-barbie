@@ -116,7 +116,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
         </button>
       </form>
       <GoogleButton
-        type='light'
+        type='dark'
         label='Inicia sesión con Google'
         onClick={async () => {
           await signIn('google', { redirect: false })

@@ -50,7 +50,7 @@ export default function ResultsAds({ search, currentItems, count }) {
               <div className="results-ad-image-container">
                 {ad.image.length > 0 &&
                   <div className="results-ad-image">
-                    <Image className='ads-image' src={ad.image[0]} layout='fill' priority={true} sizes='33vw'></Image>
+                    <Image className='ads-image' src={ad.image[0]} layout='fill' alt='Primera imágen' priority={true} sizes='33vw'></Image>
                   </div>}
                 {ad.image.length === 0 && <div className='results-ad-noimage'><p>Sin imágenes</p></div>}
                 {ad.image.length > 0 && <span className='image-count'>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}

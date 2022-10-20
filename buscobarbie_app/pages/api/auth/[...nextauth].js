@@ -67,8 +67,8 @@ export default NextAuth({
 
         async signIn({ account, profile }) {
             if (account.provider === "google") {
-                // return profile.email_verified && profile.email.endsWith("@gmail.com")
                 if (!profile.email_verified) return false // return './unauthorized'
+                // return profile.email_verified && profile.email.endsWith("@gmail.com")
             }
             return true // Do different verification for other providers that don't have `email_verified`
         },

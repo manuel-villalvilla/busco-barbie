@@ -18,5 +18,6 @@ module.exports = {
     validatePhoneNumber: require('./validatePhoneNumber'),
     validateVisibility: require('./validateVisibility'),
     validateYear: require('./validateYear'),
-    validateTags: require('./validateTags')
+    validateTags: require('./validateTags'),
+    validateContactOptions: require('./validateContactOptions')
 }

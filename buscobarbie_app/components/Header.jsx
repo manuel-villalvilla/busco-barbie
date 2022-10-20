@@ -26,12 +26,12 @@ export default withContext(function ({ context: { setSearchHeight, searchHeight 
     <div className={styles.headerFilters}>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <Link href={`${URL}/${country_code}`} passHref><a><Image src='/logo4.png' layout='fill'></Image></a></Link>
+          <Link href={`${URL}/${country_code}`} passHref><a><Image src='/logo4.png' layout='fill' priority></Image></a></Link>
         </div>
 
         <div className={styles.sessionButtons}>
           <div className={styles.noSession}>
-            <Link href={`${URL}/barbiestories`}><a className={styles.loginLink} >BarbieStories</a></Link>
+            <Link href={`${URL}/barbiestories`}><a className={styles.loginLink} >Barbiestories</a></Link>
             {!session ? <Link href={`${URL}/login`}><a className={styles.loginLink} >Iniciar sesión</a></Link> : <button className={styles.loginLink} onClick={() => signOut({ callbackUrl: `${window.location.origin}` })}>Desconexión</button>}
           </div>
           <div className={styles.buttons}>
