@@ -1,6 +1,9 @@
 const { validateEmail } = require('validators')
 const { User } = require('../../models')
 const bcrypt = require('bcryptjs')
+const fs = require('fs/promises')
+const { join } = require('path')
+const filesFolder = join(__dirname, '../../../files')
 const charsString = 'abcdefghijklmnñopqrstuvwxyzáéíóúÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!@#$%^&*'
 const chars = charsString.split('')
 
@@ -19,6 +22,8 @@ module.exports = async function (name, email) {
     const hash = await bcrypt.hash(password, 10)
 
     user = await User.create({ name, email, role: 'google', password: hash, verified: true })
+
+    await fs.mkdir(`${filesFolder}/${user.id.toString()}`, { recursive: true })
 
     return user.id
 }

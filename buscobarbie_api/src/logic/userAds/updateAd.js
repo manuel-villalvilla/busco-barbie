@@ -1,6 +1,8 @@
 const { NotFoundError, CredentialsError } = require('errors')
 const { User, Ad } = require('../../models')
 const path = require('path')
+const { join } = require('path')
+const filesFolder = join(__dirname, '../../../files')
 const { validateObjectId } = require("../../utils")
 const {
     validateTitle,
@@ -56,11 +58,11 @@ module.exports = async function (userId, adId, title, body, province, area, phon
     ad.modifiedAt = Date.now()
 
     /* Delete ad files */
-    const files = await fs.readdir(`files/${userId}/${adId}/`)
+    const files = await fs.readdir(`${filesFolder}/${userId}/${adId}/`)
     const extensions = ['.png', '.jpg', '.jpeg', '.gif']
     files.filter(async file => {
         if (extensions.includes(path.extname(file).toLowerCase()))
-            await fs.unlink(`files/${userId}/${adId}/${file}`)
+            await fs.unlink(`${filesFolder}/${userId}/${adId}/${file}`)
     })
 
     const urls = []
@@ -68,7 +70,7 @@ module.exports = async function (userId, adId, title, body, province, area, phon
         /* Upload new images */
         for (let i = 0; i < images.length; i++) {
             urls.push(`${NAS_IMAGES_URL}/${userId}/${adId}/${images[i].name}`)
-            await fs.writeFile(`files/${userId}/${adId}/${images[i].name}`, images[i].data)
+            await fs.writeFile(`${filesFolder}/${userId}/${adId}/${images[i].name}`, images[i].data)
         }
     }
 

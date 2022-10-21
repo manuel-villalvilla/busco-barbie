@@ -25,9 +25,7 @@ export default withContext(function ({ context: { setSearchHeight, searchHeight 
   return (
     <div className={styles.headerFilters}>
       <header className={styles.header}>
-        <div className={styles.logo}>
-          <Link href={`${URL}/${country_code}`} passHref><a><Image src='/logo4.png' layout='fill' priority></Image></a></Link>
-        </div>
+        <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image src='/logo4.png' layout='fill' priority></Image></a></Link>
 
         <div className={styles.sessionButtons}>
           <div className={styles.noSession}>

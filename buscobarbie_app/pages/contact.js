@@ -3,16 +3,20 @@ import contactAdmin from '../logic/contactAdmin'
 import { useEffect, useState, useRef } from 'react'
 import styles from './contact.module.css'
 import ReCAPTCHA from 'react-google-recaptcha'
+import { animateScroll as scroll } from 'react-scroll'
 const SITE_KEY = process.env.NEXT_PUBLIC_SITE_KEY
 
-export default withContext(function contact({ context: { setSearchHeight } }) {
+export default withContext(function contact({ context: { searchHeight, setSearchHeight } }) {
     const [isSearching, setIsSearching] = useState(false)
     const [error, setError] = useState(null)
     const [view, setView] = useState('contact')
     const firstTime = useRef(true)
     const captchaRef = useRef(null)
 
-    useEffect(() => setSearchHeight(0), [])
+    useEffect(() => {
+        scroll.scrollToTop()
+        if (searchHeight) setSearchHeight(0)
+    }, [])
 
     useEffect(() => {
         if (!firstTime.current) {

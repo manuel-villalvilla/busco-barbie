@@ -1,21 +1,26 @@
 import styles from './Ad.module.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import { Carousel } from 'react-responsive-carousel'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import Modal from '../components/Modal'
+import Contact from './Contact'
 import withContext from '../utils/withContext'
 import { CSSTransition } from 'react-transition-group'
+import AnimateHeight from 'react-animate-height'
+import Scroll from 'react-scroll'
+const scroller = Scroll.animateScroll
 
 export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
-  const [showModal, setShowModal] = useState(false)
+  const [contactHeight, setContactHeight] = useState(0)
 
   useEffect(() => setSearchHeight(0), [])
 
-  const router = useRouter()
-
   const handleContactButtonClick = () => {
-    showModal ? setShowModal(false) : setShowModal(true)
+    if (contactHeight) setContactHeight(0) 
+    else {
+      setContactHeight('auto')
+      scroller.scrollMore(600)
+    }
+
   }
 
   const elapsedTime = (creationDate) => {
@@ -108,17 +113,13 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
             <div className={styles.footerPrice}><p>{countryCurrency(ad.location.country, ad.price)}</p></div>
             <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
           </div>
-          <button className={styles.contactButton} onClick={() => handleContactButtonClick()}>Contactar</button>
+          <button className={styles.contactButton} onClick={() => handleContactButtonClick()}>{contactHeight ? 'Cerrar' : 'Contactar'}</button>
           <p className={styles.elapsedTime}>{elapsedTime(ad.createdAt)}</p>
         </>}
+      <AnimateHeight id='filters-panel' duration={500} height={contactHeight}>
+        <Contact onCloseButtonClick={handleContactButtonClick} ad={ad} />
+      </AnimateHeight>
     </div>
-    <CSSTransition
-      in={showModal}
-      unmountOnExit
-      timeout={500}
-      classNames='my-node'
-    >
-      <Modal onCloseButtonClick={handleContactButtonClick} ad={ad} ></Modal>
-    </CSSTransition>
+
   </>
 })
