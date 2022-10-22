@@ -27,11 +27,14 @@ describe('Authenticate Google user', () => {
         const password = await bcrypt.hash('123123123', 10)
 
         const user = await User.create({ name, email, password, verified: true, role: 'google' })
+        try {
+            const res = await authenticateGoogleUser(name, email)
+            expect(res).toBeInstanceOf(ObjectId)
+            expect(res.toString()).toBe(user.id.toString())
+        } catch (error) {
+            expect(error).toBeNull()
+        }
 
-        const res = await authenticateGoogleUser(name, email)
-
-        expect(res).toBeInstanceOf(ObjectId)
-        expect(res.toString()).toBe(user.id.toString())
     })
 
     it('creating google user when google authentication', async () => {
@@ -41,6 +44,8 @@ describe('Authenticate Google user', () => {
         try {
             const res = await authenticateGoogleUser(name, email)
             expect(typeof res).toBe('string')
+            const files = await fs.readdir(`${folder}/${res}`)
+            expect(files).toHaveLength(0)
         } catch (error) {
             expect(error).toBe(null)
         }

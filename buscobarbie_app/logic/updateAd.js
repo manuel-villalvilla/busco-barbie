@@ -65,4 +65,5 @@ export default function (form, token, userId, adId, tags) {
         .then(res => {
             return res.data
         })
+        .catch(error => { throw new Error(error) })
 }

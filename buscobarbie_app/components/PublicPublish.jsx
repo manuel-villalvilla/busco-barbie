@@ -57,15 +57,13 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
   const imagesRef = useRef(null)
   const captchaRef = useRef(null)
   const errorBottomRef = useRef(null)
-  const errorImagesRef = useRef(null)
 
   useEffect(() => setSearchHeight(0), [])
 
   useEffect(() => {
     if (!firsTimeRef.current) {
-      if (error.images || error.bottom) {
-        if (error.images) errorImagesRef.current.scrollIntoView()
-        else if (error.bottom) errorBottomRef.current.scrollIntoView()
+      if (error.bottom) {
+        errorBottomRef.current.scrollIntoView()
         setTimeout(() => setError({ images: null, bottom: null }), 10000)
       }
     }
@@ -148,7 +146,13 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
       return
     }
 
-    setError({ ...error, images: null })
+    if (files.length + imageFiles.length > 4) {
+      e.target.value = null
+
+      setError({ ...error, images: 'Sólo se permite subir un máximo de 4 imágenes' })
+
+      return
+    }
 
     const validImageFiles = []
 
@@ -161,7 +165,11 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
     }
 
     if (validImageFiles.length) {
-      setImageFiles(validImageFiles)
+      setImageFiles(current => [...current, ...validImageFiles])
+
+      e.target.value = null
+
+      setError({ ...error, images: null })
 
       return
     }
@@ -170,19 +178,9 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
   }
 
   const handleDeleteImage = index => {
-    const dataTransfer = new DataTransfer()
-
     const tempImageFiles = imageFiles.slice()
 
     tempImageFiles.splice(index, 1)
-
-    for (let i = 0; i < tempImageFiles.length; i++) {
-      dataTransfer.items.add(tempImageFiles[i])
-    }
-
-    const newFiles = dataTransfer.files
-
-    imagesRef.current.files = newFiles
 
     setImageFiles(tempImageFiles)
   }
@@ -201,6 +199,19 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
 
   const handleFormSubmit = async event => {
     const token = captchaRef.current.getValue()
+
+    if (imageFiles.length) {
+      const dataTransfer = new DataTransfer()
+
+      for (let i = 0; i < imageFiles.length; i++) {
+        dataTransfer.items.add(imageFiles[i])
+      }
+
+      const newFiles = dataTransfer.files
+
+      imagesRef.current.files = newFiles
+    } else imagesRef.current.files = null
+
     const form = event.target
 
     if (token.length === 0) {
@@ -434,16 +445,16 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
       <div className={styles.imagesContainer}>
         <label className={styles.imagesLabel}>IMÁGENES:</label>
         <label htmlFor='images' className={styles.imagesButton}>AÑADIR FOTOS
-        <input
-          className={styles.imagesInput}
-          type='file'
-          name='images'
-          id='images'
-          accept='image/*'
-          multiple={true}
-          onChange={handleFileChange}
-          ref={imagesRef}
-        />
+          <input
+            className={styles.imagesInput}
+            type='file'
+            name='images'
+            id='images'
+            accept='image/*'
+            multiple={true}
+            onChange={handleFileChange}
+            ref={imagesRef}
+          />
         </label>
         {images.length > 0 &&
           <div className={styles.imagePreview}>
@@ -458,7 +469,7 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
           </div>
         }
         <p className={styles.formText}>Máximo 4 imágenes. Se recomienda subirlas en formato vertical</p>
-        {error.images && <p ref={errorImagesRef} className={styles.error}>{error.images}</p>}
+        {error.images && <p className={styles.error}>{error.images}</p>}
       </div>
 
       <div className={styles.nameContainer}>

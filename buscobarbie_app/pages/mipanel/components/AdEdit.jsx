@@ -7,6 +7,7 @@ import axios from 'axios'
 import updateAd from "../../../logic/updateAd"
 import updateAdVisibility from "../../../logic/updateAdVisibility"
 import { tags, years, areas } from 'data'
+import errorHandler from '../../../utils/publicPublishErrorHandler'
 const { modelos, complementos } = tags
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 const modelosOptions = []
@@ -36,14 +37,7 @@ const Option = (props) => {
 
 export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
     const [stateAd, setAd] = useState(ad)
-    const [errors, setErrors] = useState({
-        title: null,
-        body: null,
-        province: null,
-        area: null,
-        phone: null,
-        price: null,
-        categories: null,
+    const [error, setError] = useState({
         images: null,
         bottom: null
     })
@@ -53,6 +47,18 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
     const country_code = stateAd.location.country
     const imagesRef = useRef(null)
     const formRef = useRef(null)
+    const firsTimeRef = useRef(true)
+    const errorBottomRef = useRef(null)
+
+    useEffect(() => {
+        if (!firsTimeRef.current) {
+          if (error.bottom) {
+            errorBottomRef.current.scrollIntoView()
+            setTimeout(() => setError({ images: null, bottom: null }), 10000)
+          }
+        }
+        return () => firsTimeRef.current = false
+      }, [error])
 
     useEffect(() => {
         async function setImages() {
@@ -75,7 +81,7 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
         setImages()
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { // to create thumbnails
         const fileReaders = []
         let isCancel = false
 
@@ -92,11 +98,11 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     }
                     fileReader.onabort = () => {
                         reject(new Error("File reading aborted"))
-                        setErrors({ ...errors, images: 'Hubo un problema al leer el archivo' })
+                        setError({ ...error, images: 'Hubo un problema al leer el archivo' })
                     }
                     fileReader.onerror = () => {
                         reject(new Error("Failed to read file"))
-                        setErrors({ ...errors, images: 'Hubo un problema al leer el archivo' })
+                        setError({ ...error, images: 'Hubo un problema al leer el archivo' })
                     }
                     fileReader.readAsDataURL(file)
                 })
@@ -109,7 +115,7 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     }
                 })
                 .catch(reason => {
-                    setErrors({ ...errors, images: reason }) // REVISAR!!
+                    setError({ ...error, images: reason }) // REVISAR!!
                 })
         } else {
             setImages([])
@@ -125,25 +131,30 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
     }, [imageFiles])
 
     const handleFormSubmit = async event => {
+        if (imageFiles.length) {
+            const dataTransfer = new DataTransfer()
+
+            for (let i = 0; i < imageFiles.length; i++) {
+                dataTransfer.items.add(imageFiles[i])
+            }
+
+            const newFiles = dataTransfer.files
+
+            imagesRef.current.files = newFiles
+        } else imagesRef.current.files = null
+
         const form = event.target
-        setAdsSuccess(null)
+        // setAdsSuccess(null)
 
         try {
             const ads = await updateAd(form, token.tokenFromApi, user._id, ad._id, stateAd.tags)
             if (Object.keys(ads).length === 0) {
-                setErrors({
-                    ...errors,
+                setError({
+                    ...error,
                     bottom: 'Algo salió mal'
                 })
             } else {
-                setErrors({
-                    visibility: null,
-                    title: null,
-                    body: null,
-                    province: null,
-                    area: null,
-                    price: null,
-                    categories: null,
+                setError({
                     images: null,
                     bottom: null
                 })
@@ -152,8 +163,11 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                 setView('mainpannel')
             }
         } catch (error) {
-            console.log(error.message)
-            setErrors({ ...errors, bottom: 'Algo salió mal' })
+            if (error.response && error.response.data)
+                errorHandler(error.response.data.error, setError)
+
+            else
+                errorHandler(error.message, setError)
         }
     }
 
@@ -162,9 +176,20 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
 
         if (files.length > 4) {
             e.target.value = null
-            setErrors({ ...errors, images: 'Sólo se permite subir un máximo de 4 imágenes' })
+
+            setError({ ...error, images: 'Sólo se permite subir un máximo de 4 imágenes' })
+
             return
         }
+
+        if (files.length + imageFiles.length > 4) {
+            e.target.value = null
+
+            setError({ ...error, images: 'Sólo se permite subir un máximo de 4 imágenes' })
+
+            return
+        }
+
         const validImageFiles = []
 
         for (let i = 0; i < files.length; i++) {
@@ -176,28 +201,22 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
         }
 
         if (validImageFiles.length) {
-            setImageFiles(validImageFiles)
+            setImageFiles(current => [...current, ...validImageFiles])
+
+            e.target.value = null
+
+            setError({ ...error, images: null })
 
             return
         }
         e.target.value = null
-        setErrors({ ...errors, images: 'Tipo de imagen no válido o supera los 6MB' })
+        setError({ ...error, images: 'Tipo de imagen no válido o supera los 6MB' })
     }
 
     const handleDeleteImage = index => {
-        const dataTransfer = new DataTransfer()
-
         const tempImageFiles = imageFiles.slice()
 
         tempImageFiles.splice(index, 1)
-
-        for (let i = 0; i < tempImageFiles.length; i++) {
-            dataTransfer.items.add(tempImageFiles[i])
-        }
-
-        const newFiles = dataTransfer.files
-
-        imagesRef.current.files = newFiles
 
         setImageFiles(tempImageFiles)
     }
@@ -212,14 +231,7 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
         let visibility = formRef.current.visibility.checked
         if (visibility) visibility = 'public'
         else visibility = 'private'
-        setErrors({
-            visibility: null,
-            title: null,
-            body: null,
-            province: null,
-            area: null,
-            price: null,
-            categories: null,
+        setError({
             images: null,
             bottom: null
         })
@@ -232,10 +244,10 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
             }
             setAds(ads)
 
-        } catch (error) {
-            setErrors({
-                ...errors,
-                visibility: 'Algo salió mal'
+        } catch (err) {
+            setError({
+                ...error,
+                bottom: 'Algo salió mal'
             })
         }
     }
@@ -263,7 +275,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     </label>}
                     {stateAd.verified && <p className={styles.verifiedText}>{stateAd.visibility === 'public' ? <><span>🟢</span>Visible</> : <><span>🔴</span>Invisible</>}</p>}
                 </div>
-                {errors.visibility && <p className={styles.error}>{errors.visibility}</p>}
             </div>
 
             <div className={styles.titleContainer}>
@@ -277,7 +288,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     required={true}
                     defaultValue={stateAd.title}
                 />
-                {errors.title && <p className={styles.error}>{errors.title}</p>}
             </div>
 
             <div className={styles.bodyContainer}>
@@ -297,7 +307,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     }}
                 />
                 <div className={styles.formText}>{remaining}</div>
-                {errors.body && <p className={styles.error}>{errors.body}</p>}
             </div>
 
             <div className={styles.provinceContainer}>
@@ -325,7 +334,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     </>
                     }
                 </select>
-                {errors.province && <p className={styles.error}>{errors.province}</p>}
             </div>
 
             <div className={styles.areaContainer}>
@@ -339,7 +347,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     defaultValue={stateAd.location.area}
                 />
                 <div className={styles.formText}>Puedes opcionalmente especificar tu ubicación.</div>
-                {errors.area && <p className={styles.error}>{errors.area}</p>}
             </div>
 
             <div className={styles.phoneContainer}>
@@ -353,7 +360,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     defaultValue={stateAd.phone}
                 />
                 <div className={styles.formText}>Se hará público para que te contacten si lo introduces.</div>
-                {errors.phone && <p className={styles.error}>{errors.phone}</p>}
             </div>
 
             <div className={styles.priceContainer}>
@@ -368,7 +374,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     defaultValue={stateAd.price}
                 />
                 <div className={styles.formText}>Sólo números.</div>
-                {errors.price && <p className={styles.error}>{errors.price}</p>}
             </div>
 
             <div className={styles.categoriesContainer}>
@@ -384,7 +389,6 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     <option value='modelos'>Modelos</option>
                     <option value='complementos'>Complementos</option>
                 </select>
-                {errors.categories && <p className={styles.error}>{errors.categories}</p>}
             </div>
 
             {stateAd.categories === 'modelos' && <>
@@ -471,16 +475,18 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
 
             <div className={styles.imagesContainer}>
                 <label htmlFor='images' className={styles.imagesLabel}>IMÁGENES:</label>
-                <input
-                    className={styles.imagesInput}
-                    type='file'
-                    name='images'
-                    id='images'
-                    accept='image/*'
-                    multiple={true}
-                    onChange={handleFileChange}
-                    ref={imagesRef}
-                />
+                <label htmlFor='images' className={styles.imagesButton}>AÑADIR FOTOS
+                    <input
+                        className={styles.imagesInput}
+                        type='file'
+                        name='images'
+                        id='images'
+                        accept='image/*'
+                        multiple={true}
+                        onChange={handleFileChange}
+                        ref={imagesRef}
+                    />
+                </label>
                 {images.length > 0 &&
                     <div className={styles.imagePreview}>
                         {
@@ -494,7 +500,7 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                     </div>
                 }
                 <div className={styles.imagesText}>Máximo 4 imágenes. Se recomienda subirlas en formato vertical.</div>
-                {errors.images && <p className={styles.error}>{errors.images}</p>}
+                {error.images && <p className={styles.error}>{error.images}</p>}
             </div>
 
             <div className={styles.checkboxContainer}>
@@ -511,7 +517,7 @@ export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
                 <button type='button' className={styles.cancelButton} onClick={() => setView('mainpannel')}>CANCELAR</button>
                 <button type='submit' className={styles.saveButton}>GUARDAR</button>
             </div>
-            {errors.bottom && <p className={styles.error}>{errors.bottom}</p>}
+            {error.bottom && <p ref={errorBottomRef} className={styles.error}>{error.bottom}</p>}
         </form>
     </>
 }

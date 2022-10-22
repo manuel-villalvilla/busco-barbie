@@ -201,13 +201,6 @@
 .error {
     margin: 5px 0 0 0;
     color: red;
-    font-size: 14px;
-    text-align: center;
-}
-
-.success {
-    margin: 5px 0 0 0;
-    color: green;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
 }

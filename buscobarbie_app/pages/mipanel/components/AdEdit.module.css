@@ -39,9 +39,15 @@
 .adStatusContainer,
 .yearsContainer,
 .tagsContainer {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 5px;
+}
+
+.imagesContainer {
+    justify-content: space-between;
 }
 
 .statusContainer {
@@ -110,10 +116,29 @@
     height: auto;
 }
 
+.imagesInput {
+    display: none;
+}
+
 .formText {
     margin: 0;
     font-size: 14px;
     color: grey;
+}
+
+.imagesButton {
+    padding: 10px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    background-color: navy;
+    color: white;
+    border-radius: 10px;
+    width: fit-content;
+    font-size: 14px;
 }
 
 .imagePreview {

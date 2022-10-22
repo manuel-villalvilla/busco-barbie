@@ -24,21 +24,21 @@ function mipanel({ context: { setSearchHeight }, pack, token }) {
     </>
 }
 
-        export async function getServerSideProps({req, res}) {
+export async function getServerSideProps({ req, res }) {
     const secret = process.env.NEXTAUTH_SECRET
-        const token = await getToken({req, secret})
+    const token = await getToken({ req, secret })
 
-        if (!token) {
-            // TODO check that is not expired
-            res.writeHead(307, { Location: '/login' })
+    if (!token) {
+        // TODO check that is not expired
+        res.writeHead(307, { Location: '/login' })
         res.end()
-        return {props: { } }
+        return { props: {} }
     } else if (token.role !== 'admin') {
         const pack = await retrieveUserWithAds(token.tokenFromApi)
 
-        return {props: {pack, token} }
+        return { props: { pack, token } }
     } else
-        return {props: {pack: { }, token } }
+        return { props: { pack: {}, token } }
 }
 
-        export default withContext(mipanel)
+export default withContext(mipanel)

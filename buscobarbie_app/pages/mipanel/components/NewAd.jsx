@@ -6,6 +6,7 @@ import { areas, tags, years } from "data"
 import newUserAd from '../../../logic/newUserAd'
 import Select from 'react-select'
 import { components } from 'react-select'
+import errorHandler from '../../../utils/publicPublishErrorHandler'
 const { modelos, complementos } = tags
 const modelosOptions = []
 for (const tag of modelos) {
@@ -34,20 +35,10 @@ const Option = (props) => {
     )
 }
 
-export default withContext(function ({ context: { setSearchHeight, country_code }, setView, tokenFromApi, userId, setAds, setCount }) {
+export default withContext(function ({ context: { setSearchHeight, country_code }, setView, tokenFromApi, userId, setAds, setCount, setAdsSuccess }) {
     const [error, setError] = useState({
-        title: null,
-        body: null,
-        province: null,
-        area: null,
-        phone: null,
-        price: null,
-        categories: null,
         images: null,
-        name: null,
-        email: null,
-        password: null,
-        google: null
+        bottom: null
     })
     const [stateCategories, setStateCategories] = useState(null)
     const [stateTags, setStateTags] = useState([])
@@ -55,12 +46,23 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
     const [remaining, setRemaining] = useState(500)
     const [imageFiles, setImageFiles] = useState([])
     const [images, setImages] = useState([])
-    const [success, setSuccess] = useState(null)
     const imagesRef = useRef(null)
+    const firsTimeRef = useRef(true)
+    const errorBottomRef = useRef(null)
 
     useEffect(() => setSearchHeight(0), [])
 
     useEffect(() => {
+        if (!firsTimeRef.current) {
+          if (error.bottom) {
+            errorBottomRef.current.scrollIntoView()
+            setTimeout(() => setError({ images: null, bottom: null }), 10000)
+          }
+        }
+        return () => firsTimeRef.current = false
+      }, [error])
+
+    useEffect(() => { // to create thumbnails
         const fileReaders = []
         let isCancel = false
 
@@ -98,7 +100,7 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     }
                 })
                 .catch(reason => {
-                    setError({ ...error, images: reason }) // REVISAR!!
+                    setError({ ...error, images: 'Algo salió mal' }) // REVISAR!!
                 })
         } else {
             setImages([])
@@ -126,6 +128,8 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
     }
 
     const handleFileChange = e => {
+        if (error.images) setError({ ...error, images: null })
+
         const { files } = e.target
 
         if (files.length > 4) {
@@ -136,7 +140,13 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
             return
         }
 
-        setError({ ...error, images: null })
+        if (files.length + imageFiles.length > 4) {
+            e.target.value = null
+
+            setError({ ...error, images: 'Sólo se permite subir un máximo de 4 imágenes' })
+
+            return
+        }
 
         const validImageFiles = []
 
@@ -149,7 +159,11 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
         }
 
         if (validImageFiles.length) {
-            setImageFiles(validImageFiles)
+            setImageFiles(current => [...current, ...validImageFiles])
+
+            e.target.value = null
+
+            setError({ ...error, images: null })
 
             return
         }
@@ -158,44 +172,46 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
     }
 
     const handleDeleteImage = index => {
-        const dataTransfer = new DataTransfer()
-
         const tempImageFiles = imageFiles.slice()
 
         tempImageFiles.splice(index, 1)
 
-        for (let i = 0; i < tempImageFiles.length; i++) {
-            dataTransfer.items.add(tempImageFiles[i])
-        }
-
-        const newFiles = dataTransfer.files
-
-        imagesRef.current.files = newFiles
-
         setImageFiles(tempImageFiles)
     }
 
-    const handleFormSubmit = event => {
+    const handleFormSubmit = async event => {
+        if (imageFiles.length) {
+            const dataTransfer = new DataTransfer()
+    
+            for (let i = 0; i < imageFiles.length; i++) {
+                dataTransfer.items.add(imageFiles[i])
+            }
+    
+            const newFiles = dataTransfer.files
+    
+            imagesRef.current.files = newFiles
+        } else imagesRef.current.files = null
+
         const form = event.target
 
         try {
-            newUserAd(tokenFromApi, userId, form, country_code, stateTags)
-                .then(ads => {
-                    setAds(ads.data)
-                    setCount(ads.data.length)
-                    setSuccess('Nuevo anuncio guardado correctamente')
-                    form.reset()
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            const ads = await newUserAd(tokenFromApi, userId, form, country_code, stateTags)
+            setAds(ads.data)
+            setCount(ads.data.length)
+            setView('mainpannel')
+            setAdsSuccess('Nuevo anuncio guardado correctamente')
+            form.reset()
         } catch (error) {
-            // setear errores dependiendo del mensaje
-            console.log(error)
+            if (error.response && error.response.data)
+                errorHandler(error.response.data.error, setError)
+
+            else 
+                errorHandler(error.message, setError)
+
         }
     }
 
-    return <> 
+    return <>
         <form className={styles.form} encType="multipart/form-data" onSubmit={async (event) => {
             event.preventDefault()
 
@@ -225,7 +241,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     }}
                 />
                 <div className={styles.formText}>{titleRemaining}</div>
-                {error.title && <p className={styles.error}>{error.title}</p>}
             </div>
 
             <div className={styles.bodyContainer}>
@@ -244,7 +259,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     }}
                 />
                 <div className={styles.formText}>{remaining}</div>
-                {error.body && <p className={styles.error}>{error.body}</p>}
             </div>
 
             <div className={styles.provinceContainer}>
@@ -271,7 +285,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     </>
                     }
                 </select>
-                {error.province && <p className={styles.error}>{error.province}</p>}
             </div>
 
             <div className={styles.areaContainer}>
@@ -284,7 +297,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     maxLength={50}
                 />
                 <div className={styles.formText}>Puedes opcionalmente especificar tu ubicación</div>
-                {error.area && <p className={styles.error}>{error.area}</p>}
             </div>
 
             <div className={styles.phoneContainer}>
@@ -297,7 +309,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     maxLength={20}
                 />
                 <div className={styles.formText}>Se hará público para que te contacten si lo introduces</div>
-                {error.phone && <p className={styles.error}>{error.phone}</p>}
             </div>
 
             <div className={styles.priceContainer}>
@@ -311,7 +322,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     required={true}
                 />
                 <div className={styles.formText}>Sólo números</div>
-                {error.price && <p className={styles.error}>{error.price}</p>}
             </div>
 
             <div className={styles.categoriesContainer}>
@@ -329,7 +339,6 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                     <option value='modelos'>Modelos</option>
                     <option value='complementos'>Complementos</option>
                 </select>
-                {error.categories && <p className={styles.error}>{error.categories}</p>}
             </div>
 
             {stateCategories === 'modelos' && <>
@@ -437,7 +446,7 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
                 <label className={styles.checkboxLabel} htmlFor="accept">
                     Acepto las <Link href={`${APP_URL}/terms-and-conditions`} passHref><a target="_blank" rel="noopener noreferrer" className={styles.termsLink}>Condiciones de Servicio</a></Link></label>
             </div>
-            {success && <p className={styles.success}>{success}</p>}
+            {error.bottom && <p ref={errorBottomRef} className={styles.error}>{error.bottom}</p>}
             <div className={styles.buttonContainer}>
                 <button type='button' className={styles.cancelButton} onClick={() => setView('mainpannel')}>CANCELAR</button>
                 <button type='submit' className={styles.submitButton}>GUARDAR</button>

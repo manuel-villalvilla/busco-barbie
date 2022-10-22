@@ -259,7 +259,7 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
       view === 'adedit' && <AdEdit ad={ad} user={user} setView={setView} token={token} setAds={setAds} setAdsSuccess={setAdsSuccess} />
     }
     {
-      view === 'newad' && <NewAd setView={setView} tokenFromApi={token.tokenFromApi} userId={user._id} setAds={setAds} setCount={setCount} />
+      view === 'newad' && <NewAd setView={setView} tokenFromApi={token.tokenFromApi} userId={user._id} setAds={setAds} setCount={setCount} setAdsSuccess={setAdsSuccess} />
     }
   </>
 
