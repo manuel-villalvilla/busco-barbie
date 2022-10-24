@@ -6,8 +6,11 @@ import Loader from '../components/Loader'
 import Head from 'next/head'
 import { getCookie, setCookie } from 'cookies-next'
 import App from 'next/app'
+import CookieNotice from '../components/CookieNotice'
+import { useState } from 'react'
 
-function myApp({ Component, pageProps: { ...pageProps }, country_code, session }) {
+function myApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted }) {
+    const [accepted, setAccepted] = useState(cookieAccepted)
     return <>
         <Head>
             <title>BuscoBarbie.com</title>
@@ -17,6 +20,7 @@ function myApp({ Component, pageProps: { ...pageProps }, country_code, session }
         <SessionProvider session={session}>
             <Layout country_code={country_code} >
                 <Component {...pageProps} />
+                {!accepted && <CookieNotice setAccepted={setAccepted} />}
             </Layout>
         </SessionProvider>
     </>
@@ -27,6 +31,9 @@ myApp.getInitialProps = async (context) => {
     const country_code = getCookie('country', { req, res })
     const session = await getSession(ctx)
     const appProps = await App.getInitialProps(context)
+
+    let cookieAccepted = getCookie('cookieAccepted', { req, res })
+    if (!cookieAccepted) cookieAccepted = false
 
     if (!country_code) {
         /* TO IMPLEMENT TO GET COUNTRY_CODE. INVESTIGATE LOCALE
@@ -48,14 +55,16 @@ myApp.getInitialProps = async (context) => {
         return {
             ...appProps,
             session,
-            country_code
+            country_code,
+            cookieAccepted
         }
     }
 
     return {
         ...appProps,
         session,
-        country_code
+        country_code,
+        cookieAccepted
     }
 }
 

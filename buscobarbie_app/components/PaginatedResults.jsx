@@ -45,7 +45,7 @@ function PaginatedItems({ search, page, data, onPageClick }) { // search solo se
                 renderOnZeroPageCount={null}
                 forcePage={page}
             />
-            <button className="gotop-button" onClick={() => scroll.scrollToTop()}>Volver arriba</button>
+            <button type='button' className="gotop-button" onClick={() => scroll.scrollToTop()}>Volver arriba</button>
         </div>
     );
 }

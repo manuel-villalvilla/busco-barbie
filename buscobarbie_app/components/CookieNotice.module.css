@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    position: sticky;
+    background-color: #fff;
+    bottom: 5px;
+    left: 0;
+    border: 2px solid lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: center;
+    z-index: 1;
+}
+
+.container > p {
+    margin: 0;
+}
+
+.link, .link:visited, .link:active {
+    color: rgb(233, 96, 155);
+}
+
+.button {
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
+    color:rgb(233, 96, 155);
+    font-weight: 400;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px navy;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+    height: fit-content;
+}
+
+.button:hover {
+    background-color: rgba(211,211,211,.2);
+}

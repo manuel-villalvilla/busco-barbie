@@ -96,22 +96,28 @@ ul {
 
 .pagination-page {
     padding: 10px;
-    background-color: rgb(233, 96, 155);
-    color: white;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    border: 2px solid rgb(233, 96, 155);
+    text-shadow: 1px 1px 1px navy;
     cursor: pointer;
-    border-radius: 20px;
+    font-size: 18px;
+    border-radius: 10px;
 }
 
 .active {
     background-color: navy;
+    color: #fff;
     cursor: pointer;
 }
 
 .break-me {
     padding: 10px;
-    background-color: rgb(233, 96, 155);
-    color: white;
-    border-radius: 20px;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
+    font-size: 18px;
 }
 
 .results-container {
@@ -144,15 +150,10 @@ ul {
     flex-direction: column;
     padding: 10px;
     gap: 5px;
-    /* border: 3px ridge rgb(233, 96, 155); */
     border-radius: 10px;
-    /* box-shadow: 3px 3px rgba(233, 96, 155,.3); */
 }
 
 .results-ad-image-container {
-    padding: 1.5%;
-    /* border: 4px double rgb(233, 96, 155);
-    border-radius: 20px; */
     min-height: 200px;
 }
 
@@ -207,8 +208,6 @@ ul {
 }
 
 .results-ad-body-article {
-    /* max-width: 80vw; */
-    /* Preguntar como solucionar esto */
     text-align: center;
     display: -webkit-box;
     -webkit-line-clamp: 6;
@@ -257,12 +256,19 @@ ul {
 .gotop-button {
     margin-top: 10px;
     cursor: pointer;
-    border-style: none;
-    background-color: transparent;
-    
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
+    color:rgb(233, 96, 155);
     font-weight: 400;
-    font-size: 16px;
-    text-shadow: 1px 1px 8px rgb(233, 96, 155);
+    font-size: 14px;
+    text-shadow: 1px 1px 1px navy;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+}
+
+.gotop-button:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .my-node-enter {

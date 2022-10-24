@@ -9,7 +9,7 @@ function AR({ data, page, limit, province, search, categories, country, year, ta
     if (country !== 'AR')
       setCountry('AR')
   }, [])
-  
+
   return <Home data={data} page={page} limit={limit} province={province} search={search} categories={categories} country='AR' year={year} tags={tags} sort={sort} />
 }
 
@@ -21,6 +21,7 @@ export async function getServerSideProps(context) {
   if (!country || country !== 'AR') {
     setCookie('country', 'AR', { req, res, maxAge: 30 * 24 * 60 * 60 })
   }
+
   let tags2 = null
   if (typeof tags === 'string') tags2 = tags.split(',')
 

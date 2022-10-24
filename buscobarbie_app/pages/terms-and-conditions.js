@@ -35,11 +35,12 @@ export default function ({ country }) {
             <ol>
                 <li><p>Si no dispones de una cuenta en <span>BuscoBarbie.com</span> ni en <span>Google</span>, publica tu primer anuncio accediendo al formulario
                 a través del botón <Link href={`${APP_URL}/${country}/publicar`}><a className={styles.link}>publicar</a></Link>. Deberás verificar tu usuario siguiendo 
-                el enlace que te enviaremos por email en el momento del registro.</p></li>
+                el enlace que te enviaremos por email en el momento del registro. Una vez verificado el usuario y con acceso a su panel de control, podrá editar, borrar y crear hasta un máximo de 10 anuncios.</p></li>
+
                 <li><p>Si ya tienes una cuenta en <span>BuscoBarbie.com</span> o en <span>Google</span>, puedes publicar hasta un máximo de 10 anuncios accediendo 
                 previamente a tu panel de control a través del botón <Link href={`${APP_URL}/login`}><a className={styles.link}>iniciar sesión</a></Link>.</p></li>
             </ol>
-            <p>Una vez registrado el anuncio en nuestra base de datos, no se hará público hasta que no pase por el filtro de verificación, en el que se comprobará que cumple 
+            <p>Una vez registrado el anuncio en nuestra base de datos, no se hará público hasta que no pase por el filtro de <span>verificación</span>, en el que se comprobará que cumple 
                 con las condiciones expuestas a continuación. El proceso de verificación no debería durar más de unas pocas horas.
             </p>
             <p>Una vez iniciada la sesión y con acceso al panel de control, se podrán editar, borrar y crear nuevos anuncios (máximo 10), así como modificar tu nombre público y tu contraseña 
@@ -78,7 +79,7 @@ export default function ({ country }) {
                         <li><p>Para ser contactado por las personas interesadas en el artículo.</p></li>
                         <li><p>Para ser enviado comunicaciones de <span>BuscoBarbie.com</span> relativas a la validación positiva o negativa del anuncio registrado.</p></li>
                     </ol>
-                    <p>Al ser contactado, se recibirá un email con el nombre, dirección de email y mensaje del interesado. Los emails de contacto se recibirán siempre desde un dominio de <span>BuscoBarbie.com</span>.</p></li>
+                    <p>Al ser contactado por un usuario interesado en tu artículo, se recibirá un email con el nombre, dirección de email y mensaje del mismo. Los emails de contacto se recibirán siempre desde un dominio de <span>BuscoBarbie.com</span>.</p></li>
                 <li><p>Contraseña obligatoria de entre 8 y 20 caracteres, incluidos !@#$%^&*</p></li>
             </ol>
         </div>
