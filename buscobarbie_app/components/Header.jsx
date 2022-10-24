@@ -22,7 +22,7 @@ export default withContext(function ({ context: { setSearchHeight, searchHeight 
     searchHeight === 0 ? setSearchHeight('auto') : setSearchHeight(0)
   }
 
-  return (
+  return <div className={styles.container}>
     <div className={styles.headerFilters}>
       <header className={styles.header}>
         <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image src='/logo4.png' layout='fill' priority></Image></a></Link>
@@ -55,6 +55,6 @@ export default withContext(function ({ context: { setSearchHeight, searchHeight 
 
     </div>
 
-  )
+  </div>
 })
 

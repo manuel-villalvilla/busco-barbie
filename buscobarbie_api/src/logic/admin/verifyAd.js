@@ -108,6 +108,7 @@ module.exports = async function (userId, adId) {
                 <p class="nomargin overflow"><b>Etiquetas: </b>${ad.tags.length ? ad.tags.join(', ') : 'No especificadas'}</p> 
                 <p class='nomargin'><b>Número de imágenes:</b> ${ad.image.length ? ad.image.length : '0'}</p>
         </div>
+        <p class='textalign'><b>Por favor, no <span style='color:rgb(233,96,155);'>respondas</span> a este email.</b></p>
         <h3 class='textalign nomargin;'>¡GRACIAS!</h3>
         <p class='footer'>Según lo dispuesto en el Reglamento Europeo en materia de Protección de Datos, te informamos que los datos de carácter personal que nos has proporcionado son gestionados por el responsable de BuscoBarbie.com tras habernos facilitado/cedido tus datos de manera voluntaria mediante el registro en la aplicación.</p>
         <p class='footer textalign'>2022 BuscoBarbie.com</p>

@@ -20,26 +20,6 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
       setContactHeight('auto')
       scroller.scrollMore(600)
     }
-
-  }
-
-  const elapsedTime = (creationDate) => {
-    const createdParsed = Date.parse(creationDate)
-    const nowParsed = Date.parse(new Date)
-    const elapsedMili = nowParsed - createdParsed
-    const elapsedSecs = Math.round(elapsedMili / 1000)
-    const elapsedMins = Math.round(elapsedSecs / 60)
-    const elapsedHours = Math.round(elapsedMins / 60)
-    const elapsedDays = Math.round(elapsedHours / 24)
-    const elapsedMonths = Math.round(elapsedDays / 30)
-    const elapsedYears = Math.floor(elapsedMonths / 12)
-
-    if (elapsedDays < 1 && elapsedHours < 1 && elapsedMins < 1) return `Publicado hace ${elapsedSecs} segundos`
-    else if (elapsedDays < 1 && elapsedHours < 1) return `Publicado hace ${elapsedMins === 1 ? '1 minuto' : `${elapsedMins} minutos`}`
-    else if (elapsedDays < 1) return `Publicado hace ${elapsedHours === 1 ? '1 hora' : `${elapsedHours} horas`}`
-    else if (elapsedMonths < 1) return `Publicado hace ${elapsedDays === 1 ? '1 día' : `${elapsedDays} días`}`
-    else if (elapsedYears < 1) return `Publicado hace ${elapsedMonths === 1 ? '1 mes' : `${elapsedMonths} meses`}`
-    else return `Publicado hace ${elapsedYears === 1 ? '1 año' : `${elapsedYears} años`}`
   }
 
   const countryCurrency = (country, price) => {
@@ -114,7 +94,7 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
             <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
           </div>
           <button className={styles.contactButton} onClick={() => handleContactButtonClick()}>{contactHeight ? 'Cerrar' : 'Contactar'}</button>
-          <p className={styles.elapsedTime}>{elapsedTime(ad.createdAt)}</p>
+          <p className={styles.elapsedTime}>{ad.elapsed}</p>
         </>}
       <AnimateHeight id='filters-panel' duration={500} height={contactHeight}>
         <Contact onCloseButtonClick={handleContactButtonClick} ad={ad} />

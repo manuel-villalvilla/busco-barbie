@@ -1,0 +1,19 @@
+.footer {
+    font-size: 16px;
+    padding: 3%;
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    gap: 5px;
+}
+
+.pinkLink, .pinkLink:visited, .pinkLink:active {
+    color:rgb(233, 96, 155);
+}

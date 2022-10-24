@@ -3,25 +3,6 @@ import Link from 'next/link'
 // Link prefetch ocurrs in production
 
 export default function ResultsAds({ search, currentItems, count }) {
-  const elapsedTime = (creationDate) => {
-    const createdParsed = Date.parse(creationDate)
-    const nowParsed = Date.parse(new Date)
-    const elapsedMili = nowParsed - createdParsed
-    const elapsedSecs = Math.round(elapsedMili / 1000)
-    const elapsedMins = Math.round(elapsedSecs / 60)
-    const elapsedHours = Math.round(elapsedMins / 60)
-    const elapsedDays = Math.round(elapsedHours / 24)
-    const elapsedMonths = Math.round(elapsedDays / 30)
-    const elapsedYears = Math.floor(elapsedMonths / 12)
-
-    if (elapsedDays < 1 && elapsedHours < 1 && elapsedMins < 1) return `Publicado hace 1 minuto`
-    else if (elapsedDays < 1 && elapsedHours < 1) return `Publicado hace ${elapsedMins === 1 ? '1 minuto' : `${elapsedMins} minutos`}`
-    else if (elapsedDays < 1) return `Publicado hace ${elapsedHours === 1 ? '1 hora' : `${elapsedHours} horas`}`
-    else if (elapsedMonths < 1) return `Publicado hace ${elapsedDays === 1 ? '1 día' : `${elapsedDays} días`}`
-    else if (elapsedYears < 1) return `Publicado hace ${elapsedMonths === 1 ? '1 mes' : `${elapsedMonths} meses`}`
-    else return `Publicado hace ${elapsedYears === 1 ? '1 año' : `${elapsedYears} años`}`
-  }
-
   const countryCurrency = (country, price) => {
     if (country === 'MX' || country === 'AR') return `${price}$`
     if (country === 'ES') return `${price}€`
@@ -60,7 +41,7 @@ export default function ResultsAds({ search, currentItems, count }) {
                 <p className='footer-province'>{ad.location.province}</p>
                 <div className="footer-price-date">
                   <p className='footer-price'>{countryCurrency(ad.location.country, ad.price)}</p>
-                  <p className='footer-date'>{elapsedTime(ad.createdAt)}</p>
+                  <p className='footer-date'>{ad.elapsed}</p>
                 </div>
               </div>
           </li>

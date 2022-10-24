@@ -6,7 +6,9 @@ import { useEffect, useState, useRef } from 'react'
 import styles from './login.module.css'
 import recoverPassword from '../logic/recoverPassword'
 import GoogleButton from 'react-google-button'
+import ReCAPTCHA from 'react-google-recaptcha'
 const URL = process.env.NEXT_PUBLIC_APP_URL
+const SITE_KEY = process.env.NEXT_PUBLIC_SITE_KEY
 
 export default withContext(function SignIn({ context: { setSearchHeight } }) {
   const [isSearching, setIsSearching] = useState(false)
@@ -15,6 +17,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
   const router = useRouter()
   const emailRef = useRef(null)
   const firstTime = useRef(true)
+  const captchaRef = useRef(null)
 
   useEffect(() => setSearchHeight(0), [])
 
@@ -57,15 +60,24 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
   const handleForgottenSubmit = async event => {
     event.preventDefault()
 
+    const token = captchaRef.current.getValue()
+
+    if (token.length === 0) {
+      setError('Tienes que marcar la casilla de "No soy un robot"')
+      captchaRef.current.reset()
+      return
+    }
+
+    captchaRef.current.reset()
+
     const { target: { forgottenLoginEmail: { value: email } } } = event
 
     try {
-      await recoverPassword(email)
-
-      setView('thankyou')
-
+      const res = await recoverPassword(token, email)
+      if (res.status === 200) setView('thankyou')
+      else setError('Algo salió mal enviando el email. Por favor, inténtalo de nuevo.')
     } catch (error) {
-      setError('Algo salió mal enviando el email. Por favor, inténtalo de nuevo')
+      setError('Algo salió mal enviando el email. Por favor, inténtalo de nuevo.')
     }
   }
 
@@ -141,21 +153,22 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
             onBlur={() => setIsSearching(false)}
           >
           </input>
-          <p className={styles.formText}>Te enviaremos un email con las instrucciones para reestablecer tu contraseña</p>
+          <p className={styles.formText}>Te enviaremos un email con las instrucciones para reestablecer tu contraseña. Los usuarios registrados a través de otras plataformas, por ejemplo Google, no recibirán ningún email y tendrán que recuperar su contraseña a través de su proveedor.</p>
         </div>
+        <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} />
         {error ? <p className={styles.error}>{error}</p> : null}
         <div className={styles.buttonsContainer}>
-          <button
-            type="submit"
-            className={styles.forgottenSendButton}
-          >Enviar
-          </button>
-
           <button
             type="button"
             className={styles.forgottenCancelButton}
             onClick={() => setView('login')}
           >Cancelar
+          </button>
+
+          <button
+            type="submit"
+            className={styles.forgottenSendButton}
+          >Enviar
           </button>
         </div>
       </form>
@@ -163,7 +176,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
     }
     {view === 'thankyou' &&
       <div className={styles.thankyouContainer}>
-        <h3 className={styles.h3}>¡Gracias! Se ha enviado un correo a <span className={styles.h3span}>{emailRef.current.value}</span> con las instrucciones para reestablecer tu contraseña</h3>
+        <h3 className={styles.h3}>¡Gracias! Se ha enviado un correo a <span className={styles.h3span}>{emailRef.current ? emailRef.current.value : null}</span> con las instrucciones para reestablecer tu contraseña</h3>
         <button
           type='button'
           className={styles.thankyouButton}
