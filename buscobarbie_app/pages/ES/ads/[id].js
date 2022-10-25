@@ -40,7 +40,7 @@ export async function getStaticProps(context) {
     }
   } catch (error) {
     return {
-      props: { ad: {} }
+      props: { ad: null }
     }
   }
 }
