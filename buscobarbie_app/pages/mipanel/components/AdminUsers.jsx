@@ -1,3 +1,3 @@
-export default function ({ users }) {
+export default function AdminUsers({ users }) {
     return 'users'
 }

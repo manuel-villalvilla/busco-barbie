@@ -3,7 +3,7 @@ import styles from './AdminPanel.module.css'
 import AdminAd from './AdminAd'
 import { animateScroll as scroll } from 'react-scroll'
 
-export default function ({ ads, setView, token, setData }) {
+export default function AdminAds({ ads, setView, token, setData }) {
     const [ad, showAd] = useState(null)
 
     useEffect(() => scroll.scrollToTop(), [ad])

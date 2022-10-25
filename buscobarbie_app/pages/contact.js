@@ -6,7 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { animateScroll as scroll } from 'react-scroll'
 const SITE_KEY = process.env.NEXT_PUBLIC_SITE_KEY
 
-export default withContext(function contact({ context: { searchHeight, setSearchHeight } }) {
+export default withContext(function Contact({ context: { searchHeight, setSearchHeight } }) {
     const [isSearching, setIsSearching] = useState(false)
     const [error, setError] = useState(null)
     const [view, setView] = useState('contact')

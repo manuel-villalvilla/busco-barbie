@@ -1,0 +1,133 @@
+.resultsContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultsContainer > p {
+    font-weight: 400;
+}
+
+.resultsList {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 0 15px 0;
+}
+
+.resultsListItem {
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
+}
+
+.resultsAdTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.resultsAdTitle > h3 {
+    margin: 10px 0 10px 0;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.resultsAdImageContainer {
+    min-height: 200px;
+}
+
+.resultsAdNoImage {
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(211, 211, 211, .5);
+    border-radius: 20px;
+    color: gray;
+    font-weight: 400;
+}
+
+.resultsAdImage {
+    position: relative;
+    height: 300px;
+}
+
+.adsImage {
+    height: auto;
+}
+
+.imageCount {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 10px 0 0;
+    font-size: 14px;
+    color: gray;
+}
+
+.resultsAdBody {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.resultsAdBodyArticle {
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.resultsAdFooter {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerPriceDate {
+    display: flex;
+}
+
+.footerPrice {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0;
+    font-weight: bold;
+    font-size: 30px;
+    color: navy;
+}
+
+.footerProvince {
+    display: flex;
+    flex-grow: 1;
+    color: navy;
+    font-weight: 600;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footerDate {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+}

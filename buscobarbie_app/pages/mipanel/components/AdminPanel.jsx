@@ -5,7 +5,7 @@ import AdminAds from "./AdminAds"
 import AdminUsers from "./AdminUsers"
 import AdminBlog from "./AdminBlog"
 
-export default function ({ token }) {
+export default function AdminPanel({ token }) {
     const [data, setData] = useState({})
     const [view, setView] = useState('main')
 

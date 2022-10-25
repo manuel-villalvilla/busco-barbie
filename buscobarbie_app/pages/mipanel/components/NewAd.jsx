@@ -35,7 +35,7 @@ const Option = (props) => {
     )
 }
 
-export default withContext(function ({ context: { setSearchHeight, country_code }, setView, tokenFromApi, userId, setAds, setCount, setAdsSuccess }) {
+export default withContext(function NewAd({ context: { setSearchHeight, country_code }, setView, tokenFromApi, userId, setAds, setCount, setAdsSuccess }) {
     const [error, setError] = useState({
         images: null,
         bottom: null

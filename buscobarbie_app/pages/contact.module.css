@@ -84,8 +84,8 @@
     border: 2px ridge rgb(233, 96, 155);
 }
 
-.loginButton:hover {
-    background-color: lightgray;
+.loginButton:hover, .thankyouButton:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .error {

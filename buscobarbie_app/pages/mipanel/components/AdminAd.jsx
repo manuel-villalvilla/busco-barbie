@@ -3,7 +3,7 @@ import Image from 'next/image'
 import verifyAd from '../../../logic/verifyAd'
 import retrieveAdminData from '../../../logic/retrieveAdminData'
 
-export default function ({ ad, showAd, token, setData }) {
+export default function AdminAd({ ad, showAd, token, setData }) {
     const handleVerify = async (boolean) => {
         try {
             if (boolean) await verifyAd(true, ad._id, token.tokenFromApi)

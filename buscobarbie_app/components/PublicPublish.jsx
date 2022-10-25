@@ -38,7 +38,7 @@ const Option = (props) => {
   )
 }
 
-export default withContext(function ({ context: { setSearchHeight, country_code } }) {
+export default withContext(function PublicPublish({ context: { setSearchHeight, country_code } }) {
   const [error, setError] = useState({
     images: null,
     bottom: null
@@ -518,12 +518,12 @@ export default withContext(function ({ context: { setSearchHeight, country_code 
         />
         <p className={styles.formText}>Entre 8 y 20 caracteres, incluidos: !@#$%^&*</p>
       </div>
-      <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} />
       <div className={styles.checkboxContainer}>
         <input type="checkbox" id="accept" name="accept" className={styles.checkboxInput} value="accept" required={true} />
         <label className={styles.checkboxLabel} htmlFor="accept">
           Acepto las <Link href={`${APP_URL}/terms-and-conditions`} passHref><a target="_blank" rel="noopener noreferrer" className={styles.termsLink}>Condiciones de Servicio</a></Link></label>
       </div>
+      <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} />
       {error.bottom && <p ref={errorBottomRef} className={styles.error}>{error.bottom}</p>}
       <button type='submit' className={styles.submitButton}>Enviar</button>
     </form></>}

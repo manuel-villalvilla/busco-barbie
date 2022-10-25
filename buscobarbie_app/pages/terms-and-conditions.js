@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { animateScroll as scroll } from 'react-scroll'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
-export default function ({ country }) {
+export default function TermsAndConditions({ country }) {
     return <div className={styles.container}>
         <h4 className={styles.title}>Términos y Condiciones de uso:</h4>
         <div className={styles.blockContainer}>
@@ -24,6 +24,7 @@ export default function ({ country }) {
             <p>También almacenaremos cookies relativas al inicio de sesión para facilitarte el acceso a tu panel de control. Se guardarán 
                 cookies de terceros si eliges iniciar sesión con otros proveedores.
             </p>
+            <p>Se guardará también una cookie relativa al Recaptcha V2 de <span>Google</span>.</p>
         </div>
         <div className={styles.blockContainer}>
             <h5 className={styles.subtitle}>USO DEL SITIO</h5>
@@ -87,7 +88,7 @@ export default function ({ country }) {
             <h5 className={styles.subtitle}>TRATAMIENTO DE DATOS</h5>
             <p>Aquéllos usuarios que inicien sesión a traves de <span>Google</span> o se registren a través del formulario <Link href={`${APP_URL}/${country}/publicar`}><a className={styles.link}>publicar</a></Link>, aceptan ceder 
             sus datos a <span>BuscoBarbie.com</span> para almacenarlos en una base de datos y utilizarlos para dar servicio al usuario con las prestaciones de la aplicación.</p>
-            <p>El usuario registrado tiene derecho a reclamar o solicitar la eliminación de sus datos, o bien a través del formulario de <Link href={`${APP_URL}/contact`}><a className={styles.link}>contacto</a></Link> o 
+            <p>El usuario registrado tiene derecho a reclamar o solicitar la eliminación de sus datos, o bien a través del formulario de <Link href={`${APP_URL}/contact`}><a className={styles.link}>contacto</a></Link>, o 
             bien eliminando la cuenta desde el panel de control del usuario.</p>
             <p>Para los usuarios registrados mediante <span>Google</span>, sólo almacenaremos el nombre y la dirección de email proporcionados por esta plataforma. Se recuerda que por motivos de seguridad, la dirección de email nunca se hará pública.</p>
         </div>

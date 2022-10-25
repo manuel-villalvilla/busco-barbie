@@ -6,7 +6,7 @@ import styles from './index.module.css'
 import MainPanel from './components/MainPanel'
 import AdminPanel from "./components/AdminPanel"
 
-function mipanel({ context: { setSearchHeight }, pack, token }) {
+function MiPanel({ context: { setSearchHeight }, pack, token }) {
     const [ads, setAds] = useState(pack.ads ? pack.ads : [])
     const [user, setUser] = useState(pack.user ? pack.user : {})
     const [count, setCount] = useState(pack.ads ? pack.ads.length : 0)
@@ -41,4 +41,4 @@ export async function getServerSideProps({ req, res }) {
         return { props: { pack: {}, token } }
 }
 
-export default withContext(mipanel)
+export default withContext(MiPanel)

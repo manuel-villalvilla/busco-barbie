@@ -1,0 +1,15 @@
+.verifyContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.verifyContainer > p {
+    text-align: center;
+}
+
+.verifyContainer > h3 {
+    text-align: center;
+}

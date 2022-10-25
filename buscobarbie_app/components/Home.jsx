@@ -1,4 +1,3 @@
-import { animateScroll as scroll } from 'react-scroll'
 import { useRouter } from 'next/router'
 import PaginatedResults from './PaginatedResults'
 import { useState, useEffect, useRef } from 'react'
@@ -6,14 +5,8 @@ import { useState, useEffect, useRef } from 'react'
 function Home({ data, page, province, search, categories, country, year, tags, sort }) {
   const [stateData, setStateData] = useState(data)
   const router = useRouter()
-  let storageRef = useRef(true) // esto es para evitar q el useEffect se ejecute en el primer renderizado
-  let storageRef2 = useRef(true)
-
-  /* Component top scrolling when page changes. This useEffect is prevented from running on first render */
-  useEffect(() => {
-    if (!storageRef2.current) scroll.scrollToTop()
-    return () => { storageRef2.current = false }
-  }, [page])
+  const storageRef = useRef(true)
+  const paginatedRef = useRef(null)
 
   /* Re-render component with fresh data. This useEffect is prevented from running on first render */
   useEffect(() => {
@@ -40,10 +33,11 @@ function Home({ data, page, province, search, categories, country, year, tags, s
     router.push({
       pathname: `/${country}`,
       query
-    }, undefined, { scroll: false }) // no funciona bien su scroll incorporado, default = true
+    }, undefined, { scroll: false })
+    paginatedRef.current.scrollIntoView()
   }
 
-  return <PaginatedResults search={search} page={page - 1} data={stateData} onPageClick={handlePageClick} />
+  return <PaginatedResults forwardRef={paginatedRef} search={search} page={page - 1} data={stateData} onPageClick={handlePageClick} />
 }
 
 export default Home

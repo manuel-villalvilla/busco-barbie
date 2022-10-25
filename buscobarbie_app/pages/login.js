@@ -84,6 +84,13 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
   return <>
     {view === 'login' && <div className={styles.loginContainer}>
       <h4 className={styles.title}>ACCESO A MI CUENTA</h4>
+      <GoogleButton
+        type='dark'
+        label='Inicia sesión con Google'
+        onClick={async () => {
+          await signIn('google', { redirect: false })
+        }}
+      />
       <form className={styles.form} onSubmit={handleFormSubmit}>
         <div className={styles.emailContainer}>
           <label htmlFor='loginEmail' className={styles.emailLabel}>EMAIL:</label>
@@ -127,13 +134,6 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
         >Entrar
         </button>
       </form>
-      <GoogleButton
-        type='dark'
-        label='Inicia sesión con Google'
-        onClick={async () => {
-          await signIn('google', { redirect: false })
-        }}
-      />
     </div>
     }
     {view === 'forgotten' && <div className={styles.loginContainer}>

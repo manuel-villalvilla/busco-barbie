@@ -10,7 +10,7 @@ import { animateScroll as scroll } from 'react-scroll'
 import deleteUser from '../../../logic/deleteUser'
 const URL = process.env.NEXT_PUBLIC_APP_URL
 
-export default function ({ user, ads, setUser, setAds, token, count, setCount }) {
+export default function MainPanel({ user, ads, setUser, setAds, token, count, setCount }) {
   const [ad, setAd] = useState(null)
   const [adId, setAdId] = useState(null) // aqui se guarda el id del anuncio
   const [adsError, setAdsError] = useState(null)
@@ -95,7 +95,7 @@ export default function ({ user, ads, setUser, setAds, token, count, setCount })
         {ads.length ? ads.map(ad => {
           return <div className={styles.adDiv} id='ad-div' key={ad._id.toString()}>
             <div className={styles.adTitle}><p>{ad.title}</p></div>
-            <div className={styles.adLink}>{ad.verified ? <Link href={`${URL}/${ad.location.country}/ads/${ad._id.toString()}`} passHref><a className={styles.adLinkA}>Enlace</a></Link> : <span>🔴</span>}</div>
+            <div className={styles.adLink}>{ad.verified ? <Link href={`${URL}/${ad.location.country}/ads/${ad._id.toString()}`}><a className={styles.adLinkA}>Enlace</a></Link> : <span>🔴</span>}</div>
             <div className={styles.adButtons}>
               <button
                 type='button'

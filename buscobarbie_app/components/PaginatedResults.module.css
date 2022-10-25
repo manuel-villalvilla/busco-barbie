@@ -1,0 +1,59 @@
+.paginatedAds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination {
+    margin: 0;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    gap: 1px;
+}
+
+.paginationPage {
+    padding: 10px;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    border: 2px solid rgb(233, 96, 155);
+    text-shadow: 1px 1px 1px navy;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.active {
+    background-color: navy;
+    color: #fff;
+    cursor: pointer;
+}
+
+.breakMe {
+    padding: 10px;
+    background-color: #fff;
+    color: rgb(233, 96, 155);
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
+    font-size: 18px;
+}
+
+.goTopButton {
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
+    color:rgb(233, 96, 155);
+    font-weight: 400;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px navy;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+}
+
+.goTopButton:hover {
+    background-color: rgba(211,211,211,.2);
+}

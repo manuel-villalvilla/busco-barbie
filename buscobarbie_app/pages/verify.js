@@ -1,9 +1,10 @@
 import verifyUser from "../logic/verifyUser"
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import styles from './verify.module.css'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
-export default function ({ res }) {
+export default function Verify({ res }) {
     const [view, setView] = useState('ok')
 
     useEffect(() => {
@@ -12,7 +13,7 @@ export default function ({ res }) {
         else if (res === 'alreadyVerified') setView('alreadyVerified')
     }, [])
 
-    return <div className="verify-container">
+    return <div className={styles.verifyContainer}>
         {
             view === 'ok' && <h3>Tu usuario ha sido verificado correctamente, ya puedes iniciar sesión</h3>
         }

@@ -1,20 +1,21 @@
 import ResultsAds from "./ResultsAds";
 import ReactPaginate from 'react-paginate'
 import { animateScroll as scroll } from 'react-scroll'
+import styles from './PaginatedResults.module.css'
 
-function PaginatedItems({ search, page, data, onPageClick }) { // search solo se envia a ResultsAds
+function PaginatedResults({ forwardRef, search, page, data, onPageClick }) { // search solo se envia a ResultsAds
     return (
-        <div className="paginated-ads">
+        <div className={styles.paginatedAds} ref={forwardRef}>
             <ReactPaginate
                 previousLabel={'Anterior'}
                 nextLabel={'Siguiente'}
                 breakLabel={'...'}
-                breakClassName={'break-me'}
-                activeClassName={'active'}
-                containerClassName={'pagination'}
-                pageClassName={'pagination-page'}
-                nextClassName={'pagination-page'}
-                previousClassName={'pagination-page'}
+                breakClassName={styles.breakMe}
+                activeClassName={styles.active}
+                containerClassName={styles.pagination}
+                pageClassName={styles.paginationPage}
+                nextClassName={styles.paginationPage}
+                previousClassName={styles.paginationPage}
 
                 pageCount={data.totalPages}
                 marginPagesDisplayed={1}
@@ -30,12 +31,12 @@ function PaginatedItems({ search, page, data, onPageClick }) { // search solo se
                 previousLabel={'Anterior'}
                 nextLabel={'Siguiente'}
                 breakLabel={'...'}
-                breakClassName={'break-me'}
-                activeClassName={'active'}
-                containerClassName={'pagination'}
-                pageClassName={'pagination-page'}
-                nextClassName={'pagination-page'}
-                previousClassName={'pagination-page'}
+                breakClassName={styles.breakMe}
+                activeClassName={styles.active}
+                containerClassName={styles.pagination}
+                pageClassName={styles.paginationPage}
+                nextClassName={styles.paginationPage}
+                previousClassName={styles.paginationPage}
 
                 pageCount={data.totalPages}
                 marginPagesDisplayed={1}
@@ -45,9 +46,9 @@ function PaginatedItems({ search, page, data, onPageClick }) { // search solo se
                 renderOnZeroPageCount={null}
                 forcePage={page}
             />
-            <button type='button' className="gotop-button" onClick={() => scroll.scrollToTop()}>Volver arriba</button>
+            {data.count !== 0 && <button type='button' className={styles.goTopButton} onClick={() => scroll.scrollToTop()}>Volver arriba</button>}
         </div>
     );
 }
 
-export default PaginatedItems
+export default PaginatedResults

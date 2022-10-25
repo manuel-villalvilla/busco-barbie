@@ -3,7 +3,7 @@ import { getCookie, setCookie } from 'cookies-next'
 import withContext from '../../../utils/withContext'
 import { useEffect } from 'react'
 
-export default withContext(function ({ country, context: { setCountry } }) {
+export default withContext(function Publicar({ country, context: { setCountry } }) {
     useEffect(() => {
         if (country !== 'MX')
             setCountry('MX')

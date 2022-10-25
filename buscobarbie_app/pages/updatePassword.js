@@ -9,7 +9,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 const charsString = 'abcdefghijklmnñopqrstuvwxyzáéíóúÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!@#$%^&*'
 const chars = charsString.split('')
 
-export default function ({ token, id }) {
+export default function UpdatePassword({ token, id }) {
     const [randomPassword, setRandomPassword] = useState(null)
     const [error, setError] = useState(null)
     const [view, setView] = useState('form')

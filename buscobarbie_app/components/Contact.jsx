@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, forwardRef } from 'react'
 import styles from './Contact.module.css'
 import ReCAPTCHA from 'react-google-recaptcha'
 import contactUser from '../logic/contactUser'
 const SITE_KEY = process.env.NEXT_PUBLIC_SITE_KEY
 
-function Contact({ ad }) {
+function Contact({ ad }, ref) {
     const [isSearching, setIsSearching] = useState(false)
     const [remaining, setRemaining] = useState(500)
     const [error, setError] = useState(null)
@@ -39,7 +39,7 @@ function Contact({ ad }) {
         try {
             const res = await contactUser(token, name, email, body, ad.user.toString())
             if (res.status === 200) setModalView('thankyou')
-                
+
         } catch (error) {
             if (error.message === 'name is empty or blank') setError('Introduce un nombre')
             else if (error.message === 'email is empty or blank') setError('Introduce tu email')
@@ -49,10 +49,10 @@ function Contact({ ad }) {
         }
     }
 
-    return <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+    return <div className={styles.modalContent}>
 
         {modalView === 'form' && <>
-            <div className={styles.title}><h4>Contactar con <span>{ad.name}</span></h4></div>
+            <div className={styles.title} ref={ref}><h4>Contactar con <span>{ad.name}</span></h4></div>
 
             <form id='contactForm' className={styles.form} onSubmit={event => handleFormSubmit(event)}>
                 <div className={styles.nameContainer}>
@@ -114,4 +114,4 @@ function Contact({ ad }) {
     </div>
 }
 
-export default Contact
+export default forwardRef(Contact)

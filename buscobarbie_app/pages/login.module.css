@@ -70,7 +70,7 @@
 }
 
 .loginButton:hover, .forgottenSendButton:hover, .forgottenCancelButton:hover {
-    background-color: lightgray;
+    background-color: rgba(211,211,211,.2);
 }
 
 .forgottenCancelButton {

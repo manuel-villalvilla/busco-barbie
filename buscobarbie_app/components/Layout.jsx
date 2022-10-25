@@ -3,7 +3,7 @@ import Footer from './Footer'
 import Context from '../utils/Context'
 import { useState } from 'react'
 
-export default function ({ children, country_code }) {
+export default function Layout({ children, country_code }) {
     const [searchHeight, setSearchHeight] = useState(0)
     const [country, setCountry] = useState(country_code)
 

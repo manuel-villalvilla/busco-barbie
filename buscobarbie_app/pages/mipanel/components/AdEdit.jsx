@@ -35,7 +35,7 @@ const Option = (props) => {
     )
 }
 
-export default function ({ ad, setView, token, setAds, user, setAdsSuccess }) {
+export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess }) {
     const [stateAd, setAd] = useState(ad)
     const [error, setError] = useState({
         images: null,

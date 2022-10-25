@@ -51,7 +51,7 @@ describe('Retrieve ad with id', () => {
         }
     })
 
-    it('returns empty object from not found ad', async () => {
+    it('returns null from not found ad', async () => {
         const name = 'Manuel Villalvilla'
         const email = TEST_EMAIL
         const password = await bcrypt.hash('123123123', 10)
@@ -72,14 +72,13 @@ describe('Retrieve ad with id', () => {
 
         try {
             const ad = await retrieveAdWithId(location.country, firstAd.id)
-            expect(ad).toBeInstanceOf(Object)
-            expect(Object.keys(ad).length).toBe(0)
+            expect(ad).toBeNull()
         } catch (error) {
             expect(error).toBe(null)
         }
     })
 
-    it('returns empty object from wrong country request', async () => {
+    it('returns null from wrong country request', async () => {
         const name = 'Manuel Villalvilla'
         const email = TEST_EMAIL
         const password = await bcrypt.hash('123123123', 10)
@@ -100,14 +99,13 @@ describe('Retrieve ad with id', () => {
 
         try {
             const ad = await retrieveAdWithId('MX', firstAd.id)
-            expect(ad).toBeInstanceOf(Object)
-            expect(Object.keys(ad).length).toBe(0)
+            expect(ad).toBeNull()
         } catch (error) {
             expect(error).toBe(null)
         }
     })
 
-    it('returns empty object from user not verified', async () => {
+    it('returns null from user not verified', async () => {
         const name = 'Manuel Villalvilla'
         const email = TEST_EMAIL
         const password = await bcrypt.hash('123123123', 10)
@@ -128,8 +126,7 @@ describe('Retrieve ad with id', () => {
 
         try {
             const ad = await retrieveAdWithId(location.country, firstAd.id)
-            expect(ad).toBeInstanceOf(Object)
-            expect(Object.keys(ad).length).toBe(0)
+            expect(ad).toBeNull()
         } catch (error) {
             expect(error).toBe(null)
         }
