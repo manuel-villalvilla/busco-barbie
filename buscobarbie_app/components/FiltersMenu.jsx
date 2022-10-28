@@ -45,6 +45,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
   const cancelFirst1 = useRef(true)
   const cancelFirst2 = useRef(true)
   const formRef = useRef(null)
+  const searchRef = useRef(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -163,11 +164,12 @@ export default function FiltersMenu({ country, province, search, categories, yea
         </div>
 
         <div className={styles.searchContainer}>
-          <label htmlFor="searchFilter" className={styles.label}>Búsqueda por palabras</label>
+          <label htmlFor="searchFilter" className={styles.searchLabel}>Búsqueda por palabras</label>
           <input
             placeholder={isSearching ? '' : "Introduce tu búsqueda"}
             className={styles.searchTextInput}
             type='text'
+            ref={searchRef}
             maxLength={30}
             name='search'
             id="searchFilter"
@@ -186,6 +188,10 @@ export default function FiltersMenu({ country, province, search, categories, yea
               setTimeoutId(id)
             }}
           />
+          {stateFormValues.search && <button type='button' className={styles.deleteSearchButton} onClick={() => {
+            setStateFormValues({ ...stateFormValues, search: '' })
+            handleFormOnChange(queryConstructor({ ...stateFormValues, search: '' }))
+          }}>X</button>}
         </div>
 
         <div className={styles.categoriesContainer}>

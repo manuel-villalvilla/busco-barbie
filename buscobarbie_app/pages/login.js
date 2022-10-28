@@ -83,7 +83,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
 
   return <>
     {view === 'login' && <div className={styles.loginContainer}>
-      <h4 className={styles.title}>ACCESO A MI CUENTA</h4>
+      <h2 className={styles.title}>Inicio de sesión</h2>
       <GoogleButton
         type='dark'
         label='Inicia sesión con Google'
@@ -137,7 +137,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
     </div>
     }
     {view === 'forgotten' && <div className={styles.loginContainer}>
-      <h4 className={styles.title}>REESTABLECER CONTRASEÑA</h4>
+      <h3 className={styles.title}>Reestablecer contraseña</h3>
       <form className={styles.forgottenForm} onSubmit={handleForgottenSubmit}>
         <div className={styles.forgottenEmailContainer}>
           <label htmlFor='forgottenLoginEmail' className={styles.forgottenEmailLabel}>EMAIL:</label>

@@ -5,14 +5,7 @@ const Id = ({ ad }) => {
   return <Ad ad={ad}/>
 }
 
-export async function getStaticPaths(context) {
-  return {
-    paths: [],
-    fallback: 'blocking'
-  }
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { params: { id } } = context
   try {
     const ad = await retrieveAdWithId('MX', id)

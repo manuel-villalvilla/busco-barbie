@@ -54,8 +54,9 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
         if (!firsTimeRef.current) {
           if (error.bottom) {
             errorBottomRef.current.scrollIntoView()
-            setTimeout(() => setError({ images: null, bottom: null }), 10000)
+            setTimeout(() => setError({ ...error, bottom: null }), 5000)
           }
+          if (error.images) setTimeout(() => setError({ ...error, images: null }), 5000)
         }
         return () => firsTimeRef.current = false
       }, [error])

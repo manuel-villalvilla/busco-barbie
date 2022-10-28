@@ -51,7 +51,7 @@
     width: 100%;
     border-radius: 10px;
     font-size: 22px;
-    border-color: navy;
+    border-color: rgb(114, 191, 128);
     border-width: 2px;
     height: 40px;
     padding: 5px;
@@ -60,7 +60,7 @@
 .contactMessage {
     border-radius: 10px;
     font-size: 22px;
-    border-color: navy;
+    border-color: rgb(114, 191, 128);
     border-width: 2px;
     padding: 5px;
     width: 100%;
@@ -72,7 +72,7 @@
     display: flex;
     font-weight: 400;
     font-size: 22px;
-    text-shadow: 1px 1px 1px navy;
+    text-shadow: 1px 1px 1px rgb(114, 191, 128);
     justify-content: center;
     align-items: center;
     background-color: #fff;

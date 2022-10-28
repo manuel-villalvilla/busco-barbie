@@ -3,9 +3,9 @@ import ReactPaginate from 'react-paginate'
 import { animateScroll as scroll } from 'react-scroll'
 import styles from './PaginatedResults.module.css'
 
-function PaginatedResults({ forwardRef, search, page, data, onPageClick }) { // search solo se envia a ResultsAds
+function PaginatedResults({ search, page, data, onPageClick }) { // search solo se envia a ResultsAds
     return (
-        <div className={styles.paginatedAds} ref={forwardRef}>
+        <div className={styles.paginatedAds}>
             <ReactPaginate
                 previousLabel={'Anterior'}
                 nextLabel={'Siguiente'}

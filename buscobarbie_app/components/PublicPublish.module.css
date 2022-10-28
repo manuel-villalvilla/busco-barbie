@@ -17,13 +17,19 @@
     border-radius: 10px;
 }
 
-.firstQuestionContainer>p {
+.firstQuestionContainer > p {
     text-align: center;
 }
 
 .firstQuestion {
-    margin-bottom: 0;
+    margin: 0;
     text-align: center;
+}
+
+.firstQuestionO {
+    margin: 0;
+    text-align: center;
+    font-size: 40px;
 }
 
 .firstQuestion > span {
@@ -39,6 +45,7 @@
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+    background-color: #fff;
     width: 100%;
     max-width: 760px;
     gap: 10px;
@@ -46,15 +53,6 @@
 
 .form > p {
     margin: 0;
-}
-
-.form > h4 {
-    margin: 0;
-    text-align: center;
-}
-
-.form > h4 > span {
-    color: rgb(233, 96, 155);
 }
 
 .formText {
@@ -77,7 +75,8 @@
 .checkboxContainer,
 .yearsContainer,
 .imagesContainer,
-.tagsContainer {
+.tagsContainer,
+.countryContainer {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -100,8 +99,8 @@
 .priceLabel,
 .categoriesLabel,
 .imagesLabel,
-.label {
-    color:rgb(233, 96, 155);
+.label,
+.countryLabel {
     margin-bottom: 2px;
 }
 
@@ -113,7 +112,7 @@
     justify-content: center;
     align-items: center;
     border-style: none;
-    background-color: navy;
+    background-color: rgb(114, 191, 128);
     color: white;
     border-radius: 10px;
     width: fit-content;
@@ -124,8 +123,6 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
-    border: 2px solid navy;
-    font-size: 16px;
     background-color: #fff;
 }
 
@@ -138,14 +135,11 @@
 .phoneInput,
 .priceInput,
 .categoriesSelect,
-.yearSelect {
+.yearSelect,
+.countrySelect {
     padding: 5px;
     width: 100%;
     border-radius: 10px;
-    border: 2px solid navy;
-    height: 40px;
-    
-    font-size: 16px;
     background-color: #fff;
 }
 
@@ -194,7 +188,7 @@
     justify-content: center;
     align-items: center;
     border-style: none;
-    background-color: navy;
+    background-color: rgb(114, 191, 128);
     color: white;
     border-radius: 10px;
     font-size: 14px;
@@ -209,8 +203,7 @@
 }
 
 .checkboxInput {
-    width: 20px;
-    height: 20px;
+    width: 25px;
 }
 
 .termsLink {
@@ -222,16 +215,20 @@
     display: flex;
     font-weight: 400;
     font-size: 22px;
-    text-shadow: 1px 1px 1px navy;
+    text-shadow: 1px 1px 1px rgb(114, 191, 128);
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    color: rgb(233, 96, 155);
+    color: #000;
     text-decoration: none;
-    height: 60px;
-    width: 110px;
+    height: 50px;
+    width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
+}
+
+.submitButton:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .error {

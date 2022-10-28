@@ -17,17 +17,14 @@
 .paginationPage {
     padding: 10px;
     background-color: #fff;
-    color: rgb(233, 96, 155);
-    border: 2px solid rgb(233, 96, 155);
-    text-shadow: 1px 1px 1px navy;
+    border: 2px ridge rgb(233, 96, 155);
     cursor: pointer;
     font-size: 18px;
     border-radius: 10px;
 }
 
 .active {
-    background-color: navy;
-    color: #fff;
+    background-color: rgba(247, 186, 212, 0.3);
     cursor: pointer;
 }
 
@@ -48,7 +45,7 @@
     color:rgb(233, 96, 155);
     font-weight: 400;
     font-size: 14px;
-    text-shadow: 1px 1px 1px navy;
+    text-shadow: 1px 1px 1px rgb(114, 191, 128);
     background-color: #fff;
     width: fit-content;
     padding: 5px;

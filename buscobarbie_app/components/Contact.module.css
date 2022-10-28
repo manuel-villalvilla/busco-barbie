@@ -14,7 +14,6 @@
     padding: 5px;
     width: fit-content;
     text-align: center;
-    color: rgb(233, 96, 155);
     margin: 0;
     background-color: #fff;
     border-radius: 10px;
@@ -64,9 +63,6 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
-    border: 2px solid navy;
-    height: 40px;
-    font-size: 16px;
     background-color: #fff;
 }
 
@@ -77,11 +73,8 @@
 }
 
 .bodyInput {
-    font-size: 16px;
-    letter-spacing: 1px;
     padding: 5px;
     width: 100%;
-    border: 2px solid navy;
     border-radius: 10px;
 }
 
@@ -108,11 +101,10 @@
     display: flex;
     font-weight: 400;
     font-size: 22px;
-    text-shadow: 1px 1px 1px navy;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    color: rgb(233, 96, 155);
+    color: #000;
     text-decoration: none;
     height: 60px;
     width: 110px;

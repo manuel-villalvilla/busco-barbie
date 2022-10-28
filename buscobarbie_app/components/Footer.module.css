@@ -9,6 +9,11 @@
     align-items: center;
 }
 
+.paypalImage {
+    border-style: none;
+    height: 30px;
+}
+
 .linksDiv {
     width: 100%;
     display: flex;

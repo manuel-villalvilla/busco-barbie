@@ -30,10 +30,11 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
 
 MyApp.getInitialProps = async (context) => {
     const { ctx, ctx: { req, res } } = context
-    if (req && req.headers) {
-        console.log('IP: ' + req.headers["x-real-ip"] + ' ' + req.headers["accept-language"])
-    }
     let country_code = getCookie('country', { req, res })
+    if (country_code)
+        if (req && req.headers) {
+            console.log('IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | Cookie country: ' + country_code)
+        }
     const session = await getSession(ctx)
     const appProps = await App.getInitialProps(context)
 
@@ -48,11 +49,12 @@ MyApp.getInitialProps = async (context) => {
                 if (res.status === 200) {
                     country_code = res.data.country.iso_code
                     if (country_code !== 'MX' && country_code !== 'ES' && country_code !== 'AR') country_code = 'ES'
+                    console.log('IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code)
                 }
                 else country_code = 'ES'
             } catch (error) {
                 country_code = 'ES'
-                
+
                 setCookie('country', country_code, { req, res, maxAge: 30 * 24 * 60 * 60 })
 
                 return {

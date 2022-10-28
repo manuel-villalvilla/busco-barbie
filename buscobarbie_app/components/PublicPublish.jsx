@@ -8,6 +8,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import Select from 'react-select'
 import { components } from 'react-select'
 import errorHandler from '../utils/publicPublishErrorHandler'
+import { useRouter } from "next/router"
 const SITE_KEY = process.env.NEXT_PUBLIC_SITE_KEY
 const imageTypeRegex = /image\/(png|jpg|jpeg|gif)/gm;
 const charsString = 'abcdefghijklmnñopqrstuvwxyzáéíóúÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!@#$%^&*'
@@ -50,6 +51,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
   const [imageFiles, setImageFiles] = useState([])
   const [view, setView] = useState('form')
   const [images, setImages] = useState([])
+  const [stateCountry, setStateCountry] = useState(country_code)
   const [stateCategories, setStateCategories] = useState(null)
   const [stateTags, setStateTags] = useState([])
   const firsTimeRef = useRef(true)
@@ -57,8 +59,13 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
   const imagesRef = useRef(null)
   const captchaRef = useRef(null)
   const errorBottomRef = useRef(null)
+  const router = useRouter()
 
   useEffect(() => setSearchHeight(0), [])
+
+  useEffect(() => {
+    if (stateCountry !== country_code) setStateCountry(country_code)
+  }, [country_code])
 
   useEffect(() => {
     if (!firsTimeRef.current) {
@@ -242,21 +249,45 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
       <p>Si es así, <Link href={`${APP_URL}/login`} passHref><a className={styles.link}>pulsa aquí</a></Link> para publicar un anuncio desde tu panel de control.</p>
     </div>
 
+    <div className={styles.firstQuestionContainer}>
+      <h3 className={styles.firstQuestionO}>Ó</h3>
+    </div>
+
+    <div className={styles.firstQuestionContainer}>
+      <h3 className={styles.firstQuestion}>¿Quieres publicar tu primer anuncio en <span>BuscoBarbie.com</span>?</h3>
+      <p>Para ello, completa el siguiente formulario:</p>
+    </div>
+
     <form className={styles.form} encType="multipart/form-data" onSubmit={async (event) => {
       event.preventDefault()
 
       handleFormSubmit(event)
     }}>
-      <h4>NUEVO ANUNCIO EN <span>{
-        country_code === 'AR' ? 'ARGENTINA' :
-          country_code === 'MX' ? 'MÉXICO' :
-            country_code === 'ES' ? 'ESPAÑA' :
-              country_code === 'US' ? 'EE.UU.' : null
-      }</span></h4>
       <p>Campos obligatorios <span style={{ color: 'red' }}>*</span></p>
 
+      <div className={styles.countryContainer}>
+        <label
+          htmlFor="country"
+          className={styles.countryLabel}>
+          PAÍS:*
+        </label>
+        <select
+          className={styles.countrySelect}
+          name="country"
+          id="country"
+          value={stateCountry}
+          onChange={e => router.push({
+            pathname: `/${e.target.value}/publicar`
+          }, undefined, { scroll: false })}
+        >
+          <option value='ES'>España</option>
+          <option value='MX'>México</option>
+          <option value='AR'>Argentina</option>
+        </select>
+      </div>
+
       <div className={styles.titleContainer} id='titleContainer'>
-        <label htmlFor='title' className={styles.titleLabel}>TÍTULO:<span style={{ color: 'red' }}>*</span></label>
+        <label htmlFor='title' className={styles.titleLabel}>TÍTULO:*</label>
         <input
           type='text'
           className={styles.titleInput}
@@ -274,7 +305,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
       </div>
 
       <div className={styles.bodyContainer}>
-        <label htmlFor='body' className={styles.bodyLabel}>DESCRIPCIÓN:<span style={{ color: 'red' }}>*</span></label>
+        <label htmlFor='body' className={styles.bodyLabel}>DESCRIPCIÓN:*</label>
         <textarea
           className={styles.bodyInput}
           name='body'
@@ -295,7 +326,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
         <label
           htmlFor="province"
           className={styles.provinceLabel}>
-          {country_code === 'MX' || country_code === 'US' ? 'ESTADO:' : 'PROVINCIA:'}<span style={{ color: 'red' }}>*</span>
+          {country_code === 'MX' || country_code === 'US' ? 'ESTADO:' : 'PROVINCIA:'}*
         </label>
         <select
           className={styles.provinceSelect}
@@ -342,7 +373,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
       </div>
 
       <div className={styles.priceContainer}>
-        <label htmlFor='price' className={styles.priceLabel}>PRECIO:<span style={{ color: 'red' }}>*</span></label>
+        <label htmlFor='price' className={styles.priceLabel}>PRECIO:*</label>
         <input
           type='number'
           className={styles.priceInput}
@@ -355,7 +386,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
       </div>
 
       <div className={styles.categoriesContainer}>
-        <label htmlFor="categories" className={styles.categoriesLabel}>CATEGORÍAS:<span style={{ color: 'red' }}>*</span></label>
+        <label htmlFor="categories" className={styles.categoriesLabel}>CATEGORÍAS:*</label>
         <select
           className={styles.categoriesSelect}
           name='categories'
@@ -473,7 +504,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
       </div>
 
       <div className={styles.nameContainer}>
-        <label htmlFor='name' className={styles.nameLabel}>NOMBRE:<span style={{ color: 'red' }}>*</span></label>
+        <label htmlFor='name' className={styles.nameLabel}>NOMBRE:*</label>
         <input
           type='text'
           className={styles.nameInput}
@@ -486,7 +517,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
 
       <div className={styles.emailContainer}>
         <label htmlFor='email' className={styles.emailLabel}>
-          EMAIL:<span style={{ color: 'red' }}>*</span>
+          EMAIL:*
         </label>
         <input
           type='email'
@@ -504,7 +535,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
       </div>
 
       <div className={styles.passwordContainer}>
-        <label htmlFor='password' className={styles.passwordLabel}>NUEVA CONTRASEÑA:<span style={{ color: 'red' }}>*</span></label>
+        <label htmlFor='password' className={styles.passwordLabel}>NUEVA CONTRASEÑA:*</label>
         <button type='button' className={styles.randomPasswordButton} onClick={handleRandomPassword}>ALEATORIA</button>
         <input
           type={randomPassword ? 'text' : 'password'}

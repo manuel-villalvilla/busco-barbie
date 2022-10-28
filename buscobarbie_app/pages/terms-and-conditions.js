@@ -22,7 +22,7 @@ export default function TermsAndConditions({ country }) {
                 <input type="hidden" name="no_recurring" value="0" />
                 <input type="hidden" name="item_name" value="Si te gusta el proyecto BuscoBarbie.com y deseas contribuir a su mejora, cualquier donativo es bienvenido." />
                 <input type="hidden" name="currency_code" value="EUR" />
-                <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Botón Donar con PayPal" />
+                <input type="image" className={styles.paypalImage} src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Botón Donar con PayPal" />
                 <img alt="" border="0" src="https://www.paypal.com/es_ES/i/scr/pixel.gif" width="1" height="1" />
             </form>
         </div>

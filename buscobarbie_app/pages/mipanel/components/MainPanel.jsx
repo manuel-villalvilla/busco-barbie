@@ -41,9 +41,10 @@ export default function MainPanel({ user, ads, setUser, setAds, token, count, se
 
   useEffect(() => {
     for (const ad of ads) {
-      if (ad.verified === false) return setUnverified(true)
+      if (ad.verified === false) setUnverified(true)
+      else setUnverified(false)
     }
-  }, [])
+  }, [ads])
 
   const handleDeleteClick = async () => {
     try {

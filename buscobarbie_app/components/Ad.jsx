@@ -6,15 +6,15 @@ import Contact from './Contact'
 import withContext from '../utils/withContext'
 import { CSSTransition } from 'react-transition-group'
 import AnimateHeight from 'react-animate-height'
+import { animateScroll as scroll } from 'react-scroll'
 
 export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
   const [contactHeight, setContactHeight] = useState(0)
-  const adContainerRef = useRef(null)
   const contactRef = useRef(null)
 
   useEffect(() => {
     setSearchHeight(0)
-    adContainerRef.current.scrollIntoView()
+    scroll.scrollToTop()
   }, [])
 
   const handleAnimationHeightChange = (height) => {
@@ -32,15 +32,15 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
   }
 
   return <>
-    <button type='button' className={styles.backButtonTop} onClick={() => history.back()}>VOLVER</button>
-    <div className={styles.adContainer} ref={adContainerRef}>
+    {/* <button type='button' className={styles.backButtonTop} onClick={() => history.back()}>Volver atrás</button> */}
+    <div className={styles.adContainer}>
       {!ad ?
         <p style={{ textAlign: 'center' }}>Lo sentimos, no encontramos el anuncio, o bien no está verificado o publicado</p>
         :
         <>
           <div className={styles.title}><h3>{ad.title}</h3></div>
           <div className={styles.header}>
-            {ad.image.length > 0 &&
+            {ad.image.length > 0 && <div className={styles.carouselContainer}>
               <Carousel
                 renderArrowPrev={(clickHandler, hasPrev, label) => {
                   if (hasPrev)
@@ -77,23 +77,23 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
                 dynamicHeight={true}
                 showThumbs={false}
                 statusFormatter={(currentItem, total) => <span className={styles.statusIndicator}>{currentItem} de {total}</span>}
-                onClickItem={(index, item) => window.open(item.key, '_blank').focus()}
+                onClickItem={(index, item) => window.open(item.key).focus()}
               >
                 {ad.image.map((image) => {
                   return <div key={image}>
-                    <img src={image} />
+                    <img src={image} className={styles.image}/>
                   </div>
                 })}
-              </Carousel>}
-            {ad.image.length === 0 && <p>Sin imágenes</p>}
+              </Carousel></div>}
+            {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
           </div>
           <div className={styles.body}><article>{ad.body}</article></div>
-          {ad.location.area && <div className={styles.area}><p>Zona: {ad.location.area}</p></div>}
           <div className={styles.footerCategories}>
             {ad.year && <p>Década: <span>{ad.year}</span></p>}
-            <p><span>#</span>{ad.categories}</p>
-            <div className={styles.tagsContainer}>{ad.tags.map((tag, index) => <p key={index}><span>#</span>{tag}</p>)}</div>
+            <p><span className="material-symbols-outlined">category</span>{ad.categories}</p>
+            <div className={styles.tagsContainer}>{ad.tags.map((tag, index) => <p key={index}><span className="material-symbols-outlined">category</span>{tag}</p>)}</div>
           </div>
+          {ad.location.area && <div className={styles.area}><p>Zona: {ad.location.area}</p></div>}
           <div className={styles.footerPriceProvince}>
             <div className={styles.footerPrice}><p>{countryCurrency(ad.location.country, ad.price)}</p></div>
             <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
@@ -104,6 +104,6 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
         <Contact ref={contactRef} ad={ad} />
       </AnimateHeight></>}
     </div>
-    <button type='button' className={styles.backButtonBot} onClick={() => history.back()}>VOLVER</button>
+    <button type='button' className={styles.backButtonBot} onClick={() => history.back()}>Volver atrás</button>
   </>
 })

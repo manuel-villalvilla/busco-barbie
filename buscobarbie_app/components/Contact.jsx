@@ -50,7 +50,7 @@ function Contact({ ad }, ref) {
     }
 
     return <div className={styles.modalContent}>
-
+        <hr style={{width: '100%'}}/>
         {modalView === 'form' && <>
             <div className={styles.title} ref={ref}><h4>Contactar con <span>{ad.name}</span></h4></div>
 

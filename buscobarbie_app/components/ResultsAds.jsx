@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './ResultsAds.module.css'
-// Link prefetch ocurrs in production
 
 export default function ResultsAds({ search, currentItems, count }) {
   const countryCurrency = (country, price) => {
@@ -20,31 +19,31 @@ export default function ResultsAds({ search, currentItems, count }) {
     </article>
   }
 
+  const myLoader = ({src, width, quality}) => {
+    return `${src}?w=100&q=75`
+  }
+
   return <div className={styles.resultsContainer}>
     <p>Encontrado{count === 1 ? '' : 's'} {count} resultado{count === 1 ? '' : 's'}</p>
     <ul className={styles.resultsList}>
       {currentItems.map(ad => {
         return <Link href={`${ad.location.country}/ads/${ad._id.toString()}`} key={ad._id}>
           <li className={styles.resultsListItem}>
-              <div className={styles.resultsAdTitle}>
-                <h3>{textHighlight(ad.title)}</h3>
+            <div className={styles.resultsAdTitle}>
+              <h2>{textHighlight(ad.title)}</h2>
+            </div>
+            {ad.image.length > 0 && <div className={styles.adImageContainer}><Image src={ad.image[0]} alt='Primera imágen' priority={true} sizes='100vw' layout='responsive' width='100%' height='100%' objectFit='contain' loader={myLoader}/></div>}
+            {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
+            {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
+
+            <div className={styles.resultsAdBody}>{textHighlight(ad.body)}</div>
+            <div className={styles.resultsAdFooter}>
+              <p className={styles.footerProvince}>{ad.location.province}</p>
+              <div className={styles.footerPriceDate}>
+                <p className={styles.footerPrice}>{countryCurrency(ad.location.country, ad.price)}</p>
+                <p className={styles.footerDate}>{ad.elapsed}</p>
               </div>
-              <div className={styles.resultsAdImageContainer}>
-                {ad.image.length > 0 &&
-                  <div className={styles.resultsAdImage}>
-                    <Image className={styles.adImage} src={ad.image[0]} layout='fill' alt='Primera imágen' priority={true} sizes='33vw'></Image>
-                  </div>}
-                {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><p>Sin imágenes</p></div>}
-                {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
-              </div>
-              <div className={styles.resultsAdBody}>{textHighlight(ad.body)}</div>
-              <div className={styles.resultsAdFooter}>
-                <p className={styles.footerProvince}>{ad.location.province}</p>
-                <div className={styles.footerPriceDate}>
-                  <p className={styles.footerPrice}>{countryCurrency(ad.location.country, ad.price)}</p>
-                  <p className={styles.footerDate}>{ad.elapsed}</p>
-                </div>
-              </div>
+            </div>
           </li>
         </Link>
       })}

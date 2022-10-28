@@ -29,7 +29,7 @@
     display: flex;
     font-weight: 400;
     font-size: 22px;
-    text-shadow: 1px 1px 1px navy;
+    text-shadow: 1px 1px 1px rgb(114, 191, 128);
     justify-content: center;
     align-items: center;
     background-color: #fff;
@@ -58,7 +58,7 @@
     cursor: pointer;
     font-weight: 400;
     font-size: 18px;
-    text-shadow: 1px 1px 1px navy;
+    text-shadow: 1px 1px 1px rgb(114, 191, 128);
     border-style: none;
     background-color: #fff;
     color: rgb(233, 96, 155);

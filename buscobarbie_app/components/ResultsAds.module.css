@@ -13,7 +13,7 @@
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
     padding: 10px;
     margin: 0 0 15px 0;
@@ -21,15 +21,14 @@
 
 .resultsListItem {
     background-color: #fff;
+    box-shadow: 0 0 10px 10px rgba(233, 96, 155,.2);
     cursor: pointer;
     display: flex;
     width: 100%;
     max-width: 350px;
     flex-direction: column;
     padding: 10px;
-    gap: 5px;
-    border-radius: 10px;
-    border: 2px solid rgb(233, 96, 155);
+    gap: 10px;
 }
 
 .resultsAdTitle {
@@ -37,42 +36,40 @@
     justify-content: center;
 }
 
-.resultsAdTitle > h3 {
-    margin: 10px 0 10px 0;
-    background-color: #fff;
+.resultsAdTitle > h2 {
     width: fit-content;
     padding: 5px;
     border-radius: 10px;
 }
 
-.resultsAdImageContainer {
-    min-height: 200px;
+.adImageContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+.resultsAdNoImageContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .resultsAdNoImage {
+    font-size: 16px;
     display: flex;
-    height: 200px;
+    height: 100px;
+    width: 100px;
     justify-content: center;
     align-items: center;
     background-color: rgba(211, 211, 211, .5);
     border-radius: 20px;
     color: gray;
     font-weight: 400;
-}
-
-.resultsAdImage {
-    position: relative;
-    height: 300px;
-}
-
-.adsImage {
-    height: auto;
+    margin: auto;
 }
 
 .imageCount {
     display: flex;
     justify-content: flex-end;
-    margin: 5px 10px 0 0;
+    margin: 10px 10px 0 0;
     font-size: 14px;
     color: gray;
 }
@@ -84,6 +81,7 @@
     background-color: #fff;
     padding: 5px;
     border-radius: 10px;
+    margin-top: 20px;
 }
 
 .resultsAdBodyArticle {
@@ -98,36 +96,35 @@
 .resultsAdFooter {
     display: flex;
     flex-direction: column;
-}
-
-.footerPriceDate {
-    display: flex;
-}
-
-.footerPrice {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    margin: 0;
-    font-weight: bold;
-    font-size: 30px;
-    color: navy;
+    padding:10px;
+    gap: 10px;
 }
 
 .footerProvince {
     display: flex;
     flex-grow: 1;
-    color: navy;
     font-weight: 600;
     align-items: center;
     justify-content: flex-end;
+    margin:0;
+}
+
+.footerPriceDate {
+    display: flex;
+    align-items: baseline;
+}
+
+.footerPrice {
+    flex-grow: 1;
+    margin: 0;
+    font-weight: 700;
+    font-size: 30px;
 }
 
 .footerDate {
-    display: flex;
-    align-items: center;
     margin: 0;
     background-color: #fff;
-    padding: 5px;
+    font-size: 16px;
+    padding: 0 5px;
     border-radius: 10px;
 }
