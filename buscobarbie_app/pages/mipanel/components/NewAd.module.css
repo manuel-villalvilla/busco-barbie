@@ -6,12 +6,11 @@
     margin-bottom: 10px;
     cursor: pointer;
     border-radius: 10px;
-    border: 2px solid rgb(233, 96, 155);
-    color:rgb(233, 96, 155);
+    color:#000;
+    background-color: #fff;
     font-weight: 400;
     font-size: 14px;
-    text-shadow: 1px 1px 1px rgb(114, 191, 128);
-    background-color: #fff;
+    border: 2px solid rgb(233, 96, 155);
     width: fit-content;
     padding: 5px;
 }
@@ -21,6 +20,8 @@
 }
 
 .form {
+    background-color: #fff;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +63,8 @@
 .imagesContainer,
 .checkboxContainer,
 .yearsContainer,
-.tagsContainer {
+.tagsContainer,
+.countryContainer {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -82,7 +84,8 @@
 .priceLabel,
 .categoriesLabel,
 .imagesLabel,
-.label {
+.label,
+.countryLabel {
     color:rgb(233, 96, 155);
     margin-bottom: 2px;
 }
@@ -99,7 +102,8 @@
 .phoneInput,
 .priceInput,
 .categoriesSelect,
-.yearSelect {
+.yearSelect,
+.countrySelect {
     padding: 5px;
     width: 100%;
     border-radius: 10px;

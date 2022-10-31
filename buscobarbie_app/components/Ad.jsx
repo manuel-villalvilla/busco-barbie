@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loa
 import { Carousel } from 'react-responsive-carousel'
 import { useEffect, useRef, useState } from 'react'
 import Contact from './Contact'
+import Report from './Report'
 import withContext from '../utils/withContext'
 import { CSSTransition } from 'react-transition-group'
 import AnimateHeight from 'react-animate-height'
@@ -10,7 +11,9 @@ import { animateScroll as scroll } from 'react-scroll'
 
 export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
   const [contactHeight, setContactHeight] = useState(0)
+  const [reportHeight, setReportHeight] = useState(0)
   const contactRef = useRef(null)
+  const reportRef = useRef(null)
 
   useEffect(() => {
     setSearchHeight(0)
@@ -21,9 +24,18 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
     if (height !== 0) contactRef.current.scrollIntoView()
   }
 
+  const handleReportAnimationHeightChange = (height) => {
+    if (height !== 0) reportRef.current.scrollIntoView()
+  }
+
   const handleContactButtonClick = () => {
     if (contactHeight) setContactHeight(0) 
     else setContactHeight('auto')
+  }
+
+  const handleReportButtonClick = () => {
+    if (reportHeight) setReportHeight(0) 
+    else setReportHeight('auto')
   }
 
   const countryCurrency = (country, price) => {
@@ -99,10 +111,18 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
             <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
           </div>
           <button className={styles.contactButton} onClick={handleContactButtonClick}>{contactHeight ? 'Cerrar' : 'Contactar'}</button>
-          <p className={styles.elapsedTime}>{ad.elapsed}</p>
-      <AnimateHeight id='filters-panel' duration={500} height={contactHeight} onHeightAnimationEnd={height => handleAnimationHeightChange(height)}>
+          <div className={styles.elapsedReport}>
+            <p className={styles.elapsedTime}>{ad.elapsed}</p>
+            <button type='button' className={styles.reportButton} onClick={handleReportButtonClick}>{reportHeight ? 'Cerrar' : 'Denunciar'}</button>
+          </div>
+      <AnimateHeight id='contact-panel' duration={500} height={contactHeight} onHeightAnimationEnd={height => handleAnimationHeightChange(height)}>
         <Contact ref={contactRef} ad={ad} />
-      </AnimateHeight></>}
+      </AnimateHeight>
+
+      <AnimateHeight id='report-panel' duration={500} height={reportHeight} onHeightAnimationEnd={height => handleReportAnimationHeightChange(height)}>
+        <Report ref={reportRef} ad={ad} />
+      </AnimateHeight>
+      </>}
     </div>
     <button type='button' className={styles.backButtonBot} onClick={() => history.back()}>Volver atrás</button>
   </>

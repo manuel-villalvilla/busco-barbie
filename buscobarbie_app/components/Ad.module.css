@@ -157,6 +157,7 @@
     margin: 0;
     font-weight: bold;
     font-size: 30px;
+    color:rgb(114, 191, 128);
     display: flex;
     align-items: center;
 }
@@ -229,9 +230,21 @@
     margin-bottom: 10px;
 }
 
+.elapsedReport {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
 .elapsedTime {
     margin: 0;
-    width: 100%;
-    text-align: center;
+}
+
+.reportButton {
+    border-style: none;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
     font-size: 16px;
 }

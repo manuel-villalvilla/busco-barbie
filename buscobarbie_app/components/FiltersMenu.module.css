@@ -77,7 +77,7 @@
 
 .form > p > span {
     color: rgb(233, 96, 155);
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .yearsContainer, .tagsContainer {
@@ -95,9 +95,6 @@
 
 .yearSelect {
     border-radius: 10px;
-    font-size: 16px;
-    
-    height: 40px;
     width: 100%;
     background-color: #E7E0E3;
 }

@@ -39,20 +39,20 @@ function Contact({ ad }, ref) {
         try {
             const res = await contactUser(token, name, email, body, ad.user.toString())
             if (res.status === 200) setModalView('thankyou')
-
+            else setError('Algo salió mal')
         } catch (error) {
             if (error.message === 'name is empty or blank') setError('Introduce un nombre')
             else if (error.message === 'email is empty or blank') setError('Introduce tu email')
             else if (error.message === 'email is not valid') setError('Introduce un email válido')
             else if (error.message === 'body is empty or blank') setError('Escribe un mensaje')
-            else console.log(error.message)
+            else setError('Algo salió mal')
         }
     }
 
-    return <div className={styles.modalContent}>
-        <hr style={{width: '100%'}}/>
+    return <div className={styles.modalContent} ref={ref}>
+        <hr style={{width: '100%', color: 'lightgray'}}/>
         {modalView === 'form' && <>
-            <div className={styles.title} ref={ref}><h4>Contactar con <span>{ad.name}</span></h4></div>
+            <div className={styles.title}><h4>Contactar con <span>{ad.name}</span></h4></div>
 
             <form id='contactForm' className={styles.form} onSubmit={event => handleFormSubmit(event)}>
                 <div className={styles.nameContainer}>

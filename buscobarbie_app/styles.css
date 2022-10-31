@@ -84,7 +84,7 @@ ul {
 
 .reactSelect__control {
     border-radius: 10px !important;
-    font-size: 18px;
+    font-size: 20px;
     border: 2px solid rgb(114, 191, 128) !important;
     width: 100%;
     background-color: #E7E0E3 !important;
@@ -96,6 +96,13 @@ ul {
 
 .reactSelect__input:focus {
     outline: none !important;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 30px;
 }
 
 .my-node-enter {

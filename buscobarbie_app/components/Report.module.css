@@ -1,0 +1,117 @@
+.modalContent {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title > h4 {
+    padding: 5px;
+    width: fit-content;
+    text-align: center;
+    margin: 0;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.phoneP {
+    margin: 0;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.phoneP > span {
+    color:rgb(233, 96, 155);
+    text-transform: capitalize;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.selectContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.selectLabel, .bodyLabel {
+    color:rgb(233, 96, 155);
+}
+
+.select {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.bodyInput {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.bodyContainer > p {
+    margin: 0;
+    font-size: 14px;
+    color: gray;
+}
+
+.recaptcha {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.modalSendButton {
+    cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    height: 60px;
+    width: 110px;
+    border-radius: 20px;
+    border: 2px ridge rgb(233, 96, 155);
+}
+
+.thankyou {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thankyou > h3 {
+    margin: 20px 0 0 0;
+    color: rgb(233, 96, 155);
+}
+
+.thankyou > p {
+    text-align: center;
+}

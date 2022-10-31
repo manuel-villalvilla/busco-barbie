@@ -22,18 +22,20 @@ const { ES, AR, MX } = areas
 const imageTypeRegex = /image\/(png|jpg|jpeg|gif)/gm;
 const Option = (props) => {
     return (
-        <div>
-            <components.Option {...props}>
-                <input
-                    type="checkbox"
-                    checked={props.isSelected}
-                    onChange={() => null}
-                />{" "}
-                <label>{props.label}</label>
-            </components.Option>
-        </div>
+      <div>
+        <components.Option {...props}>
+          <div className='checkbox-label'>
+            <input
+              type="checkbox"
+              checked={props.isSelected}
+              onChange={() => null}
+            />{" "}
+            <label>{props.label}</label>
+          </div>
+        </components.Option>
+      </div>
     )
-}
+  }
 
 export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess }) {
     const [stateAd, setAd] = useState(ad)
@@ -323,15 +325,15 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                     defaultValue={stateAd.location.province}
                 >
                     {country_code === 'AR' && <>
-                        {AR.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+                        {AR.map(place => <option key={place} value={place}>{place}</option>)}
                     </>
                     }
                     {country_code === 'ES' && <>
-                        {ES.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+                        {ES.map(place => <option key={place} value={place}>{place}</option>)}
                     </>
                     }
                     {country_code === 'MX' && <>
-                        {MX.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+                        {MX.map(place => <option key={place} value={place}>{place}</option>)}
                     </>
                     }
                 </select>
@@ -386,7 +388,7 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                     defaultValue={stateAd.categories}
                     onChange={e => setAd({ ...stateAd, categories: e.target.value, tags: [] })}
                 >
-                    <option value='all'>Todas</option>
+                    <option value='all'>Selecciona una categoría</option>
                     <option value='modelos'>Modelos</option>
                     <option value='complementos'>Complementos</option>
                 </select>

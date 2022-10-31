@@ -9,14 +9,14 @@ const { join } = require('path')
 const bcrypt = require('bcryptjs')
 const { env: { MONGO_URL, NAS_IMAGES_URL, ADMIN_EMAIL, ADMIN_PASSWORD } } = process
 // const axios = require('axios')
-const { User, Ad } = require('../models')
+const { User, Ad, FirstConnection } = require('../models')
 const { connect, disconnect } = require('mongoose');
 
 (async () => {
     await connect(MONGO_URL)
 
     console.log('Deleting DB')
-    await Promise.all([User.deleteMany(), Ad.deleteMany()])
+    await Promise.all([User.deleteMany(), Ad.deleteMany(), FirstConnection.deleteMany()])
 
     const folder = join(__dirname, '../../files')
     console.log('Deleting files and folders')

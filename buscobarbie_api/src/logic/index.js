@@ -19,5 +19,7 @@ module.exports = {
     verifyAd: require('./admin/verifyAd'),
     adminDeleteAd: require('./admin/adminDeleteAd'),
     deleteUser: require('./user/deleteUser'),
-    adminContact: require('./admin/adminContact')
+    adminContact: require('./admin/adminContact'),
+    logFirstConnection: require('./admin/logFirstConnection'),
+    reportAd: require('./ads/reportAd')
 }

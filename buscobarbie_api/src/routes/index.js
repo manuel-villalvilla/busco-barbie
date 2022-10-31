@@ -9,7 +9,8 @@ const {
     deleteAdHandler,
     updateAdHandler,
     newUserAdHandler,
-    updateAdVisibilityHandler
+    updateAdVisibilityHandler,
+    reportAdHandler
 } = require('./ads')
 const {
     authenticateUserHandler,
@@ -27,7 +28,8 @@ const {
     retrieveAdminDataHandler,
     verifyAdHandler,
     adminDeleteAdHandler,
-    adminContactHandler
+    adminContactHandler,
+    logFirstConnectionHandler,
 } = require('./admin')
 const { verifyGoogleCaptchaHandler } = require('./utils')
 
@@ -42,6 +44,8 @@ adsRouter.delete('/ads', jsonBodyParser, deleteAdHandler)
 adsRouter.patch('/ads', fileupload(), bodyParser.json(), bodyParser.urlencoded({ extended: false }), updateAdHandler)
 
 adsRouter.patch('/ads/visibility', jsonBodyParser, updateAdVisibilityHandler)
+
+adsRouter.post('/ads/report', jsonBodyParser, reportAdHandler)
 
 adsRouter.post('/ads', fileupload(), bodyParser.json(), bodyParser.urlencoded({ extended: false }), newUserAdHandler)
 
@@ -80,6 +84,8 @@ adminRouter.patch('/admin/ads', jsonBodyParser, verifyAdHandler)
 adminRouter.delete('/admin/ads', jsonBodyParser, adminDeleteAdHandler)
 
 adminRouter.post('/admin', jsonBodyParser, adminContactHandler)
+
+adminRouter.post('/admin/connection', jsonBodyParser, logFirstConnectionHandler)
 
 module.exports = {
     adsRouter,

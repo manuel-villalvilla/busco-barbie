@@ -19,5 +19,6 @@ module.exports = {
     validateVisibility: require('./validateVisibility'),
     validateYear: require('./validateYear'),
     validateTags: require('./validateTags'),
-    validateContactOptions: require('./validateContactOptions')
+    validateContactOptions: require('./validateContactOptions'),
+    validateReportSelect: require('./validateReportSelect')
 }

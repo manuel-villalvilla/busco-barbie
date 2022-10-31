@@ -12,6 +12,7 @@ function MiPanel({ context: { setSearchHeight }, pack, token }) {
     const [count, setCount] = useState(pack.ads ? pack.ads.length : 0)
 
     useEffect(() => setSearchHeight(0), [])
+    
     return <>
         {
             token.role !== 'admin' ?

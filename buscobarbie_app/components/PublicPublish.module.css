@@ -49,6 +49,7 @@
     width: 100%;
     max-width: 760px;
     gap: 10px;
+    padding: 10px;
 }
 
 .form > p {
@@ -81,7 +82,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 5px;
 }
 
 .passwordContainer, .imagesContainer {

@@ -1,7 +1,6 @@
 const { adminContact } = require('..')
-const { connect, disconnect, Types: { ObjectId } } = require('mongoose')
+const { connect, disconnect } = require('mongoose')
 const { User, Ad } = require('../../models')
-const bcrypt = require('bcryptjs')
 const fs = require('fs/promises')
 const { join } = require('path')
 const folder = join(__dirname, '../../../files')

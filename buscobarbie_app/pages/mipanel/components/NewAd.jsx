@@ -22,16 +22,18 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
 const Option = (props) => {
     return (
-        <div>
-            <components.Option {...props}>
-                <input
-                    type="checkbox"
-                    checked={props.isSelected}
-                    onChange={() => null}
-                />{" "}
-                <label>{props.label}</label>
-            </components.Option>
-        </div>
+      <div>
+        <components.Option {...props}>
+          <div className='checkbox-label'>
+            <input
+              type="checkbox"
+              checked={props.isSelected}
+              onChange={() => null}
+            />{" "}
+            <label>{props.label}</label>
+          </div>
+        </components.Option>
+      </div>
     )
 }
 
@@ -40,6 +42,7 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
         images: null,
         bottom: null
     })
+    const [stateCountry, setStateCountry] = useState(country_code)
     const [stateCategories, setStateCategories] = useState(null)
     const [stateTags, setStateTags] = useState([])
     const [titleRemaining, setTitleRemaining] = useState(30)
@@ -54,13 +57,13 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
 
     useEffect(() => {
         if (!firsTimeRef.current) {
-          if (error.bottom) {
-            errorBottomRef.current.scrollIntoView()
-            setTimeout(() => setError({ images: null, bottom: null }), 10000)
-          }
+            if (error.bottom) {
+                errorBottomRef.current.scrollIntoView()
+                setTimeout(() => setError({ images: null, bottom: null }), 10000)
+            }
         }
         return () => firsTimeRef.current = false
-      }, [error])
+    }, [error])
 
     useEffect(() => { // to create thumbnails
         const fileReaders = []
@@ -182,20 +185,20 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
     const handleFormSubmit = async event => {
         if (imageFiles.length) {
             const dataTransfer = new DataTransfer()
-    
+
             for (let i = 0; i < imageFiles.length; i++) {
                 dataTransfer.items.add(imageFiles[i])
             }
-    
+
             const newFiles = dataTransfer.files
-    
+
             imagesRef.current.files = newFiles
         } else imagesRef.current.files = null
 
         const form = event.target
 
         try {
-            const ads = await newUserAd(tokenFromApi, userId, form, country_code, stateTags)
+            const ads = await newUserAd(tokenFromApi, userId, form, stateCountry, stateTags)
             setAds(ads.data)
             setCount(ads.data.length)
             setView('mainpannel')
@@ -205,7 +208,7 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
             if (error.response && error.response.data)
                 errorHandler(error.response.data.error, setError)
 
-            else 
+            else
                 errorHandler(error.message, setError)
 
         }
@@ -217,13 +220,27 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
 
             handleFormSubmit(event)
         }}>
-            <h3>NUEVO ANUNCIO EN <span>{
-                country_code === 'AR' ? 'ARGENTINA' :
-                    country_code === 'MX' ? 'MÉXICO' :
-                        country_code === 'ES' ? 'ESPAÑA' :
-                            country_code === 'US' ? 'EE.UU.' : null
-            }</span></h3>
+            <h3>NUEVO ANUNCiO:</h3>
             <p>Campos obligatorios <span style={{ color: 'red' }}>*</span></p>
+
+            <div className={styles.countryContainer}>
+                <label
+                    htmlFor="country"
+                    className={styles.countryLabel}>
+                    PAÍS:*
+                </label>
+                <select
+                    className={styles.countrySelect}
+                    name="country"
+                    id="country"
+                    value={stateCountry}
+                    onChange={e => setStateCountry(e.target.value)}
+                >
+                    <option value='ES'>España</option>
+                    <option value='MX'>México</option>
+                    <option value='AR'>Argentina</option>
+                </select>
+            </div>
 
             <div className={styles.titleContainer}>
                 <label htmlFor='title' className={styles.titleLabel}>TÍTULO:<span style={{ color: 'red' }}>*</span></label>
@@ -265,22 +282,23 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                 <label
                     htmlFor="province"
                     className={styles.provinceLabel}>
-                    {country_code === 'MX' || country_code === 'US' ? 'ESTADO:' : 'PROVINCIA:'}<span style={{ color: 'red' }}>*</span>
+                    {stateCountry === 'MX' || stateCountry === 'US' ? 'ESTADO:' : 'PROVINCIA:'}<span style={{ color: 'red' }}>*</span>
                 </label>
                 <select
                     className={styles.provinceSelect}
                     name="province"
                     id="province"
                 >
-                    {country_code === 'AR' && <>
+                    <option value='all'>Selecciona un{stateCountry === 'MX' || stateCountry === 'US' ? ' estado' : 'a provincia'}</option>
+                    {stateCountry === 'AR' && <>
                         {AR.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
                     </>
                     }
-                    {country_code === 'ES' && <>
+                    {stateCountry === 'ES' && <>
                         {ES.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
                     </>
                     }
-                    {country_code === 'MX' && <>
+                    {stateCountry === 'MX' && <>
                         {MX.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
                     </>
                     }
@@ -335,7 +353,7 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                         setStateTags([])
                     }}
                 >
-                    <option value='all'>Todas</option>
+                    <option value='all'>Selecciona una categoría</option>
                     <option value='modelos'>Modelos</option>
                     <option value='complementos'>Complementos</option>
                 </select>

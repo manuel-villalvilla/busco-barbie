@@ -9,6 +9,7 @@ import App from 'next/app'
 import CookieNotice from '../components/CookieNotice'
 import { useState } from 'react'
 import axios from 'axios'
+import logFirstConnection from '../logic/logFirstConnection'
 const TOKEN = process.env.NEXT_PUBLIC_FINDIP_TOKEN
 
 function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted }) {
@@ -48,8 +49,15 @@ MyApp.getInitialProps = async (context) => {
                 const res = await axios.get(`https://api.findip.net/${req.headers["x-real-ip"]}/?token=${TOKEN}`)
                 if (res.status === 200) {
                     country_code = res.data.country.iso_code
+                    try {
+                        const res2 = await logFirstConnection(req.headers["x-real-ip"], req.headers["accept-language"], country_code)
+                        res2.status === 200 ? console.log('Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code) :
+                        console.log('Not Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code)
+                    } catch (error) {
+                        console.log(error.message)
+                    }
+
                     if (country_code !== 'MX' && country_code !== 'ES' && country_code !== 'AR') country_code = 'ES'
-                    console.log('IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code)
                 }
                 else country_code = 'ES'
             } catch (error) {

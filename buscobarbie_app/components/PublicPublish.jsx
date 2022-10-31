@@ -28,12 +28,14 @@ const Option = (props) => {
   return (
     <div>
       <components.Option {...props}>
-        <input
-          type="checkbox"
-          checked={props.isSelected}
-          onChange={() => null}
-        />{" "}
-        <label>{props.label}</label>
+        <div className='checkbox-label'>
+          <input
+            type="checkbox"
+            checked={props.isSelected}
+            onChange={() => null}
+          />{" "}
+          <label>{props.label}</label>
+        </div>
       </components.Option>
     </div>
   )
@@ -230,7 +232,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
     captchaRef.current.reset()
 
     try {
-      await registerUserWithAd(token, form, country_code, stateTags)
+      await registerUserWithAd(token, form, stateCountry, stateTags)
 
       setView(form.email.value)
       form.reset()
@@ -250,7 +252,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
     </div>
 
     <div className={styles.firstQuestionContainer}>
-      <h3 className={styles.firstQuestionO}>Ó</h3>
+      <h3 className={styles.firstQuestionO}>O</h3>
     </div>
 
     <div className={styles.firstQuestionContainer}>
@@ -326,23 +328,24 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
         <label
           htmlFor="province"
           className={styles.provinceLabel}>
-          {country_code === 'MX' || country_code === 'US' ? 'ESTADO:' : 'PROVINCIA:'}*
+          {stateCountry === 'MX' || stateCountry === 'US' ? 'ESTADO:' : 'PROVINCIA:'}*
         </label>
         <select
           className={styles.provinceSelect}
           name="province"
           id="province"
         >
-          {country_code === 'AR' && <>
-            {AR.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+          <option value='all'>Selecciona un{stateCountry === 'MX' || stateCountry === 'US' ? ' estado' : 'a provincia'}</option>
+          {stateCountry === 'AR' && <>
+            {AR.map(place => <option key={place} value={place}>{place}</option>)}
           </>
           }
-          {country_code === 'ES' && <>
-            {ES.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+          {stateCountry === 'ES' && <>
+            {ES.map(place => <option key={place} value={place}>{place}</option>)}
           </>
           }
-          {country_code === 'MX' && <>
-            {MX.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+          {stateCountry === 'MX' && <>
+            {MX.map(place => <option key={place} value={place}>{place}</option>)}
           </>
           }
         </select>
@@ -357,7 +360,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           id='area'
           maxLength={50}
         />
-        <p className={styles.formText}>Puedes opcionalmente especificar tu ubicación</p>
+        <p className={styles.formText}>Puedes opcionalmente especificar tu ubicación.</p>
       </div>
 
       <div className={styles.phoneContainer}>
@@ -369,7 +372,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           id='phone'
           maxLength={20}
         />
-        <p className={styles.formText}>Se hará público para que te contacten si lo introduces</p>
+        <p className={styles.formText}>Se hará público para que te contacten si lo introduces.</p>
       </div>
 
       <div className={styles.priceContainer}>
@@ -382,7 +385,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           maxLength={4}
           required={true}
         />
-        <p className={styles.formText}>Sólo números</p>
+        <p className={styles.formText}>Sólo números.</p>
       </div>
 
       <div className={styles.categoriesContainer}>
@@ -396,7 +399,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
             setStateTags([])
           }}
         >
-          <option value='all'>Selecciona</option>
+          <option value='all'>Selecciona una categoría</option>
           <option value='modelos'>Modelos</option>
           <option value='complementos'>Complementos</option>
         </select>
@@ -499,7 +502,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
             }
           </div>
         }
-        <p className={styles.formText}>Máximo 4 imágenes. Se recomienda subirlas en formato vertical</p>
+        <p className={styles.formText}>Máximo 4 imágenes. Se recomienda subirlas en formato vertical.</p>
         {error.images && <p className={styles.error}>{error.images}</p>}
       </div>
 
@@ -531,7 +534,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           onBlur={() => setIsSearching(false)}
           required={true}
         />
-        <p className={styles.formText}>No se hará público</p>
+        <p className={styles.formText}>No se hará público.</p>
       </div>
 
       <div className={styles.passwordContainer}>

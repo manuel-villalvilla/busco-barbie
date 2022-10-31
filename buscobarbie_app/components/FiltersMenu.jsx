@@ -108,7 +108,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
         }}
       >
         <div className={styles.sortContainer}>
-          <label htmlFor="sortFilter" className={styles.label}>Ordenar resultados por</label>
+          <label htmlFor="sortFilter" className={styles.label}>Ordenar resultados por:</label>
           <select
             className={styles.sortSelect}
             name='sort'
@@ -136,7 +136,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
           <label
             htmlFor="provinceFilter"
             className={styles.label}>
-            {country === 'MX' ? 'Estado' : 'Provincia'}
+            {country === 'MX' ? 'Estado:' : 'Provincia:'}
           </label>
           <select
             className={styles.provinceSelect}
@@ -148,23 +148,24 @@ export default function FiltersMenu({ country, province, search, categories, yea
               handleFormOnChange(queryConstructor({ ...stateFormValues, province: e.target.value }))
             }}
           >
+            <option value='all'>Todas</option>
             {country === 'AR' && <>
-              {AR.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+              {AR.map(place => <option key={place} value={place}>{place}</option>)}
             </>
             }
             {country === 'ES' && <>
-              {ES.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+              {ES.map(place => <option key={place} value={place}>{place}</option>)}
             </>
             }
             {country === 'MX' && <>
-              {MX.map(place => <option key={place} value={place === 'Todas' ? 'all' : place}>{place}</option>)}
+              {MX.map(place => <option key={place} value={place}>{place}</option>)}
             </>
             }
           </select>
         </div>
 
         <div className={styles.searchContainer}>
-          <label htmlFor="searchFilter" className={styles.searchLabel}>Búsqueda por palabras</label>
+          <label htmlFor="searchFilter" className={styles.searchLabel}>Búsqueda por palabras:</label>
           <input
             placeholder={isSearching ? '' : "Introduce tu búsqueda"}
             className={styles.searchTextInput}
@@ -195,7 +196,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
         </div>
 
         <div className={styles.categoriesContainer}>
-          <label htmlFor="categoriesFilter" className={styles.label}>Categorías</label>
+          <label htmlFor="categoriesFilter" className={styles.label}>Categorías:</label>
           <select
             className={styles.categoriesSelect}
             name='categories'
