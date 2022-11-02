@@ -9,11 +9,11 @@ module.exports = model('FistConnection', new Schema({
     },
     locale: {
         type: String,
-        required: true,
+        default: ''
     },
     country: {
         type: String,
-        required: true
+        default: ''
     },
     date: {
         type: Date,

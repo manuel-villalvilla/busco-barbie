@@ -11,7 +11,7 @@ export default function TermsAndConditions({ country }) {
         <div className={styles.blockContainer}>
             <h5 className={styles.subtitle}>OBJETIVO DEL SITIO</h5>
             <p>Esta aplicación web de código abierto está construida para facilitar el contacto a personas que busquen un artículo de segunda mano relacionado con el mundo Barbie™ con
-                personas que publiquen artículos de segunda mano cuya temática sea el mundo Barbie™.
+                personas que publiquen estos artículos.
             </p>
             <p>El código de la aplicación se puede encontrar siguiendo el siguiente <Link href='https://github.com/manuel-villalvilla/busco-barbie' passHref><a className={styles.link} target='_blank' rel='noopener noreferrer'>enlace</a></Link> a GitHub.</p>
             <p>Si te gusta el proyecto y deseas colaborar económicamente para que siga creciendo, puedes hacernos un donativo a través de PayPal siguiendo el siguiente
@@ -43,9 +43,11 @@ export default function TermsAndConditions({ country }) {
         <div className={styles.blockContainer}>
             <h5 className={styles.subtitle}>USO DEL SITIO</h5>
             <p>Encuentra anuncios filtrados utilizando el buscador proporcionado.</p>
+            <p>Tienes la opción de copiar el enlace con los resultados de búsqueda en tu portapapeles para compartirlo.</p>
             <p>Para contactar con un anunciante, accede a su anuncio y en la parte inferior del mismo encontrarás un botón llamado Contactar.
                 Si lo pulsas, se abrirá un formulario de contacto, así como también se proporcionará el número de teléfono del anunciante si optó por registrarlo.
             </p>
+            <p>Si crees que un anuncio no cumple con nuestras condiciones, puedes reportarlo accediendo al formulario que encontrarás a pie de página de cada anuncio.</p>
             <p>Tienes la opción de publicar <span>gratuitamente</span> en el sitio web de dos formas:</p>
             <ol>
                 <li><p>Si no dispones de una cuenta en <span>BuscoBarbie.com</span> ni en <span>Google</span>, publica tu primer anuncio accediendo al formulario
@@ -83,7 +85,7 @@ export default function TermsAndConditions({ country }) {
                 <li><p>Precio del artículo obligatorio. Sólo números.</p></li>
                 <li><p>Selección obligatoria de la categoría del artículo.</p></li>
                 <li><p>Selección opcional de la década de construcción del artículo.</p></li>
-                <li><p>Selección opcional pero recomendada de las etiquetas que clasifiquen más precisamente el artículo.</p></li>
+                <li><p>Selección opcional pero recomendada de las etiquetas que clasifiquen el artículo con más precisión.</p></li>
                 <li><p>Selección opcional de un máximo de 4 imágenes. Sus formatos pueden ser JPG, JPEG, PNG o GIF. Tamaño máximo de 6MB por imágen.
                     Pueden tomarse las fotos en el momento si se accede al formulario desde un dispositivo móvil con cámara. Sólo se permitirán fotos de los artículos Barbie™ anunciados.
                 </p></li>
@@ -93,7 +95,7 @@ export default function TermsAndConditions({ country }) {
                     <ol>
                         <li><p>Verificar al usuario enviando un email con un enlace de verificación en el momento del registro.</p></li>
                         <li><p>Para ser contactado por las personas interesadas en el artículo.</p></li>
-                        <li><p>Para ser enviado comunicaciones de <span>BuscoBarbie.com</span> relativas a la validación positiva o negativa del anuncio registrado.</p></li>
+                        <li><p>Para ser enviadas comunicaciones de <span>BuscoBarbie.com</span> relativas a la validación positiva o negativa del anuncio registrado.</p></li>
                     </ol>
                     <p>Al ser contactado por un usuario interesado en tu artículo, se recibirá un email con el nombre, dirección de email y mensaje del mismo. Los emails de contacto se recibirán siempre desde un dominio de <span>BuscoBarbie.com</span>.</p></li>
                 <li><p>Contraseña obligatoria de entre 8 y 20 caracteres, incluidos !@#$%^&*. Se guardará encriptada en la base de datos.</p></li>
