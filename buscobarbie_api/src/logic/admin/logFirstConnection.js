@@ -5,7 +5,9 @@ module.exports = async function (ip, locale, country) {
 
     const connection = await FirstConnection.findOne({ ip })
 
-    if (connection) return
+    if (connection) return false
 
     await FirstConnection.create({ ip, locale, country })
+
+    return true
 }

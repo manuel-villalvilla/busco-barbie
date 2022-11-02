@@ -13,6 +13,7 @@
     background-color: #fff;
     padding: 10px;
     border-radius: 10px;
+    line-height: 1;
 }
 
 .form {
@@ -38,31 +39,21 @@
 .messageLabel,
 .nameLabel,
 .optionsLabel {
-    margin-bottom: 10px;
     font-weight: 400;
 }
 
 .contactEmail,
 .contactName,
 .contactOptions {
-    margin-bottom: 5px;
     width: 100%;
     border-radius: 10px;
-    font-size: 22px;
-    border-color: rgb(114, 191, 128);
-    border-width: 2px;
-    height: 40px;
     padding: 5px;
 }
 
 .contactMessage {
     border-radius: 10px;
-    font-size: 22px;
-    border-color: rgb(114, 191, 128);
-    border-width: 2px;
     padding: 5px;
     width: 100%;
-    margin-bottom: 5px;
 }
 
 .loginButton, .thankyouButton {

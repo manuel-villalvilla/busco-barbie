@@ -6,7 +6,22 @@
 }
 
 .resultsContainer > p {
-    font-weight: 400;
+    margin: 20px 0 0 0;
+    line-height: 1;
+}
+
+.shareButton {
+    font-size: 14px;
+    cursor: pointer;
+    border-style: none;
+    background-color: transparent;
+    color: gray;
+}
+
+.copiedMessage {
+    font-size: 14px;
+    color:rgb(114, 191, 128);
+    line-height: 1;
 }
 
 .resultsList {

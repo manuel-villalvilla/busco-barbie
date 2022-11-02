@@ -28,11 +28,19 @@ input {
     font-size: 20px;
 }
 
+input:focus {
+    outline: none;
+}
+
 textarea {
     color: #000;
     font-family: 'Cairo Play', cursive;
     border: 2px solid rgb(114, 191, 128);
     font-size: 20px;
+}
+
+textarea:focus {
+    outline: none;
 }
 
 select {

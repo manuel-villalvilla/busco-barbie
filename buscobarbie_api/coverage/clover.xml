@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667183266992" clover="3.2.0">
-  <project timestamp="1667183266993" name="All files">
-    <metrics statements="527" coveredstatements="490" conditionals="190" coveredconditionals="138" methods="42" coveredmethods="36" elements="759" coveredelements="664" complexity="0" loc="527" ncloc="527" packages="7" files="34" classes="34"/>
+<coverage generated="1667361431325" clover="3.2.0">
+  <project timestamp="1667361431326" name="All files">
+    <metrics statements="528" coveredstatements="494" conditionals="190" coveredconditionals="140" methods="42" coveredmethods="37" elements="760" coveredelements="671" complexity="0" loc="528" ncloc="528" packages="7" files="34" classes="34"/>
     <package name="logic">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/volume1/server/buscobarbie_api/src/logic/index.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
       </file>
     </package>
     <package name="logic.admin">
-      <metrics statements="82" coveredstatements="79" conditionals="42" coveredconditionals="28" methods="5" coveredmethods="4"/>
+      <metrics statements="83" coveredstatements="83" conditionals="42" coveredconditionals="30" methods="5" coveredmethods="5"/>
       <file name="adminContact.js" path="/volume1/server/buscobarbie_api/src/logic/admin/adminContact.js">
         <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="10" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
@@ -32,18 +32,18 @@
       </file>
       <file name="adminDeleteAd.js" path="/volume1/server/buscobarbie_api/src/logic/admin/adminDeleteAd.js">
         <metrics statements="25" coveredstatements="25" conditionals="18" coveredconditionals="12" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="9" count="21" type="stmt"/>
-        <line num="10" count="21" type="stmt"/>
-        <line num="11" count="21" type="stmt"/>
-        <line num="13" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="13" count="22" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
         <line num="15" count="4" type="stmt"/>
         <line num="17" count="4" type="stmt"/>
@@ -59,19 +59,20 @@
         <line num="123" count="1" type="stmt"/>
       </file>
       <file name="logFirstConnection.js" path="/volume1/server/buscobarbie_api/src/logic/admin/logFirstConnection.js">
-        <metrics statements="5" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="10" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
       </file>
       <file name="retrieveAdminData.js" path="/volume1/server/buscobarbie_api/src/logic/admin/retrieveAdminData.js">
         <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
         <line num="9" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -84,17 +85,17 @@
       </file>
       <file name="verifyAd.js" path="/volume1/server/buscobarbie_api/src/logic/admin/verifyAd.js">
         <metrics statements="23" coveredstatements="23" conditionals="18" coveredconditionals="12" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="9" count="21" type="stmt"/>
-        <line num="10" count="21" type="stmt"/>
-        <line num="12" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="12" count="22" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
@@ -113,18 +114,18 @@
       <metrics statements="61" coveredstatements="61" conditionals="30" coveredconditionals="27" methods="9" coveredmethods="9"/>
       <file name="reportAd.js" path="/volume1/server/buscobarbie_api/src/logic/ads/reportAd.js">
         <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="9" count="21" type="stmt"/>
-        <line num="10" count="21" type="stmt"/>
-        <line num="11" count="21" type="stmt"/>
-        <line num="13" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="13" count="22" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
@@ -136,10 +137,10 @@
       </file>
       <file name="retrieveAdWithId.js" path="/volume1/server/buscobarbie_api/src/logic/ads/retrieveAdWithId.js">
         <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
@@ -152,9 +153,9 @@
       </file>
       <file name="retrieveFilteredAds.js" path="/volume1/server/buscobarbie_api/src/logic/ads/retrieveFilteredAds.js">
         <metrics statements="28" coveredstatements="28" conditionals="22" coveredconditionals="19" methods="5" coveredmethods="5"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="8" count="2" type="stmt"/>
@@ -186,15 +187,15 @@
       <metrics statements="175" coveredstatements="175" conditionals="50" coveredconditionals="50" methods="10" coveredmethods="10"/>
       <file name="authenticateGoogleUser.js" path="/volume1/server/buscobarbie_api/src/logic/user/authenticateGoogleUser.js">
         <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="10" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
@@ -208,11 +209,11 @@
       </file>
       <file name="authenticateUser.js" path="/volume1/server/buscobarbie_api/src/logic/user/authenticateUser.js">
         <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="20" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="20" count="22" type="stmt"/>
         <line num="21" count="5" type="stmt"/>
         <line num="22" count="5" type="stmt"/>
         <line num="24" count="5" type="stmt"/>
@@ -225,16 +226,16 @@
       </file>
       <file name="contactUser.js" path="/volume1/server/buscobarbie_api/src/logic/user/contactUser.js">
         <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="9" count="21" type="stmt"/>
-        <line num="11" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="16" count="1" type="stmt"/>
@@ -243,11 +244,11 @@
       </file>
       <file name="deleteUser.js" path="/volume1/server/buscobarbie_api/src/logic/user/deleteUser.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
@@ -257,18 +258,18 @@
       </file>
       <file name="recoverPassword.js" path="/volume1/server/buscobarbie_api/src/logic/user/recoverPassword.js">
         <metrics statements="21" coveredstatements="21" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
-        <line num="9" count="21" type="stmt"/>
-        <line num="10" count="21" type="stmt"/>
-        <line num="11" count="21" type="stmt"/>
-        <line num="13" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="13" count="22" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
         <line num="18" count="2" type="cond" truecount="4" falsecount="0"/>
@@ -281,24 +282,24 @@
       </file>
       <file name="registerUserWithAd.js" path="/volume1/server/buscobarbie_api/src/logic/user/registerUserWithAd.js">
         <metrics statements="54" coveredstatements="54" conditionals="18" coveredconditionals="18" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="17" count="21" type="stmt"/>
-        <line num="18" count="21" type="stmt"/>
-        <line num="19" count="21" type="stmt"/>
-        <line num="20" count="21" type="stmt"/>
-        <line num="21" count="21" type="stmt"/>
-        <line num="22" count="21" type="stmt"/>
-        <line num="23" count="21" type="stmt"/>
-        <line num="24" count="21" type="stmt"/>
-        <line num="25" count="21" type="stmt"/>
-        <line num="26" count="21" type="stmt"/>
-        <line num="27" count="21" type="stmt"/>
-        <line num="28" count="21" type="stmt"/>
-        <line num="29" count="21" type="stmt"/>
-        <line num="30" count="21" type="stmt"/>
-        <line num="31" count="21" type="stmt"/>
-        <line num="32" count="21" type="stmt"/>
-        <line num="34" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="17" count="22" type="stmt"/>
+        <line num="18" count="22" type="stmt"/>
+        <line num="19" count="22" type="stmt"/>
+        <line num="20" count="22" type="stmt"/>
+        <line num="21" count="22" type="stmt"/>
+        <line num="22" count="22" type="stmt"/>
+        <line num="23" count="22" type="stmt"/>
+        <line num="24" count="22" type="stmt"/>
+        <line num="25" count="22" type="stmt"/>
+        <line num="26" count="22" type="stmt"/>
+        <line num="27" count="22" type="stmt"/>
+        <line num="28" count="22" type="stmt"/>
+        <line num="29" count="22" type="stmt"/>
+        <line num="30" count="22" type="stmt"/>
+        <line num="31" count="22" type="stmt"/>
+        <line num="32" count="22" type="stmt"/>
+        <line num="34" count="22" type="stmt"/>
         <line num="35" count="3" type="stmt"/>
         <line num="36" count="3" type="stmt"/>
         <line num="37" count="3" type="stmt"/>
@@ -338,12 +339,12 @@
       </file>
       <file name="updatePassword.js" path="/volume1/server/buscobarbie_api/src/logic/user/updatePassword.js">
         <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="22" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="22" count="22" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
         <line num="25" count="3" type="stmt"/>
@@ -356,12 +357,12 @@
       </file>
       <file name="updateUser.js" path="/volume1/server/buscobarbie_api/src/logic/user/updateUser.js">
         <metrics statements="17" coveredstatements="17" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
@@ -376,10 +377,10 @@
       </file>
       <file name="verifyUser.js" path="/volume1/server/buscobarbie_api/src/logic/user/verifyUser.js">
         <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
         <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -391,11 +392,11 @@
       <metrics statements="140" coveredstatements="139" conditionals="34" coveredconditionals="32" methods="6" coveredmethods="6"/>
       <file name="deleteAd.js" path="/volume1/server/buscobarbie_api/src/logic/userAds/deleteAd.js">
         <metrics statements="20" coveredstatements="19" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
@@ -414,14 +415,14 @@
       </file>
       <file name="newUserAd.js" path="/volume1/server/buscobarbie_api/src/logic/userAds/newUserAd.js">
         <metrics statements="39" coveredstatements="39" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="16" count="21" type="stmt"/>
-        <line num="17" count="21" type="stmt"/>
-        <line num="18" count="21" type="stmt"/>
-        <line num="19" count="21" type="stmt"/>
-        <line num="21" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="16" count="22" type="stmt"/>
+        <line num="17" count="22" type="stmt"/>
+        <line num="18" count="22" type="stmt"/>
+        <line num="19" count="22" type="stmt"/>
+        <line num="21" count="22" type="stmt"/>
         <line num="22" count="4" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
         <line num="24" count="4" type="stmt"/>
@@ -456,9 +457,9 @@
       </file>
       <file name="retrieveUserWithAds.js" path="/volume1/server/buscobarbie_api/src/logic/userAds/retrieveUserWithAds.js">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="7" count="1" type="stmt"/>
@@ -468,17 +469,17 @@
       </file>
       <file name="updateAd.js" path="/volume1/server/buscobarbie_api/src/logic/userAds/updateAd.js">
         <metrics statements="57" coveredstatements="57" conditionals="12" coveredconditionals="11" methods="2" coveredmethods="2"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="18" count="21" type="stmt"/>
-        <line num="19" count="21" type="stmt"/>
-        <line num="20" count="21" type="stmt"/>
-        <line num="21" count="21" type="stmt"/>
-        <line num="23" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="18" count="22" type="stmt"/>
+        <line num="19" count="22" type="stmt"/>
+        <line num="20" count="22" type="stmt"/>
+        <line num="21" count="22" type="stmt"/>
+        <line num="23" count="22" type="stmt"/>
         <line num="24" count="5" type="stmt"/>
         <line num="25" count="5" type="stmt"/>
         <line num="26" count="5" type="stmt"/>
@@ -528,11 +529,11 @@
       </file>
       <file name="updateAdVisibility.js" path="/volume1/server/buscobarbie_api/src/logic/userAds/updateAdVisibility.js">
         <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
@@ -549,9 +550,9 @@
       <metrics statements="19" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6"/>
       <file name="Ad.js" path="/volume1/server/buscobarbie_api/src/models/Ad.js">
         <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
         <line num="15" count="47" type="stmt"/>
         <line num="24" count="47" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
@@ -560,42 +561,42 @@
       </file>
       <file name="Blacklist.js" path="/volume1/server/buscobarbie_api/src/models/Blacklist.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
       </file>
       <file name="FirstConnection.js" path="/volume1/server/buscobarbie_api/src/models/FirstConnection.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
       </file>
       <file name="User.js" path="/volume1/server/buscobarbie_api/src/models/User.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
         <line num="10" count="64" type="stmt"/>
         <line num="20" count="64" type="stmt"/>
       </file>
       <file name="index.js" path="/volume1/server/buscobarbie_api/src/models/index.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
       </file>
     </package>
     <package name="utils">
       <metrics statements="49" coveredstatements="17" conditionals="34" coveredconditionals="1" methods="5" coveredmethods="1"/>
       <file name="arrangeGoogleName.js" path="/volume1/server/buscobarbie_api/src/utils/arrangeGoogleName.js">
         <metrics statements="4" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
         <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="3" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="4" count="0" type="stmt"/>
       </file>
       <file name="errorHandler.js" path="/volume1/server/buscobarbie_api/src/utils/errorHandler.js">
         <metrics statements="23" coveredstatements="3" conditionals="20" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="11" count="21" type="stmt"/>
-        <line num="12" count="21" type="stmt"/>
-        <line num="14" count="21" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="12" count="22" type="stmt"/>
+        <line num="14" count="22" type="stmt"/>
         <line num="15" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="16" count="0" type="stmt"/>
         <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -619,29 +620,29 @@
       </file>
       <file name="index.js" path="/volume1/server/buscobarbie_api/src/utils/index.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
       </file>
       <file name="logger.js" path="/volume1/server/buscobarbie_api/src/utils/logger.js">
         <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
       </file>
       <file name="validateObjectId.js" path="/volume1/server/buscobarbie_api/src/utils/validateObjectId.js">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
         <line num="5" count="63" type="cond" truecount="1" falsecount="1"/>
       </file>
       <file name="verifyToken.js" path="/volume1/server/buscobarbie_api/src/utils/verifyToken.js">
         <metrics statements="13" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
+        <line num="1" count="22" type="stmt"/>
+        <line num="2" count="22" type="stmt"/>
+        <line num="3" count="22" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>

@@ -19,12 +19,14 @@ const Option = (props) => {
   return (
     <div>
       <components.Option {...props}>
-        <input
-          type="checkbox"
-          checked={props.isSelected}
-          onChange={() => null}
-        />{" "}
-        <label>{props.label}</label>
+        <div className='checkbox-label'>
+          <input
+            type="checkbox"
+            checked={props.isSelected}
+            onChange={() => null}
+          />{" "}
+          <label>{props.label}</label>
+        </div>
       </components.Option>
     </div>
   )

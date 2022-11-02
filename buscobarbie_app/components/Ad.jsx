@@ -16,8 +16,10 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
   const reportRef = useRef(null)
 
   useEffect(() => {
-    setSearchHeight(0)
-    scroll.scrollToTop()
+    setTimeout(() => {
+      setSearchHeight(0)
+      scroll.scrollToTop()
+    }, 500)
   }, [])
 
   const handleAnimationHeightChange = (height) => {
@@ -29,12 +31,12 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
   }
 
   const handleContactButtonClick = () => {
-    if (contactHeight) setContactHeight(0) 
+    if (contactHeight) setContactHeight(0)
     else setContactHeight('auto')
   }
 
   const handleReportButtonClick = () => {
-    if (reportHeight) setReportHeight(0) 
+    if (reportHeight) setReportHeight(0)
     else setReportHeight('auto')
   }
 
@@ -52,51 +54,54 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
         <>
           <div className={styles.title}><h3>{ad.title}</h3></div>
           <div className={styles.header}>
-            {ad.image.length > 0 && <div className={styles.carouselContainer}>
-              <Carousel
-                renderArrowPrev={(clickHandler, hasPrev, label) => {
-                  if (hasPrev)
-                    return <button title={label} className={styles.arrowLeft} onClick={clickHandler}>-</button>
-                }}
-                renderArrowNext={(clickHandler, hasNext, label) => {
-                  if (hasNext)
-                    return <button title={label} className={styles.arrowRight} onClick={clickHandler}>+</button>
-                }}
-                renderIndicator={(onClickHandler, isSelected, index, label) => {
-                  if (isSelected) {
+            {ad.image.length > 0 && <>
+              <div className={styles.carouselContainer}>
+                <Carousel
+                  renderArrowPrev={(clickHandler, hasPrev, label) => {
+                    if (hasPrev)
+                      return <span title={label} className={styles.arrowLeft} onClick={clickHandler}><span className="material-symbols-outlined" style={{ fontSize: '30px' }}>arrow_back_ios</span></span>
+                  }}
+                  renderArrowNext={(clickHandler, hasNext, label) => {
+                    if (hasNext)
+                      return <span title={label} className={styles.arrowRight} onClick={clickHandler}><span className="material-symbols-outlined" style={{ fontSize: '30px' }}>arrow_forward_ios</span></span>
+                  }}
+                  renderIndicator={(onClickHandler, isSelected, index, label) => {
+                    if (isSelected) {
+                      return (
+                        <li
+                          className={styles.indicatorStylesSelected}
+                          aria-label={`Selected: ${label} ${index + 1}`}
+                          title={`Selected: ${label} ${index + 1}`}
+                        />
+                      )
+                    }
                     return (
                       <li
-                        className={styles.indicatorStylesSelected}
-                        aria-label={`Selected: ${label} ${index + 1}`}
-                        title={`Selected: ${label} ${index + 1}`}
+                        className={styles.indicatorStyles}
+                        onClick={onClickHandler}
+                        onKeyDown={onClickHandler}
+                        value={index}
+                        key={index}
+                        role="button"
+                        tabIndex={0}
+                        title={`${label} ${index + 1}`}
+                        aria-label={`${label} ${index + 1}`}
                       />
                     )
-                  }
-                  return (
-                    <li
-                      className={styles.indicatorStyles}
-                      onClick={onClickHandler}
-                      onKeyDown={onClickHandler}
-                      value={index}
-                      key={index}
-                      role="button"
-                      tabIndex={0}
-                      title={`${label} ${index + 1}`}
-                      aria-label={`${label} ${index + 1}`}
-                    />
-                  )
-                }}
-                dynamicHeight={true}
-                showThumbs={false}
-                statusFormatter={(currentItem, total) => <span className={styles.statusIndicator}>{currentItem} de {total}</span>}
-                onClickItem={(index, item) => window.open(item.key).focus()}
-              >
-                {ad.image.map((image) => {
-                  return <div key={image}>
-                    <img src={image} className={styles.image}/>
-                  </div>
-                })}
-              </Carousel></div>}
+                  }}
+                  dynamicHeight={true}
+                  showThumbs={false}
+                  statusFormatter={(currentItem, total) => <span className={styles.statusIndicator}>{currentItem} de {total}</span>}
+                  onClickItem={(index, item) => window.open(item.key, '_self').focus()}
+                >
+                  {ad.image.map((image) => {
+                    return <div key={image}>
+                      <img src={image} className={styles.image} />
+                    </div>
+                  })}
+                </Carousel>
+              </div>
+              <p>Click en la imagen para ampliarla.</p></>}
             {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
           </div>
           <div className={styles.body}><article>{ad.body}</article></div>
@@ -115,14 +120,14 @@ export default withContext(function Ad({ ad, context: { setSearchHeight } }) {
             <p className={styles.elapsedTime}>{ad.elapsed}</p>
             <button type='button' className={styles.reportButton} onClick={handleReportButtonClick}>{reportHeight ? 'Cerrar' : 'Denunciar'}</button>
           </div>
-      <AnimateHeight id='contact-panel' duration={500} height={contactHeight} onHeightAnimationEnd={height => handleAnimationHeightChange(height)}>
-        <Contact ref={contactRef} ad={ad} />
-      </AnimateHeight>
+          <AnimateHeight id='contact-panel' duration={500} height={contactHeight} onHeightAnimationEnd={height => handleAnimationHeightChange(height)}>
+            <Contact ref={contactRef} ad={ad} />
+          </AnimateHeight>
 
-      <AnimateHeight id='report-panel' duration={500} height={reportHeight} onHeightAnimationEnd={height => handleReportAnimationHeightChange(height)}>
-        <Report ref={reportRef} ad={ad} />
-      </AnimateHeight>
-      </>}
+          <AnimateHeight id='report-panel' duration={500} height={reportHeight} onHeightAnimationEnd={height => handleReportAnimationHeightChange(height)}>
+            <Report ref={reportRef} ad={ad} />
+          </AnimateHeight>
+        </>}
     </div>
     <button type='button' className={styles.backButtonBot} onClick={() => history.back()}>Volver atrás</button>
   </>

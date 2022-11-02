@@ -1,8 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './ResultsAds.module.css'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useEffect } from 'react'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
 export default function ResultsAds({ search, currentItems, count }) {
+  const [copied, setCopied] = useState(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (copied) setTimeout(() => setCopied(null), 5000)
+  }, [copied])
+
   const countryCurrency = (country, price) => {
     if (country === 'MX' || country === 'AR') return `${price}$`
     if (country === 'ES') return `${price}€`
@@ -19,12 +30,22 @@ export default function ResultsAds({ search, currentItems, count }) {
     </article>
   }
 
-  const myLoader = ({src, width, quality}) => {
+  const myLoader = ({ src, width, quality }) => {
     return `${src}?w=100&q=75`
   }
 
   return <div className={styles.resultsContainer}>
     <p>Encontrado{count === 1 ? '' : 's'} {count} resultado{count === 1 ? '' : 's'}</p>
+    <button
+      type='button'
+      className={styles.shareButton}
+      onClick={() => {
+        navigator.clipboard.writeText(`${APP_URL}${router.asPath}`)
+        setCopied(true)
+      }}
+    >Compartir enlace de resultados
+    </button>
+    {copied && <span className={styles.copiedMessage}>¡Enlace copiado en el portapapeles!</span>}
     <ul className={styles.resultsList}>
       {currentItems.map(ad => {
         return <Link href={`${ad.location.country}/ads/${ad._id.toString()}`} key={ad._id}>
@@ -32,7 +53,7 @@ export default function ResultsAds({ search, currentItems, count }) {
             <div className={styles.resultsAdTitle}>
               <h2>{textHighlight(ad.title)}</h2>
             </div>
-            {ad.image.length > 0 && <div className={styles.adImageContainer}><Image src={ad.image[0]} alt='Primera imágen' priority={true} sizes='100vw' layout='responsive' width='100%' height='100%' objectFit='contain' loader={myLoader}/></div>}
+            {ad.image.length > 0 && <div className={styles.adImageContainer}><Image src={ad.image[0]} alt='Primera imágen' priority={true} sizes='100vw' layout='responsive' width='100%' height='100%' objectFit='cover' loader={myLoader} /></div>}
             {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
             {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
 

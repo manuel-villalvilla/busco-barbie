@@ -13,7 +13,7 @@ export default function TermsAndConditions({ country }) {
             <p>Esta aplicación web de código abierto está construida para facilitar el contacto a personas que busquen un artículo de segunda mano relacionado con el mundo Barbie™ con
                 personas que publiquen artículos de segunda mano cuya temática sea el mundo Barbie™.
             </p>
-            <p>El código de la aplicación se puede encontrar siguiendo el siguiente <Link href='https://github.com/manuel-villalvilla/busco-barbie'><a className={styles.link}>enlace</a></Link> a GitHub.</p>
+            <p>El código de la aplicación se puede encontrar siguiendo el siguiente <Link href='https://github.com/manuel-villalvilla/busco-barbie' passHref><a className={styles.link} target='_blank' rel='noopener noreferrer'>enlace</a></Link> a GitHub.</p>
             <p>Si te gusta el proyecto y deseas colaborar económicamente para que siga creciendo, puedes hacernos un donativo a través de PayPal siguiendo el siguiente
                 enlace:
             </p>
