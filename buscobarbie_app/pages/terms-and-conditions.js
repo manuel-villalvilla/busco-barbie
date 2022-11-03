@@ -14,7 +14,7 @@ export default function TermsAndConditions({ country }) {
                 personas que publiquen estos artículos.
             </p>
             <p>El código de la aplicación se puede encontrar siguiendo el siguiente <Link href='https://github.com/manuel-villalvilla/busco-barbie' passHref><a className={styles.link} target='_blank' rel='noopener noreferrer'>enlace</a></Link> a GitHub.</p>
-            <p>Si te gusta el proyecto y deseas colaborar económicamente para que siga creciendo, puedes hacernos un donativo a través de PayPal siguiendo el siguiente
+            <p>Si te gusta el proyecto y deseas colaborar económicamente para que siga creciendo, puedes hacer un donativo a través de PayPal siguiendo el siguiente
                 enlace:
             </p>
             <form action="https://www.paypal.com/donate" method="post" target="_top">

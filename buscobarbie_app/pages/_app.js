@@ -17,7 +17,12 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
     return <>
         <Head>
             <title>BuscoBarbie.com</title>
-            <link rel="icon" href="/favicon.png" />
+            <meta name="description" content="Busca, encuentra, publica... Todo sobre Barbies"></meta>
+            <meta name="keywords" content="Buscador, Barbies, Publicar, Complementos, Modelos, Rubias, Morenas, Pelirrojas, Segunda Mano"></meta>
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+            <link rel="manifest" href="/site.webmanifest" />
         </Head>
 
         <SessionProvider session={session}>
@@ -52,7 +57,7 @@ MyApp.getInitialProps = async (context) => {
                     try {
                         const res2 = await logFirstConnection(req.headers["x-real-ip"], req.headers["accept-language"], country_code)
                         res2.status === 200 ? console.log('Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code) :
-                        console.log('Not Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code)
+                            console.log('Not Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code)
                     } catch (error) {
                         console.log(error.message)
                     }

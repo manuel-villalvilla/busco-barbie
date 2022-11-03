@@ -23,6 +23,7 @@ next.config.js
 *.pem
 *.db
 /logs
+/public
 
 # debug
 npm-debug.log*
