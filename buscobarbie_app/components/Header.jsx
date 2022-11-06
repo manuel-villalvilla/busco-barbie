@@ -22,14 +22,10 @@ export default withContext(function Header({ context: { setSearchHeight, searchH
     searchHeight === 0 ? setSearchHeight('auto') : setSearchHeight(0)
   }
 
-  const myLoader = ({src, width, quality}) => {
-    return `${src}?w=100&q=75`
-  }
-
   return <div className={styles.container}>
     <div className={styles.headerFilters}>
       <header className={styles.header}>
-        <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image alt='logo de busco barbie' src='/logo4.png' layout='fill' priority loader={myLoader}></Image></a></Link>
+        <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image alt='logo de busco barbie' src='/logo4.png' layout='fill' priority></Image></a></Link>
 
         <div className={styles.sessionButtons}>
           <div className={styles.noSession}>

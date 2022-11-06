@@ -32,6 +32,7 @@ export default function AdminPanel({ token }) {
             <div className={styles.container}>
                 <h4>HOLA ADMIN</h4>
                 <p className={styles.title}>Tienes {data.uAdsCount} anuncios y {data.uUsersCount} usuarios sin verificar</p>
+                <p>Modo construcción {construction ? 'activado' : 'desactivado'}</p>
                 <div className={styles.buttonsContainer}>
                     <button type='button' className={styles.button} onClick={() => setView('ads')}>ANUNCIOS</button>
                     <button type='button' className={styles.button} onClick={() => setView('users')}>USUARIOS</button>

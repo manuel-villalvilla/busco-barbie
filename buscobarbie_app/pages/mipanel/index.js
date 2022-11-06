@@ -20,7 +20,7 @@ function MiPanel({ context: { setSearchHeight }, pack, token }) {
                     <MainPanel user={user} ads={ads} setUser={setUser} setAds={setAds} token={token} count={count} setCount={setCount} />
                 </div>
                 :
-                <AdminPanel token={token} />
+                <AdminPanel token={token}/>
         }
     </>
 }

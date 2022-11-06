@@ -16,10 +16,6 @@ export default function AdminAd({ ad, showAd, token, setData }) {
         }
     }
 
-    const myLoader = ({src, width, quality}) => {
-        return `${src}?w=100&q=75`
-    }
-
     return <><button type='button' className={styles.backButton} onClick={() => showAd(null)}>Volver</button>
         <div className={styles.adContainer}>
             <p>{ad.title}</p>
@@ -32,7 +28,7 @@ export default function AdminAd({ ad, showAd, token, setData }) {
             {ad.tags.length && <p>{ad.tags.toString()}</p>}
             <p>{ad.price}</p>
             <p>{ad.createdAt}</p>
-            <div className={styles.imgDiv}>{ad.image.length && ad.image.map((img, index) => <Image className={styles.adImage} src={img} key={index} layout='fixed' priority={true} width={200} height={400} loader={myLoader}></Image>)}</div>
+            <div className={styles.imgDiv}>{ad.image.length && ad.image.map((img, index) => <Image className={styles.adImage} src={img} key={index} layout='fixed' priority={true} width={200} height={400}></Image>)}</div>
             <button type='button' className={styles.adVerifyButton} onClick={() => handleVerify(false)}>Borrar</button>
             <button type='button' className={styles.adVerifyButton} onClick={() => handleVerify(true)}>Verificar</button>
         </div>

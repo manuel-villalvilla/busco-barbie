@@ -30,10 +30,6 @@ export default function ResultsAds({ search, currentItems, count }) {
     </article>
   }
 
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=100&q=75`
-  }
-
   return <div className={styles.resultsContainer}>
     <p>Encontrado{count === 1 ? '' : 's'} {count} resultado{count === 1 ? '' : 's'}</p>
     <button
@@ -53,7 +49,7 @@ export default function ResultsAds({ search, currentItems, count }) {
             <div className={styles.resultsAdTitle}>
               <h2>{textHighlight(ad.title)}</h2>
             </div>
-            {ad.image.length > 0 && <div className={styles.adImageContainer}><Image src={ad.image[0]} alt='Primera imágen' priority={true} sizes='100vw' layout='responsive' width='100%' height='100%' objectFit='cover' loader={myLoader} /></div>}
+            {ad.image.length > 0 && <div className={styles.adImageContainer}><Image src={ad.image[0]} alt='Primera imágen' priority={true} sizes='100vw' layout='responsive' width='100%' height='100%' objectFit='cover'/></div>}
             {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
             {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
 

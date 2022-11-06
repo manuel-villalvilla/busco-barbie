@@ -2,7 +2,6 @@ import '../styles.css'
 import { SessionProvider } from 'next-auth/react'
 import { getSession } from 'next-auth/react'
 import Layout from '../components/Layout'
-import Loader from '../components/Loader'
 import Head from 'next/head'
 import { getCookie, setCookie } from 'cookies-next'
 import App from 'next/app'
@@ -11,8 +10,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import logFirstConnection from '../logic/logFirstConnection'
 const TOKEN = process.env.NEXT_PUBLIC_FINDIP_TOKEN
+const IP = process.env.NEXT_PUBLIC_WAN_IP
 
-function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted }) {
+function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted, ip }) {
     const [accepted, setAccepted] = useState(cookieAccepted)
     return <>
         <Head>
@@ -25,39 +25,48 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
             <link rel="manifest" href="/site.webmanifest" />
         </Head>
 
-        <SessionProvider session={session}>
-            <Layout country_code={country_code} >
+        {ip === IP ? <SessionProvider session={session}>
+            <Layout country_code={country_code}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider>
+        </SessionProvider> : <p>En construcción. Próximamente...</p>}
+
     </>
 }
 
 MyApp.getInitialProps = async (context) => {
     const { ctx, ctx: { req, res } } = context
     let country_code = getCookie('country', { req, res })
-    if (country_code)
-        if (req && req.headers) {
-            console.log('IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | Cookie country: ' + country_code)
-        }
     const session = await getSession(ctx)
     const appProps = await App.getInitialProps(context)
-
     let cookieAccepted = getCookie('cookieAccepted', { req, res })
     if (!cookieAccepted) cookieAccepted = false
-
-    if (!country_code) {
+    let ip = null
+    
+    if (country_code)
+        if (req && req.headers) {
+            ip = req.headers["x-real-ip"]
+            try {
+                const res2 = await logFirstConnection(req.headers["x-real-ip"], req.headers["accept-language"], country_code)
+                res2.status === 201 ? console.log('Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | Existing cookie country: ' + country_code) :
+                    console.log('Not Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | Existing cookie country: ' + country_code)
+            } catch (error) {
+                console.log(error.message)
+            }
+        }
+    else {
         // Get country code from external API
         if (req && req.headers) {
+            ip = req.headers["x-real-ip"]
             try {
                 const res = await axios.get(`https://api.findip.net/${req.headers["x-real-ip"]}/?token=${TOKEN}`)
                 if (res.status === 200) {
                     country_code = res.data.country.iso_code
                     try {
                         const res2 = await logFirstConnection(req.headers["x-real-ip"], req.headers["accept-language"], country_code)
-                        res2.status === 200 ? console.log('Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code) :
-                            console.log('Not Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New country: ' + res.data.country.iso_code)
+                        res2.status === 201 ? console.log('Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New cookie country: ' + res.data.country.iso_code) :
+                            console.log('Not Logged IP: ' + req.headers["x-real-ip"] + ' | Locale: ' + req.headers["accept-language"] + ' | New cookie country: ' + res.data.country.iso_code)
                     } catch (error) {
                         console.log(error.message)
                     }
@@ -74,7 +83,8 @@ MyApp.getInitialProps = async (context) => {
                     ...appProps,
                     session,
                     country_code,
-                    cookieAccepted
+                    cookieAccepted,
+                    ip
                 }
             }
         }
@@ -86,7 +96,8 @@ MyApp.getInitialProps = async (context) => {
             ...appProps,
             session,
             country_code,
-            cookieAccepted
+            cookieAccepted,
+            ip
         }
     }
 
@@ -94,7 +105,8 @@ MyApp.getInitialProps = async (context) => {
         ...appProps,
         session,
         country_code,
-        cookieAccepted
+        cookieAccepted,
+        ip
     }
 }
 
