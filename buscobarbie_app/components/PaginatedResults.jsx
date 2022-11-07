@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate'
 import { animateScroll as scroll } from 'react-scroll'
 import styles from './PaginatedResults.module.css'
 
-function PaginatedResults({ search, page, data, onPageClick }) { // search solo se envia a ResultsAds
+function PaginatedResults({ search, page, data, onPageClick }) {
     return (
         <div className={styles.paginatedAds}>
             <ReactPaginate

@@ -17,9 +17,10 @@ export async function getServerSideProps(context) {
   // For initial call, only the country will be provided to the api call
   let { req, res, query: { page = 1, limit = 10, province = null, search = null, categories = null, year = null, tags = null, sort = null } } = context
 
-  const country = getCookie('country', { req, res })
+  let country = getCookie('country', { req, res })
   if (!country || country !== 'AR') {
     setCookie('country', 'AR', { req, res, maxAge: 30 * 24 * 60 * 60 })
+    country = 'AR'
   }
 
   let tags2 = null

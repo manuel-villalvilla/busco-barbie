@@ -15,23 +15,17 @@ const IP = process.env.NEXT_PUBLIC_WAN_IP
 function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted, ip }) {
     const [accepted, setAccepted] = useState(cookieAccepted)
     return <>
+
         <Head>
             <title>BuscoBarbie.com</title>
-            <meta name="description" content="Busca, encuentra, publica... Todo sobre Barbies"></meta>
-            <meta name="keywords" content="Buscador, Barbies, Publicar, Complementos, Modelos, Rubias, Morenas, Pelirrojas, Segunda Mano"></meta>
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-            <link rel="manifest" href="/site.webmanifest" />
         </Head>
 
-        {ip === IP ? <SessionProvider session={session}>
+        <SessionProvider session={session}>
             <Layout country_code={country_code}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider> : <p>En construcción. Próximamente...</p>}
-
+        </SessionProvider>
     </>
 }
 
@@ -44,7 +38,7 @@ MyApp.getInitialProps = async (context) => {
     if (!cookieAccepted) cookieAccepted = false
     let ip = null
     
-    if (country_code)
+    if (country_code) {
         if (req && req.headers) {
             ip = req.headers["x-real-ip"]
             try {
@@ -55,7 +49,7 @@ MyApp.getInitialProps = async (context) => {
                 console.log(error.message)
             }
         }
-    else {
+    } else {
         // Get country code from external API
         if (req && req.headers) {
             ip = req.headers["x-real-ip"]
@@ -87,8 +81,7 @@ MyApp.getInitialProps = async (context) => {
                     ip
                 }
             }
-        }
-        else country_code = 'ES'
+        } else country_code = 'ES'
 
         setCookie('country', country_code, { req, res, maxAge: 30 * 24 * 60 * 60 })
 
