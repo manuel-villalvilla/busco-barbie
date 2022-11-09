@@ -2,9 +2,16 @@ import styles from './terms-and-conditions.module.css'
 import { getCookie } from 'cookies-next'
 import Link from 'next/link'
 import { animateScroll as scroll } from 'react-scroll'
+import withContext from '../utils/withContext'
+import { useEffect } from 'react'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
-export default function TermsAndConditions({ country }) {
+export default withContext(function TermsAndConditions({ country, context: { setSearchHeight } }) {
+    useEffect(() => {
+        setSearchHeight(0)
+        scroll.scrollToTop()
+    }, [])
+
     return <div className={styles.container}>
         <h4 className={styles.title}>Términos y Condiciones de uso:</h4>
 
@@ -117,7 +124,7 @@ export default function TermsAndConditions({ country }) {
         </div>
         <button type='button' className={styles.bottomButton} onClick={() => scroll.scrollToTop()}>Volver arriba</button>
     </div>
-}
+})
 
 export async function getServerSideProps({ req, res }) {
     const country = getCookie('country', { req, res })

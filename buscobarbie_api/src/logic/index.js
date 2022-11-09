@@ -21,5 +21,6 @@ module.exports = {
     deleteUser: require('./user/deleteUser'),
     adminContact: require('./admin/adminContact'),
     logFirstConnection: require('./admin/logFirstConnection'),
-    reportAd: require('./ads/reportAd')
+    reportAd: require('./ads/reportAd'),
+    retrieveFavoriteAds: require('./ads/retrieveFavoriteAds')
 }

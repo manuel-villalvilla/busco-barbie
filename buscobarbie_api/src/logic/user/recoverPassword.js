@@ -9,6 +9,7 @@ const SMTP_USER = process.env.SMTP_USER
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
 const JWT_SECRET = process.env.JWT_SECRET
+const NAS_IMAGES_URL = process.env.NAS_IMAGES_URL
 
 module.exports = async function (email) {
     validateEmail(email)
@@ -91,7 +92,7 @@ module.exports = async function (email) {
         </style>
         </head>
         <body class='body'>
-            <div class="textalign"><a href='${APP_URL}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
+            <div class="textalign"><a href='${APP_URL}' rel='noopener noreferrer'><img src='${NAS_IMAGES_URL}/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
             <h3 class='textalign'>¡Hola ${user.name}! Recupera tu contraseña de <span>BuscoBarbie.com</span></h3>
             <p class='cabecera'><b>Por favor, pulsa en el siguiente <span class='pink'>enlace</span> para cambiar tu contraseña:</b></p>
             <div class='container'>

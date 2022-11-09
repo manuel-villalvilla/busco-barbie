@@ -12,7 +12,7 @@ import logFirstConnection from '../logic/logFirstConnection'
 const TOKEN = process.env.NEXT_PUBLIC_FINDIP_TOKEN
 const IP = process.env.NEXT_PUBLIC_WAN_IP
 
-function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted, ip }) {
+function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted, ip, favorites }) {
     const [accepted, setAccepted] = useState(cookieAccepted)
     return <>
 
@@ -20,24 +20,40 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
             <title>BuscoBarbie.com</title>
         </Head>
 
-        <SessionProvider session={session}>
-            <Layout country_code={country_code}>
+        {ip === IP ? <SessionProvider session={session}>
+            <Layout country_code={country_code} favorites={favorites}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider>
+        </SessionProvider> : <p>En construcción...</p>}
+
+        {/* <SessionProvider session={session}>
+            <Layout country_code={country_code} favorites={favorites}>
+                <Component {...pageProps} />
+            </Layout>
+            {!accepted && <CookieNotice setAccepted={setAccepted} />}
+        </SessionProvider> */}
     </>
 }
 
 MyApp.getInitialProps = async (context) => {
     const { ctx, ctx: { req, res } } = context
+
     let country_code = getCookie('country', { req, res })
+
     const session = await getSession(ctx)
+
     const appProps = await App.getInitialProps(context)
+
     let cookieAccepted = getCookie('cookieAccepted', { req, res })
     if (!cookieAccepted) cookieAccepted = false
+
+    let favorites = getCookie('favorites', { req, res })
+    if (!favorites) favorites = []
+    else favorites = favorites.split(',')
+
     let ip = null
-    
+
     if (country_code) {
         if (req && req.headers) {
             ip = req.headers["x-real-ip"]
@@ -78,7 +94,8 @@ MyApp.getInitialProps = async (context) => {
                     session,
                     country_code,
                     cookieAccepted,
-                    ip
+                    ip,
+                    favorites
                 }
             }
         } else country_code = 'ES'
@@ -90,7 +107,8 @@ MyApp.getInitialProps = async (context) => {
             session,
             country_code,
             cookieAccepted,
-            ip
+            ip,
+            favorites
         }
     }
 
@@ -99,7 +117,8 @@ MyApp.getInitialProps = async (context) => {
         session,
         country_code,
         cookieAccepted,
-        ip
+        ip,
+        favorites
     }
 }
 

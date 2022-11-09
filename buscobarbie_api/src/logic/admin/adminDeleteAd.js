@@ -9,6 +9,7 @@ const SMTP_PORT = process.env.SMTP_PORT
 const SMTP_USER = process.env.SMTP_USER
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
+const NAS_IMAGES_URL = process.env.NAS_IMAGES_URL
 
 module.exports = async function (userId, adId) {
     validateObjectId(adId)
@@ -95,7 +96,7 @@ module.exports = async function (userId, adId) {
     </style>
     </head>
     <body class='body'>
-        <div class="textalign"><a href='${APP_URL}/${ad.location.country}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
+        <div class="textalign"><a href='${APP_URL}/${ad.location.country}' rel='noopener noreferrer'><img src='${NAS_IMAGES_URL}/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
         <h3 class='textalign'>¡Hola ${adUser.name}! Lo sentimos, tu anuncio ha sido <span>rechazado</span> por no cumplir con nuestras <a href='${APP_URL}/terms-and-conditions' rel='noopener noreferrer' class='verlink'>condiciones</a>.</h3>
         <p class='cabecera'><b>Si no estás de acuerdo, por favor ponte en <a href='${APP_URL}/contact' rel='noopener noreferrer' class='verlink'>contacto</a> con nosotros.</b></p>
         <br>

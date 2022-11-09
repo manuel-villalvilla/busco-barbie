@@ -5,5 +5,6 @@ module.exports = {
     updateAdHandler: require('./updateAdHandler'),
     newUserAdHandler: require('./newUserAdHandler'),
     updateAdVisibilityHandler: require('./updateAdVisibilityHandler'),
-    reportAdHandler: require('./reportAdHandler')
+    reportAdHandler: require('./reportAdHandler'),
+    retrieveFavoriteAdsHandler: require('./retrieveFavoriteAdsHandler')
 }

@@ -9,7 +9,8 @@ import {
     validateArea,
     validatePhoneNumber,
     validateYear,
-    validateTags
+    validateTags,
+    validateMongoId
 } from 'validators'
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -25,6 +26,7 @@ export default async function (tokenFromApi, id, form, country_code, tags) {
         accept
     } = form
 
+    validateMongoId(id)
     validateCountry(country_code)
     validateTitle(title)
     validateBody(body)

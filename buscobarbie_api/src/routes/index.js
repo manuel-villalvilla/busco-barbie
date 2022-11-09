@@ -10,7 +10,8 @@ const {
     updateAdHandler,
     newUserAdHandler,
     updateAdVisibilityHandler,
-    reportAdHandler
+    reportAdHandler,
+    retrieveFavoriteAdsHandler
 } = require('./ads')
 const {
     authenticateUserHandler,
@@ -39,6 +40,8 @@ adsRouter.get('/ads', retrieveAdsHandler)
 
 adsRouter.get('/ads/:adId', retrieveAdWithIdHandler)
 
+adsRouter.get('/ads/favorites/:ids', retrieveFavoriteAdsHandler)
+
 adsRouter.delete('/ads', jsonBodyParser, deleteAdHandler)
 
 adsRouter.patch('/ads', fileupload(), bodyParser.json(), bodyParser.urlencoded({ extended: false }), updateAdHandler)
@@ -65,7 +68,7 @@ usersRouter.post('/users', fileupload(), bodyParser.json(), bodyParser.urlencode
 
 usersRouter.patch('/users', jsonBodyParser, verifyUserHandler)
 
-usersRouter.get('/users', jsonBodyParser, retrieveUserWithAdsHandler)
+usersRouter.get('/users', retrieveUserWithAdsHandler)
 
 usersRouter.post('/users/pass', jsonBodyParser, updatePasswordHandler)
 

@@ -7,6 +7,7 @@ const SMTP_PORT = process.env.SMTP_PORT
 const SMTP_USER = process.env.SMTP_USER
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
+const NAS_IMAGES_URL = process.env.NAS_IMAGES_URL
 
 module.exports = async function(name, email, body, adUser) {
     // TODO VALIDATE INPUTS
@@ -76,7 +77,7 @@ module.exports = async function(name, email, body, adUser) {
     </style>
     </head>
     <body class='body'>
-        <div class="textalign"><a href='${APP_URL}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
+        <div class="textalign"><a href='${APP_URL}' rel='noopener noreferrer'><img src='${NAS_IMAGES_URL}/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
         <h3 class='textalign'>¡Hola ${user.name}! Alguien quiere ponerse en <span>contacto</span> contigo.</h3>
         <p class='cabecera'><b>Aquí tienes una copia del <span style='color:rgb(233,96,155);'>mensaje</span>:</b></p>
         <div class='container'>

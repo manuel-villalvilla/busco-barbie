@@ -153,7 +153,7 @@ module.exports = async function (country_code, name, email, password, title, bod
     </style>
     </head>
     <body class='body'>
-        <div class="textalign"><a href='${APP_URL}/${country_code}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
+        <div class="textalign"><a href='${APP_URL}/${country_code}' rel='noopener noreferrer'><img src='${NAS_IMAGES_URL}/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
         <h3 class='textalign'>¡Hola ${user.name}! Te damos la bienvenida a <span>BuscoBarbie.com</span></h3>
         <p class='cabecera'><b>Aquí tienes una copia de tu anuncio y tu enlace de verificación:</b></p>
         <div class='container'>

@@ -8,7 +8,8 @@ import {
     validateArea,
     validatePhoneNumber,
     validateTags,
-    validateYear
+    validateYear,
+    validateMongoId
 } from 'validators'
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -48,7 +49,8 @@ export default function (form, token, userId, adId, tags) {
     if (tags.length) validateTags(tags)
     if (form.year) validateYear(form.year.value)
     if (!accept.checked) throw new Error('checkbox required')
-    // TODO Validate userId & adId
+    validateMongoId(userId)
+    validateMongoId(adId)
 
     const formData = new FormData(form)
     formData.append('userId', userId)

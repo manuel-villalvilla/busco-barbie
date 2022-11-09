@@ -1,8 +1,11 @@
 import axios from 'axios'
+import { validateMongoId } from 'validators'
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 export default async function (userId, adId, token) {
-    // TODO validate inputs
+    validateMongoId(userId)
+    validateMongoId(adId)
+
     const payload = {
         userId,
         adId

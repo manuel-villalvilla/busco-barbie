@@ -4,7 +4,6 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 export default async function (id, token) {
     validateMongoId(id)
-    // validateToken(token)
 
     try {
     const res = await axios.patch(`${API_URL}/users`, { id, token })

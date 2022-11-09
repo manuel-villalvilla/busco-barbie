@@ -8,6 +8,7 @@ const SMTP_PORT = process.env.SMTP_PORT
 const SMTP_USER = process.env.SMTP_USER
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const APP_URL = process.env.APP_URL
+const NAS_IMAGES_URL = process.env.NAS_IMAGES_URL
 
 module.exports = async function (userId, adId) {
     validateObjectId(adId)
@@ -90,7 +91,7 @@ module.exports = async function (userId, adId) {
     </style>
     </head>
     <body class='body'>
-        <div class="textalign"><a href='${APP_URL}/${ad.location.country}' rel='noopener noreferrer'><img src='https://bbapi.serranillos.net/files/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
+        <div class="textalign"><a href='${APP_URL}/${ad.location.country}' rel='noopener noreferrer'><img src='${NAS_IMAGES_URL}/logo4.png' alt='Logo de BuscoBarbie.com' /></a></div>
         <h3 class='textalign'>¡Hola ${adUser.name}! Tu anuncio ha sido <span>verificado</span>.</h3>
         <p class='cabecera'><b>Ya es visible al <span>público</span>, no obstante, ahora tienes la opción de <span>ocultarlo</span> si quisieras desde tu <span>panel de control</span>. Ten en cuenta que si decides editar el anuncio, volverá a tener que pasar por <span>verificación</span>.</b></p>
         <br>
