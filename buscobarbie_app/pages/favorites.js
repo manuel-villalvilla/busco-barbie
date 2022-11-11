@@ -36,6 +36,7 @@ export default withContext(function Favorites({ favorites, ads, context: { setSe
   }
 
   return <div className={styles.resultsContainer}>
+    <h2 className={styles.title}>Mis favoritos</h2>
     <ul className={styles.resultsList}>
       {stateAds.length ? stateAds.map((ad, index) => {
         return <li className={styles.resultsListItem} key={index}>

@@ -45,6 +45,7 @@ export default withContext(function TermsAndConditions({ country, context: { set
                 cookies de terceros si eliges iniciar sesión con otros proveedores.
             </p>
             <p>Se guardará también una cookie relativa al Recaptcha V2 de <span>Google</span>.</p>
+            <p>En el momento en que selecciones uno o varios anuncios como favoritos, se guardará una cookie que los contenga.</p>
         </div>
 
         <div className={styles.blockContainer}>
@@ -73,6 +74,10 @@ export default withContext(function TermsAndConditions({ country, context: { set
             </p>
             <p>Si pierdes tu contraseña de <span>BuscoBarbie.com</span>, se te da la opción de recuperarla en el panel de <Link href={`${APP_URL}/login`}><a className={styles.link}>iniciar sesión</a></Link>.</p>
             <p>Acceso al blog de <Link href={`${APP_URL}/barbiestories`}><a className={styles.link}>Barbiestories</a></Link> o pulsando el enlace en la cabecera.</p>
+            <p>Puedes guardar anuncios favoritos pulsando en el botón
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onClick={() => handleFavorite(ad._id)} style={{ cursor: 'pointer' }}><path d="M0 0h24v24H0V0z" fill="none" /><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" fill='red' /></svg>
+                disponible para cada anuncio. Podrás acceder a tus favoritos guardados pulsando en el enlace a pie de página o pulsando <Link href={`${APP_URL}/favorites`}><a className={styles.link}>aquí</a></Link>
+            </p>
             <p>Si deseas contactar con la administración de <span>BuscoBarbie.com</span>, encontrarás el <Link href={`${APP_URL}/contact`}><a className={styles.link}>enlace</a></Link> a pie de página.</p>
             <p>Para acceder a la versión de la plataforma en otro país, sigue los enlaces a pie de página. Ten en cuenta que cada vez que pulses en enlace de un país distinto, se guardará una cookie con el país para
                 configurar la aplicación acorde a él.
@@ -120,7 +125,7 @@ export default withContext(function TermsAndConditions({ country, context: { set
 
         <div className={styles.blockContainer}>
             <h5 className={styles.subtitle}>PROPIEDAD DEL SITIO</h5>
-            <p>Esta aplicación web pertenece a Manuel Villalvilla Cañizares con D.N.I. 49009131-H y residencia en Serranillos del Valle, Madrid, España.</p>
+            <p>Esta aplicación web pertenece a Manuel Villalvilla Cañizares con D.N.I. 49009131-H y residencia en Madrid, España.</p>
         </div>
         <button type='button' className={styles.bottomButton} onClick={() => scroll.scrollToTop()}>Volver arriba</button>
     </div>

@@ -100,6 +100,17 @@ export default function FiltersMenu({ country, province, search, categories, yea
     }, undefined, { scroll: false })
   }
 
+  const handleClearInputs = () => {
+    handleFormOnChange(queryConstructor({
+      province: 'all',
+      categories: 'all',
+      search: null,
+      year: null,
+      tags: null,
+      sort: null
+    }))
+  }
+
   return (
     <div className={styles.pannel}>
       <form
@@ -109,6 +120,9 @@ export default function FiltersMenu({ country, province, search, categories, yea
           event.preventDefault()
         }}
       >
+        <div className={styles.clearBtnCont}>
+          <button type='button' className={styles.clearBtn} onClick={handleClearInputs}>Limpiar filtros</button>
+        </div>
         <div className={styles.sortContainer}>
           <label htmlFor="sortFilter" className={styles.label}>Ordenar resultados por:</label>
           <select
@@ -238,7 +252,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
               <select
                 className={styles.yearSelect}
                 name='year' id='year'
-                value={stateFormValues.year ? stateFormValues.year : 'Todos'}
+                value={stateFormValues.year ? stateFormValues.year : 'Todas'}
                 onChange={e => {
                   setStateFormValues({ ...stateFormValues, year: e.target.value })
                   handleFormOnChange(queryConstructor({ ...stateFormValues, year: e.target.value }))

@@ -14,6 +14,19 @@
     align-items: center;
 }
 
+.clearBtnCont {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.clearBtn {
+    border-style: none;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .provinceContainer, .categoriesContainer, .sortContainer {
     width: 100%;
     display: flex;

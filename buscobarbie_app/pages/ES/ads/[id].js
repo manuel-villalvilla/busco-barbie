@@ -27,13 +27,18 @@ export async function getServerSideProps(context) {
       else if (elapsedMonths < 1) ad.elapsed = `Publicado hace ${elapsedDays === 1 ? '1 día' : `${elapsedDays} días`}`
       else if (elapsedYears < 1) ad.elapsed = `Publicado hace ${elapsedMonths === 1 ? '1 mes' : `${elapsedMonths} meses`}`
       else ad.elapsed = `Publicado hace ${elapsedYears === 1 ? '1 año' : `${elapsedYears} años`}`
-    }
-    return {
-      props: { ad }
+
+      return {
+        props: { ad },
+      }
+    } else {
+      return {
+        notFound: true,
+      }
     }
   } catch (error) {
     return {
-      props: { ad: null }
+      notFound: true,
     }
   }
 }
