@@ -400,12 +400,14 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           }}
         >
           <option value='all'>Selecciona una categoría</option>
-          <option value='modelos'>Modelos</option>
-          <option value='complementos'>Complementos</option>
+          <option value='soldmodels'>Vendo modelos</option>
+          <option value='soldaccessories'>Vendo complementos</option>
+          <option value='searchedmodels'>Busco modelos</option>
+          <option value='searchedaccessories'>Busco complementos</option>
         </select>
       </div>
 
-      {stateCategories === 'modelos' && <>
+      {(stateCategories === 'soldmodels' || stateCategories === 'searchedmodels') && <>
         <div className={styles.yearsContainer}>
           <label htmlFor='year' className={styles.label}>DÉCADA:</label>
           <select
@@ -445,7 +447,7 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
         </div>
       </>
       }
-      {stateCategories === 'complementos' &&
+      {(stateCategories === 'searchedaccessories' || stateCategories === 'soldaccessories') &&
         <div className={styles.tagsContainer}>
           <label className={styles.label}>ETIQUETAS</label>
           <Select

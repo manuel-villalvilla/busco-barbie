@@ -32,7 +32,7 @@ module.exports = function (country, page, limit, province, search, categories, y
         if (typeof search !== 'string' || search.trim().length > 30) throw new FiltersError('Search filter not valid')
 
     if (categories)
-        if (typeof categories !== 'string' || categories !== 'complementos' && categories !== 'modelos')
+        if (typeof categories !== 'string' || categories !== 'soldaccessories' && categories !== 'soldmodels' && categories !== 'searchedaccessories' && categories !== 'searchedmodels')
             throw new FiltersError('Categories filter not valid')
 
     if (year) {

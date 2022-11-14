@@ -238,14 +238,16 @@ export default function FiltersMenu({ country, province, search, categories, yea
             }}
           >
             <option value='all'>Todas</option>
-            <option value='modelos'>Modelos</option>
-            <option value='complementos'>Complementos</option>
+            <option value='soldmodels'>Modelos en venta</option>
+            <option value='soldaccessories'>Complementos en venta</option>
+            <option value='searchedmodels'>Modelos en búsqueda</option>
+            <option value='searchedaccessories'>Complementos en búsqueda</option>
           </select>
         </div>
 
         {categories === null && <p>Selecciona una <span>categoría</span> para ver los filtros avanzados</p>}
 
-        {categories === 'modelos' && <>
+        {(categories === 'soldmodels' || categories === 'searchedmodels') && <>
           <div className={styles.yearsContainer}>
             <label htmlFor='year' className={styles.label}>Década</label>
             <div className={styles.years}>
@@ -292,7 +294,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
           </div>
         </>
         }
-        {categories === 'complementos' &&
+        {(categories === 'soldaccessories' || categories === 'searchedaccessories') &&
           <div className={styles.tagsContainer}>
             <label className={styles.label}>Etiquetas</label>
             <div className={styles.tags}>

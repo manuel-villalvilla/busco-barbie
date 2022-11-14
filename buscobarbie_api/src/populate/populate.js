@@ -66,7 +66,7 @@ const { connect, disconnect } = require('mongoose');
 
     const verifiedOpts = [true, false]
 
-    const testCategories = ['modelos', 'complementos']
+    const testCategories = ['soldmodels', 'soldaccessories', 'searchedmodels', 'searchedaccessories']
 
     const visibilities = ['private', 'public']
 
@@ -133,7 +133,7 @@ const { connect, disconnect } = require('mongoose');
 
             const price = Math.floor(Math.random() * 100)
 
-            const categories = testCategories[Math.floor(Math.random() * 2)]
+            const categories = testCategories[Math.floor(Math.random() * 4)]
 
             const visibility = visibilities[Math.floor(Math.random() * 2)]
 
@@ -168,11 +168,11 @@ const { connect, disconnect } = require('mongoose');
                 }())
             }
 
-            if (categories === 'modelos') {
+            if (categories === 'searchedmodels' || categories === 'soldmodels') {
                 let year = years[Math.floor(Math.random() * years.length)]
                 ad = await Ad.create({ user: user.id, title, body, location: { country, province, area }, phone, verified, categories, year, tags: savedModelosTags, visibility, price, createdAt })
             }
-            else if (categories === 'complementos') {
+            else if (categories === 'searchedaccessories' || categories === 'soldaccessories') {
                 ad = await Ad.create({ user: user.id, title, body, location: { country, province, area }, phone, verified, categories, tags: savedComplementosTags, visibility, price, createdAt })
             }
 

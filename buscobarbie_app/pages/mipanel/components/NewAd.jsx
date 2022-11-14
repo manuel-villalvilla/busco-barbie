@@ -22,18 +22,18 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
 const Option = (props) => {
     return (
-      <div>
-        <components.Option {...props}>
-          <div className='checkbox-label'>
-            <input
-              type="checkbox"
-              checked={props.isSelected}
-              onChange={() => null}
-            />{" "}
-            <label>{props.label}</label>
-          </div>
-        </components.Option>
-      </div>
+        <div>
+            <components.Option {...props}>
+                <div className='checkbox-label'>
+                    <input
+                        type="checkbox"
+                        checked={props.isSelected}
+                        onChange={() => null}
+                    />{" "}
+                    <label>{props.label}</label>
+                </div>
+            </components.Option>
+        </div>
     )
 }
 
@@ -354,12 +354,14 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                     }}
                 >
                     <option value='all'>Selecciona una categoría</option>
-                    <option value='modelos'>Modelos</option>
-                    <option value='complementos'>Complementos</option>
+                    <option value='soldmodels'>Vendo modelos</option>
+                    <option value='soldaccessories'>Vendo complementos</option>
+                    <option value='searchedmodels'>Busco modelos</option>
+                    <option value='searchedaccessories'>Busco complementos</option>
                 </select>
             </div>
 
-            {stateCategories === 'modelos' && <>
+            {(stateCategories === 'soldmodels' || stateCategories === 'searchedmodels') && <>
                 <div className={styles.yearsContainer}>
                     <label htmlFor='year' className={styles.label}>DÉCADA:</label>
                     <select
@@ -399,7 +401,7 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                 </div>
             </>
             }
-            {stateCategories === 'complementos' &&
+            {(stateCategories === 'soldaccessories' || stateCategories === 'searchedaccessories') &&
                 <div className={styles.tagsContainer}>
                     <label className={styles.label}>ETIQUETAS</label>
                     <Select

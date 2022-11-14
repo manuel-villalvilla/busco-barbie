@@ -22,20 +22,20 @@ const { ES, AR, MX } = areas
 const imageTypeRegex = /image\/(png|jpg|jpeg|gif)/gm;
 const Option = (props) => {
     return (
-      <div>
-        <components.Option {...props}>
-          <div className='checkbox-label'>
-            <input
-              type="checkbox"
-              checked={props.isSelected}
-              onChange={() => null}
-            />{" "}
-            <label>{props.label}</label>
-          </div>
-        </components.Option>
-      </div>
+        <div>
+            <components.Option {...props}>
+                <div className='checkbox-label'>
+                    <input
+                        type="checkbox"
+                        checked={props.isSelected}
+                        onChange={() => null}
+                    />{" "}
+                    <label>{props.label}</label>
+                </div>
+            </components.Option>
+        </div>
     )
-  }
+}
 
 export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess }) {
     const [stateAd, setAd] = useState(ad)
@@ -54,14 +54,14 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
 
     useEffect(() => {
         if (!firsTimeRef.current) {
-          if (error.bottom) {
-            errorBottomRef.current.scrollIntoView()
-            setTimeout(() => setError({ ...error, bottom: null }), 5000)
-          }
-          if (error.images) setTimeout(() => setError({ ...error, images: null }), 5000)
+            if (error.bottom) {
+                errorBottomRef.current.scrollIntoView()
+                setTimeout(() => setError({ ...error, bottom: null }), 5000)
+            }
+            if (error.images) setTimeout(() => setError({ ...error, images: null }), 5000)
         }
         return () => firsTimeRef.current = false
-      }, [error])
+    }, [error])
 
     useEffect(() => {
         async function setImages() {
@@ -389,12 +389,14 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                     onChange={e => setAd({ ...stateAd, categories: e.target.value, tags: [] })}
                 >
                     <option value='all'>Selecciona una categoría</option>
-                    <option value='modelos'>Modelos</option>
-                    <option value='complementos'>Complementos</option>
+                    <option value='soldmodels'>Vendo modelos</option>
+                    <option value='soldaccessories'>Vendo complementos</option>
+                    <option value='searchedmodels'>Busco modelos</option>
+                    <option value='searchedaccessories'>Busco complementos</option>
                 </select>
             </div>
 
-            {stateAd.categories === 'modelos' && <>
+            {(stateAd.categories === 'soldmodels' || stateAd.categories === 'searchedmodels') && <>
                 <div className={styles.yearsContainer}>
                     <label htmlFor='year' className={styles.label}>DÉCADA:</label>
                     <select
@@ -441,7 +443,7 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                 </div>
             </>
             }
-            {stateAd.categories === 'complementos' &&
+            {(stateAd.categories === 'searchedaccessories' || stateAd.categories === 'soldaccessories') &&
                 <div className={styles.tagsContainer}>
                     <label className={styles.label}>ETIQUETAS:</label>
                     <Select
