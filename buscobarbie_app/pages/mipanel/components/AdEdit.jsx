@@ -365,20 +365,6 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                 <div className={styles.formText}>Se hará público para que te contacten si lo introduces.</div>
             </div>
 
-            <div className={styles.priceContainer}>
-                <label htmlFor='price' className={styles.priceLabel}>PRECIO:<span style={{ color: 'red' }}>*</span></label>
-                <input
-                    type='number'
-                    className={styles.priceInput}
-                    name='price'
-                    id='price'
-                    maxLength={4}
-                    required={true}
-                    defaultValue={stateAd.price}
-                />
-                <div className={styles.formText}>Sólo números.</div>
-            </div>
-
             <div className={styles.categoriesContainer}>
                 <label htmlFor="categories" className={styles.categoriesLabel}>CATEGORÍAS:<span style={{ color: 'red' }}>*</span></label>
                 <select
@@ -394,6 +380,20 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                     <option value='searchedmodels'>Busco modelos</option>
                     <option value='searchedaccessories'>Busco complementos</option>
                 </select>
+            </div>
+
+            <div className={styles.priceContainer}>
+                <label htmlFor='price' className={styles.priceLabel}>{stateAd.categories === 'searchedmodels' || stateAd.categories === 'searchedaccessories' ? 'PRECIO OFRECIDO:*' : 'PRECIO:*'}</label>
+                <input
+                    type='number'
+                    className={styles.priceInput}
+                    name='price'
+                    id='price'
+                    maxLength={4}
+                    required={true}
+                    defaultValue={stateAd.price}
+                />
+                <div className={styles.formText}>Sólo números.</div>
             </div>
 
             {(stateAd.categories === 'soldmodels' || stateAd.categories === 'searchedmodels') && <>

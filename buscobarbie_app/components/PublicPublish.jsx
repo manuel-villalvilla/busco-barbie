@@ -375,19 +375,6 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
         <p className={styles.formText}>Se hará público para que te contacten si lo introduces.</p>
       </div>
 
-      <div className={styles.priceContainer}>
-        <label htmlFor='price' className={styles.priceLabel}>PRECIO:*</label>
-        <input
-          type='number'
-          className={styles.priceInput}
-          name='price'
-          id='price'
-          maxLength={4}
-          required={true}
-        />
-        <p className={styles.formText}>Sólo números.</p>
-      </div>
-
       <div className={styles.categoriesContainer}>
         <label htmlFor="categories" className={styles.categoriesLabel}>CATEGORÍAS:*</label>
         <select
@@ -405,6 +392,19 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           <option value='searchedmodels'>Busco modelos</option>
           <option value='searchedaccessories'>Busco complementos</option>
         </select>
+      </div>
+
+      <div className={styles.priceContainer}>
+        <label htmlFor='price' className={styles.priceLabel}>{stateCategories === 'searchedmodels' || stateCategories === 'searchedaccessories' ? 'PRECIO OFRECIDO:*' : 'PRECIO:*'}</label>
+        <input
+          type='number'
+          className={styles.priceInput}
+          name='price'
+          id='price'
+          maxLength={4}
+          required={true}
+        />
+        <p className={styles.formText}>Sólo números.</p>
       </div>
 
       {(stateCategories === 'soldmodels' || stateCategories === 'searchedmodels') && <>

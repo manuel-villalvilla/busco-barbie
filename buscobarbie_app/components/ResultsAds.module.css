@@ -47,7 +47,26 @@
 
 .favorite {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchLabel {
+    font-size: 16px;
+    background-color: rgb(233, 96, 155);
+    border-radius: 10px;
+    padding: 7px;
+    color: #fff;
+    line-height: 15px;
+}
+
+.sellLabel {
+    font-size: 16px;
+    background-color: rgb(114, 191, 128);
+    border-radius: 10px;
+    padding: 7px;
+    color: #fff;
+    line-height: 15px;
 }
 
 .linkDiv {
@@ -116,39 +135,42 @@
     text-overflow: ellipsis;
 }
 
-.resultsAdFooter {
-    display: flex;
-    flex-direction: column;
-    padding:10px;
-    gap: 10px;
-}
-
 .footerProvince {
     display: flex;
     flex-grow: 1;
     font-weight: 600;
     align-items: center;
     justify-content: flex-end;
-    margin:0;
+    padding: 0 5px;
 }
 
 .footerPriceDate {
     display: flex;
-    align-items: baseline;
+    justify-content: space-between;
+    align-items: last baseline;
+    padding: 5px;
 }
 
-.footerPrice {
-    flex-grow: 1;
+.priceDiv {
+    line-height: 20px;
+}
+
+.offers {
     margin: 0;
+    font-size: 14px;
     font-weight: 700;
+    color:rgb(233, 96, 155);
+}
+
+.price {
+    margin: 0;
     font-size: 30px;
-    color: rgb(114, 191, 128);
+    font-weight: 700;
+    color:rgb(114, 191, 128);
 }
 
 .footerDate {
     margin: 0;
     background-color: #fff;
     font-size: 16px;
-    padding: 0 5px;
-    border-radius: 10px;
 }

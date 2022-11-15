@@ -43,7 +43,7 @@ module.exports = async function (country_code, name, email, password, title, bod
     validatePhoneNumber(phone)
     validatePrice(price)
     validateCategories(categories)
-    validateFiles(images) // TODO validate file type
+    validateFiles(images)
     validateYear(year)
     let arr = []
     if (tags.length) {

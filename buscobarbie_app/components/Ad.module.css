@@ -37,7 +37,26 @@
 .favorite {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchLabel {
+    font-size: 16px;
+    background-color: rgb(233, 96, 155);
+    border-radius: 10px;
+    padding: 7px;
+    color: #fff;
+    line-height: 15px;
+}
+
+.sellLabel {
+    font-size: 16px;
+    background-color: rgb(114, 191, 128);
+    border-radius: 10px;
+    padding: 7px;
+    color: #fff;
+    line-height: 15px;
 }
 
 .title > h3 {
@@ -144,31 +163,28 @@
     margin: 10px 0 10px 0;
 }
 
-.resultsAdFooter {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-}
-
 .footerPriceProvince {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: last baseline;
     width: 100%;
 }
 
 .footerPrice {
-    margin: 0;
-    font-weight: bold;
-    font-size: 30px;
-    color:rgb(114, 191, 128);
-    display: flex;
-    align-items: center;
+    line-height: 20px;
 }
 
-.footerPrice > p {
+.offers {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color:rgb(233, 96, 155);
+}
+
+.price {
+    font-weight: 700;
+    font-size: 30px;
+    color:rgb(114, 191, 128);
     margin: 0;
 }
 

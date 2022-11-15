@@ -62,6 +62,7 @@ export default withContext(function ResultsAds({ search, currentItems, count, co
       {currentItems.map(ad => {
         return <li className={styles.resultsListItem} key={ad._id}>
           <div className={styles.favorite}>
+            {ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories' ? <span className={styles.searchLabel}>Busca</span> : <span className={styles.sellLabel}>Vende</span>}
             {stateFavorites.includes(ad._id) ?
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onClick={() => handleFavorite(ad._id)} style={{ cursor: 'pointer' }}><path d="M0 0h24v24H0V0z" fill="none" /><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill='red' /></svg>
               :
@@ -78,12 +79,15 @@ export default withContext(function ResultsAds({ search, currentItems, count, co
               {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
 
               <div className={styles.resultsAdBody}>{textHighlight(ad.body)}</div>
-              <div className={styles.resultsAdFooter}>
-                <p className={styles.footerProvince}>{ad.location.province}</p>
-                <div className={styles.footerPriceDate}>
-                  <p className={styles.footerPrice}>{countryCurrency(ad.location.country, ad.price)}</p>
-                  <p className={styles.footerDate}>{ad.elapsed}</p>
+
+              <p className={styles.footerProvince}>{ad.location.province}</p>
+
+              <div className={styles.footerPriceDate}>
+                <div className={styles.priceDiv}>
+                  {(ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories') && <p className={styles.offers}>Ofrece</p>}
+                  <p className={styles.price}>{countryCurrency(ad.location.country, ad.price)}</p>
                 </div>
+                <p className={styles.footerDate}>{ad.elapsed}</p>
               </div>
             </div>
           </Link>

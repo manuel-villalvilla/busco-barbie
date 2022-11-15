@@ -14,6 +14,7 @@ export default withContext(function Ad({ ad, context: { setSearchHeight, favorit
   const [contactHeight, setContactHeight] = useState(0)
   const [reportHeight, setReportHeight] = useState(0)
   const [stateFavorites, setStateFavorites] = useState(favorites)
+  const [stateCategories, setStateCategories] = useState(ad.categories === 'soldmodels' ? 'Venta de modelos' : ad.categories === 'soldaccessories' ? 'Venta de complementos' : ad.categories === 'searchedmodels' ? 'Busco modelos' : ad.categories === 'searchedaccessories' ? 'Busco complementos' : null)
   const contactRef = useRef(null)
   const reportRef = useRef(null)
 
@@ -64,6 +65,7 @@ export default withContext(function Ad({ ad, context: { setSearchHeight, favorit
     {/* <button type='button' className={styles.backButtonTop} onClick={() => history.back()}>Volver atrás</button> */}
     <div className={styles.adContainer}>
       <div className={styles.favorite}>
+        {ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories' ? <span className={styles.searchLabel}>Busco</span> : <span className={styles.sellLabel}>Vendo</span>}
         {stateFavorites.includes(ad._id) ?
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onClick={() => handleFavorite(ad._id)} style={{ cursor: 'pointer' }}><path d="M0 0h24v24H0V0z" fill="none" /><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill='red' /></svg>
           :
@@ -125,12 +127,15 @@ export default withContext(function Ad({ ad, context: { setSearchHeight, favorit
       <div className={styles.body}><article>{ad.body}</article></div>
       <div className={styles.footerCategories}>
         {ad.year && <p>Década: <span>{ad.year}</span></p>}
-        <p><span className="material-symbols-outlined">category</span>{ad.categories}</p>
+        <p><span className="material-symbols-outlined">category</span>{stateCategories}</p>
         <div className={styles.tagsContainer}>{ad.tags.map((tag, index) => <p key={index}><span className="material-symbols-outlined">category</span>{tag}</p>)}</div>
       </div>
       {ad.location.area && <div className={styles.area}><p>Zona: {ad.location.area}</p></div>}
       <div className={styles.footerPriceProvince}>
-        <div className={styles.footerPrice}><p>{countryCurrency(ad.location.country, ad.price)}</p></div>
+        <div className={styles.footerPrice}>
+          {(ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories') && <p className={styles.offers}>Ofrezco</p>}
+          <p className={styles.price}>{countryCurrency(ad.location.country, ad.price)}</p>
+        </div>
         <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
       </div>
       <button className={styles.contactButton} onClick={handleContactButtonClick}>{contactHeight ? 'Cerrar' : 'Contactar'}</button>

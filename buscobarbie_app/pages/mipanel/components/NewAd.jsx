@@ -329,19 +329,6 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                 <div className={styles.formText}>Se hará público para que te contacten si lo introduces</div>
             </div>
 
-            <div className={styles.priceContainer}>
-                <label htmlFor='price' className={styles.priceLabel}>PRECIO:<span style={{ color: 'red' }}>*</span></label>
-                <input
-                    type='number'
-                    className={styles.priceInput}
-                    name='price'
-                    id='price'
-                    maxLength={4}
-                    required={true}
-                />
-                <div className={styles.formText}>Sólo números</div>
-            </div>
-
             <div className={styles.categoriesContainer}>
                 <label htmlFor="categories" className={styles.categoriesLabel}>CATEGORÍAS:<span style={{ color: 'red' }}>*</span></label>
                 <select
@@ -359,6 +346,19 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                     <option value='searchedmodels'>Busco modelos</option>
                     <option value='searchedaccessories'>Busco complementos</option>
                 </select>
+            </div>
+
+            <div className={styles.priceContainer}>
+                <label htmlFor='price' className={styles.priceLabel}>{stateCategories === 'searchedmodels' || stateCategories === 'searchedaccessories' ? 'PRECIO OFRECIDO:*' : 'PRECIO:*'}</label>
+                <input
+                    type='number'
+                    className={styles.priceInput}
+                    name='price'
+                    id='price'
+                    maxLength={4}
+                    required={true}
+                />
+                <div className={styles.formText}>Sólo números</div>
             </div>
 
             {(stateCategories === 'soldmodels' || stateCategories === 'searchedmodels') && <>
