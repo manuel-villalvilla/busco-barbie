@@ -21,20 +21,19 @@
 
 .title > h4 > span {
     text-transform: capitalize;
+    color:rgb(233, 96, 155);
 }
 
 .phoneP {
-    margin: 0;
-    font-size: 18px;
-    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba(247, 186, 212, 0.1);
 }
 
-.phoneP > span {
-    color:rgb(233, 96, 155);
-    text-transform: capitalize;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 5px;
+.phoneP > p {
+    margin: 0;
 }
 
 .form {
@@ -106,10 +105,14 @@
     background-color: #fff;
     color: #000;
     text-decoration: none;
-    height: 60px;
-    width: 110px;
+    height: 50px;
+    width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
+}
+
+.modalSendButton:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .thankyou {

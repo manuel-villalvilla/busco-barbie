@@ -17,10 +17,6 @@
     border-style: none;
 }
 
-.backButtonTop:hover, .backButtonBot:hover {
-    background-color: rgba(211,211,211,.2);
-}
-
 .adContainer {
     padding: 10px;
     max-width: 760px;
@@ -245,11 +241,14 @@
     background-color: #fff;
     color: #000;
     text-decoration: none;
-    height: 60px;
-    width: 110px;
+    width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
     margin-bottom: 10px;
+}
+
+.contactButton:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .elapsedReport {

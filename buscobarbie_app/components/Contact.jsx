@@ -54,6 +54,11 @@ function Contact({ ad }, ref) {
         {modalView === 'form' && <>
             <div className={styles.title}><h4>Contactar con <span>{ad.name}</span></h4></div>
 
+            {ad.phone !== '' && <div className={styles.phoneP}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M13 46q-1.2 0-2.1-.9-.9-.9-.9-2.1V5q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v38q0 1.2-.9 2.1-.9.9-2.1.9Zm0-4.5V43h22v-1.5Zm0-3h22v-29H13Zm0-32h22V5H13Zm0 0V5v1.5Zm0 35V43Z"/></svg>
+            <p>{ad.phone}</p>
+                </div>}
+
             <form id='contactForm' className={styles.form} onSubmit={event => handleFormSubmit(event)}>
                 <div className={styles.nameContainer}>
                     <label htmlFor='name' className={styles.nameLabel}>NOMBRE:</label>
@@ -62,6 +67,7 @@ function Contact({ ad }, ref) {
                         className={styles.nameInput}
                         id='name'
                         name='name'
+                        required={true}
                     >
                     </input>
                 </div>
@@ -75,6 +81,7 @@ function Contact({ ad }, ref) {
                         placeholder={isSearching ? '' : 'miemail@ejemplo.com'}
                         onFocus={() => setIsSearching(true)}
                         onBlur={() => setIsSearching(false)}
+                        required={true}
                     >
                     </input>
                 </div>
@@ -91,6 +98,7 @@ function Contact({ ad }, ref) {
 
                             handleBodyChange(body)
                         }}
+                        required={true}
                     >
                     </textarea>
                     <p>{remaining}</p>
@@ -101,7 +109,6 @@ function Contact({ ad }, ref) {
             </form>
 
             {error && <p style={{ textAlign: 'center', color: 'red', fontSize: '16px', margin: '0' }}>{error}</p>}
-            {ad.phone !== '' && <p className={styles.phoneP}>Si lo prefieres, <span>{ad.name}</span> ha dejado su número de teléfono para facilitarte el contacto: <span>{ad.phone}</span></p>}
             <div className={styles.modalFooter}>
                 <button type='submit' form='contactForm' className={styles.modalSendButton}>Enviar</button>
             </div></>}

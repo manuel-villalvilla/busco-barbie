@@ -138,7 +138,7 @@ export default withContext(function Ad({ ad, context: { setSearchHeight, favorit
         </div>
         <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
       </div>
-      <button className={styles.contactButton} onClick={handleContactButtonClick}>{contactHeight ? 'Cerrar' : 'Contactar'}</button>
+      <button className={styles.contactButton} onClick={handleContactButtonClick}>{contactHeight ? 'Cerrar' : 'Contactar con anunciante'}</button>
       <div className={styles.elapsedReport}>
         <p className={styles.elapsedTime}>{ad.elapsed}</p>
         <button type='button' className={styles.reportButton} onClick={handleReportButtonClick}>{reportHeight ? 'Cerrar' : 'Denunciar'}</button>

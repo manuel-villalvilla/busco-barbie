@@ -95,10 +95,14 @@
     background-color: #fff;
     color: #000;
     text-decoration: none;
-    height: 60px;
-    width: 110px;
+    height: 50px;
+    width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
+}
+
+.modalSendButton:hover {
+    background-color: rgba(211,211,211,.2);
 }
 
 .thankyou {
