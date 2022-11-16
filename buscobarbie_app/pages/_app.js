@@ -20,19 +20,19 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
             <title>BuscoBarbie.com</title>
         </Head>
 
-        {ip === IP ? <SessionProvider session={session}>
+        {/* {ip === IP ? <SessionProvider session={session}>
             <Layout country_code={country_code} favorites={favorites}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider> : <p>En construcción...</p>}
+        </SessionProvider> : <p>En construcción...</p>} */}
 
-        {/* <SessionProvider session={session}>
+        <SessionProvider session={session}>
             <Layout country_code={country_code} favorites={favorites}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider> */}
+        </SessionProvider>
     </>
 }
 
