@@ -18,7 +18,7 @@ export default withContext(function TermsAndConditions({ country, context: { set
         <div className={styles.blockContainer}>
             <h5 className={styles.subtitle}>OBJETIVO DEL SITIO</h5>
             <p>Esta aplicación web gratuita de código abierto está construida para facilitar el contacto a personas que busquen un artículo de segunda mano relacionado con el mundo Barbie™ con
-                personas que publiquen estos artículos.
+                personas que ofrezcan estos artículos.
             </p>
             <p>El código de la aplicación se puede encontrar siguiendo el siguiente <Link href='https://github.com/manuel-villalvilla/busco-barbie' passHref><a className={styles.link} target='_blank' rel='noopener noreferrer'>enlace</a></Link> a GitHub.</p>
             <p>Si te gusta el proyecto y deseas colaborar económicamente para que siga creciendo, puedes hacer un donativo a través de PayPal siguiendo el siguiente

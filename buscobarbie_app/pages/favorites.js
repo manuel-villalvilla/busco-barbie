@@ -61,7 +61,7 @@ export default withContext(function Favorites({ favorites, ads, context: { setSe
                 <div className={styles.resultsAdFooter}>
                   <p className={styles.footerProvince}>{ad.location.province}</p>
                   <div className={styles.footerPriceDate}>
-                    <p className={styles.footerPrice}>{countryCurrency(ad.location.country, ad.price)}</p>
+                    <p className={styles.footerPrice}>{countryCurrency(ad.location.country, ad.price.number)}</p>
                     <p className={styles.footerDate}>{ad.elapsed}</p>
                   </div>
                 </div>

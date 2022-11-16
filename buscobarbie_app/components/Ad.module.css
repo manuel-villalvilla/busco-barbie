@@ -40,7 +40,6 @@
 .searchLabel {
     font-size: 16px;
     background-color: rgb(233, 96, 155);
-    border-radius: 10px;
     padding: 7px;
     color: #fff;
     line-height: 15px;
@@ -49,7 +48,6 @@
 .sellLabel {
     font-size: 16px;
     background-color: rgb(114, 191, 128);
-    border-radius: 10px;
     padding: 7px;
     color: #fff;
     line-height: 15px;
@@ -80,11 +78,12 @@
 .carouselContainer {
     padding: 10px;
     border: 1px solid lightgray;
+    width: 100%;
 }
 
 .image {
     max-height: 500px;
-    object-fit: contain;
+    object-fit: cover;
     background-color: #fff;
     touch-action: none;
 }
@@ -156,7 +155,10 @@
 }
 
 .area > p {
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 .footerPriceProvince {
@@ -167,7 +169,6 @@
 }
 
 .footerPrice {
-    padding: 5px;
     line-height: 1;
 }
 
@@ -178,6 +179,14 @@
     color:rgb(233, 96, 155);
 }
 
+.negotiable {
+    font-style: italic;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: gray;
+}
+
 .price {
     font-weight: 700;
     font-size: 30px;
@@ -185,9 +194,19 @@
     margin: 0;
 }
 
-.footerProvince > p {
+.footerProvince {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.footerProvince p {
     margin: 0;
-    text-align: end;
+    line-height: 22px;
+    font-weight: 600;
+    max-width: 80%;
 }
 
 .resultsAdFooter > p {
@@ -211,7 +230,6 @@
     align-items: center;
     gap: 5px;
     margin: 0;
-    text-transform: capitalize;
 }
 
 .footerCategories > p > span, .tagsContainer > p > span {
@@ -245,7 +263,6 @@
     width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
-    margin-bottom: 10px;
 }
 
 .contactButton:hover {
@@ -264,6 +281,7 @@
 }
 
 .reportButton {
+    padding: 0;
     border-style: none;
     background-color: #fff;
     color: #000;

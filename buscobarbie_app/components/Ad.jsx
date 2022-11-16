@@ -121,28 +121,32 @@ export default withContext(function Ad({ ad, context: { setSearchHeight, favorit
               })}
             </Carousel>
           </div>
-          <p>Click en la imagen para ampliarla.</p></>}
+          <p>Click en la imagen para verla en su tamaño original.</p></>}
         {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
       </div>
       <div className={styles.body}><article>{ad.body}</article></div>
       <div className={styles.footerCategories}>
         {ad.year && <p>Década: <span>{ad.year}</span></p>}
         <p><span className="material-symbols-outlined">category</span>{stateCategories}</p>
-        <div className={styles.tagsContainer}>{ad.tags.map((tag, index) => <p key={index}><span className="material-symbols-outlined">category</span>{tag}</p>)}</div>
+        <div className={styles.tagsContainer}>{ad.tags.map((tag, index) => <p key={index}><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill='rgb(114, 191, 128)' d="m21 12-4.35 6.15q-.275.4-.712.625Q15.5 19 15 19H5q-.825 0-1.413-.587Q3 17.825 3 17V7q0-.825.587-1.412Q4.175 5 5 5h10q.5 0 .938.225.437.225.712.625Zm-2.45 0L15 7H5v10h10ZM5 12v5V7Z"/></svg>{tag}</p>)}</div>
       </div>
-      {ad.location.area && <div className={styles.area}><p>Zona: {ad.location.area}</p></div>}
+      {ad.location.area && <div className={styles.area}><p><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill='rgb(233, 96, 155)' d="M11 22.95v-2q-3.125-.35-5.362-2.587Q3.4 16.125 3.05 13h-2v-2h2q.35-3.125 2.588-5.363Q7.875 3.4 11 3.05v-2h2v2q3.125.35 5.363 2.587Q20.6 7.875 20.95 11h2v2h-2q-.35 3.125-2.587 5.363Q16.125 20.6 13 20.95v2ZM12 19q2.9 0 4.95-2.05Q19 14.9 19 12q0-2.9-2.05-4.95Q14.9 5 12 5 9.1 5 7.05 7.05 5 9.1 5 12q0 2.9 2.05 4.95Q9.1 19 12 19Zm0-3q-1.65 0-2.825-1.175Q8 13.65 8 12q0-1.65 1.175-2.825Q10.35 8 12 8q1.65 0 2.825 1.175Q16 10.35 16 12q0 1.65-1.175 2.825Q13.65 16 12 16Zm0-2q.825 0 1.413-.588Q14 12.825 14 12t-.587-1.413Q12.825 10 12 10q-.825 0-1.412.587Q10 11.175 10 12q0 .825.588 1.412Q11.175 14 12 14Zm0-2Z"/></svg>Zona: {ad.location.area}</p></div>}
       <div className={styles.footerPriceProvince}>
         <div className={styles.footerPrice}>
           {(ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories') && <p className={styles.offers}>Ofrezco</p>}
-          <p className={styles.price}>{countryCurrency(ad.location.country, ad.price)}</p>
+          {ad.price.negotiable && <p className={styles.negotiable}>Negociable</p>}
+          <p className={styles.price}>{countryCurrency(ad.location.country, ad.price.number)}</p>
         </div>
-        <div className={styles.footerProvince}><p>{ad.location.province}</p></div>
+        <div className={styles.footerProvince}>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill='rgb(233, 96, 155)' d="M12 12q.825 0 1.413-.588Q14 10.825 14 10t-.587-1.413Q12.825 8 12 8q-.825 0-1.412.587Q10 9.175 10 10q0 .825.588 1.412Q11.175 12 12 12Zm0 7.35q3.05-2.8 4.525-5.088Q18 11.975 18 10.2q0-2.725-1.738-4.463Q14.525 4 12 4 9.475 4 7.737 5.737 6 7.475 6 10.2q0 1.775 1.475 4.062Q8.95 16.55 12 19.35ZM12 22q-4.025-3.425-6.012-6.363Q4 12.7 4 10.2q0-3.75 2.413-5.975Q8.825 2 12 2t5.587 2.225Q20 6.45 20 10.2q0 2.5-1.987 5.437Q16.025 18.575 12 22Zm0-11.8Z"/></svg>
+          <p>{ad.location.province}</p>
+        </div>
       </div>
-      <button className={styles.contactButton} onClick={handleContactButtonClick}>{contactHeight ? 'Cerrar' : 'Contactar con anunciante'}</button>
       <div className={styles.elapsedReport}>
         <p className={styles.elapsedTime}>{ad.elapsed}</p>
         <button type='button' className={styles.reportButton} onClick={handleReportButtonClick}>{reportHeight ? 'Cerrar' : 'Denunciar'}</button>
       </div>
+      <button className={styles.contactButton} onClick={handleContactButtonClick}>{contactHeight ? 'Cerrar' : 'Contactar con anunciante'}</button>
       <AnimateHeight id='contact-panel' duration={500} height={contactHeight} onHeightAnimationEnd={height => handleAnimationHeightChange(height)}>
         <Contact ref={contactRef} ad={ad} />
       </AnimateHeight>
