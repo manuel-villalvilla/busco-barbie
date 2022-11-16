@@ -35,8 +35,11 @@ describe('New User Ad', () => {
         const province = 'Madrid'
         const area = 'Mi zona'
         const phone = '678564544'
-        const price = '45'
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
         const year = '1980'
         const images = []
         const tags = 'Fashionistas,Made to move'
@@ -70,8 +73,11 @@ describe('New User Ad', () => {
         const province = 'Madrid'
         const area = 'Mi zona'
         const phone = '678564544'
-        const price = '45'
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const year = ''
         const images = []
         const tags = ''
@@ -102,8 +108,11 @@ describe('New User Ad', () => {
         const province = 'Madrid'
         const area = 'Mi zona'
         const phone = '678564544'
-        const price = '45'
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
         const year = '1980'
         const data1 = await fs.readFile(`${imgsFolder}/1.jpg`)
         const data2 = await fs.readFile(`${imgsFolder}/2.jpg`)
@@ -148,8 +157,11 @@ describe('New User Ad', () => {
         const province = 'Madrid'
         const area = 'Mi zona'
         const phone = '678564544'
-        const price = '45'
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
         const year = '1980'
         const images = []
         const tags = 'Fashionistas,Made to move'

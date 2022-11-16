@@ -54,8 +54,11 @@ describe('Delete Ad', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         const ad0 = await Ad.create({ user: user.id, location, title, body, price, categories })
         const ad1 = await Ad.create({ user: user.id, location, title, body, price, categories })

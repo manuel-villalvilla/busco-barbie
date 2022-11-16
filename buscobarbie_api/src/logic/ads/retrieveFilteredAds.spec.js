@@ -35,8 +35,11 @@ describe('Retrieve filtered ads', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         await Ad.create({ user: user.id, location, title, body, price, categories, verified: true })
 
@@ -75,8 +78,11 @@ describe('Retrieve filtered ads', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const adYear = '1980'
         const adTags = ['Casas','Coches']
 

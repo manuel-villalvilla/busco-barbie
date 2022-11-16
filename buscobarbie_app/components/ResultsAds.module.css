@@ -147,12 +147,13 @@
 .footerPriceDate {
     display: flex;
     justify-content: space-between;
-    align-items: last baseline;
+    align-items: flex-end;
     padding: 5px;
 }
 
 .priceDiv {
-    line-height: 20px;
+    padding: 5px;
+    line-height: 1;
 }
 
 .offers {

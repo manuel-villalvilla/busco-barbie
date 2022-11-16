@@ -134,5 +134,8 @@ export default withContext(function Contact({ context: { searchHeight, setSearch
 
         }
     </>
-
 })
+
+export async function getServerSideProps (context) {
+    return { props: {} }
+}

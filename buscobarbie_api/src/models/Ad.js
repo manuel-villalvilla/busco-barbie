@@ -79,8 +79,16 @@ module.exports = model('Ad', new Schema({
         default: []
     },
     price: {
-        type: Number,
-        required: true
+        type: Object,
+        number: {
+            type: Number,
+            required: true
+        },
+        negotiable: {
+            type: Boolean,
+            required: true
+        }
+
     },
     visibility: {
         type: String,

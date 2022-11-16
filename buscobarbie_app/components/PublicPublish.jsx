@@ -396,6 +396,15 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
 
       <div className={styles.priceContainer}>
         <label htmlFor='price' className={styles.priceLabel}>{stateCategories === 'searchedmodels' || stateCategories === 'searchedaccessories' ? 'PRECIO OFRECIDO:*' : 'PRECIO:*'}</label>
+        <div className={styles.negotiableDiv}>
+          <input
+            type='checkbox'
+            name='negotiable'
+            id='negotiable'
+            className={styles.negotiableInput}
+          />
+          <label htmlFor='negotiable' className={styles.negotiableLabel}>¿Negociable?</label>
+        </div>
         <input
           type='number'
           className={styles.priceInput}

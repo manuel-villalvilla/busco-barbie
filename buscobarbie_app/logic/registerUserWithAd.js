@@ -26,10 +26,16 @@ export default async function (token, form, country_code, tags) {
         province: { value: province },
         area: { value: area },
         phone: { value: phone },
-        price: { value: price },
+        price: { value: priceNumber },
         categories: { value: categories },
+        negotiable,
         accept
     } = form
+
+    const price = {
+        number: priceNumber,
+        negotiable: negotiable.checked ? true : false
+    }
 
     validateCountry(country_code)
     validateName(name)
@@ -48,6 +54,7 @@ export default async function (token, form, country_code, tags) {
 
     const formData = new FormData(form)
     formData.append('country_code', country_code)
+    formData.set('price', [price.number, price.negotiable])
     formData.delete('modelosTags')
     formData.delete('complementosTags')
     formData.append('tags', tags)

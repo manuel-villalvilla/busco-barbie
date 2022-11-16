@@ -52,8 +52,11 @@ describe('Retrieve user with Ads', () => {
             province: 'Madrid',
             area: 'Mi zona'
         }
-        const categories = 'modelos'
-        const price = '45'
+        const categories = 'soldmodels'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
 
         const user = await User.create({ name, email, password })
 

@@ -131,7 +131,10 @@ const { connect, disconnect } = require('mongoose');
 
             const area = 'area ' + z
 
-            const price = Math.floor(Math.random() * 100)
+            const price = {
+                number: Math.floor(Math.random() * 100),
+                negotiable: [true, false][Math.floor(Math.random() * 2)]
+            }
 
             const categories = testCategories[Math.floor(Math.random() * 4)]
 

@@ -35,8 +35,11 @@ describe('Retrieve ad with id', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         const firstAd = await Ad.create({ user: user.id, location, title, body, price, categories, verified: true })
 
@@ -65,8 +68,11 @@ describe('Retrieve ad with id', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         const firstAd = await Ad.create({ user: user.id, location, title, body, price, categories })
 
@@ -92,8 +98,11 @@ describe('Retrieve ad with id', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         const firstAd = await Ad.create({ user: user.id, location, title, body, price, categories, verified: true })
 
@@ -119,8 +128,11 @@ describe('Retrieve ad with id', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         const firstAd = await Ad.create({ user: user.id, location, title, body, price, categories, verified: true })
 

@@ -162,12 +162,13 @@
 .footerPriceProvince {
     display: flex;
     justify-content: space-between;
-    align-items: last baseline;
+    align-items: flex-end;
     width: 100%;
 }
 
 .footerPrice {
-    line-height: 20px;
+    padding: 5px;
+    line-height: 1;
 }
 
 .offers {

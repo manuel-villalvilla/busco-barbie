@@ -6,6 +6,11 @@ module.exports = async function (req, res) {
     let images = []
     const { body: { title, body, province, area, phone, price, categories, id, country_code, year = '', tags } } = req
 
+    const price2 = {
+        number: !isNaN(price.split(',')[0]) ? price.split(',')[0] : null,
+        negotiable: price.split(',')[1] === 'true' ? true : price.split(',')[1] === 'false' ? false : null
+    }
+
     if (req.files) {
         if (req.files.images instanceof Array) {
             images = req.files.images
@@ -21,7 +26,7 @@ module.exports = async function (req, res) {
             res.status(401).json({ error: 'wrong credentials' })
             return
         }
-        const ads = await newUserAd(id, country_code, title, body, province, area, phone, price, categories, images, year, tags)
+        const ads = await newUserAd(id, country_code, title, body, province, area, phone, price2, categories, images, year, tags)
         logger.info(`user ${id} created new ad`)
         res.status(201).json(ads)
     } catch (error) {

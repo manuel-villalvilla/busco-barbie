@@ -31,14 +31,20 @@ export default function (form, token, userId, adId, tags) {
             value: phone
         },
         price: {
-            value: price
+            value: priceNumber
         },
         categories: {
             value: categories
         },
+        negotiable,
         accept
     } = form
     
+    const price = {
+        number: priceNumber,
+        negotiable: negotiable.checked ? true : false
+    }
+
     validateTitle(title)
     validateBody(body)
     validateProvince(province)
@@ -55,6 +61,7 @@ export default function (form, token, userId, adId, tags) {
     const formData = new FormData(form)
     formData.append('userId', userId)
     formData.append('adId', adId)
+    formData.set('price', [price.number, price.negotiable])
     formData.delete('modelosTags')
     formData.delete('complementosTags')
     formData.append('tags', tags)

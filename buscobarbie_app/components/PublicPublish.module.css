@@ -84,6 +84,15 @@
     align-items: center;
 }
 
+.priceContainer {
+    justify-content: space-between;
+}
+
+.negotiableDiv {
+    display: flex;
+    align-items: center;
+}
+
 .passwordContainer, .imagesContainer {
     justify-content: space-between;
 }
@@ -102,6 +111,16 @@
 .label,
 .countryLabel {
     margin-bottom: 2px;
+}
+
+.negotiableLabel {
+    font-size: 20px;
+}
+
+.negotiableInput {
+    margin: 0 5px 0 0;
+    height: 15px;
+    width: 15px;
 }
 
 .imagesButton {
@@ -156,12 +175,11 @@
     display: flex;
     width: 100%;
     gap: 5px;
-    justify-content: flex-start;
 }
 
 .thumbsContainer {
     display: flex;
-    margin: 10px 0 0 0;
+    margin: 5px 0 0 0;
     width: 75px;
 }
 
@@ -176,8 +194,8 @@
     height: fit-content;
     width: fit-content;
     position: relative;
-    top: -10px;
-    right: 15px;
+    bottom: 30px;
+    right: 8px;
 }
 
 .randomPasswordButton {

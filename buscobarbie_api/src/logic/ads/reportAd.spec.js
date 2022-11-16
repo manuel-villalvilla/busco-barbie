@@ -49,8 +49,11 @@ describe('Report Ad', () => {
         const message = 'Hola'
         const title = 'Hola'
         const body = 'Hola'
-        const price = '45'
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const location = {
             country: 'ES',
             province: 'Madrid',

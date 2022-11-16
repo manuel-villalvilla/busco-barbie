@@ -41,8 +41,8 @@ module.exports = function (page, limit, country, province, search, categories, y
     const srt = new function () {
         if (sort === undefined) this.createdAt = -1
         if (sort === 'firstPublished') this.createdAt = 1
-        if (sort === 'priceDes') this.price = -1
-        if (sort === 'priceAsc') this.price = 1
+        if (sort === 'priceDes') this['price.number'] = -1
+        if (sort === 'priceAsc') this['price.number'] = 1
     }
     
     return Ad.find(queryParams).limit(limit * 1).skip((page - 1) * limit).sort(srt).lean()

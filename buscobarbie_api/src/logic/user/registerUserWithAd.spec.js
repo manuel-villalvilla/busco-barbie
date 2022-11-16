@@ -34,8 +34,11 @@ describe('Register User', () => {
         const province = 'Madrid'
         const area = 'Mi zona'
         const phone = '678564544'
-        const price = '45'
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
         const year = '1980'
         const data1 = await fs.readFile(`${imgsFolder}/1.jpg`)
         const data2 = await fs.readFile(`${imgsFolder}/2.jpg`)
@@ -90,13 +93,15 @@ describe('Register User', () => {
                                         expect(ad.image[0]).toBe(`${NAS_IMAGES_URL}/${user._id.toString()}/${ad._id.toString()}/${images[0].name}`)
                                         expect(ad.image[1]).toBe(`${NAS_IMAGES_URL}/${user._id.toString()}/${ad._id.toString()}/${images[1].name}`)
                                         expect(typeof ad.categories).toBe('string')
-                                        expect(ad.categories).toBe('modelos')
+                                        expect(ad.categories).toBe('soldmodels')
                                         expect(typeof ad.year).toBe('string')
                                         expect(ad.year).toBe('1980')
                                         expect(ad.tags).toBeInstanceOf(Array)
                                         expect(ad.tags).toEqual(['Fashionistas', 'Made to move'])
-                                        expect(typeof ad.price).toBe('number')
-                                        expect(ad.price).toBe(45)
+                                        expect(ad.price).toBeInstanceOf(Object)
+                                        expect(typeof ad.price.number).toBe('number')
+                                        expect(ad.price.number).toBe(45)
+                                        expect(ad.price.negotiable).toBe(true)
                                         expect(typeof ad.visibility).toBe('string')
                                         expect(ad.visibility).toBe('public')
                                         expect(typeof ad.verified).toBe('boolean')
@@ -122,8 +127,11 @@ describe('Register User', () => {
         const body = 'Hola'
         const province = 'Aguascalientes'
         const area = ''
-        const price = '45'
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const phone = ''
         const images = []
         const year = ''
@@ -165,13 +173,14 @@ describe('Register User', () => {
                                         expect(ad.image).toBeInstanceOf(Array)
                                         expect(ad.image).toHaveLength(0)
                                         expect(typeof ad.categories).toBe('string')
-                                        expect(ad.categories).toBe('complementos')
+                                        expect(ad.categories).toBe('soldaccessories')
                                         expect(typeof ad.year).toBe('string')
                                         expect(ad.year).toBe('')
                                         expect(ad.tags).toBeInstanceOf(Array)
                                         expect(ad.tags).toHaveLength(0)
-                                        expect(typeof ad.price).toBe('number')
-                                        expect(ad.price).toBe(45)
+                                        expect(typeof ad.price.number).toBe('number')
+                                        expect(ad.price.number).toBe(45)
+                                        expect(ad.price.negotiable).toBe(true)
                                         expect(typeof ad.visibility).toBe('string')
                                         expect(ad.visibility).toBe('public')
                                         expect(typeof ad.verified).toBe('boolean')
@@ -197,8 +206,11 @@ describe('Register User', () => {
         const province = 'Madrid'
         const area = 'Mi zona'
         const phone = '678987654'
-        const price = '45'
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
         const year = '1980'
         const images = []
         const tags = []

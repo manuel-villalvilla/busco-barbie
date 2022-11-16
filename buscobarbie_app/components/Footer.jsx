@@ -14,7 +14,7 @@ export default function Footer() {
     </form>
 
     <div className={styles.linksDiv}>
-    <Link href={`${URL}/favorites`}><a className={styles.pinkLink}>Mis favoritos</a></Link>
+      <Link href={`${URL}/favorites`}><a className={styles.pinkLink}>Mis favoritos</a></Link>
 
       <Link href={`${URL}/terms-and-conditions`}><a className={styles.pinkLink}>Condiciones</a></Link>
 

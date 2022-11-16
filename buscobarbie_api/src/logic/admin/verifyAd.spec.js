@@ -28,8 +28,11 @@ describe('Admin verify ad', () => {
         const password = await bcrypt.hash('123123123', 10)
         const title = 'Hola'
         const body = 'Hola'
-        const price = '45'
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const location = {
             country: 'ES',
             province: 'Madrid',
@@ -57,8 +60,11 @@ describe('Admin verify ad', () => {
         const password = await bcrypt.hash('123123123', 10)
         const title = 'Hola'
         const body = 'Hola'
-        const price = '45'
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const location = {
             country: 'ES',
             province: 'Madrid',
@@ -83,8 +89,11 @@ describe('Admin verify ad', () => {
         const password = await bcrypt.hash('123123123', 10)
         const title = 'Hola'
         const body = 'Hola'
-        const price = '45'
-        const categories = 'complementos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldaccessories'
         const location = {
             country: 'ES',
             province: 'Madrid',
@@ -120,8 +129,11 @@ describe('Admin verify ad', () => {
         }
         const title = 'Hola'
         const body = 'Hola'
-        const price = 45
-        const categories = 'modelos'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
+        const categories = 'soldmodels'
 
         const ad = await Ad.create({ user: user.id, location, title, body, price, categories })
 

@@ -37,8 +37,11 @@ describe('Update Ad', () => {
         const images = []
         const year = ''
         const tags = []
-        const categories = 'modelos'
-        const price = '45'
+        const categories = 'soldmodels'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
 
         const user = await User.create({ name, email, password })
         const userId = user.id
@@ -67,8 +70,11 @@ describe('Update Ad', () => {
         const images = []
         const year = ''
         const tags = []
-        const categories = 'modelos'
-        const price = '45'
+        const categories = 'soldmodels'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
 
         const user = await User.create({ name, email, password })
 
@@ -99,8 +105,11 @@ describe('Update Ad', () => {
         const images = []
         const year = ''
         const tags = []
-        const categories = 'modelos'
-        const price = '45'
+        const categories = 'soldmodels'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
 
         const user = await User.create({ name, email, password })
         const user2 = await User.create({ name: 'Pepito Grillo', email: 'pepito@grillo.com', password: await bcrypt.hash('123123123', 10) })
@@ -134,10 +143,16 @@ describe('Update Ad', () => {
         const area = 'Mi zona'
         const phone = '654654654'
         const year = '1980'
-        const categories = 'modelos'
-        const categories2 = 'complementos'
-        const price = '50'
-        const price2 = '45'
+        const categories = 'soldmodels'
+        const categories2 = 'soldaccessories'
+        const price = {
+            number: 50,
+            negotiable: true
+        }
+        const price2 = {
+            number: 45,
+            negotiable: false
+        }
         const data1 = await fs.readFile(`${imgsFolder}/1.jpg`)
         const data2 = await fs.readFile(`${imgsFolder}/2.jpg`)
         const file1Name = '1.jpg'
@@ -162,8 +177,9 @@ describe('Update Ad', () => {
             expect(ads[0].location.province).toBe('Cuenca')
             expect(ads[0].location.area).toBe('Mi zona')
             expect(ads[0].phone).toBe('654654654')
-            expect(ads[0].price).toBe(45)
-            expect(ads[0].categories).toBe('complementos')
+            expect(ads[0].price.number).toBe(45)
+            expect(ads[0].price.negotiable).toBe(false)
+            expect(ads[0].categories).toBe('soldaccessories')
             expect(ads[0].year).toBe('1980')
             expect(ads[0].tags).toEqual(['Fashionistas', 'Made to move'])
             const files = await fs.readdir(`${folder}/${user._id.toString()}/${ad._id.toString()}`)
@@ -191,10 +207,16 @@ describe('Update Ad', () => {
         const area = 'Mi zona'
         const phone = '654654654'
         const year = '1980'
-        const categories = 'modelos'
-        const categories2 = 'complementos'
-        const price = '50'
-        const price2 = '45'
+        const categories = 'soldmodels'
+        const categories2 = 'soldaccessories'
+        const price = {
+            number: 50,
+            negotiable: true
+        }
+        const price2 = {
+            number: 45,
+            negotiable: false
+        }
         const data1 = await fs.readFile(`${imgsFolder}/1.jpg`)
         const data2 = await fs.readFile(`${imgsFolder}/2.jpg`)
         const file1Name = '1.jpg'
@@ -226,8 +248,9 @@ describe('Update Ad', () => {
             expect(ads[0].location.province).toBe('Cuenca')
             expect(ads[0].location.area).toBe('Mi zona')
             expect(ads[0].phone).toBe('654654654')
-            expect(ads[0].price).toBe(45)
-            expect(ads[0].categories).toBe('complementos')
+            expect(ads[0].price.number).toBe(45)
+            expect(ads[0].price.negotiable).toBe(false)
+            expect(ads[0].categories).toBe('soldaccessories')
             expect(ads[0].year).toBe('1980')
             expect(ads[0].tags).toEqual(['Fashionistas', 'Made to move'])
             expect(ads[0].image).toHaveLength(2)

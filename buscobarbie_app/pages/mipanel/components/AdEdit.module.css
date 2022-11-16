@@ -48,7 +48,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 5px;
+}
+
+.priceContainer {
+    justify-content: space-between;
+}
+
+.negotiableDiv {
+    display: flex;
+    align-items: center;
 }
 
 .imagesContainer {
@@ -87,6 +95,16 @@
     display: flex;
     justify-content: flex-start;
     color: rgb(233, 96, 155);
+}
+
+.negotiableLabel {
+    font-size: 20px;
+}
+
+.negotiableInput {
+    margin: 0 5px 0 0;
+    height: 15px;
+    width: 15px;
 }
 
 .verifiedText {
@@ -159,8 +177,8 @@
 
 .thumbsContainer {
     display: flex;
-    margin: 10px 0 0 0;
     width: 75px;
+    margin: 5px 0 0 0;
 }
 
 .deleteImageButton {
@@ -168,12 +186,11 @@
     padding: 0;
     cursor: pointer;
     position: relative;
-    top: -11px;
-    right: 18px;
+    bottom: 30px;
+    right: 8px;
     background-color: transparent;
     color: red;
     font-size: 30px;
-    /* border: 1px solid gray; */
     border-style: none;
 }
 

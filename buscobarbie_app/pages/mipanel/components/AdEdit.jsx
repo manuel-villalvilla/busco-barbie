@@ -384,6 +384,16 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
 
             <div className={styles.priceContainer}>
                 <label htmlFor='price' className={styles.priceLabel}>{stateAd.categories === 'searchedmodels' || stateAd.categories === 'searchedaccessories' ? 'PRECIO OFRECIDO:*' : 'PRECIO:*'}</label>
+                <div className={styles.negotiableDiv}>
+                    <input
+                        type='checkbox'
+                        name='negotiable'
+                        id='negotiable'
+                        className={styles.negotiableInput}
+                        defaultChecked={stateAd.price.negotiable ? true : false}
+                    />
+                    <label htmlFor='negotiable' className={styles.negotiableLabel}>¿Negociable?</label>
+                </div>
                 <input
                     type='number'
                     className={styles.priceInput}
@@ -391,7 +401,7 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                     id='price'
                     maxLength={4}
                     required={true}
-                    defaultValue={stateAd.price}
+                    defaultValue={stateAd.price.number}
                 />
                 <div className={styles.formText}>Sólo números.</div>
             </div>

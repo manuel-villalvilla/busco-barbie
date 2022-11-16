@@ -103,8 +103,9 @@ module.exports = async function (userId, adId) {
                 <p class='nomargin'><b>${ad.location.country !== 'MX' ? 'Provincia: ' : 'Estado: '}</b>${ad.location.province}</p>
                 <p class='nomargin'><b>Zona:</b> ${ad.location.area ? ad.location.area : 'Sin especificar'}</p>
                 <p class='nomargin'><b>Teléfono:</b> ${ad.phone ? ad.phone : 'Sin especificar'}</p>
-                <p class='nomargin'><b>Precio:</b> ${ad.price}</p>
-                <p class='nomargin'><b>Categorías:</b> ${ad.categories}</p>
+                <p class='nomargin'><b>Precio:</b> ${ad.price.number}</p>
+                <p class='nomargin'><b>¿Precio negociable?</b> ${ad.price.negotiable ? 'Sí' : 'No'}</p>
+                <p class='nomargin'><b>Categorías:</b> ${ad.categories === 'soldmodels' ? 'Modelos en venta' : ad.categories === 'soldaccessories' ? 'Complementos en venta' : ad.categories === 'searchedmodels' ? 'Modelos en búsqueda' : ad.categories === 'searchedaccessories' ? 'Complementos en búsqueda' : ''}</p>
                 <p class="nomargin"><b>Década:</b> ${ad.year ? ad.year : 'Opcional para categoría "modelos"'}</p>
                 <p class="nomargin overflow"><b>Etiquetas: </b>${ad.tags.length ? ad.tags.join(', ') : 'No especificadas'}</p> 
                 <p class='nomargin'><b>Número de imágenes:</b> ${ad.image.length ? ad.image.length : '0'}</p>

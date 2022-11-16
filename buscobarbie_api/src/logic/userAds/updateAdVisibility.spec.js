@@ -73,8 +73,11 @@ describe('Update Ad Visibility', () => {
             area: ''
         }
         const visibility = 'private'
-        const categories = 'modelos'
-        const price = '45'
+        const categories = 'soldmodels'
+        const price = {
+            number: 45,
+            negotiable: true
+        }
 
         const user = await User.create({ name, email, password })
         const user2 = await User.create({ name: 'Pepito Grillo', email: 'pepito@grillo.com', password: await bcrypt.hash('123123123', 10) })
@@ -102,8 +105,11 @@ describe('Update Ad Visibility', () => {
             province: 'Madrid',
             area: 'Mi zona'
         }
-        const categories = 'modelos'
-        const price = '50'
+        const categories = 'soldmodels'
+        const price = {
+            number: 50,
+            negotiable: true
+        }
         const visibility = 'private'
 
         const user = await User.create({ name, email, password })
@@ -119,8 +125,9 @@ describe('Update Ad Visibility', () => {
             expect(ads[0].location.province).toBe('Madrid')
             expect(ads[0].location.area).toBe('Mi zona')
             expect(ads[0].phone).toBe('')
-            expect(ads[0].price).toBe(50)
-            expect(ads[0].categories).toBe('modelos')
+            expect(ads[0].price.number).toBe(50)
+            expect(ads[0].price.negotiable).toBe(true)
+            expect(ads[0].categories).toBe('soldmodels')
             expect(ads[0].year).toBe('')
             expect(ads[0].tags).toEqual([])
             expect(ads[0].image).toEqual([])

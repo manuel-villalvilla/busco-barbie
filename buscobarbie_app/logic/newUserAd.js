@@ -21,10 +21,16 @@ export default async function (tokenFromApi, id, form, country_code, tags) {
         province: { value: province },
         area: { value: area },
         phone: { value: phone },
-        price: { value: price },
+        price: { value: priceNumber },
         categories: { value: categories },
+        negotiable,
         accept
     } = form
+
+    const price = {
+        number: priceNumber,
+        negotiable: negotiable.checked ? true : false
+    }
 
     validateMongoId(id)
     validateCountry(country_code)
@@ -42,6 +48,7 @@ export default async function (tokenFromApi, id, form, country_code, tags) {
     const formData = new FormData(form)
     formData.append('country_code', country_code)
     formData.append('id', id)
+    formData.set('price', [price.number, price.negotiable])
     formData.delete('complementosTags')
     formData.delete('modelosTags')
     formData.append('tags', tags)
