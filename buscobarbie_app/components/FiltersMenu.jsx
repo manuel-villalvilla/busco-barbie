@@ -121,7 +121,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
         }}
       >
         <div className={styles.clearBtnCont}>
-          <button type='button' className={styles.clearBtn} onClick={handleClearInputs}>Limpiar filtros</button>
+          <button type='button' className={styles.clearBtn} onClick={handleClearInputs}>Reiniciar filtros</button>
         </div>
         <div className={styles.sortContainer}>
           <label htmlFor="sortFilter" className={styles.label}>Ordenar resultados por:</label>

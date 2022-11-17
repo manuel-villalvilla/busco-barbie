@@ -51,6 +51,15 @@
     align-items: center;
 }
 
+.favorite p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: gray;
+}
+
 .searchLabel {
     font-size: 16px;
     background-color: rgb(233, 96, 155);
@@ -83,8 +92,8 @@
 
 .resultsAdTitle > h3 {
     width: fit-content;
-    padding: 0px;
     margin: 10px;
+    font-weight: 600;
 }
 
 .adImageContainer {

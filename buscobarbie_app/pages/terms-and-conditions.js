@@ -17,8 +17,8 @@ export default withContext(function TermsAndConditions({ country, context: { set
 
         <div className={styles.blockContainer}>
             <h5 className={styles.subtitle}>OBJETIVO DEL SITIO</h5>
-            <p>Esta aplicación web gratuita de código abierto está construida para facilitar el contacto a personas que busquen un artículo de segunda mano relacionado con el mundo Barbie™ con
-                personas que ofrezcan estos artículos.
+            <p>Esta aplicación web gratuita de código abierto está construida para facilitar el contacto a coleccionistas o personas que busquen un artículo de segunda mano relacionado con el mundo Barbie™ con
+                otras personas o coleccionistas que ofrezcan estos artículos, y viceversa.
             </p>
             <p>El código de la aplicación se puede encontrar siguiendo el siguiente <Link href='https://github.com/manuel-villalvilla/busco-barbie' passHref><a className={styles.link} target='_blank' rel='noopener noreferrer'>enlace</a></Link> a GitHub.</p>
             <p>Si te gusta el proyecto y deseas colaborar económicamente para que siga creciendo, puedes hacer un donativo a través de PayPal siguiendo el siguiente
@@ -79,7 +79,7 @@ export default withContext(function TermsAndConditions({ country, context: { set
                 disponible para cada anuncio. Podrás acceder a tus favoritos guardados pulsando en el enlace a pie de página o pulsando <Link href={`${APP_URL}/favorites`}><a className={styles.link}>aquí</a></Link>
             </p>
             <p>Si deseas contactar con la administración de <span>BuscoBarbie.com</span>, encontrarás el <Link href={`${APP_URL}/contact`}><a className={styles.link}>enlace</a></Link> a pie de página.</p>
-            <p>Para acceder a la versión de la plataforma en otro país, sigue los enlaces a pie de página. Ten en cuenta que cada vez que pulses en enlace de un país distinto, se guardará una cookie con el país para
+            <p>Para acceder a la versión de la plataforma en otro país, sigue los enlaces a pie de página. Ten en cuenta que cada vez que pulses el enlace de un país distinto, se guardará una cookie con dicho país para
                 configurar la aplicación acorde a él.
             </p>
         </div>
@@ -94,7 +94,7 @@ export default withContext(function TermsAndConditions({ country, context: { set
                 <li><p>Selección obligatoria {country !== 'MX' ? 'de la provincia' : 'del estado'} donde se encuentra el anunciante.</p></li>
                 <li><p>Introduce opcionalmente tu zona o área para especificar tu ubicación. Se hará pública.</p></li>
                 <li><p>Introduce opcionalmente tu número de teléfono. Se hará público.</p></li>
-                <li><p>Precio del artículo obligatorio. Sólo números.</p></li>
+                <li><p>Precio del artículo obligatorio. Sólo números. Precio opcionalmente negociable.</p></li>
                 <li><p>Selección obligatoria de la categoría del artículo.</p></li>
                 <li><p>Selección opcional de la década de construcción del artículo.</p></li>
                 <li><p>Selección opcional pero recomendada de las etiquetas que clasifiquen el artículo con más precisión.</p></li>

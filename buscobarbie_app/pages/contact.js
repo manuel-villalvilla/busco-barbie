@@ -56,7 +56,7 @@ export default withContext(function Contact({ context: { searchHeight, setSearch
 
     return <>
         {view === 'contact' && <div className={styles.contactContainer}>
-            <h2 className={styles.title}>¿Tienes algo que contarnos?</h2>
+            <h3 className={styles.title}>Contacta con <span>BuscoBarbie.com</span></h3>
             <form className={styles.form} onSubmit={handleFormSubmit}>
             <div className={styles.nameContainer}>
                     <label htmlFor='contactName' className={styles.nameLabel}>NOMBRE:</label>

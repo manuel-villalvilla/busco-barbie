@@ -1,21 +1,19 @@
 .loginContainer {
     display: flex;
+    background-color: #fff;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     width: 100%;
 }
 
 .title {
-    margin: 0;
     padding: 10px;
-    background-color: #fff;
     text-align: center;
     line-height: 1;
+    font-weight: 600;
 }
 
 .form, .forgottenForm {
-    background-color: #fff;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -55,8 +53,8 @@
     background-color: #fff;
     color: #000;
     text-decoration: none;
-    height: 60px;
-    width: 110px;
+    height: 50px;
+    width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
 }
@@ -66,15 +64,21 @@
 }
 
 .forgottenCancelButton {
+    height: 60px;
+    width: 110px;
     border-color: rgb(233, 96, 155);
     color: rgb(233, 96, 155);
+}
+
+.forgottenSendButton {
+    height: 60px;
+    width: 110px;
 }
 
 .forgottenButton {
     cursor: pointer;
     border-style: none;
     text-decoration: underline;
-    
     font-size: 22px;
     background-color: transparent;
     color: rgb(233, 96, 155)
@@ -101,6 +105,7 @@
 
 .h3 {
     text-align: center;
+    font-weight: 600;
 }
 
 .h3span {

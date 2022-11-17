@@ -2,18 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     width: 100%;
+    background-color: #fff;
 }
 
 .title {
-    margin: 0;
     text-align: center;
-    max-width: 270px;
-    background-color: #fff;
+    font-weight: 600;
     padding: 10px;
     border-radius: 10px;
     line-height: 1;
+}
+
+.title span {
+    color:rgb(233, 96, 155);
 }
 
 .form {
@@ -23,7 +25,6 @@
     gap: 10px;
     align-items: center;
     width: 100%;
-    background-color: #fff;
 }
 
 .emailContainer,
@@ -67,8 +68,8 @@
     background-color: #fff;
     color: #000;
     text-decoration: none;
-    height: 60px;
-    width: 110px;
+    height: 50px;
+    width: 100%;
     border-radius: 20px;
     border: 2px ridge rgb(233, 96, 155);
 }
@@ -87,6 +88,7 @@
 .h3 {
     margin: 0;
     text-align: center;
+    font-weight: 600;
 }
 
 .h3 > span {

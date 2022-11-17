@@ -22,5 +22,6 @@ module.exports = {
     adminContact: require('./admin/adminContact'),
     logFirstConnection: require('./admin/logFirstConnection'),
     reportAd: require('./ads/reportAd'),
-    retrieveFavoriteAds: require('./ads/retrieveFavoriteAds')
+    retrieveFavoriteAds: require('./ads/retrieveFavoriteAds'),
+    retrieveXMLads: require('./ads/retrieveXMLads')
 }

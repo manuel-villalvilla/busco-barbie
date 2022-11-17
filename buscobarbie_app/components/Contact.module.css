@@ -124,6 +124,7 @@
 .thankyou > h3 {
     margin: 20px 0 0 0;
     color: rgb(233, 96, 155);
+    font-weight: 600;
 }
 
 .thankyou > p {

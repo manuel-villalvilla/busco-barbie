@@ -36,7 +36,7 @@ export default withContext(function Favorites({ favorites, ads, context: { setSe
   }
 
   return <div className={styles.resultsContainer}>
-    <h2 className={styles.title}>Mis favoritos</h2>
+    <h3 className={styles.title}>Mis favoritos</h3>
     <ul className={styles.resultsList}>
       {stateAds.length ? stateAds.map((ad, index) => {
         return <li className={styles.resultsListItem} key={index}>
@@ -51,7 +51,7 @@ export default withContext(function Favorites({ favorites, ads, context: { setSe
             <Link href={`${ad.location.country}/ads/${ad._id.toString()}`}>
               <div className={styles.linkDiv}>
                 <div className={styles.resultsAdTitle}>
-                  <h2><article className={styles.resultsAdBodyArticle}>{ad.title}</article></h2>
+                  <h3><article>{ad.title}</article></h3>
                 </div>
                 {ad.image.length > 0 && <div className={styles.adImageContainer}><Image src={ad.image[0]} alt='Primera imágen' priority={true} sizes='100vw' layout='responsive' width='100%' height='100%' objectFit='cover' /></div>}
                 {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}

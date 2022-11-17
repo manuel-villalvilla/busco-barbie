@@ -20,12 +20,25 @@
     margin: 0 0 20px 0;
 }
 
+.imageSocials {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
 .logo {
     display: flex;
-    flex-grow: 1;
+    flex: 1;
     align-items: center;
     position: relative;
     max-width: 200px;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 .sessionButtons {

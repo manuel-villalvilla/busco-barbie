@@ -9,6 +9,13 @@
     align-items: center;
 }
 
+.footer p {
+    margin: 0 0 10px 0;
+    line-height: 1;
+    color: gray;
+    text-align: center;
+}
+
 .paypalImage {
     border-style: none;
     height: 30px;

@@ -248,14 +248,8 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
   return <div className={styles.container}> {view === 'form' && <>
     <div className={styles.firstQuestionContainer}>
       <h3 className={styles.firstQuestion}>¿Ya tienes cuenta en <span>BuscoBarbie.com</span> o <span>Google</span>?</h3>
-      <p>Si es así, <Link href={`${APP_URL}/login`} passHref><a className={styles.link}>pulsa aquí</a></Link> para publicar un anuncio desde tu panel de control.</p>
-    </div>
-
-    <div className={styles.firstQuestionContainer}>
+      <p>Si es así, <Link href={`${APP_URL}/login`} passHref><a className={styles.link}>pulsa aquí</a></Link> para publicar un nuevo anuncio desde tu panel de control.</p>
       <h3 className={styles.firstQuestionO}>O</h3>
-    </div>
-
-    <div className={styles.firstQuestionContainer}>
       <h3 className={styles.firstQuestion}>¿Quieres publicar tu primer anuncio en <span>BuscoBarbie.com</span>?</h3>
       <p>Para ello, completa el siguiente formulario:</p>
     </div>

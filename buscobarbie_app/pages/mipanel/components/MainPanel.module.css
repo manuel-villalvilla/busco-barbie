@@ -78,6 +78,7 @@
 
 .editButton, .deleteButton, .newAdButton, .formButton, .formDeleteButton {
     display: flex;
+    color: #000;
     align-items: center;
     border-radius: 10px;
     border: 1px solid rgb(233, 96, 155);

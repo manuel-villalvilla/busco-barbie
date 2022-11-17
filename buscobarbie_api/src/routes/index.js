@@ -11,7 +11,8 @@ const {
     newUserAdHandler,
     updateAdVisibilityHandler,
     reportAdHandler,
-    retrieveFavoriteAdsHandler
+    retrieveFavoriteAdsHandler,
+    retrieveXMLadsHandler
 } = require('./ads')
 const {
     authenticateUserHandler,
@@ -39,6 +40,8 @@ const adsRouter = Router()
 adsRouter.get('/ads', retrieveAdsHandler)
 
 adsRouter.get('/ads/:adId', retrieveAdWithIdHandler)
+
+adsRouter.get('/ads/xml/:country', retrieveXMLadsHandler)
 
 adsRouter.get('/ads/favorites/:ids', retrieveFavoriteAdsHandler)
 

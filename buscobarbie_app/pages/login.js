@@ -83,7 +83,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
 
   return <>
     {view === 'login' && <div className={styles.loginContainer}>
-      <h2 className={styles.title}>Inicio de sesión</h2>
+      <h3 className={styles.title}>Inicio de sesión</h3>
       <GoogleButton
         type='dark'
         label='Inicia sesión con Google'
@@ -131,7 +131,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
         <button
           type="submit"
           className={styles.loginButton}
-        >Entrar
+        >Acceder
         </button>
       </form>
     </div>

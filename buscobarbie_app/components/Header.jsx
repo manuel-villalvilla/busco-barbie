@@ -6,6 +6,7 @@ import FiltersMenu from './FiltersMenu'
 import { useRouter } from 'next/router'
 import styles from './Header.module.css'
 import withContext from '../utils/withContext'
+import { SocialIcon } from 'react-social-icons'
 const URL = process.env.NEXT_PUBLIC_APP_URL
 
 export default withContext(function Header({ context: { setSearchHeight, searchHeight }, country_code }) {
@@ -25,8 +26,14 @@ export default withContext(function Header({ context: { setSearchHeight, searchH
   return <div className={styles.container}>
     <div className={styles.headerFilters}>
       <header className={styles.header}>
-        <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image alt='logo de busco barbie' src='/logo4.png' layout='fill' priority></Image></a></Link>
-
+        <div className={styles.imageSocials}>
+          <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image alt='logo de busco barbie' src='/logo4.png' layout='fill' priority></Image></a></Link>
+          <div className={styles.socials}>
+            <SocialIcon url='https://twitter.com/buscobarbie_com' style={{ height: 25, width: 25 }} />
+            <SocialIcon url='https://es-es.facebook.com/lizysusbarbies' style={{ height: 25, width: 25 }} />
+            <SocialIcon url='https://buscobarbie.com/contact' style={{ height: 25, width: 25 }} network='email'/>
+          </div>
+        </div>
         <div className={styles.sessionButtons}>
           <div className={styles.noSession}>
             <Link href={`${URL}/barbiestories`}><a className={styles.loginLink}>Barbiestories</a></Link>

@@ -4,6 +4,7 @@ const URL = process.env.NEXT_PUBLIC_APP_URL
 
 export default function Footer() {
   return <footer className={styles.footer}>
+    <p>Este portal se encuentra en constante desarrollo. Por favor, ten paciencia si alguna vez está deshabilitado para su actualización. No llevará más de unas pocas horas. Si encuentras algun error y deseas comunicarlo, puedes hacerlo utilizando el formulario de contacto.</p>
     <form action="https://www.paypal.com/donate" method="post" target="_top">
       <input type="hidden" name="business" value="NFAEE7N7D5LLE" />
       <input type="hidden" name="no_recurring" value="0" />
