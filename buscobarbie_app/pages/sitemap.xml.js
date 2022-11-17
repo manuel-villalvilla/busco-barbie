@@ -12,6 +12,15 @@ function generateSiteMap(adsE, adsM, adsA) {
        <loc>${APP_URL}/barbiestories</loc>
      </url>
      <url>
+       <loc>${APP_URL}/ES</loc>
+     </url>
+     <url>
+       <loc>${APP_URL}/MX</loc>
+     </url>
+     <url>
+       <loc>${APP_URL}/AR</loc>
+     </url>
+     <url>
        <loc>${APP_URL}/contact</loc>
      </url>
      <url>

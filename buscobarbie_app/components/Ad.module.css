@@ -1,31 +1,23 @@
-.backButtonTop {
-    margin-bottom: 10px;
-    cursor: pointer;
-    color: #000;
-    font-weight: 600;
-    font-size: 18px;
-    background-color: transparent;
-    border-style: none;
-}
-
 .backButtonBot {
     cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid rgb(233, 96, 155);
     color: #000;
-    font-weight: 600;
-    font-size: 18px;
-    background-color: transparent;
-    border-style: none;
+    font-weight: 400;
+    font-size: 14px;
+    background-color: #fff;
+    width: fit-content;
+    padding: 5px;
+    margin-top: 10px;
 }
 
 .adContainer {
     padding: 10px;
     max-width: 760px;
     width: 100%;
-    gap: 20px;
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #fff;
 }
@@ -64,7 +56,6 @@
 
 .title > h3 {
     text-align: center;
-    margin: 0;
     font-weight: 600;
 }
 
@@ -90,7 +81,7 @@
 
 .image {
     max-height: 500px;
-    object-fit: cover;
+    object-fit: contain;
     background-color: #fff;
     touch-action: none;
 }
@@ -157,18 +148,22 @@
     margin: auto;
 }
 
+.body {
+    margin-top: 20px;
+}
+
 .body > article {
     text-align: center;
 }
 
 .area > p {
-    margin: 10px 0;
     display: flex;
     gap: 5px;
     align-items: center;
 }
 
 .footerPriceProvince {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -222,6 +217,7 @@
 }
 
 .footerCategories {
+    margin-top: 20px;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -257,13 +253,17 @@
     margin: 0;
 }
 
-.contactButton {
-    cursor: pointer;
+.reportContainer {
     display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.contactButton {
+    margin-top: 20px;
+    cursor: pointer;
     font-weight: 400;
     font-size: 22px;
-    justify-content: center;
-    align-items: center;
     background-color: #fff;
     color: #000;
     text-decoration: none;
@@ -276,7 +276,15 @@
     background-color: rgba(211,211,211,.2);
 }
 
+.buttonContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
 .elapsedReport {
+    margin-top: 30px;
     width: 100%;
     display: flex;
     justify-content: space-between;

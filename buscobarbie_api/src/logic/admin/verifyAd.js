@@ -112,7 +112,7 @@ module.exports = async function (userId, adId) {
         </div>
         <p class='textalign'><b>Por favor, no <span style='color:rgb(233,96,155);'>respondas</span> a este email.</b></p>
         <h3 class='textalign nomargin;'>¡GRACIAS!</h3>
-        <p class='footer'>Según lo dispuesto en el Reglamento Europeo en materia de Protección de Datos, te informamos que los datos de carácter personal que nos has proporcionado son gestionados por el responsable de BuscoBarbie.com tras habernos facilitado/cedido tus datos de manera voluntaria mediante el registro en la aplicación.</p>
+        <p class='footer textalign'>Según lo dispuesto en el Reglamento Europeo en materia de Protección de Datos, te informamos que los datos de carácter personal que nos has proporcionado son gestionados por el responsable de BuscoBarbie.com tras habernos facilitado/cedido tus datos de manera voluntaria mediante el registro en la aplicación.</p>
         <p class='footer textalign'>2022 BuscoBarbie.com</p>
     </body>
     </html>`
