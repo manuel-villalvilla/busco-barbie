@@ -5,8 +5,6 @@ module.exports = function (files) {
         for (let i = 0; i < files.length; i++) {
             if (files[i].size > 6000000) throw new Error('file size over 6MB')
 
-            console.log(files[i])
-
             if (files[i].type) {
                 if (!files[i].type.match(imageTypeRegex)) throw new Error('wrong file type')
             }
