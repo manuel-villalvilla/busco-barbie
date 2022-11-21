@@ -80,14 +80,13 @@ export default withContext(function ResultsAds({ search, currentItems, count, co
                     src={ad.image[0]}
                     alt='Primera imágen'
                     priority={true}
-                    width='100%'
-                    height='100%'
+                    fill
                     sizes='100vw'
                     style={{
                       width: "100%",
-                      height: "auto",
                       objectFit: "cover"
-                    }} /></div>}
+                    }} 
+                    /></div>}
                   {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
                   {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
 

@@ -59,12 +59,10 @@ export default withContext(function Favorites({ favorites, ads, context: { setSe
                       src={ad.image[0]}
                       alt='Primera imágen'
                       priority={true}
-                      width='100%'
-                      height='100%'
+                      fill
                       sizes='100vw'
                       style={{
                         width: "100%",
-                        height: "auto",
                         objectFit: "cover"
                       }} /></div>}
                     {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}

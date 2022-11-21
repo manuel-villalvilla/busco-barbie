@@ -1,4 +1,6 @@
 import '../styles.css'
+import { Cairo_Play } from '@next/font/google'
+const cairo = Cairo_Play({ subsets: ['latin'] })
 import { SessionProvider } from 'next-auth/react'
 import { getSession } from 'next-auth/react'
 import Layout from '../components/Layout'
@@ -15,24 +17,40 @@ const IP = process.env.NEXT_PUBLIC_WAN_IP
 function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted, ip, favorites }) {
     const [accepted, setAccepted] = useState(cookieAccepted)
     return <>
+        <style jsx global>
+            {`
+                button {
+                    font-family: ${cairo.style.fontFamily}
+                }
 
+                input {
+                    font-family: ${cairo.style.fontFamily}
+                }
+
+                textarea {
+                    font-family: ${cairo.style.fontFamily}
+                }
+            `}
+        </style>
         <Head>
             <title>BuscoBarbie.com</title>
         </Head>
 
-        {/* {ip === IP ? <SessionProvider session={session}>
+        <div className={cairo.className}>
+            {/* {ip === IP ? <SessionProvider session={session}>
             <Layout country_code={country_code} favorites={favorites}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider> : <p>En construcción...</p>} */}
+            </SessionProvider> : <p>En construcción...</p>} */}
 
-        <SessionProvider session={session}>
-            <Layout country_code={country_code} favorites={favorites}>
-                <Component {...pageProps} />
-            </Layout>
-            {!accepted && <CookieNotice setAccepted={setAccepted} />}
-        </SessionProvider>
+            <SessionProvider session={session}>
+                <Layout country_code={country_code} favorites={favorites}>
+                    <Component {...pageProps} />
+                </Layout>
+                {!accepted && <CookieNotice setAccepted={setAccepted} />}
+            </SessionProvider>
+        </div>
     </>
 }
 
