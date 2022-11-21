@@ -1,5 +1,5 @@
 import styles from './AdminPanel.module.css'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import verifyAd from '../../../logic/verifyAd'
 import retrieveAdminData from '../../../logic/retrieveAdminData'
 
@@ -29,9 +29,15 @@ export default function AdminAd({ ad, showAd, token, setData }) {
             <p>{ad.price.number}</p>
             <p>Negociable: {ad.price.negotiable}</p>
             <p>{ad.createdAt}</p>
-            <div className={styles.imgDiv}>{ad.image.length && ad.image.map((img, index) => <Image className={styles.adImage} src={img} key={index} layout='fixed' priority={true} width={200} height={400}></Image>)}</div>
+            <div className={styles.imgDiv}>{ad.image.length && ad.image.map((img, index) => <Image
+                className={styles.adImage}
+                src={img}
+                key={index}
+                priority={true}
+                width={200}
+                height={400}></Image>)}</div>
             <button type='button' className={styles.adVerifyButton} onClick={() => handleVerify(false)}>Borrar</button>
             <button type='button' className={styles.adVerifyButton} onClick={() => handleVerify(true)}>Verificar</button>
         </div>
-    </>
+    </>;
 }
