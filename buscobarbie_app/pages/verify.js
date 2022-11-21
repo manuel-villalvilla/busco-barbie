@@ -13,21 +13,23 @@ export default function Verify({ res }) {
         else if (res === 'alreadyVerified') setView('alreadyVerified')
     }, [])
 
-    return <div className={styles.verifyContainer}>
-        {
-            view === 'ok' && <h3>Tu usuario ha sido verificado correctamente, ya puedes iniciar sesión</h3>
-        }
-        {
-            view === 'alreadyVerified' && <h3>Usuario ya verificado</h3>
-        }
-        {
-            view === 'error' && <>
-                <h3>Hubo un error verificando tu usuario</h3><p>Por favor, inténtalo de nuevo con el enlace que te hemos 
-                    enviado por email. Si sigues recibiendo este error, ponte en <Link href={`${APP_URL}/contact`}><a>contacto</a></Link> con nostros.
-                </p>
-            </>
-        }
-    </div>
+    return (
+        <div className={styles.verifyContainer}>
+            {
+                view === 'ok' && <h3>Tu usuario ha sido verificado correctamente, ya puedes iniciar sesión</h3>
+            }
+            {
+                view === 'alreadyVerified' && <h3>Usuario ya verificado</h3>
+            }
+            {
+                view === 'error' && <>
+                    <h3>Hubo un error verificando tu usuario</h3><p>Por favor, inténtalo de nuevo con el enlace que te hemos 
+                        enviado por email. Si sigues recibiendo este error, ponte en <Link href={`${APP_URL}/contact`}>contacto</Link> con nostros.
+                    </p>
+                </>
+            }
+        </div>
+    );
 }
 
 export async function getServerSideProps(context) {

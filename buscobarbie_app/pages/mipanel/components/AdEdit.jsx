@@ -521,7 +521,12 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
             <div className={styles.checkboxContainer}>
                 <input type="checkbox" id="accept" name="accept" className={styles.checkboxInput} value="accept" required={true} />
                 <label className={styles.checkboxLabel} htmlFor="accept">
-                    Acepto las <Link href={`${APP_URL}/terms-and-conditions`} passHref><a target="_blank" rel="noopener noreferrer" className={styles.termsLink}>Condiciones de Servicio</a></Link></label>
+                    Acepto las <Link
+                    href={`${APP_URL}/terms-and-conditions`}
+                    passHref
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.termsLink}>Condiciones de Servicio</Link></label>
             </div>
 
             <div className={styles.warningContainer}>
@@ -534,5 +539,5 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
             </div>
             {error.bottom && <p ref={errorBottomRef} className={styles.error}>{error.bottom}</p>}
         </form>
-    </>
+    </>;
 }

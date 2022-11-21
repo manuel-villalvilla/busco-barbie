@@ -32,7 +32,7 @@ function PaginatedResults({ search, page, data, onPageClick, context: { country_
             {data.ads.length === 0 && <div className={styles.noResultsContainer}>
                 <p className={styles.notFound}>No se encuentran resultados</p>
                 <p className={styles.offer}>¿<span>Buscas</span> o <span>vendes</span> un artículo relacionado con Barbie™? Puedes publicar un anuncio para <span>buscar</span> tu artículo Barbie™ favorito o bien para <span>venderlo</span>. ¡Es gratis!</p>
-                <Link href={`${APP_URL}/${country_code}/publicar`}><a className={styles.link}>Pulsa aquí para <span>publicar</span> un anuncio de búsqueda o venta.</a></Link>
+                <Link href={`${APP_URL}/${country_code}/publicar`} className={styles.link}>Pulsa aquí para<span>publicar</span>un anuncio de búsqueda o venta.</Link>
             </div>}
             <ReactPaginate
                 previousLabel={'Anterior'}

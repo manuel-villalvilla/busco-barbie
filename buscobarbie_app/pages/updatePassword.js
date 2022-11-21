@@ -81,10 +81,10 @@ export default function UpdatePassword({ token, id }) {
         }
         {view === 'thankyou' && <>
             <h3 className={styles.thankyouMessage}>¡Gracias! Tu <span className={styles.span}>contraseña</span> se ha actualizado correctamente y ya puedes iniciar sesión con ella</h3>
-            <Link href={`${APP_URL}/login`}><a className={styles.loginLink}>Iniciar sesión</a></Link>
+            <Link href={`${APP_URL}/login`} className={styles.loginLink}>Iniciar sesión</Link>
         </>
         }
-    </>
+    </>;
 }
 
 export async function getServerSideProps(context) {

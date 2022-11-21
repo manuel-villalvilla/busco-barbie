@@ -26,11 +26,11 @@ export default withContext(function Header({ context: { setSearchHeight, searchH
     <div className={styles.container}>
       <div className={styles.headerFilters}>
         <header className={styles.header}>
-            <Link href={`${URL}/${country_code}`}><a className={styles.logo}><Image alt='logo de busco barbie' src='/logo4.png' priority fill sizes="100vw"></Image></a></Link>
+            <Link href={`${URL}/${country_code}`} className={styles.logo}><Image alt='logo de busco barbie' src='/logo4.png' priority fill sizes="100vw"></Image></Link>
           <div className={styles.sessionButtons}>
             <div className={styles.noSession}>
-              <Link href={`${URL}/barbiestories`}><a className={styles.loginLink}>Barbiestories</a></Link>
-              {!session ? <Link href={`${URL}/login`}><a className={styles.loginLink}>Iniciar sesión</a></Link> : <button className={styles.loginLink} onClick={() => signOut({ callbackUrl: `${window.location.origin}` })}>Desconexión</button>}
+              <Link href={`${URL}/barbiestories`} className={styles.loginLink}>Barbiestories</Link>
+              {!session ? <Link href={`${URL}/login`} className={styles.loginLink}>Iniciar sesión</Link> : <button className={styles.loginLink} onClick={() => signOut({ callbackUrl: `${window.location.origin}` })}>Desconexión</button>}
             </div>
             <div className={styles.buttons}>
               <button
@@ -42,7 +42,7 @@ export default withContext(function Header({ context: { setSearchHeight, searchH
               >
                 {searchHeight !== 0 ? 'Cerrar buscador' : 'Buscador'}
               </button>
-              {!session ? <Link href={`${URL}/${country_code}/publicar`}><a className={styles.publicarLink}>Publicar</a></Link> : <Link href={`${URL}/mipanel`}><a className={styles.mipanelLink}>Mi panel</a></Link>}
+              {!session ? <Link href={`${URL}/${country_code}/publicar`} className={styles.publicarLink}>Publicar</Link> : <Link href={`${URL}/mipanel`} className={styles.mipanelLink}>Mi panel</Link>}
             </div>
           </div>
 

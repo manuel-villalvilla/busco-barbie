@@ -473,7 +473,12 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
             <div className={styles.checkboxContainer}>
                 <input type="checkbox" id="accept" name="accept" className={styles.checkboxInput} value="accept" required={true} />
                 <label className={styles.checkboxLabel} htmlFor="accept">
-                    Acepto las <Link href={`${APP_URL}/terms-and-conditions`} passHref><a target="_blank" rel="noopener noreferrer" className={styles.termsLink}>Condiciones de Servicio</a></Link></label>
+                    Acepto las <Link
+                    href={`${APP_URL}/terms-and-conditions`}
+                    passHref
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.termsLink}>Condiciones de Servicio</Link></label>
             </div>
             {error.bottom && <p ref={errorBottomRef} className={styles.error}>{error.bottom}</p>}
             <div className={styles.buttonContainer}>
@@ -481,5 +486,5 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                 <button type='submit' className={styles.submitButton}>GUARDAR</button>
             </div>
         </form>
-    </>
+    </>;
 })

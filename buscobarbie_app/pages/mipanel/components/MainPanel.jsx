@@ -94,30 +94,34 @@ export default function MainPanel({ user, ads, setUser, setAds, token, count, se
       <div className={styles.adsContainer}>
         <label htmlFor="ad-div" className={styles.adsLabel}>MIS ANUNCIOS:</label>
         {ads.length ? ads.map(ad => {
-          return <div className={styles.adDiv} id='ad-div' key={ad._id.toString()}>
-            <div className={styles.adTitle}><p>{ad.title}</p></div>
-            <div className={styles.adLink}>{ad.verified ? <Link href={`${URL}/${ad.location.country}/ads/${ad._id.toString()}`}><a className={styles.adLinkA}>Enlace</a></Link> : <span>🔴</span>}</div>
-            <div className={styles.adButtons}>
-              <button
-                type='button'
-                className={styles.editButton}
-                onClick={() => {
-                  setAd(ad)
-                  setView('adedit')
-                }}
-              >EDITAR
-              </button>
-              <button
-                type='button'
-                className={styles.deleteButton}
-                onClick={() => {
-                  setAdId(ad._id)
-                  setView('confirmmodal')
-                }}
-              >BORRAR
-              </button>
+          return (
+            <div className={styles.adDiv} id='ad-div' key={ad._id.toString()}>
+              <div className={styles.adTitle}><p>{ad.title}</p></div>
+              <div className={styles.adLink}>{ad.verified ? <Link
+                href={`${URL}/${ad.location.country}/ads/${ad._id.toString()}`}
+                className={styles.adLinkA}>Enlace</Link> : <span>🔴</span>}</div>
+              <div className={styles.adButtons}>
+                <button
+                  type='button'
+                  className={styles.editButton}
+                  onClick={() => {
+                    setAd(ad)
+                    setView('adedit')
+                  }}
+                >EDITAR
+                </button>
+                <button
+                  type='button'
+                  className={styles.deleteButton}
+                  onClick={() => {
+                    setAdId(ad._id)
+                    setView('confirmmodal')
+                  }}
+                >BORRAR
+                </button>
+              </div>
             </div>
-          </div>
+          );
         }) : <div className={styles.adDiv}><p className={styles.noads}>Aún no tienes anuncios</p></div>}
         {adsError && <p className={styles.error}>{adsError}</p>}
         {adsSuccess && <p className={styles.success}>{adsSuccess}</p>}
@@ -262,6 +266,6 @@ export default function MainPanel({ user, ads, setUser, setAds, token, count, se
     {
       view === 'newad' && <NewAd setView={setView} tokenFromApi={token.tokenFromApi} userId={user._id} setAds={setAds} setCount={setCount} setAdsSuccess={setAdsSuccess} />
     }
-  </>
+  </>;
 
 }

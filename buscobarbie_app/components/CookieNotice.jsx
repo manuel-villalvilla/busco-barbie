@@ -9,12 +9,14 @@ export default function CookieNotice({ setAccepted }) {
         setAccepted(true)
     }
 
-    return <div className={styles.container}>
-        <div className={styles.subContainer}>
-            <p>Esta aplicación web utiliza cookies para mejorar tu experiencia de navegación.
-                Mediante el uso de la misma, aceptas el uso de cookies detallado en nuestras <Link href={`${APP_URL}/terms-and-conditions`}><a className={styles.link}>condiciones</a></Link>.
-            </p>
-            <button type='button' className={styles.button} onClick={handleAcceptButton}>ENTENDIDO</button>
+    return (
+        <div className={styles.container}>
+            <div className={styles.subContainer}>
+                <p>Esta aplicación web utiliza cookies para mejorar tu experiencia de navegación.
+                    Mediante el uso de la misma, aceptas el uso de cookies detallado en nuestras <Link href={`${APP_URL}/terms-and-conditions`} className={styles.link}>condiciones</Link>.
+                </p>
+                <button type='button' className={styles.button} onClick={handleAcceptButton}>ENTENDIDO</button>
+            </div>
         </div>
-    </div>
+    );
 }
