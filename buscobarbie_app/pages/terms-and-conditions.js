@@ -115,12 +115,18 @@ export default withContext(function TermsAndConditions({ country, context: { set
         </div>
 
         <div className={styles.blockContainer}>
-            <h5 className={styles.subtitle}>TRATAMIENTO DE DATOS</h5>
+            <h5 id='privacy' className={styles.subtitle}>TRATAMIENTO DE DATOS Y POLÍTICA DE PRIVACIDAD</h5>
             <p>Aquéllos usuarios que inicien sesión a traves de <span>Google</span> o se registren a través del formulario <Link href={`${APP_URL}/${country}/publicar`}><a className={styles.link}>publicar</a></Link>, aceptan ceder
                 sus datos a <span>BuscoBarbie.com</span> para almacenarlos en una base de datos y utilizarlos para dar servicio al usuario con las prestaciones de la aplicación.</p>
             <p>El usuario registrado tiene derecho a reclamar o solicitar la eliminación de sus datos, o bien a través del formulario de <Link href={`${APP_URL}/contact`}><a className={styles.link}>contacto</a></Link>, o
                 bien eliminando la cuenta desde el panel de control del usuario.</p>
-            <p>Para los usuarios registrados mediante <span>Google</span>, sólo almacenaremos el nombre y la dirección de email proporcionados por esta plataforma. Se recuerda que por motivos de seguridad, la dirección de email nunca se hará pública.</p>
+            <p>Para los usuarios que inicien sesión mediante <span>Google</span>, la aplicación solicitará únicamente el <span>nombre</span> de usuario y la dirección de <span>email</span> del usuario en cuestión para registrarlo en <span>BuscoBarbie.com</span>. Estos datos se solicitarán utilizando la API OAuth 2.0 de Google. 
+            Se almacenarán en la base de datos de la aplicación y serán utilizados para:</p>
+            <ol>
+                <li><p>En cuanto al <span>nombre</span>, se utilizará para que los usuarios tengan a quien dirigirse cuando se contacten entre ellos. Sólo se hará público el nombre y ningún apellido.</p></li>
+                <li><p>En cuanto al <span>email</span>, se utilizará como identificativo para que el usuario pueda iniciar sesión y acceder a los anuncios de su propiedad. También se usará para que los usuarios sean 
+                    contactados por otros usuarios a través de los anuncios de la aplicación y para recibir comunicaciones de BuscoBarbie.com. Nunca se hará público.</p></li>
+            </ol>
         </div>
 
         <div className={styles.blockContainer}>

@@ -35,3 +35,9 @@
 .pinkLink, .pinkLink:visited, .pinkLink:active {
     color:rgb(233, 96, 155);
 }
+
+.socials {
+    display: flex;
+    margin-left: 5px;
+    gap: 5px;
+}

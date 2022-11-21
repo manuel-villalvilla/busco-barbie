@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './Footer.module.css'
+import { SocialIcon } from 'react-social-icons'
 const URL = process.env.NEXT_PUBLIC_APP_URL
 
 export default function Footer() {
@@ -13,6 +14,12 @@ export default function Footer() {
       <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Botón Donar con PayPal" className={styles.paypalImage} />
       <img alt="" border="0" src="https://www.paypal.com/es_ES/i/scr/pixel.gif" width="1" height="1" />
     </form>
+
+    <div className={styles.socials}>
+      <SocialIcon url='https://twitter.com/buscobarbie_com' style={{ height: 25, width: 25 }} />
+      <SocialIcon url='https://es-es.facebook.com/lizysusbarbies' style={{ height: 25, width: 25 }} />
+      <SocialIcon url='https://buscobarbie.com/contact' style={{ height: 25, width: 25 }} network='email' />
+    </div>
 
     <div className={styles.linksDiv}>
       <Link href={`${URL}/favorites`}><a className={styles.pinkLink}>Mis favoritos</a></Link>

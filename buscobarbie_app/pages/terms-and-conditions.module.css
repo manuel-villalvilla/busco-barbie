@@ -8,6 +8,7 @@
 .title {
     background-color: #fff;
     padding: 5px;
+    font-weight: 600;
     border-radius: 10px;
     margin: 0 auto 10px auto;
     width: fit-content;
