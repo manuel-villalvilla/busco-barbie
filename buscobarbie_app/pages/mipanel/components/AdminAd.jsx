@@ -1,5 +1,5 @@
 import styles from './AdminPanel.module.css'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import verifyAd from '../../../logic/verifyAd'
 import retrieveAdminData from '../../../logic/retrieveAdminData'
 

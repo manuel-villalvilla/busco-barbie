@@ -79,7 +79,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
       else if (params.year !== 'Todas' && params.year !== null) return true
       else return false
     }
-    return new function () {
+    return new (function() {
       if (params.province && params.province !== 'all') this.province = params.province
       if (params.categories && params.categories !== 'all') this.categories = params.categories
       if (params.search) this.search = params.search
@@ -90,7 +90,7 @@ export default function FiltersMenu({ country, province, search, categories, yea
         this.tags = arr.toString()
       }
       if (params.sort && params.sort !== 'lastPublished') this.sort = params.sort 
-    }
+    });
   }
 
   const handleFormOnChange = (query) => {

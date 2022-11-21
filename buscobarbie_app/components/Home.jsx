@@ -25,7 +25,7 @@ function Home({ data, page, province, search, categories, country, year, tags, s
   }, [data])
 
   const handlePageClick = (event) => {
-    const query = new function () {
+    const query = new (function() {
       this.page = event.selected + 1
       if (province) this.province = province
       if (categories) this.categories = categories
@@ -37,7 +37,7 @@ function Home({ data, page, province, search, categories, country, year, tags, s
         this.tags = arr.toString()
       }
       if (sort) this.sort = sort
-    }
+    })
     router.push({
       pathname: `/${country}`,
       query

@@ -3,7 +3,7 @@ import { getCookie, setCookie } from 'cookies-next'
 import { useEffect, useState } from 'react'
 import { animateScroll as scroll } from 'react-scroll'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import withContext from '../utils/withContext'
 import retrieveFavoriteAds from '../logic/retrieveFavoriteAds'
 
