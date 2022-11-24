@@ -21,8 +21,8 @@
 }
 
 .clearBtn {
-    border-style: none;
     background-color: transparent;
+    border: 1px solid lightgray;
     font-size: 16px;
     font-weight: 600;
     color: #000;

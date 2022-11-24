@@ -63,7 +63,7 @@ export default withContext(function Favorites({ favorites, ads, context: { setSe
                       sizes='100vw'
                       style={{
                         width: "100%",
-                        objectFit: "cover"
+                        objectFit: "contain"
                       }} /></div>}
                     {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
                     {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}

@@ -138,6 +138,7 @@ export default withContext(function TermsAndConditions({ country, context: { set
             <div className={styles.blockContainer}>
                 <h5 className={styles.subtitle}>PROPIEDAD DEL SITIO</h5>
                 <p>Esta aplicación web pertenece a Manuel Villalvilla Cañizares con D.N.I. 49009131-H y residencia en Madrid, España.</p>
+                <p>En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
             </div>
             <button type='button' className={styles.bottomButton} onClick={() => scroll.scrollToTop()}>Volver arriba</button>
         </div>

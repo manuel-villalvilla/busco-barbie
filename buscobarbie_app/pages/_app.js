@@ -20,15 +20,15 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
         <style jsx global>
             {`
                 button {
-                    font-family: ${cairo.style.fontFamily}
+                    font-family: ${cairo.style.fontFamily}, cursive;
                 }
 
                 input {
-                    font-family: ${cairo.style.fontFamily}
+                    font-family: ${cairo.style.fontFamily}, cursive;
                 }
 
                 textarea {
-                    font-family: ${cairo.style.fontFamily}
+                    font-family: ${cairo.style.fontFamily}, cursive;
                 }
             `}
         </style>
