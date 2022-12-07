@@ -2,16 +2,14 @@ import { useRouter } from 'next/router'
 import PaginatedResults from './PaginatedResults'
 import { useState, useEffect, useRef } from 'react'
 import { animateScroll as scroll } from 'react-scroll'
-import withContext from '../utils/withContext'
 
-function Home({ data, page, province, search, categories, country, year, tags, sort, context: { setSearchHeight, searchHeight } }) {
+function Home({ data, page, province, search, categories, country, year, tags, sort }) {
   const [stateData, setStateData] = useState(data)
   const router = useRouter()
   const storageRef = useRef(true)
 
   useEffect(() => {
     setTimeout(() => {
-      if (searchHeight) setSearchHeight(0)
       scroll.scrollToTop()
     }, 500)
   }, [page])
@@ -47,4 +45,4 @@ function Home({ data, page, province, search, categories, country, year, tags, s
   return <PaginatedResults search={search} page={page - 1} data={stateData} onPageClick={handlePageClick} />
 }
 
-export default withContext(Home)
+export default Home

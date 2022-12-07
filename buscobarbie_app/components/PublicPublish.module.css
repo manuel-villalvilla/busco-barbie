@@ -1,10 +1,14 @@
 .container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    
+    max-width: 700px;
+    background-color: rgba(0,0,0,.5);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(133,133,133);
 }
 
 .firstQuestionContainer {
@@ -12,9 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
     padding: 10px;
-    max-width: 760px;
 }
 
 .firstQuestionContainer h3 {
@@ -49,21 +51,15 @@
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
-    background-color: #fff;
     width: 100%;
-    max-width: 760px;
     gap: 10px;
     padding: 10px;
-}
-
-.form > p {
-    margin: 0;
 }
 
 .formText {
     margin: 0 0 0 5px;
     font-size: 14px;
-    color: grey;
+    color: lightgrey;
     width: 100%;
 }
 
@@ -82,10 +78,10 @@
 .imagesContainer,
 .tagsContainer,
 .countryContainer {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
 }
 
 .priceContainer {
@@ -146,7 +142,7 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: rgba(0,0,0,.5);
 }
 
 .nameInput,
@@ -161,14 +157,14 @@
 .yearSelect,
 .countrySelect {
     padding: 5px;
-    width: 100%;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
 }
 
 .provinceSelect,
 .categoriesSelect {
-    background-color: lightgrey;
+    background-color: rgba(0,0,0,.5);
 }
 
 .imagesInput {
@@ -211,7 +207,7 @@
     align-items: center;
     border-style: none;
     background-color: rgb(114, 191, 128);
-    color: white;
+    color: #fff;
     border-radius: 10px;
     font-size: 14px;
 }
@@ -234,17 +230,17 @@
 
 .submitButton {
     cursor: pointer;
+    gap: 5px;
     display: flex;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 22px;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    color: #000;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     text-decoration: none;
     height: 50px;
-    width: 100%;
-    border-radius: 20px;
+    border-radius: 10px 100px / 120px;
     border: 2px ridge rgb(233, 96, 155);
 }
 

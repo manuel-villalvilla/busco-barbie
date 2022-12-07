@@ -1,16 +1,18 @@
 .loginContainer {
     display: flex;
-    background-color: #fff;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+    background-color: rgba(0,0,0,.5);
+    padding: 20px 10px 10px 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(133,133,133);
 }
 
 .title {
-    padding: 10px;
-    text-align: center;
-    line-height: 1;
-    font-weight: 600;
+    margin: 0;
 }
 
 .form, .forgottenForm {
@@ -41,26 +43,29 @@
     width: 100%;
     border-radius: 10px;
     text-align: center;
+    background-color: rgba(0,0,0,.5);
 }
 
 .loginButton, .forgottenSendButton, .forgottenCancelButton, .thankyouButton {
     cursor: pointer;
     display: flex;
+    gap: 5px;
     font-weight: 400;
+    fill: rgb(114, 191, 128);
     font-size: 22px;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    color: #000;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     text-decoration: none;
     height: 50px;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 2px ridge rgb(233, 96, 155);
 }
 
 .loginButton:hover, .forgottenSendButton:hover, .forgottenCancelButton:hover {
-    background-color: rgba(211,211,211,.2);
+    background-color: transparent;
 }
 
 .forgottenCancelButton {
@@ -80,8 +85,9 @@
     border-style: none;
     text-decoration: underline;
     font-size: 22px;
+    font-weight: 600;
     background-color: transparent;
-    color: rgb(233, 96, 155)
+    color: #fff;
 }
 
 .buttonsContainer {
@@ -92,7 +98,7 @@
 .formText {
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: lightgrey;
     text-align: center;
 }
 
@@ -117,5 +123,5 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 760px;
+    max-width: 700px;
 }

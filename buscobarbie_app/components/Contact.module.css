@@ -16,7 +16,6 @@
     width: fit-content;
     text-align: center;
     margin: 0;
-    background-color: #fff;
     border-radius: 10px;
 }
 
@@ -30,7 +29,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: rgba(247, 186, 212, 0.1);
+    fill: rgb(233, 96, 155);
 }
 
 .phoneP > p {
@@ -49,10 +48,6 @@
     gap: 5px;
 }
 
-.nameLabel, .emailLabel, .bodyLabel {
-    color:rgb(233, 96, 155);
-}
-
 .emailContainer {
     display: flex;
     flex-wrap: wrap;
@@ -63,7 +58,8 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: rgba(0,0,0,.5);
+    border: 2px solid rgb(114, 191, 128);
 }
 
 .bodyContainer {
@@ -76,6 +72,8 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
+    background-color: rgba(0,0,0,.5);
+    border: 2px solid rgb(114, 191, 128);
 }
 
 .bodyContainer > p {
@@ -97,19 +95,21 @@
 }
 
 .modalSendButton {
+    margin-top: 20px;
     cursor: pointer;
     display: flex;
+    gap: 5px;
+    fill:rgb(114, 191, 128);
     font-weight: 400;
     font-size: 22px;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    color: #000;
-    text-decoration: none;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     height: 50px;
     width: 100%;
-    border-radius: 20px;
-    border: 2px ridge rgb(233, 96, 155);
+    border-radius: 10px;
+    border: 2px ridge rgb(114, 191, 128);
 }
 
 .modalSendButton:hover {

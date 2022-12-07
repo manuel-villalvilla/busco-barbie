@@ -27,7 +27,7 @@ export default function AdminAd({ ad, showAd, token, setData }) {
             <p>{ad.categories}</p>
             {ad.tags.length && <p>{ad.tags.toString()}</p>}
             <p>{ad.price.number}</p>
-            <p>Negociable: {ad.price.negotiable}</p>
+            <p>Negociable: {ad.price.negotiable ? 'si' : 'no'}</p>
             <p>{ad.createdAt}</p>
             <div className={styles.imgDiv}>{ad.image.length && ad.image.map((img, index) => <Image
                 className={styles.adImage}

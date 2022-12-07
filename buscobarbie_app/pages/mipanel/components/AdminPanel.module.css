@@ -3,10 +3,12 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    background-color: rgba(0,0,0,.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .container > h4 {
-    background-color: #fff;
     padding: 10px;
     border-radius: 10px;
     margin: 0;
@@ -31,8 +33,8 @@
     font-size: 22px;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    color: #000;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     text-decoration: none;
     height: 60px;
     width: fit-content;
@@ -51,6 +53,9 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    background-color: rgba(0,0,0,.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .backButton {
@@ -58,8 +63,8 @@
     font-weight: 400;
     font-size: 18px;
     border-style: none;
-    background-color: #fff;
-    color: #000;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     width: fit-content;
     border-radius: 10px;
     padding: 5px;
@@ -68,7 +73,6 @@
 .adsContainer > h4 {
     margin: 0;
     padding: 10px;
-    background-color: #fff;
     border-radius: 10px;
 }
 
@@ -105,8 +109,6 @@
 
 .adContainer {
     text-align: center;
-    padding: 10px;
-    background-color: #fff;
     font-size: 20px;
 }
 

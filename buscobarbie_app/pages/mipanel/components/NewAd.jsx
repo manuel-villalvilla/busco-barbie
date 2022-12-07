@@ -37,7 +37,7 @@ const Option = (props) => {
     )
 }
 
-export default withContext(function NewAd({ context: { setSearchHeight, country_code }, setView, tokenFromApi, userId, setAds, setCount, setAdsSuccess }) {
+export default withContext(function NewAd({ context: { country_code }, setView, tokenFromApi, userId, setAds, setCount, setAdsSuccess }) {
     const [error, setError] = useState({
         images: null,
         bottom: null
@@ -52,8 +52,6 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
     const imagesRef = useRef(null)
     const firsTimeRef = useRef(true)
     const errorBottomRef = useRef(null)
-
-    useEffect(() => setSearchHeight(0), [])
 
     useEffect(() => {
         if (!firsTimeRef.current) {
@@ -399,11 +397,11 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                             setStateTags(arr)
                         }}
                         instanceId='modelos-select'
-                        placeholder='Selecciona...'
+                        placeholder='Selecciona o busca etiquetas'
                         noOptionsMessage={() => <span>No encontrado</span>}
                         loadingMessage={() => <span>Cargando opciones</span>}
                         // blurInputOnSelect={true}
-                        isSearchable={false}
+                        isSearchable={true}
                         closeMenuOnSelect={false}
                         hideSelectedOptions={false}
                     />
@@ -429,11 +427,11 @@ export default withContext(function NewAd({ context: { setSearchHeight, country_
                             setStateTags(arr)
                         }}
                         instanceId='complementos-select'
-                        placeholder={'Selecciona...'}
+                        placeholder={'Selecciona o busca etiquetas'}
                         noOptionsMessage={() => <span>No encontrado</span>}
                         loadingMessage={() => <span>Cargando opciones</span>}
                         // blurInputOnSelect={true}
-                        isSearchable={false}
+                        isSearchable={true}
                         closeMenuOnSelect={false}
                         hideSelectedOptions={false}
                     />

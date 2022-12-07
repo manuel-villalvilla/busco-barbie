@@ -5,7 +5,6 @@
 
 .form {
     display: flex;
-    background-color: #fff;
     padding: 10px;
     flex-direction: column;
     gap: 10px;
@@ -20,10 +19,10 @@
     cursor: pointer;
     border-radius: 10px;
     border: 2px solid rgb(233, 96, 155);
-    color: #000;
+    color: #fff;
     font-weight: 400;
     font-size: 14px;
-    background-color: #fff;
+    background-color: transparent;
     width: fit-content;
     padding: 5px;
 }
@@ -94,7 +93,6 @@
 .label {
     display: flex;
     justify-content: flex-start;
-    color: rgb(233, 96, 155);
 }
 
 .negotiableLabel {
@@ -130,6 +128,7 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
+    background-color: rgba(0,0,0,.5);
 }
 
 .bodyInput {
@@ -143,7 +142,7 @@
 .formText {
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: lightgrey;
 }
 
 .imagesButton {
@@ -171,7 +170,7 @@
 .imagesText {
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: lightgrey;
     text-align: start;
 }
 
@@ -228,7 +227,7 @@
     background-color: transparent;
     font-size: 14px;
     padding: 5px;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .cancelButton:hover,

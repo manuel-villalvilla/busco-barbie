@@ -2,17 +2,15 @@ import styles from './terms-and-conditions.module.css'
 import { getCookie } from 'cookies-next'
 import Link from 'next/link'
 import { animateScroll as scroll } from 'react-scroll'
-import withContext from '../utils/withContext'
 import { useEffect } from 'react'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
-export default withContext(function TermsAndConditions({ country, context: { setSearchHeight } }) {
+export default function TermsAndConditions({ country }) {
     useEffect(() => {
-        setSearchHeight(0)
         scroll.scrollToTop()
     }, [])
 
-    return (
+    return <>
         <div className={styles.container}>
             <h4 className={styles.title}>Términos y Condiciones de uso:</h4>
 
@@ -138,12 +136,11 @@ export default withContext(function TermsAndConditions({ country, context: { set
             <div className={styles.blockContainer}>
                 <h5 className={styles.subtitle}>PROPIEDAD DEL SITIO</h5>
                 <p>Esta aplicación web pertenece a Manuel Villalvilla Cañizares con D.N.I. 49009131-H y residencia en Madrid, España.</p>
-                <p>En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
             </div>
-            <button type='button' className={styles.bottomButton} onClick={() => scroll.scrollToTop()}>Volver arriba</button>
         </div>
-    );
-})
+            <button type='button' className={styles.bottomButton} onClick={() => scroll.scrollToTop()}><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M7.4 18.4 6 17l6-6 6 6-1.4 1.4-4.6-4.575Zm0-6L6 11l6-6 6 6-1.4 1.4L12 7.825Z"/></svg>Volver arriba<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M7.4 18.4 6 17l6-6 6 6-1.4 1.4-4.6-4.575Zm0-6L6 11l6-6 6 6-1.4 1.4L12 7.825Z"/></svg></button></>
+    
+}
 
 export async function getServerSideProps({ req, res }) {
     const country = getCookie('country', { req, res })

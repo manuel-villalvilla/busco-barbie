@@ -41,7 +41,7 @@ const Option = (props) => {
   )
 }
 
-export default withContext(function PublicPublish({ context: { setSearchHeight, country_code } }) {
+export default withContext(function PublicPublish({ context: { country_code } }) {
   const [error, setError] = useState({
     images: null,
     bottom: null
@@ -62,8 +62,6 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
   const captchaRef = useRef(null)
   const errorBottomRef = useRef(null)
   const router = useRouter()
-
-  useEffect(() => setSearchHeight(0), [])
 
   useEffect(() => {
     if (stateCountry !== country_code) setStateCountry(country_code)
@@ -255,12 +253,13 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
         <p>Para ello, completa el siguiente formulario:</p>
       </div>
 
+      <p>Campos obligatorios <span style={{ color: 'red' }}>*</span></p>
+
       <form className={styles.form} encType="multipart/form-data" onSubmit={async (event) => {
         event.preventDefault()
 
         handleFormSubmit(event)
       }}>
-        <p>Campos obligatorios <span style={{ color: 'red' }}>*</span></p>
 
         <div className={styles.countryContainer}>
           <label
@@ -281,42 +280,6 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
             <option value='MX'>México</option>
             <option value='AR'>Argentina</option>
           </select>
-        </div>
-
-        <div className={styles.titleContainer} id='titleContainer'>
-          <label htmlFor='title' className={styles.titleLabel}>TÍTULO:*</label>
-          <input
-            type='text'
-            className={styles.titleInput}
-            name='title'
-            id='title'
-            maxLength={30}
-            required={true}
-            onChange={event => {
-              const title = event.target.value
-
-              handleTitleChange(title)
-            }}
-          />
-          <p className={styles.formText}>{titleRemaining}</p>
-        </div>
-
-        <div className={styles.bodyContainer}>
-          <label htmlFor='body' className={styles.bodyLabel}>DESCRIPCIÓN:*</label>
-          <textarea
-            className={styles.bodyInput}
-            name='body'
-            id='body'
-            maxLength={500}
-            required={true}
-            rows={6}
-            onChange={event => {
-              const body = event.target.value
-
-              handleBodyChange(body)
-            }}
-          />
-          <p className={styles.formText}>{remaining}</p>
         </div>
 
         <div className={styles.provinceContainer}>
@@ -358,16 +321,40 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           <p className={styles.formText}>Puedes opcionalmente especificar tu ubicación.</p>
         </div>
 
-        <div className={styles.phoneContainer}>
-          <label htmlFor='phone' className={styles.phoneLabel}>TELÉFONO:</label>
+        <div className={styles.titleContainer} id='titleContainer'>
+          <label htmlFor='title' className={styles.titleLabel}>TÍTULO:*</label>
           <input
             type='text'
-            className={styles.phoneInput}
-            name='phone'
-            id='phone'
-            maxLength={20}
+            className={styles.titleInput}
+            name='title'
+            id='title'
+            maxLength={30}
+            required={true}
+            onChange={event => {
+              const title = event.target.value
+
+              handleTitleChange(title)
+            }}
           />
-          <p className={styles.formText}>Se hará público para que te contacten si lo introduces.</p>
+          <p className={styles.formText}>{titleRemaining}</p>
+        </div>
+
+        <div className={styles.bodyContainer}>
+          <label htmlFor='body' className={styles.bodyLabel}>DESCRIPCIÓN:*</label>
+          <textarea
+            className={styles.bodyInput}
+            name='body'
+            id='body'
+            maxLength={500}
+            required={true}
+            rows={6}
+            onChange={event => {
+              const body = event.target.value
+
+              handleBodyChange(body)
+            }}
+          />
+          <p className={styles.formText}>{remaining}</p>
         </div>
 
         <div className={styles.categoriesContainer}>
@@ -440,11 +427,11 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
                 setStateTags(arr)
               }}
               instanceId='modelos-select'
-              placeholder='Selecciona...'
+              placeholder='Selecciona o busca etiquetas'
               noOptionsMessage={() => <span>No encontrado</span>}
               loadingMessage={() => <span>Cargando opciones</span>}
               // blurInputOnSelect={true}
-              isSearchable={false}
+              isSearchable={true}
               closeMenuOnSelect={false}
               hideSelectedOptions={false}
             />
@@ -470,11 +457,11 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
                 setStateTags(arr)
               }}
               instanceId='complementos-select'
-              placeholder={'Selecciona...'}
+              placeholder={'Selecciona o busca etiquetas'}
               noOptionsMessage={() => <span>No encontrado</span>}
               loadingMessage={() => <span>Cargando opciones</span>}
               // blurInputOnSelect={true}
-              isSearchable={false}
+              isSearchable={true}
               closeMenuOnSelect={false}
               hideSelectedOptions={false}
             />
@@ -543,6 +530,18 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           <p className={styles.formText}>No se hará público.</p>
         </div>
 
+        <div className={styles.phoneContainer}>
+          <label htmlFor='phone' className={styles.phoneLabel}>TELÉFONO:</label>
+          <input
+            type='text'
+            className={styles.phoneInput}
+            name='phone'
+            id='phone'
+            maxLength={20}
+          />
+          <p className={styles.formText}>Se hará público para que te contacten si lo introduces.</p>
+        </div>
+
         <div className={styles.passwordContainer}>
           <label htmlFor='password' className={styles.passwordLabel}>NUEVA CONTRASEÑA:*</label>
           <button type='button' className={styles.randomPasswordButton} onClick={handleRandomPassword}>ALEATORIA</button>
@@ -562,15 +561,18 @@ export default withContext(function PublicPublish({ context: { setSearchHeight, 
           <input type="checkbox" id="accept" name="accept" className={styles.checkboxInput} value="accept" required={true} />
           <label className={styles.checkboxLabel} htmlFor="accept">
             Acepto las <Link
-            href={`${APP_URL}/terms-and-conditions`}
-            passHref
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.termsLink}>Condiciones de Servicio</Link></label>
+              href={`${APP_URL}/terms-and-conditions`}
+              passHref
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.termsLink}>Condiciones de Servicio</Link></label>
         </div>
-        <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} />
+        <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} theme='dark' style={{ marginBottom: '10px' }} />
         {error.bottom && <p ref={errorBottomRef} className={styles.error}>{error.bottom}</p>}
-        <button type='submit' className={styles.submitButton}>Enviar</button>
+        <button type='submit' className={styles.submitButton}>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill='rgb(114, 191, 128)' d="M6 20q-.825 0-1.412-.587Q4 18.825 4 18q0-.825.588-1.413Q5.175 16 6 16t1.412.587Q8 17.175 8 18q0 .825-.588 1.413Q6.825 20 6 20Zm0-6q-.825 0-1.412-.588Q4 12.825 4 12t.588-1.413Q5.175 10 6 10t1.412.587Q8 11.175 8 12q0 .825-.588 1.412Q6.825 14 6 14Zm0-6q-.825 0-1.412-.588Q4 6.825 4 6t.588-1.412Q5.175 4 6 4t1.412.588Q8 5.175 8 6t-.588 1.412Q6.825 8 6 8Zm6 6q-.825 0-1.412-.588Q10 12.825 10 12t.588-1.413Q11.175 10 12 10t1.413.587Q14 11.175 14 12Zm0-6q-.825 0-1.412-.588Q10 6.825 10 6t.588-1.412Q11.175 4 12 4t1.413.588Q14 5.175 14 6t-.587 1.412Q12.825 8 12 8Zm-1 12v-2.125l5.3-5.3 2.125 2.125-5.3 5.3Zm7-12q-.825 0-1.413-.588Q16 6.825 16 6t.587-1.412Q17.175 4 18 4q.825 0 1.413.588Q20 5.175 20 6t-.587 1.412Q18.825 8 18 8Zm1.125 6L17 11.875l.725-.725q.3-.3.713-.3.412 0 .687.3l.725.725q.3.275.3.687 0 .413-.3.713Z" /></svg>
+          Enviar
+        </button>
       </form></>}
       {
         view !== 'form' &&

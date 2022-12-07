@@ -5,12 +5,6 @@ function generateSiteMap(adsE, adsM, adsA) {
     return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
-       <loc>${APP_URL}</loc>
-     </url>
-     <url>
-       <loc>${APP_URL}/barbiestories</loc>
-     </url>
-     <url>
        <loc>${APP_URL}/ES</loc>
      </url>
      <url>
@@ -30,9 +24,6 @@ function generateSiteMap(adsE, adsM, adsA) {
      </url>
      <url>
        <loc>${APP_URL}/terms-and-conditions</loc>
-     </url>
-     <url>
-       <loc>${APP_URL}/favorites</loc>
      </url>
      ${adsE
             .map(id => {

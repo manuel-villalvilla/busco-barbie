@@ -1,21 +1,12 @@
 import Image from "next/image";
 import Link from 'next/link'
 import styles from './ResultsAds.module.css'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { useEffect } from 'react'
 import { setCookie } from 'cookies-next'
 import withContext from '../utils/withContext'
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 
-export default withContext(function ResultsAds({ search, currentItems, count, context: { favorites } }) {
-  const [copied, setCopied] = useState(null)
+export default withContext(function ResultsAds({ search, currentItems, context: { favorites } }) {
   const [stateFavorites, setStateFavorites] = useState(favorites)
-  const router = useRouter()
-
-  useEffect(() => {
-    if (copied) setTimeout(() => setCopied(null), 5000)
-  }, [copied])
 
   const countryCurrency = (country, price) => {
     if (country === 'MX' || country === 'AR') return `${price}$`
@@ -48,23 +39,12 @@ export default withContext(function ResultsAds({ search, currentItems, count, co
 
   return (
     <div className={styles.resultsContainer}>
-      <p>Encontrado{count === 1 ? '' : 's'} {count} resultado{count === 1 ? '' : 's'}</p>
-      <button
-        type='button'
-        className={styles.shareButton}
-        onClick={() => {
-          navigator.clipboard.writeText(`${APP_URL}${router.asPath}`)
-          setCopied(true)
-        }}
-      >Compartir enlace de resultados
-      </button>
-      {copied && <span className={styles.copiedMessage}>¡Enlace copiado en el portapapeles!</span>}
       <ul className={styles.resultsList}>
         {currentItems.map(ad => {
           return (
             <li className={styles.resultsListItem} key={ad._id}>
               <div className={styles.favorite}>
-                {ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories' ? <span className={styles.searchLabel}>Busca</span> : <span className={styles.sellLabel}>Vende</span>}
+                {ad.categories === 'searchedmodels' || ad.categories === 'searchedaccessories' ? <span className={styles.searchLabel}>Busco</span> : <span className={styles.sellLabel}>Vendo</span>}
                 {stateFavorites.includes(ad._id) ?
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onClick={() => handleFavorite(ad._id)} style={{ cursor: 'pointer' }}><path d="M0 0h24v24H0V0z" fill="none" /><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill='red' /></svg>
                   :
@@ -76,19 +56,23 @@ export default withContext(function ResultsAds({ search, currentItems, count, co
                   <div className={styles.resultsAdTitle}>
                     <h3>{textHighlight(ad.title)}</h3>
                   </div>
-                  {ad.image.length > 0 && <div className={styles.adImageContainer}><Image
-                    src={ad.image[0]}
-                    alt='Primera imágen'
-                    priority={true}
-                    fill
-                    sizes='33vw'
-                    style={{
-                      width: "100%",
-                      objectFit: "contain"
-                    }}
-                  /></div>}
+                  {ad.image.length > 0 && <div>
+                    <div className={styles.adImageContainer}>
+                      <Image
+                        src={ad.image[0]}
+                        alt='Primera imágen'
+                        priority={true}
+                        fill
+                        sizes='33vw'
+                        style={{
+                          width: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                    <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>
+                  </div>}
                   {ad.image.length === 0 && <div className={styles.resultsAdNoImage}><span className="material-icons-outlined" style={{ fontSize: '48px' }}>no_photography</span></div>}
-                  {ad.image.length > 0 && <span className={styles.imageCount}>{ad.image.length > 1 ? ad.image.length + ' imágenes' : '1 imagen'}</span>}
 
                   <div className={styles.resultsAdBody}>{textHighlight(ad.body)}</div>
 

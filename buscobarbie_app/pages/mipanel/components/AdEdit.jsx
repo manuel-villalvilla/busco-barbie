@@ -442,11 +442,11 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                             setAd({ ...stateAd, tags: arr })
                         }}
                         instanceId='modelos-select'
-                        placeholder='Selecciona...'
+                        placeholder='Selecciona o busca etiquetas'
                         noOptionsMessage={() => <span>No encontrado</span>}
                         loadingMessage={() => <span>Cargando opciones</span>}
                         // blurInputOnSelect={true}
-                        isSearchable={false}
+                        isSearchable={true}
                         closeMenuOnSelect={false}
                         hideSelectedOptions={false}
                     />
@@ -477,11 +477,11 @@ export default function AdEdit({ ad, setView, token, setAds, user, setAdsSuccess
                             setAd({ ...stateAd, tags: arr })
                         }}
                         instanceId='complementos-select'
-                        placeholder={'Selecciona...'}
+                        placeholder={'Selecciona o busca etiquetas'}
                         noOptionsMessage={() => <span>No encontrado</span>}
                         loadingMessage={() => <span>Cargando opciones</span>}
                         // blurInputOnSelect={true}
-                        isSearchable={false}
+                        isSearchable={true}
                         closeMenuOnSelect={false}
                         hideSelectedOptions={false}
                     />

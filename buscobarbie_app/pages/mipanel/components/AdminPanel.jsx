@@ -3,7 +3,6 @@ import retrieveAdminData from '../../../logic/retrieveAdminData'
 import styles from './AdminPanel.module.css'
 import AdminAds from "./AdminAds"
 import AdminUsers from "./AdminUsers"
-import AdminBlog from "./AdminBlog"
 
 export default function AdminPanel({ token }) {
     const [data, setData] = useState({})
@@ -35,7 +34,6 @@ export default function AdminPanel({ token }) {
                 <div className={styles.buttonsContainer}>
                     <button type='button' className={styles.button} onClick={() => setView('ads')}>ANUNCIOS</button>
                     <button type='button' className={styles.button} onClick={() => setView('users')}>USUARIOS</button>
-                    <button type='button' className={styles.button} onClick={() => setView('blog')}>BLOG</button>
                 </div>
             </div>
         }
@@ -45,9 +43,6 @@ export default function AdminPanel({ token }) {
         }
         {
             view === 'users' && <AdminUsers users={data.uUsers} setView={setView} />
-        }
-        {
-            view === 'blog' && <AdminBlog setView={setView} />
         }
     </>
 }

@@ -1,12 +1,14 @@
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 760px;
+    max-width: 700px;
+    padding: 10px;
+    background-color: rgba(0,0,0,.5);
+    border: 1px solid rgb(133,133,133);
+    border-radius: 10px;
 }
 
 .title {
-    background-color: #fff;
     padding: 5px;
     font-weight: 600;
     border-radius: 10px;
@@ -20,10 +22,8 @@
 }
 
 .blockContainer {
-    background-color: #fff;
     padding: 10px;
     border-radius: 10px;
-    color: gray;
     margin-bottom: 10px;
 }
 
@@ -45,18 +45,20 @@
 }
 
 .bottomButton {
-    margin-bottom: 10px;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
     cursor: pointer;
-    border-radius: 10px;
-    border: 2px solid rgb(233, 96, 155);
-    color:#000;
+    background-color: transparent;
+    fill: rgb(114, 191, 128);
+    border-style: none;
+    color: #fff;
     font-weight: 400;
-    font-size: 14px;
-    background-color: #fff;
-    width: fit-content;
-    padding: 5px;
+    font-size: 18px;
 }
 
 .bottomButton:hover {
-    background-color: rgba(211,211,211,.2);
+    background-color: transparent;
 }

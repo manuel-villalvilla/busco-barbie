@@ -1,6 +1,8 @@
 const { areas } = require('../../data')
 const { FiltersError } = require('errors')
 const { tags: { modelos, complementos }, years } = require('data')
+const forbiddenChars = '<,>,{,},[,],/,^'
+const forbiddenArray = forbiddenChars.split(',')
 
 module.exports = function (country, page, limit, province, search, categories, year, tags, sort) {
     const { ES, MX, AR } = areas
@@ -28,8 +30,12 @@ module.exports = function (country, page, limit, province, search, categories, y
         }
     }
 
-    if (search)
+    if (search) {
         if (typeof search !== 'string' || search.trim().length > 30) throw new FiltersError('Search filter not valid')
+        for (let i = 0; i < search.length; i++) {
+            if (forbiddenArray.includes(search[i])) throw new Error ('forbidden search chars')
+        }
+    }
 
     if (categories)
         if (typeof categories !== 'string' || categories !== 'soldaccessories' && categories !== 'soldmodels' && categories !== 'searchedaccessories' && categories !== 'searchedmodels')

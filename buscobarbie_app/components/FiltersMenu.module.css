@@ -1,120 +1,131 @@
-.pannel {
-    margin: auto;
-    max-width: 600px;
-}
-
 .form {
-    background-color: #fff;
-    padding: 10px;
-    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.clearBtnCont {
+.categoriesContainer {
     display: flex;
-    width: 100%;
-    justify-content: flex-end;
+    flex-direction: column;
+    flex: 1;
+}
+
+.categoriesContainer > p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.categoriesSelect {
+    background-color: rgba(0,0,0,.5);
+    border-radius: 10px 100px / 120px;
+    padding: 5px;
+    text-align: center;
+    text-align-last: center;
+}
+
+.categoriesContainer > p > span {
+    color: rgb(233, 96, 155);
+    font-weight: 700;
 }
 
 .clearBtn {
+    display: flex;
+    padding: 0;
     background-color: transparent;
-    border: 1px solid lightgray;
-    font-size: 16px;
-    font-weight: 600;
-    color: #000;
     cursor: pointer;
+    fill: rgb(233, 96, 155);
+    border-style: none;
+    -webkit-animation: loading 10s linear infinite;
+    -moz-animation: loading 10s linear infinite;
+    animation: loading 10s linear infinite;
 }
 
-.provinceContainer, .categoriesContainer, .sortContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-
-.provinceSelect, .categoriesSelect, .sortSelect {
-    border-radius: 10px;
-    background-color: #E7E0E3;
-    width: 100%;
-}
-
-.searchContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    margin: auto;
+.provinceSelect, .sortSelect, .yearSelect {
+    border-radius: 10px 100px / 120px;
+    padding: 5px;
+    background-color: rgba(0,0,0,.5);
+    flex: 1;
+    text-align: center;
+    text-align-last: center;
 }
 
 .searchTextInput {
-    position: relative;
-    border-radius: 10px;
-    width: 100%;
-    padding-left: 5px;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 10px 100px / 120px;
+    padding-left: 10px;
+    height: 50px;
+    flex: 1;
+    text-align: center;
+}
+
+.searchTextInput::placeholder {
+    color: #fff;
 }
 
 .searchTextInput:focus {
     outline: none;
 }
 
-.deleteSearchButton {
+@-webkit-keyframes loading {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes loading {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .provinceSelect, .sortSelect, .yearSelect {
+        width: 100%;
+        flex: none;
+    }
+    .searchTextInput {
+        width: 100%;
+        flex: none;
+    }
+    .categoriesContainer {
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* .deleteSearchButton {
 	display: block;
 	width: 30px;
 	height: 30px;
-	position: absolute;
+	position: relative;
 	background-color: transparent;
     border-style: none;
-    color: #000;
+    
 	z-index:1;
-	right: 5px;
-	top: 35px;
-    bottom: 0;
-	margin: auto;
+	right: 20px;
+	top: 0;
+    bottom: 60px;
 	font-size: 20px;
     font-weight: 600;
 	cursor: pointer;
-}
+} */
 
-.form > p {
-    margin: 0;
-    font-size: 16px;
-    color: gray;
-    text-align: center;
-}
 
-.form > p > span {
-    color: rgb(233, 96, 155);
-    font-weight: 700;
-}
-
-.yearsContainer, .tagsContainer {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-
-.years, .tags {
-    display: flex;
-    width: 100%;
-}
-
-.yearSelect {
-    border-radius: 10px;
-    width: 100%;
-    background-color: #E7E0E3;
-}
-
-@media all and (min-width: 760px) {
-    .form {
-        max-width: 760px;
-    }
-}

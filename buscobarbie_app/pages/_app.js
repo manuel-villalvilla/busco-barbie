@@ -16,6 +16,7 @@ const IP = process.env.NEXT_PUBLIC_WAN_IP
 
 function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, cookieAccepted, ip, favorites }) {
     const [accepted, setAccepted] = useState(cookieAccepted)
+
     return <>
         <style jsx global>
             {`
@@ -35,14 +36,14 @@ function MyApp({ Component, pageProps: { ...pageProps }, country_code, session, 
         <Head>
             <title>BuscoBarbie.com</title>
         </Head>
-
-        <div className={cairo.className}>
+        <div className='img'></div>
+        <div className={cairo.className} style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.4)', position: 'absolute' }}>
             {/* {ip === IP ? <SessionProvider session={session}>
             <Layout country_code={country_code} favorites={favorites}>
                 <Component {...pageProps} />
             </Layout>
             {!accepted && <CookieNotice setAccepted={setAccepted} />}
-            </SessionProvider> : <p>En construcción...</p>} */}
+            </SessionProvider> : <h3 style={{ color: 'white', textAlign: 'center' }}>En mantenimiento. Vuelve pasadas unas horas...</h3>} */}
 
             <SessionProvider session={session}>
                 <Layout country_code={country_code} favorites={favorites}>

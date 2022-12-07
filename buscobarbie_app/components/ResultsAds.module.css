@@ -3,25 +3,7 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
-}
-
-.resultsContainer > p {
-    margin: 20px 0 0 0;
-    line-height: 1;
-}
-
-.shareButton {
-    font-size: 14px;
-    cursor: pointer;
-    border-style: none;
-    background-color: transparent;
-    color: gray;
-}
-
-.copiedMessage {
-    font-size: 14px;
-    color:rgb(114, 191, 128);
-    line-height: 1;
+    gap: 10px;
 }
 
 .resultsList {
@@ -31,12 +13,13 @@
     gap: 20px;
     justify-content: center;
     padding: 10px;
-    margin: 0 0 15px 0;
+    margin: 0;
 }
 
 .resultsListItem {
-    background-color: #fff;
-    box-shadow: 0 0 10px 10px rgba(233, 96, 155,.2);
+    background-color: rgba(0,0,0,.5);
+    border: 1px solid rgb(133,133,133);
+    border-radius: 10px;
     display: flex;
     width: 100%;
     max-width: 350px;
@@ -57,22 +40,26 @@
     align-items: center;
     gap: 5px;
     font-size: 14px;
-    color: gray;
+    color: lightgray;
 }
 
 .searchLabel {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 800;
     background-color: rgb(233, 96, 155);
+    border-radius: 10px 100px / 120px;
     padding: 7px;
-    color: #fff;
+    color: #000;
     line-height: 15px;
 }
 
 .sellLabel {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 800;
     background-color: rgb(114, 191, 128);
+    border-radius: 10px 100px / 120px;
     padding: 7px;
-    color: #fff;
+    color: #000;
     line-height: 15px;
 }
 
@@ -94,17 +81,12 @@
     width: fit-content;
     margin: 10px;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .adImageContainer {
     position: relative;
-    overflow: hidden;
     min-height: 400px;
-}
-
-.resultsAdNoImageContainer {
-    display: flex;
-    justify-content: center;
 }
 
 .resultsAdNoImage {
@@ -116,23 +98,24 @@
     align-items: center;
     background-color: rgba(211, 211, 211, .5);
     border-radius: 20px;
-    color: gray;
+    color: #000;
     font-weight: 400;
-    margin: auto;
+    margin: 50px auto 50px auto;
 }
 
 .imageCount {
     display: flex;
-    justify-content: flex-end;
-    margin: 10px 10px 0 0;
+    width: 100%;
+    justify-content: center;
     font-size: 14px;
-    color: gray;
+    color: lightgray;
 }
 
 .resultsAdBody {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    justify-content: center;
+    flex: 1;
     padding: 5px;
     border-radius: 10px;
     margin-top: 10px;
@@ -169,6 +152,7 @@
 .priceDiv {
     padding: 5px;
     line-height: 1;
+    position: relative;
 }
 
 .offers {
@@ -177,6 +161,8 @@
     font-weight: 400;
     font-style: italic;
     color:rgb(233, 96, 155);
+    position: absolute;
+    bottom: 50px;
 }
 
 .price {
@@ -191,11 +177,12 @@
     margin: 0;
     font-size: 14px;
     font-weight: 400;
-    color: gray;
+    color: lightgray;
+    position: absolute;
+    bottom: 35px;
 }
 
 .footerDate {
     margin: 0;
-    background-color: #fff;
     font-size: 16px;
 }

@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react"
-import withContext from "../../utils/withContext"
+import { useState } from "react"
 import { getToken } from 'next-auth/jwt'
 import retrieveUserWithAds from "../../logic/retrieveUserWithAds"
 import styles from './index.module.css'
 import MainPanel from './components/MainPanel'
 import AdminPanel from "./components/AdminPanel"
 
-function MiPanel({ context: { setSearchHeight }, pack, token }) {
+function MiPanel({ pack, token }) {
     const [ads, setAds] = useState(pack.ads ? pack.ads : [])
     const [user, setUser] = useState(pack.user ? pack.user : {})
     const [count, setCount] = useState(pack.ads ? pack.ads.length : 0)
 
-    useEffect(() => setSearchHeight(0), [])
-    
     return <>
         {
             token.role !== 'admin' ?
@@ -42,4 +39,4 @@ export async function getServerSideProps({ req, res }) {
         return { props: { pack: {}, token } }
 }
 
-export default withContext(MiPanel)
+export default MiPanel

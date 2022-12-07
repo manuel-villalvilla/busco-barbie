@@ -1,6 +1,5 @@
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import withContext from '../utils/withContext'
 import { getToken } from 'next-auth/jwt'
 import { useEffect, useState, useRef } from 'react'
 import styles from './login.module.css'
@@ -10,7 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 const URL = process.env.NEXT_PUBLIC_APP_URL
 const SITE_KEY = process.env.NEXT_PUBLIC_SITE_KEY
 
-export default withContext(function SignIn({ context: { setSearchHeight } }) {
+export default function SignIn() {
   const [isSearching, setIsSearching] = useState(false)
   const [error, setError] = useState(null)
   const [view, setView] = useState('login')
@@ -18,8 +17,6 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
   const emailRef = useRef(null)
   const firstTime = useRef(true)
   const captchaRef = useRef(null)
-
-  useEffect(() => setSearchHeight(0), [])
 
   useEffect(() => {
     if (!firstTime.current) {
@@ -83,7 +80,6 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
 
   return <>
     {view === 'login' && <div className={styles.loginContainer}>
-      <h3 className={styles.title}>Inicio de sesión</h3>
       <GoogleButton
         type='dark'
         label='Inicia sesión con Google'
@@ -121,17 +117,18 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
           />
         </div>
         {error ? <p className={styles.error}>{error}</p> : null}
+
+        <button
+          type="submit"
+          className={styles.loginButton}
+        ><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm-2-4-1.375-1.45 2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5Z"/></svg>Iniciar sesión
+        </button>
+
         <button
           type='button'
           className={styles.forgottenButton}
           onClick={handleForgottenClick}
         >¿Has olvidado tu contraseña?
-        </button>
-
-        <button
-          type="submit"
-          className={styles.loginButton}
-        >Acceder
         </button>
       </form>
     </div>
@@ -155,7 +152,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
           </input>
           <p className={styles.formText}>Te enviaremos un email con las instrucciones para reestablecer tu contraseña. Los usuarios registrados a través de otras plataformas, por ejemplo Google, no recibirán ningún email y tendrán que recuperar su contraseña a través de su proveedor.</p>
         </div>
-        <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} />
+        <ReCAPTCHA sitekey={SITE_KEY} ref={captchaRef} theme='dark' />
         {error ? <p className={styles.error}>{error}</p> : null}
         <div className={styles.buttonsContainer}>
           <button
@@ -187,8 +184,7 @@ export default withContext(function SignIn({ context: { setSearchHeight } }) {
 
     }
   </>
-
-})
+}
 
 export async function getServerSideProps({ req, res }) {
   const secret = process.env.NEXTAUTH_SECRET

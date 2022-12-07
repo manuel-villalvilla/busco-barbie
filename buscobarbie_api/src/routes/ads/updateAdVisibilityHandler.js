@@ -17,7 +17,6 @@ module.exports = async function (req, res) {
         logger.info(`user ${id} updated ad ${adId} visibility to ${visibility}`)
         res.json(ads)
     } catch (error) {
-        logger.error(error)
         if (error instanceof TypeError) error = new TokenError(error) // por si viene del substring, cambiarlo
         errorHandler(error, res)
         return

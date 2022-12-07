@@ -5,7 +5,6 @@
 
 .titleContainer > h3 {
     margin: 0 0 20px 0;
-    background-color: #fff;
     font-weight: 600;
     width: fit-content;
     padding: 5px;
@@ -41,7 +40,7 @@
     font-size: 16px;
     justify-content: space-between;
     height: 40px;
-    border: 2px solid rgb(211,211,211);
+    border: 2px solid rgb(133,133,133);
     border-radius: 10px;
     gap: 10px;
 }
@@ -79,13 +78,13 @@
 
 .editButton, .deleteButton, .newAdButton, .formButton, .formDeleteButton {
     display: flex;
-    color: #000;
+    color: #fff;
     align-items: center;
     border-radius: 10px;
     border: 1px solid rgb(233, 96, 155);
     cursor: pointer;
     padding: 5px;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .deleteButton {
@@ -107,7 +106,7 @@
     font-size: 14px;
     justify-content: center;
     align-items: center;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     width: 100%;
     height: 35px;
@@ -142,7 +141,7 @@
     align-items: center;
     gap: 10px;
     justify-content: space-between;
-    border: 2px solid rgb(211,211,211);
+    border: 2px solid rgb(133,133,133);
     border-radius: 10px;
 }
 
@@ -159,19 +158,20 @@
     padding: 5px;
     width: 100%;
     border-radius: 10px;
+    background-color: rgba(0,0,0,.5);
 }
 
 .emailNote, .passwordNote {
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: lightgrey;
     text-align: end;
 }
 
 .unverified {
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: lightgrey;
 }
 
 .modal {
@@ -196,7 +196,7 @@
     width: 100%;
     max-width: 400px;
     gap: 10px;
-    background-color: #fff;
+    background-color: rgba(0,0,0,.5);
 }
 
 .modalContent > h4 {
@@ -220,7 +220,7 @@
     border: 2px solid rgb(233, 96, 155);
     cursor: pointer;
     padding: 5px;
-    background-color: #fff;
+    background-color: transparent;
     font-size: 18px;
 }
 

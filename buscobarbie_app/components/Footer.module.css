@@ -12,19 +12,19 @@
 .footer p {
     margin: 0 0 10px 0;
     line-height: 1;
-    color: gray;
+    color: lightgray;
     text-align: center;
 }
 
 .paypalImage {
     border-style: none;
-    height: 30px;
+    height: 25px;
 }
 
 .linksDiv {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .links {
@@ -33,11 +33,13 @@
 }
 
 .pinkLink, .pinkLink:visited, .pinkLink:active {
-    color:rgb(233, 96, 155);
+    color: #fff;
+    font-size: 20px;
 }
 
 .socials {
     display: flex;
+    align-items: center;
     margin-left: 5px;
     gap: 5px;
 }
